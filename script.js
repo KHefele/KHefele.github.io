@@ -61,7 +61,7 @@ export async function application() {
 
   tax.onclick = function() {
     tax.style.display = "none";
-   console.log("Die Taxfunktion funktioniert");
+    console.log("Die Taxfunktion funktioniert");
   }
 
   //Geographie
@@ -72,5 +72,31 @@ export async function application() {
    console.log("Die Geofunktion funktioniert");
   }
 
+
+  //---------------Personen--------------------------//
+
+  //Zeus
+  var zeusButton = document.getElementById("onlyZeus");
+
+  var allZeus = document.getElementsByClassName("Zeus");
+
+  zeusButton.onclick = function () {
+
+    if (allZeus[0].style.display === "none") {
+      for (var i = 0; i < allZeus.length; i++) {
+        allZeus[i].style.display = "block";
+      }
+    } else {
+      for (var i = 0; i < allZeus.length; i++) {
+        allZeus[i].style.display = "none";
+      }
+    }
+    console.log("Die OnlyZeusFunktion funktioniert");
+  }
+
+
+  //Hera
+
+  //Artemis 
 
 } //End of application-function 
