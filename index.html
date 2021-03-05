@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg"></div>
+<h2 class="logo">VISUALIZED OVID</h2>
+
+
+
+
+
+
+
+<!-- Popover/Hover card -->  
+<div class="popover__wrapper">
+  <a href="#">
+    <img src="Lycaon_ausgeschnitten.png" class="popover__picture" alt="Lycaon" width="100" height="100" >
+  </a>
+  <div class="popover__content">
+    <div class="popover__message">
+      <h3>Lycaon</h3>
+      <p>Ov.met. 1,209-239</p>
+    </div>
+    <img alt="Lycaon" src="Jan Cossiers (1600–1671), Jupiter and Lycaon (c 1640), oil on canvas, 120 × 115 cm, Museo Nacional del Prado, Madrid. Wikimedia Commons.jpg" width="200" height="200">
+  </div>
+</div>
+
+
+<!-- Start Modal --> 
+<div id="startModal" class="startModal">
+  <div class="modal-content">
+    <h1 class="modal-font">VISUALIZED OVID</h1>
+    <p class="modal-font"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
+    <br>
+    <p class="modal-font">Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die Geschichten, die diese erzählten? Jetzt hast du die Möglichkeit, diese Erinnerungen wieder auferstehen zu lassen -- diesmal allerdings mit einem weitaus größeren Bestand an Metamorphosen. Einige dieser Metamorphosen haben vielleicht schon Alexander der Große oder Caesar in den Händen gehalten oder für ihre weltverändernden Kriege ausgegeben. Hier hast Du die Möglichkeit, diese Geschichten mit verschiedenen Filtern zu ordnen und zu erkunden. Hilf uns, Ordnung in die Metamorphosen zu bringen…</p>
+    <span class="mehrInfosBtn" id="closeStartModal">Los geht's</span>
+	<button class="mehrInfosBtn" class="infoBtn">Mehr Infos</button>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+
+<!-- Info Modal --> 
+<button class="infoBtn">Info</button><!-- Trigger/Open The Modal -->
+<div id="infoModal" class="infoModal"><!-- The Modal -->
+  <div class="modal-content"> <!-- Modal content -->
+    <h1 class="modal-font"><em>Über das Projekt</em></h1>
+    <p class="modal-font">Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a> entstanden ist.<br>Zur Umsetzung wurde eine Anzahl von technischen Hilfsmitteln sowie Code Libraries verwendet. Allen voran <a href="https://materializecss.com/">Materialize</a> und <a href="https://getbootstrap.com/">Bootstrap</a>.</p>
+    <span class="closeInfoModal">SCHLIESSEN</span>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+
+
+
+
+<!-- Navigation-Bar -->   
+<div class="navigation">
+  ORDNEN NACH:
+  <div class="dropdown">
+	<button class="dropbtn">Narration</button>
+	<div class="dropdown-content" style="left:0;">
+		<a href="#" onclick="chrono()">Chronologie</a>
+		<a href="#" onclick="tax()">Taxonomie</a>
+		<a href="#" onclick="geo()">Geographie</a>
+	</div>
+  </div>
+	UND
+	<div class="dropdown">
+	  <button class="dropbtn">alle Personen</button>
+	  <div class="dropdown-content" style="left:0;">
+		<a href="#">Zeus</a>
+		<a href="#">Apollo</a>
+		<a href="#">Hera</a>
+	  </div>
+	</div>
+</div>
+
+
+
+<script type="module">
+  import { application } from './script.js'
+  application();
+</script>
+
+
+
+
+
+<!-- Google Maps, Problem: API not activated 
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj8HB9zmYfGKskCcmE7_6j2mSi7UwoJww&callback=myMap"></script>
+-->
+
+</body>
+</html>
+
+
+
+
