@@ -6,6 +6,12 @@ h1, h2, h3, h4, h5, h6 {
  font-family: 'Crimson Text', serif;
 }
 
+button { /* unterscheidet sich sonst von span */
+  text-decoration: none;
+  outline: none;
+}
+
+/* ------------------ Background -----------*/
 body, html {
   height: 100%;
   margin: 0;
@@ -20,6 +26,7 @@ body, html {
   background-size: cover;
   opacity: 0.5;
 }
+
 
 /* --------------- Links ------------------*/
 a:link {
@@ -73,8 +80,8 @@ a:active {
   color: white;
 }
 
-/* ---------------- MehrInfos-Button ------------------- */
-.mehrInfosBtn {
+/* ---------------- Modal-Buttons ------------------- */
+.modalBtns {
   background-color: #733030;
   display: block; 
   border: none;
@@ -84,13 +91,12 @@ a:active {
   top: 2%;
   color: white;
   padding: 15px 32px;
-  text-align: center;
+  margin: 20px;
   text-decoration: none;
   font-size: 16px;
-  margin: 4px 2px;
   cursor: pointer;
 }
-.mehrInfosBtn:hover {
+.modalBtns:hover {
   background-color: #994040;
   color: white;
 }
@@ -98,6 +104,7 @@ a:active {
 /* ---------------- Navigation-Bar ------------------- */
 .navigation {
   color: white;
+  padding-left: 10px;
   float: left;
   display: block; 
   position: fixed;
@@ -150,6 +157,7 @@ a:active {
 /* ---------------- Info-Modal ------------------- */
 /* The Modal (background) */
 .infoModal {
+  text-align: center;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 20; /* Sit on top */
@@ -160,16 +168,21 @@ a:active {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); 
+  background-color: rgba(0, 0, 0, 0.7); 
 }
 .modal-content {
   background-color: rgba(0,0,0,0.8);
   margin: auto;
-  padding: 20px;
-  width: 80%;
+  padding: 50px;
+  width: 60%;
+}
+.modal-header {
+  color: #aaaaaa;
+  text-align: center;
 }
 .modal-font {
   color: #aaaaaa;
+  text-align: left;
 }
 .close {
   color: #aaaaaa;
@@ -190,6 +203,7 @@ a:active {
 
 /* ---------------- Start-Modal ------------------- */
 .startModal {
+  text-align: center;
   display: block; /* not Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 20; /* Sit on top */
@@ -200,7 +214,7 @@ a:active {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); 
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 
@@ -254,4 +268,14 @@ a:active {
 }
 .popover__message {
   text-align: center;
+}
+
+#lycaon {
+  
+}
+#io {
+
+}
+#actaeon {
+  
 }

@@ -48,19 +48,29 @@ export async function application() {
   //--------------Kategorien-----------------------//
 
   //Chronologie
-  function chrono() {
+
+   var chrono = document.getElementById("chrono");
+
+   chrono.onclick = function() {
+    chrono.style.display = "none";
     console.log("Die Chronofunktion funktioniert");
-  }
+   }
 
   //Taxonomie
-  function tax() {
-    console.log("Die Taxfunktion funktioniert");
+  var tax = document.getElementById("tax");
+
+  tax.onclick = function() {
+    tax.style.display = "none";
+   console.log("Die Taxfunktion funktioniert");
   }
 
   //Geographie
-  function geo() {
-    console.log("Die Geofunktion funktioniert");
+  var geo = document.getElementById("geo");
+
+  geo.onclick = function() {
+   geo.style.display = "none";
+   console.log("Die Geofunktion funktioniert");
   }
 
 
-}
+} //End of application-function 
