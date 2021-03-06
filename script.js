@@ -1,46 +1,95 @@
 export async function application() {
 
 
-  //---------------------Modals--------------------//
+  //---------------------Start- & Info-Modal--------------------//
 
 
 
-  // Get the startModal
-  var startModal = document.getElementById("startModal");
-  // Get the <span> element that closes the startModal
-  var spanStart = document.getElementById("closeStartModal");
-  // When the user clicks on <span> (x), close the startModal
-  spanStart.onclick = function() {
+  // StartModal
+  var startModal = document.getElementById("startModal"); // Get startModal
+  var spanStart = document.getElementById("closeStartModal");   // Get <span> element that closes the startModal
+
+  spanStart.onclick = function () { // Close
     startModal.style.display = "none";
   }
 
-  // Get the infoModal
-  var infoModal = document.getElementById("infoModal");
-  // Get the button that opens the infoModal
-  var infoBtns = document.getElementsByClassName("infoBtn");
-  console.log(infoBtns);
-  // Get the <span> element that closes the infoModal
-  var spanInfo = document.getElementsByClassName("closeInfoModal");
-  // When the user clicks the button, open the infoModal
-  for (var i = 0; i < infoBtns.length; i++) {
-    infoBtns[i].onclick = function() {
-      infoModal.style.display = "block";
-      startModal.style.display = "none";
-    }
-  } 
-  // When the user clicks on <span>, close the infoModal
-  spanInfo.onclick = function() {
+  // InfoModal
+  var infoModal = document.getElementById("infoModal");   // Get infoModall
+  var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
+  var mehrInfoBtn = document.getElementById("mehrInfoBtn"); // Get other butten that opens the infoModal
+  var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+  
+  infoBtn.onclick = function () { // Open
+    infoModal.style.display = "block";
+  }
+  mehrInfoBtn.onclick = function () { // Other Open
+    infoModal.style.display = "block";
+    startModal.style.display = "none";
+  }
+  closeInfoBtn.onclick = function () { // Close
     infoModal.style.display = "none";
   }
-  // When the user clicks anywhere outside of the startModal or infoModal, close it
-  window.onclick = function(event) {
+
+
+
+
+
+  //-----------------Metamorphosen-Modals---------------------//
+  
+  // Lycaon
+  var lycaonModal = document.getElementById("actaeonModal");
+  var lycaonBtn = document.getElementById("actaeonBtn");
+  var xLycaon = document.getElementById("xActaeon");
+
+  lycaonBtn.onclick = function () { // Open
+    lycaonModal.style.display = "block";
+  }
+  xLycaon.onclick = function () { // Close
+    lycaonModal.style.display = "none";
+  }
+
+  // Io
+  var ioModal = document.getElementById("actaeonModal");
+  var ioBtn = document.getElementById("actaeonBtn");
+  var xIo = document.getElementById("xActaeon");
+
+  ioBtn.onclick = function () { // Open
+    ioModal.style.display = "block";
+  }
+  xIo.onclick = function () { // Close
+    ioModal.style.display = "none";
+  }
+
+  // Actaeon
+  var actaeonModal = document.getElementById("actaeonModal");
+  var actaeonBtn = document.getElementById("actaeonBtn");
+  var xActaeon = document.getElementById("xActaeon");
+
+  actaeonBtn.onclick = function () { // Open
+    actaeonModal.style.display = "block";
+  }
+  xActaeon.onclick = function () { // Close
+    actaeonModal.style.display = "none";
+  }
+
+
+
+
+
+  // When the user clicks anywhere outside of the Modals, close it
+  window.onclick = function (event) {
     if (event.target == startModal) {
       startModal.style.display = "none";
     }
     if (event.target == infoModal) {
       infoModal.style.display = "none";
     }
+    if (event.target == actaeonModal) {
+      actaeonModal.style.display = "none";
+    }
   }
+
+
 
 
 
@@ -49,17 +98,17 @@ export async function application() {
 
   //Chronologie
 
-   var chrono = document.getElementById("chrono");
+  var chrono = document.getElementById("chrono");
 
-   chrono.onclick = function() {
+  chrono.onclick = function () {
     chrono.style.display = "none";
     console.log("Die Chronofunktion funktioniert");
-   }
+  }
 
   //Taxonomie
   var tax = document.getElementById("tax");
 
-  tax.onclick = function() {
+  tax.onclick = function () {
     tax.style.display = "none";
     console.log("Die Taxfunktion funktioniert");
   }
@@ -67,35 +116,53 @@ export async function application() {
   //Geographie
   var geo = document.getElementById("geo");
 
-  geo.onclick = function() {
-   geo.style.display = "none";
-   console.log("Die Geofunktion funktioniert");
+  geo.onclick = function () {
+    geo.style.display = "none";
+    console.log("Die Geofunktion funktioniert");
   }
+
+
+
+
 
 
   //---------------Personen--------------------------//
 
-  //Zeus
-  var zeusButton = document.getElementById("onlyZeus");
+  function blendGodInOrOut(button, classArray) {
+    button.onclick = function () {
 
-  var allZeus = document.getElementsByClassName("Zeus");
-
-  zeusButton.onclick = function () {
-
-    if (allZeus[0].style.display === "none") {
-      for (var i = 0; i < allZeus.length; i++) {
-        allZeus[i].style.display = "block";
+      if (classArray[0].style.display === "none") {
+        for (var i = 0; i < classArray.length; i++) {
+          classArray[i].style.display = "block";
+        }
+      } else {
+        for (var i = 0; i < classArray.length; i++) {
+          classArray[i].style.display = "none";
+        }
       }
-    } else {
-      for (var i = 0; i < allZeus.length; i++) {
-        allZeus[i].style.display = "none";
-      }
+      console.log("Die Götterfunktion funktioniert");
     }
-    console.log("Die OnlyZeusFunktion funktioniert");
   }
 
+  //Zeus
+  var zeusButton = document.getElementById("zeusButton");
+  var allZeus = document.getElementsByClassName("zeus");
+  var checkboxZeus = document.getElementById("checkboxZeus");
 
+  checkboxZeus.checked = !checkboxZeus.checked;
+  checkboxZeus.checked = !checkboxZeus.checked;
+  blendGodInOrOut(zeusButton, allZeus);
+  /*if zeusButton.onclick = function() => {checkboxZeus.checked = false;}; 
+  --> mit in obrige Datei */
+
+  /*
   //Hera
+  var heraButton = document.getElementById("heraButton");
+  var allHera = document.getElementsByClassName("hera");
+
+  blendGodInOrOut(heraButton, allHera);
+  */
+
 
   //Artemis 
 
