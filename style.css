@@ -1,5 +1,6 @@
 body {
  font-family: 'Work Sans', sans-serif;
+ overflow-y:hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -28,6 +29,9 @@ details:hover {
   cursor: pointer;
 }
 
+td {
+  vertical-align: top;
+}
 
 /* ------------------ Background -----------*/
 body, html {
@@ -239,7 +243,7 @@ a:active {
 
 /* ---------------- Metamorphosen-Modal ------------------- */
 .metamorphosenModal {
-  text-align: center;
+  text-align: left;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 20; /* Sit on top */
@@ -252,10 +256,6 @@ a:active {
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
 }
-
-
-
-
 
 
 /* ----------------- Popover/Hover card -------------------*/
