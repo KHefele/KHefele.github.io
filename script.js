@@ -37,9 +37,9 @@ export async function application() {
   //-----------------Metamorphosen-Modals---------------------//
   
   // Lycaon
-  var lycaonModal = document.getElementById("actaeonModal");
-  var lycaonBtn = document.getElementById("actaeonBtn");
-  var xLycaon = document.getElementById("xActaeon");
+  var lycaonModal = document.getElementById("lycaonModal");
+  var lycaonBtn = document.getElementById("lycaonBtn");
+  var xLycaon = document.getElementById("xLycaon");
 
   lycaonBtn.onclick = function () { // Open
     lycaonModal.style.display = "block";
@@ -49,9 +49,9 @@ export async function application() {
   }
 
   // Io
-  var ioModal = document.getElementById("actaeonModal");
-  var ioBtn = document.getElementById("actaeonBtn");
-  var xIo = document.getElementById("xActaeon");
+  var ioModal = document.getElementById("ioModal");
+  var ioBtn = document.getElementById("ioBtn");
+  var xIo = document.getElementById("xIo");
 
   ioBtn.onclick = function () { // Open
     ioModal.style.display = "block";
@@ -84,10 +84,17 @@ export async function application() {
     if (event.target == infoModal) {
       infoModal.style.display = "none";
     }
+    if (event.target == lycaonModal) {
+      lycaonModal.style.display = "none";
+    }
+    if (event.target == ioModal) {
+      ioModal.style.display = "none";
+    }
     if (event.target == actaeonModal) {
       actaeonModal.style.display = "none";
     }
   }
+
 
 
 
@@ -105,11 +112,14 @@ export async function application() {
     console.log("Die Chronofunktion funktioniert");
   }
 
-  //Taxonomie
-  var tax = document.getElementById("tax");
 
-  tax.onclick = function () {
-    tax.style.display = "none";
+
+  //Taxonomie
+  var taxBtn = document.getElementById("tax");
+  var taxImg = document.getElementById("taxonomie");
+
+  taxBtn.onclick = function () {
+    taxImg.style.animationPlayState = "running";
     console.log("Die Taxfunktion funktioniert");
   }
 
@@ -122,7 +132,54 @@ export async function application() {
   }
 
 
+   //Unorganisiert
+   var unorgBtn = document.getElementById("unorganisiert");
 
+   unorgBtn.onclick = function () {
+    taxImg.style.display = "none";
+   }
+
+
+
+
+/* Test JavaScript Animation
+
+
+  var animate, left = 0, imgObj = null;
+
+  function init() {
+
+    imgObj = document.getElementById('myImage');
+    imgObj.style.position = 'absolute';
+    imgObj.style.top = '240px';
+    imgObj.style.left = '-300px';
+    imgObj.style.visibility = 'hidden';
+
+    moveRight();
+  }
+
+  function moveRight() {
+    left = parseInt(imgObj.style.left, 10);
+
+    if (10 >= left) {
+      imgObj.style.left = (left + 5) + 'px';
+      imgObj.style.visibility = 'visible';
+
+      animate = setTimeout(function () { moveRight(); }, 20); // call moveRight in 20msec
+
+      //stopanimate = setTimeout(moveRight,20);
+    } else {
+      stop();
+    }
+    //f();
+  }
+
+  function stop() {
+    clearTimeout(animate);
+  }
+
+  window.onload = function () { init(); };
+*/
 
 
 
