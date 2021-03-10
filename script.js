@@ -1,8 +1,9 @@
 export async function application() {
 
 
-  //---------------------Start- & Info-Modal--------------------//
-
+  //--------------------------------------------//
+  //                 Modals                     //
+  //--------------------------------------------//
 
 
   // StartModal
@@ -18,7 +19,7 @@ export async function application() {
   var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
   var mehrInfoBtn = document.getElementById("mehrInfoBtn"); // Get other butten that opens the infoModal
   var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-  
+
   infoBtn.onclick = function () { // Open
     infoModal.style.display = "block";
   }
@@ -34,8 +35,10 @@ export async function application() {
 
 
 
-  //-----------------Metamorphosen-Modals---------------------//
-  
+  //--------------------------------------------//
+  //            Metamorphosen-Modals            //
+  //--------------------------------------------//
+
   // Lycaon
   var lycaonModal = document.getElementById("lycaonModal");
   var lycaonBtn = document.getElementById("lycaonBtn");
@@ -76,6 +79,10 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //      close modals (windows.onclick)        //
+  //--------------------------------------------//
+
   // When the user clicks anywhere outside of the Modals, close it
   window.onclick = function (event) {
     if (event.target == startModal) {
@@ -98,13 +105,15 @@ export async function application() {
 
 
 
+  
 
 
 
-  //--------------Kategorien-----------------------//
+  //--------------------------------------------//
+  //                 Kategorien                 //
+  //--------------------------------------------//
 
   //Chronologie
-
   var chrono = document.getElementById("chrono");
 
   chrono.onclick = function () {
@@ -132,58 +141,63 @@ export async function application() {
   }
 
 
-   //Unorganisiert
-   var unorgBtn = document.getElementById("unorganisiert");
+  //Unorganisiert
+  var unorgBtn = document.getElementById("unorganisiert");
 
-   unorgBtn.onclick = function () {
+  unorgBtn.onclick = function () {
     taxImg.style.display = "none";
-   }
-
-
-
-
-/* Test JavaScript Animation
-
-
-  var animate, left = 0, imgObj = null;
-
-  function init() {
-
-    imgObj = document.getElementById('myImage');
-    imgObj.style.position = 'absolute';
-    imgObj.style.top = '240px';
-    imgObj.style.left = '-300px';
-    imgObj.style.visibility = 'hidden';
-
-    moveRight();
   }
 
-  function moveRight() {
-    left = parseInt(imgObj.style.left, 10);
 
-    if (10 >= left) {
-      imgObj.style.left = (left + 5) + 'px';
-      imgObj.style.visibility = 'visible';
 
-      animate = setTimeout(function () { moveRight(); }, 20); // call moveRight in 20msec
 
-      //stopanimate = setTimeout(moveRight,20);
-    } else {
-      stop();
+  /* Test JavaScript Animation
+  
+  
+    var animate, left = 0, imgObj = null;
+  
+    function init() {
+  
+      imgObj = document.getElementById('myImage');
+      imgObj.style.position = 'absolute';
+      imgObj.style.top = '240px';
+      imgObj.style.left = '-300px';
+      imgObj.style.visibility = 'hidden';
+  
+      moveRight();
     }
-    //f();
-  }
+  
+    function moveRight() {
+      left = parseInt(imgObj.style.left, 10);
+  
+      if (10 >= left) {
+        imgObj.style.left = (left + 5) + 'px';
+        imgObj.style.visibility = 'visible';
+  
+        animate = setTimeout(function () { moveRight(); }, 20); // call moveRight in 20msec
+  
+        //stopanimate = setTimeout(moveRight,20);
+      } else {
+        stop();
+      }
+      //f();
+    }
+  
+    function stop() {
+      clearTimeout(animate);
+    }
+  
+    window.onload = function () { init(); };
+  */
 
-  function stop() {
-    clearTimeout(animate);
-  }
-
-  window.onload = function () { init(); };
-*/
 
 
 
-  //---------------Personen--------------------------//
+
+
+  //--------------------------------------------//
+  //                  Personen                  //
+  //--------------------------------------------//
 
   function blendGodInOrOut(button, classArray) {
     button.onclick = function () {
@@ -227,45 +241,47 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //                  Lightbox                  //
+  //--------------------------------------------//
 
-  //---------------- Lightbox ------------------//
   var openLightbox = document.getElementsByClassName("openLightbox");
-  
+
   openLightbox.onclick = function () {
     document.getElementById("lightboxModal").style.display = "block";
   }
-  
+
   function closeModal() {
     document.getElementById("lightboxModal").style.display = "none";
   }
-  
+
   var slideIndex = 1;
   showSlides(slideIndex);
-  
+
   function plusSlides(n) {
     showSlides(slideIndex += n);
   }
-  
+
   function currentSlide(n) {
     showSlides(slideIndex = n);
   }
-  
+
   function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     var dots = document.getElementsByClassName("demo");
     var captionText = document.getElementById("caption");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
     for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+      slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+      dots[i].className = dots[i].className.replace(" active", "");
     }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-    captionText.innerHTML = dots[slideIndex-1].alt;
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+    captionText.innerHTML = dots[slideIndex - 1].alt;
   }
 
 

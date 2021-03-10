@@ -7,11 +7,6 @@ h1, h2, h3, h4, h5, h6 {
  font-family: 'Crimson Text', serif;
 }
 
-button { /* unterscheidet sich sonst von span */
-  text-decoration: none;
-  outline: none;
-}
-
 div.disabled {
   overflow-x: hidden; /*horizontal*/
   overflow-y: scroll; /*vertical*/
@@ -31,9 +26,26 @@ details:hover {
 
 td {
   vertical-align: top;
+
 }
 
-/* ------------------ Background -----------*/
+.logo {
+  float: right;
+  display: block; 
+  position: fixed;
+  left: 2%;
+  top: 2%;
+}
+
+
+
+
+
+
+/*--------------------------------------------*/
+/*                 Background                 */
+/*--------------------------------------------*/
+
 body, html {
   height: 100%;
   margin: 0;
@@ -50,7 +62,14 @@ body, html {
 }
 
 
-/* --------------- Links ------------------*/
+
+
+
+
+/*--------------------------------------------*/
+/*                   Links                    */
+/*--------------------------------------------*/
+
 a:link {
   color: #733030;
   text-decoration: none;
@@ -68,17 +87,22 @@ a:active {
   text-decoration: none;
 }
 
-/* ---------------- Logo -----------------------*/
-.logo {
-  float: right;
-  display: block; 
-  position: fixed;
-  left: 2%;
-  top: 2%;
+
+
+
+
+
+
+/*--------------------------------------------*/
+/*                  Buttons                   */
+/*--------------------------------------------*/
+
+button { /* unterscheidet sich sonst von span */
+  text-decoration: none;
+  outline: none;
 }
 
-
-/* ---------------- Info-Button ------------------- */
+/* --------------- Info-Button -------------- */
 .infoBtn {
   background-color: #733030;
   float: right;
@@ -102,12 +126,7 @@ a:active {
   color: white;
 }
 
-
-
-
-
-
-/* ---------------- Modal-Buttons ------------------- */
+/* -------------- Modal-Buttons ------------- */
 .modalBtns {
   background-color: #733030;
   display: block; 
@@ -134,7 +153,10 @@ a:active {
 
 
 
-/* ---------------- Navigation-Bar ------------------- */
+/*--------------------------------------------*/
+/*             Navigation-Bar                 */
+/*--------------------------------------------*/
+
 .navigation {
   color: white;
   padding-left: 10px;
@@ -191,9 +213,14 @@ a:active {
 
 
 
-/* ---------------- Info-Modal ------------------- */
-/* The Modal (background) */
-.infoModal {
+
+
+/*--------------------------------------------*/
+/*                  Modals                    */
+/*--------------------------------------------*/
+
+/* --------------- Info-Modal --------------- */
+.infoModal { /* The Modal (background) */
   text-align: center;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -236,12 +263,7 @@ a:active {
   cursor: pointer;
 }
 
-
-
-
-
-
-/* ---------------- Start-Modal ------------------- */
+/* --------------- Start-Modal -------------- */
 .startModal {
   text-align: center;
   display: block; /* not Hidden by default */
@@ -257,13 +279,7 @@ a:active {
   background-color: rgba(0, 0, 0, 0.7); 
 }
 
-
-
-
-
-
-
-/* ---------------- Metamorphosen-Modal ------------------- */
+/* ---------- Metamorphosen-Modal ------------ */
 .metamorphosenModal {
   text-align: left;
   display: none; /* Hidden by default */
@@ -285,7 +301,9 @@ a:active {
 
 
 
-/* ----------------- Popover/Hover card -------------------*/
+/*--------------------------------------------*/
+/*           Popover/Hover card               */
+/*--------------------------------------------*/
 
 .popover__wrapper {
   z-index: 1;
@@ -347,7 +365,11 @@ a:active {
 
 
 
-/* ----------------- Responsive Table -------------------*/
+
+/*--------------------------------------------*/
+/*            responsive table                */
+/*--------------------------------------------*/
+
 .display-under-1200px {
   display: none;
 }
@@ -380,7 +402,11 @@ a:active {
 
 
 
-/* -------------- Relations ------------------------*/
+
+/*--------------------------------------------*/
+/*                relations                   */
+/*--------------------------------------------*/
+
 #father {
   position: relative;
 }
@@ -399,7 +425,12 @@ a:active {
 
 
 
-/* ------------------- Kategorien ------------------------ */
+
+
+/*--------------------------------------------*/
+/*                Kategorien                  */
+/*--------------------------------------------*/
+
 #taxonomie {
   display: hide;
   z-index: 0;
@@ -427,7 +458,17 @@ transform: translate3d(0, -100%, 0);
 transform: none;
 */
 
-/* ------------------- Lightbox ---------------------------*/
+
+
+
+
+
+
+
+/*--------------------------------------------*/
+/*                  Lightbox                  */
+/*--------------------------------------------*/
+
 body {
   font-family: Verdana, sans-serif;
   margin: 0;
