@@ -80,6 +80,57 @@ export async function application() {
 
 
   //--------------------------------------------//
+  //               Modal-Content                //
+  //--------------------------------------------//
+
+  var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
+  var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass"];
+
+  // erstellt HTML-Tabelle aus ParameterArray, emojiArray & metadataArray
+  function makeTable(myArray) {
+    var result = "<table>";
+    for (var i = 0; i < 6; i++) {
+      result += "<tr>";
+      result += "<td>" + emojiArray[i] + "</td>";
+      result += '<td class="hide-under-700px">' + metadataArray[i] + "</td>";
+      result += "<td>" + myArray[i] + "</td>";
+      result += "</tr>";
+    }
+    result += "</table>";
+
+    return result;
+  }
+
+  //Lycaon
+
+
+  //Io
+
+
+  //Actaeon
+  var actaeonContent = ["3,131-252", "Hirsch", "Erblickt nackte Diana bei der Jagd", "Artemis", "Tal Gargaphie in Böotien", "97C1 Als Strafe dafür, daß er sie beim Baden beobachtet hat, verwandelt Diana den Jäger Aktäon in einen Hirsch (Ovid, Metamorphosen III, 193)"];
+
+  var actaeonTable = document.getElementById("actaeonTable");
+  actaeonTable.innerHTML = makeTable(actaeonContent);
+  
+
+
+
+
+  /* Next Step: Open external files
+
+  var actaeonFile = "C:\Users\katha\OneDrive\1_Uni\2_MA\14_SoSe_2021\Masterarbeit\ProbeWebsite"
+  modalTable(actaeonFile);
+
+  var csvFile = new XMLHttpRequest();
+  csvFile.open("GET", filename, "true");
+  */
+
+
+
+
+
+  //--------------------------------------------//
   //      close modals (windows.onclick)        //
   //--------------------------------------------//
 
@@ -105,7 +156,7 @@ export async function application() {
 
 
 
-  
+
 
 
 

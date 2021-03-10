@@ -19,7 +19,7 @@ input[type="checkbox"][readonly] {
 details {
   text-align: left;
 }
-details:hover {
+summary:hover {
   color: white;
   cursor: pointer;
 }
