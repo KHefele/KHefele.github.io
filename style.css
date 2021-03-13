@@ -234,18 +234,19 @@ button { /* unterscheidet sich sonst von span */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
 }
-.modal-content {
+.modalContent {
   color: #aaaaaa;
   background-color: rgba(0,0,0,0.8);
   margin: auto;
   padding: 50px;
   width: 60%;
+  overflow-x: auto;
 }
-.modal-header {
+.modalHeader {
   color: #aaaaaa;
   text-align: center;
 }
-.modal-font {
+.modalContentLeft {
   color: #aaaaaa;
   text-align: left;
 }

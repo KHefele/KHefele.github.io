@@ -1,3 +1,11 @@
+async function loadJSON(path)
+{    
+    return fetch(path)
+        .then((response) => {
+            return response.json()
+        })
+}
+
 export async function application() {
 
 
@@ -39,92 +47,165 @@ export async function application() {
   //            Metamorphosen-Modals            //
   //--------------------------------------------//
 
+  const leude = await loadJSON('leude.json');
+
+  
+
+  // z.B. leude.acti
+  function makeModal(data) {
+    var modalDiv = document.createElement("div");
+    modalDiv.className = "metamorphosenModal";
+    document.body.appendChild(modalDiv);
+
+    var modalHeaderDiv = document.createElement("div");
+    modalHeaderDiv.className = "modalHeader";
+    modalDiv.appendChild(modalHeaderDiv);
+
+    var modalContentDiv = document.createElement("div");
+    modalContentDiv.className = "modalContent";
+    modalDiv.appendChild(modalContentDiv);
+
+    var ueberschrift = document.createElement("h1");
+    ueberschrift.innerHTML = data.name;
+    modalContentDiv.appendChild(ueberschrift);
+
+    var imgDiv = document.createElement("div");
+    modalContentDiv.appendChild(imgDiv);
+
+    //Nur bei kleinen Ansichten unter 1200px
+    var imgKlein = document.createElement("img"); 
+    imgKlein.className = "display-under-1200px";
+    imgKlein.alt = data.alt;
+    imgKlein.width = "300";
+    imgKlein.src = data.img;
+    imgDiv.appendChild(imgKlein);
+
+    imgDiv.appendChild(document.createElement("br"));
+
+    var table = document.createElement("table");
+    modalContentDiv.appendChild(table);
+
+    var tableRow = document.createElement("tr");
+    table.appendChild(tableRow);
+
+    var tableCol = document.createElement("td");
+    tableCol.className = "hide-under-1200px";
+    tableRow.appendChild(tableCol);
+
+    //Nur bei großer Ansicht über 1200px
+    var img = document.createElement("img");
+    img.alt = data.alt;
+    img.width = "300";
+    img.src = data.img;
+    tableCol.appendChild(img);
+
+
+    var tableCol2 = document.createElement("td");
+    tableRow.appendChild(tableCol2);
+
+
+    //innerTable
+    var innerTable = document.createElement("table");
+    
+    var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
+    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass"];
+    var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.iconclass];
+    
+    for (var i = 0; i < 6; i++) {
+      var innerTableRow = document.createElement("tr");
+      innerTable.appendChild(innerTableRow);
+
+      var emojiCol = document.createElement("td");
+      innerTableRow.appendChild(emojiCol);
+      emojiCol.innerHTML = emojiArray[i];
+
+      var metadataCol = document.createElement("td");
+      metadataCol.className = "hide-under-700px";
+      innerTableRow.appendChild(metadataCol);
+      metadataCol.innerHTML = metadataArray[i];
+
+      var dataCol = document.createElement("td");
+      innerTableRow.appendChild(dataCol);
+      dataCol.innerHTML = dataArray[i];
+
+    }
+    tableCol2.appendChild(innerTable);
+
+
+    modalContentDiv.appendChild(document.createElement("hr"));
+
+
+    // Details - Übersetzung
+    var detailsDiv = document.createElement("div");
+    detailsDiv.className = "modalContentLeft";
+    modalContentDiv.appendChild(detailsDiv);
+
+    var uebersetzungsDetails = document.createElement("details");
+    detailsDiv.appendChild(uebersetzungsDetails);
+
+    var uebersetzungsSummary = document.createElement("summary");
+    uebersetzungsSummary.innerHTML = "Übersetzung (M. von Albrecht)"
+    uebersetzungsDetails.appendChild(uebersetzungsSummary);
+
+    var uebersetzungsP = document.createElement("p");
+    uebersetzungsP.innerHTML = data.uebersetzung;
+    uebersetzungsDetails.appendChild(uebersetzungsP);
+
+    // Details - Originaltext
+    var originaltextDetails = document.createElement("details");
+    detailsDiv.appendChild(originaltextDetails);
+
+    var originaltextSummary = document.createElement("summary");
+    originaltextSummary.innerHTML = "Originaltext";
+    originaltextDetails.appendChild(originaltextSummary);
+
+    var originaltextP = document.createElement("p");
+    originaltextP.innerHTML = data.originaltext;
+    originaltextDetails.appendChild(originaltextP);
+
+
+    modalContentDiv.appendChild(document.createElement("br"));
+
+    var buttonSpan = document.createElement("span");
+    buttonSpan.className = "modalBtns";
+    buttonSpan.innerHTML = "SCHLIESSEN";
+    buttonSpan.onclick = function() { modalDiv.style.display = "none" };
+    modalContentDiv.appendChild(buttonSpan);
+
+
+    modalContentDiv.appendChild(document.createElement("br"));
+
+    return modalDiv;
+  }
+
+
   // Lycaon
-  var lycaonModal = document.getElementById("lycaonModal");
+  var lycaonModal = makeModal(leude.lyci);
   var lycaonBtn = document.getElementById("lycaonBtn");
-  var xLycaon = document.getElementById("xLycaon");
 
   lycaonBtn.onclick = function () { // Open
     lycaonModal.style.display = "block";
   }
-  xLycaon.onclick = function () { // Close
-    lycaonModal.style.display = "none";
-  }
+
 
   // Io
-  var ioModal = document.getElementById("ioModal");
+  var ioModal = makeModal(leude.ioi);
   var ioBtn = document.getElementById("ioBtn");
-  var xIo = document.getElementById("xIo");
 
   ioBtn.onclick = function () { // Open
     ioModal.style.display = "block";
   }
-  xIo.onclick = function () { // Close
-    ioModal.style.display = "none";
-  }
+
 
   // Actaeon
-  var actaeonModal = document.getElementById("actaeonModal");
+  var actaeonModal = makeModal(leude.acti);
   var actaeonBtn = document.getElementById("actaeonBtn");
-  var xActaeon = document.getElementById("xActaeon");
 
   actaeonBtn.onclick = function () { // Open
     actaeonModal.style.display = "block";
   }
-  xActaeon.onclick = function () { // Close
-    actaeonModal.style.display = "none";
-  }
 
 
-
-
-
-  //--------------------------------------------//
-  //               Modal-Content                //
-  //--------------------------------------------//
-
-  var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
-  var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass"];
-
-  // erstellt HTML-Tabelle aus ParameterArray, emojiArray & metadataArray
-  function makeTable(myArray) {
-    var result = "<table>";
-    for (var i = 0; i < 6; i++) {
-      result += "<tr>";
-      result += "<td>" + emojiArray[i] + "</td>";
-      result += '<td class="hide-under-700px">' + metadataArray[i] + "</td>";
-      result += "<td>" + myArray[i] + "</td>";
-      result += "</tr>";
-    }
-    result += "</table>";
-
-    return result;
-  }
-
-  //Lycaon
-
-
-  //Io
-
-
-  //Actaeon
-  var actaeonContent = ["3,131-252", "Hirsch", "Erblickt nackte Diana bei der Jagd", "Artemis", "Tal Gargaphie in Böotien", "97C1 Als Strafe dafür, daß er sie beim Baden beobachtet hat, verwandelt Diana den Jäger Aktäon in einen Hirsch (Ovid, Metamorphosen III, 193)"];
-
-  var actaeonTable = document.getElementById("actaeonTable");
-  actaeonTable.innerHTML = makeTable(actaeonContent);
-  
-
-
-
-
-  /* Next Step: Open external files
-
-  var actaeonFile = "C:\Users\katha\OneDrive\1_Uni\2_MA\14_SoSe_2021\Masterarbeit\ProbeWebsite"
-  modalTable(actaeonFile);
-
-  var csvFile = new XMLHttpRequest();
-  csvFile.open("GET", filename, "true");
-  */
 
 
 
@@ -290,7 +371,7 @@ export async function application() {
 
 
 
-
+  /*
 
   //--------------------------------------------//
   //                  Lightbox                  //
@@ -334,7 +415,7 @@ export async function application() {
     dots[slideIndex - 1].className += " active";
     captionText.innerHTML = dots[slideIndex - 1].alt;
   }
-
+  */
 
 
 } //End of application-function 
