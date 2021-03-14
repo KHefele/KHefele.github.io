@@ -1,7 +1,7 @@
 body {
  font-family: 'Work Sans', sans-serif;
  /*overflow-y:hidden;*/
-}
+} 
 
 h1, h2, h3, h4, h5, h6 {
  font-family: 'Crimson Text', serif;
@@ -35,6 +35,10 @@ td {
   position: fixed;
   left: 2%;
   top: 2%;
+}
+
+image {
+  transform-origin: top center;
 }
 
 
@@ -307,35 +311,37 @@ button { /* unterscheidet sich sonst von span */
 /*--------------------------------------------*/
 
 .popover__wrapper {
-  z-index: 1;
-  position: relative;
   margin-top: 1.5rem;
   display: inline-block;
 }
 .popover__content {
+  color: white;
   opacity: 0;
   visibility: hidden;
-  position: relative;
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 100px - 1.5rem);
   transform: translate(0, 10px);
-  background-color: #bfbfbf;
+  background-color: rgba(0, 0, 0, 0.9); 
   padding: 1.5rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   width: auto;
 }
-.popover__content:before {
+.popover__content:before { /* nur das Dreieck! */
   position: absolute;
-  z-index: -1;
+  /*z-index: -1;*/
   content: "";
   right: calc(50% - 10px);
   top: -8px;
   border-style: solid;
   border-width: 0 10px 10px 10px;
-  border-color: transparent transparent #bfbfbf transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.9) transparent;
   transition-duration: 0.3s;
   transition-property: transform;
 }
-.popover__wrapper:hover .popover__content {
+.popover__wrapper:hover ~ .popover__content {
   z-index: 10;
+  position: absolute;
   opacity: 1;
   visibility: visible;
   transform: translate(0, -20px);
@@ -356,9 +362,11 @@ button { /* unterscheidet sich sonst von span */
   top: 20%;
 }
 #actaeon {
-  position: fixed;
+  position: absolute;
+  z-index: 0;
   left: 60%;
   top: 20%;
+  transition: left 1s ease-out;
 }
 
 
@@ -432,20 +440,19 @@ button { /* unterscheidet sich sonst von span */
 /*                Kategorien                  */
 /*--------------------------------------------*/
 
-#taxonomie {
-  display: hide;
+.kategory {
+  display: block;
+  opacity: 0;
+  transition: opacity 1.5s;
   z-index: 0;
   position: fixed;
-  left: 20%;
-  top: 10%;
-  animation-name:taxonomie;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  animation-play-state: paused;
-  animation-iteration-count: infinite;
+  left: 0%;
+  top: 0%;
 }
 
-@keyframes taxonomie {
+
+/*
+@keyframes kategory {
   from {
     opacity: 0;
   }
@@ -453,6 +460,7 @@ button { /* unterscheidet sich sonst von span */
     opacity: 1;
   }
 }
+*/
 
 /*
 transform: translate3d(0, -100%, 0);

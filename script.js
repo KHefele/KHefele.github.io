@@ -8,9 +8,13 @@ async function loadJSON(path)
 
 export async function application() {
 
+  const leude = await loadJSON('leude.json'); // für Modals & Popover
+
+
+
 
   //--------------------------------------------//
-  //                 Modals                     //
+  //          Start-/Info-Modals                //
   //--------------------------------------------//
 
 
@@ -44,14 +48,31 @@ export async function application() {
 
 
   //--------------------------------------------//
+  //           Metamorphosen-Popover            //
+  //--------------------------------------------//
+
+  // generiert automatisiert Popover mithilfe der angelegten json-Datei
+  // Parameter z.B. leude.acti
+  function makePopover(data) {
+    var popoverDiv = document.createElement("div");
+    // for-Schleife über alle classNames: popoverDiv.className = "";
+    popoverDiv.id = ""; // legt aktuell noch Positionen fest > automatisieren
+    document.body.appendChild(popoverDiv);
+
+    var popoverWrapperDiv = document.createElement("div");
+    popoverWrapperDiv.className = "popover__wrapper";
+    popoverDiv.appendChild(popoverWrapperDiv);
+  }
+
+
+
+
+  //--------------------------------------------//
   //            Metamorphosen-Modals            //
   //--------------------------------------------//
 
-  const leude = await loadJSON('leude.json');
-
-  
-
-  // z.B. leude.acti
+  // generiert automatisiert Modals mithilfe der angelegten json-Datei
+  // Parameter z.B. leude.acti
   function makeModal(data) {
     var modalDiv = document.createElement("div");
     modalDiv.className = "metamorphosenModal";
@@ -179,6 +200,13 @@ export async function application() {
   }
 
 
+
+
+  //--------------------------------------------//
+  //            Popover-/Modal-Aufrufe          //
+  //            > automatisieren                //
+  //--------------------------------------------//
+
   // Lycaon
   var lycaonModal = makeModal(leude.lyci);
   var lycaonBtn = document.getElementById("lycaonBtn");
@@ -198,6 +226,7 @@ export async function application() {
 
 
   // Actaeon
+  //var actaeonPopover = makePopover(leude.acti);
   var actaeonModal = makeModal(leude.acti);
   var actaeonBtn = document.getElementById("actaeonBtn");
 
@@ -245,30 +274,61 @@ export async function application() {
   //                 Kategorien                 //
   //--------------------------------------------//
 
-  //Chronologie
-  var chrono = document.getElementById("chrono");
+  
+  var chronoBtn = document.getElementById("chrono");
+  var chronoImg = document.getElementById("chronologie");
 
-  chrono.onclick = function () {
-    chrono.style.display = "none";
+  var taxBtn = document.getElementById("tax");
+  var taxImg = document.getElementById("taxonomie");
+
+  var geoBtn = document.getElementById("geo");
+  var geoImg = document.getElementById("geographie");
+
+  //Chronologie
+  chronoBtn.onclick = function () {
+    //taxImg.style.display = "none";
+    taxImg.style.opacity = "0";
+    //geoImg.style.display = "none";
+    geoImg.style.opacity = "0";
+
+    //chronoImg.style.display = "block";
+    chronoImg.style.opacity = "1";
+
     console.log("Die Chronofunktion funktioniert");
   }
 
 
 
   //Taxonomie
-  var taxBtn = document.getElementById("tax");
-  var taxImg = document.getElementById("taxonomie");
-
   taxBtn.onclick = function () {
-    taxImg.style.animationPlayState = "running";
+    //chronoImg.style.display = "none";
+    chronoImg.style.opacity = "0";
+    //geoImg.style.display = "none";
+    geoImg.style.opacity = "0";
+    
+    //taxImg.style.display = "block";
+    taxImg.style.opacity = "1";
+    
     console.log("Die Taxfunktion funktioniert");
+
+
+    /*
+    var actaeon = document.getElementById("actaeon");
+    actaeon.style.left = "10%";
+    */
+
   }
 
   //Geographie
-  var geo = document.getElementById("geo");
+  geoBtn.onclick = function () {
+    //taxImg.style.display = "none";
+    taxImg.style.opacity = "0";
+    //chronoImg.style.display = "none";
+    chronoImg.style.opacity = "0";
 
-  geo.onclick = function () {
-    geo.style.display = "none";
+    //geoImg.style.display = "block";
+    geoImg.style.opacity = "1";
+
     console.log("Die Geofunktion funktioniert");
   }
 
@@ -278,6 +338,8 @@ export async function application() {
 
   unorgBtn.onclick = function () {
     taxImg.style.display = "none";
+    chronoImg.style.display = "none";
+    geoImg.style.display = "none";
   }
 
 
