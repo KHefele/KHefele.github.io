@@ -52,7 +52,7 @@ export async function application() {
   //--------------------------------------------//
 
   // generiert automatisiert Popover mithilfe der angelegten json-Datei
-  // Parameter z.B. leude.acti
+  // Parameter z.B. leude.actaeon
   function makePopover(data) {
     var popoverDiv = document.createElement("div");
     // for-Schleife über alle classNames: popoverDiv.className = "";
@@ -72,7 +72,7 @@ export async function application() {
   //--------------------------------------------//
 
   // generiert automatisiert Modals mithilfe der angelegten json-Datei
-  // Parameter z.B. leude.acti
+  // Parameter z.B. leude.actaeon
   function makeModal(data) {
     var modalDiv = document.createElement("div");
     modalDiv.className = "metamorphosenModal";
@@ -129,7 +129,7 @@ export async function application() {
     var innerTable = document.createElement("table");
     
     var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
-    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass"];
+    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass:"];
     var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.iconclass];
     
     for (var i = 0; i < 6; i++) {
@@ -208,7 +208,7 @@ export async function application() {
   //--------------------------------------------//
 
   // Lycaon
-  var lycaonModal = makeModal(leude.lyci);
+  var lycaonModal = makeModal(leude.lycaon);
   var lycaonBtn = document.getElementById("lycaonBtn");
 
   lycaonBtn.onclick = function () { // Open
@@ -217,7 +217,7 @@ export async function application() {
 
 
   // Io
-  var ioModal = makeModal(leude.ioi);
+  var ioModal = makeModal(leude.io);
   var ioBtn = document.getElementById("ioBtn");
 
   ioBtn.onclick = function () { // Open
@@ -226,8 +226,8 @@ export async function application() {
 
 
   // Actaeon
-  //var actaeonPopover = makePopover(leude.acti);
-  var actaeonModal = makeModal(leude.acti);
+  //var actaeonPopover = makePopover(leude.actaeon);
+  var actaeonModal = makeModal(leude.actaeon);
   var actaeonBtn = document.getElementById("actaeonBtn");
 
   actaeonBtn.onclick = function () { // Open
@@ -285,14 +285,30 @@ export async function application() {
   var geoImg = document.getElementById("geographie");
 
   //Chronologie
-  chronoBtn.onclick = function () {
-    //taxImg.style.display = "none";
+  /*var displayChrono = function () {
+    taxImg.style.display = "none";
+    geoImg.style.display = "none";
+    chronoImg.style.display = "block";
+  }
+  var opacityChrono = function () {
     taxImg.style.opacity = "0";
-    //geoImg.style.display = "none";
     geoImg.style.opacity = "0";
-
-    //chronoImg.style.display = "block";
     chronoImg.style.opacity = "1";
+  }
+  
+  chronoBtn.onclick = function (){
+    displayChrono();
+    opacityChrono();
+  }
+  */
+  chronoBtn.onclick = function () {
+    taxImg.style.display = "none";
+    
+    geoImg.style.display = "none";
+    
+
+    chronoImg.style.display = "block";
+    chronoImg.style.animationPlayState = "running";
 
     console.log("Die Chronofunktion funktioniert");
   }
@@ -301,13 +317,14 @@ export async function application() {
 
   //Taxonomie
   taxBtn.onclick = function () {
-    //chronoImg.style.display = "none";
-    chronoImg.style.opacity = "0";
-    //geoImg.style.display = "none";
-    geoImg.style.opacity = "0";
+    chronoImg.style.display = "none";
     
-    //taxImg.style.display = "block";
-    taxImg.style.opacity = "1";
+    
+    geoImg.style.display = "none";
+    
+    
+    taxImg.style.display = "block";
+    taxImg.style.animationPlayState = "running";
     
     console.log("Die Taxfunktion funktioniert");
 
@@ -321,14 +338,16 @@ export async function application() {
 
   //Geographie
   geoBtn.onclick = function () {
-    //taxImg.style.display = "none";
-    taxImg.style.opacity = "0";
-    //chronoImg.style.display = "none";
-    chronoImg.style.opacity = "0";
+    taxImg.style.display = "none";
 
-    //geoImg.style.display = "block";
-    geoImg.style.opacity = "1";
+    chronoImg.style.display = "none";
 
+    geoImg.style.display = "block";
+    geoImg.style.animationPlayState = "running";
+
+    var actaeon = document.getElementById("actaeon");
+    actaeon.style.left = "80%";
+    actaeon.style.top = "10%";
     console.log("Die Geofunktion funktioniert");
   }
 
@@ -337,8 +356,13 @@ export async function application() {
   var unorgBtn = document.getElementById("unorganisiert");
 
   unorgBtn.onclick = function () {
+    taxImg.style.opacity = "0";
     taxImg.style.display = "none";
+
+    chronoImg.style.opacity = "0";
     chronoImg.style.display = "none";
+
+    geoImg.style.opacity = "0";
     geoImg.style.display = "none";
   }
 

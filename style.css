@@ -50,22 +50,28 @@ image {
 /*                 Background                 */
 /*--------------------------------------------*/
 
-body, html {
+.bg {
+
+}
+
+body {
   height: 100%;
   margin: 0;
-}
-.bg {
-  background-image: url("Titlepage_to_Ovid\'s_\'Metamorphoses\'_MET_DP866566.jpg");
-  height: 100%; 
+  background-image: url("Bilder/Titlepage_to_Ovid's_'Metamorphoses'_MET_DP866566.jpg"); 
   z-index: -100;
   background-attachment: fixed;
   background-position: 100% 10%;
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.5;
+}
+html {
+  height: 100%;
+  margin: 0;
 }
 
-
+#backgroundOpacity {
+  color: black;
+}
 
 
 
@@ -84,7 +90,8 @@ a:visited {
 }
 a:hover {
   color: #994040;
-  text-decoration: none
+  text-decoration: none;
+  cursor: help;
 }
 a:active {
   color: #733030;
@@ -151,6 +158,9 @@ button { /* unterscheidet sich sonst von span */
   color: white;
 }
 
+#ioBtn {
+  cursor: pointer;
+}
 
 
 
@@ -299,9 +309,34 @@ button { /* unterscheidet sich sonst von span */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
 }
+a.metamorphosenModal:link, a.metamorphosenModal:visited, a.metamorphosenModal:active { /* funktioniert nicht */
+  color: #d6d6d6;
+  text-decoration: none;
+}
+a.metamorphosenModal:hover {
+  color: #c2c2c2;
+  text-decoration: none;
+}
 
+.tooltip {
+  position: relative;
+}
 
+.tooltip span[role=tooltip] {
+  display: none;
+}
 
+.tooltip:hover span[role=tooltip] {
+  display: block;  
+  position: absolute; 
+  bottom: 2em;
+  left: -6em;
+  width: 15em;
+  padding: 0.5em;
+  z-index: 100;
+  color: #000; 
+  background-color: #733030;
+}
 
 
 
@@ -366,10 +401,16 @@ button { /* unterscheidet sich sonst von span */
   z-index: 0;
   left: 60%;
   top: 20%;
-  transition: left 1s ease-out;
+  transition: left 1s ease-out, top 1s ease-out;
 }
 
-
+#probeActaeon {
+  position: absolute;
+  z-index: 0;
+  left: 60%;
+  top: 20%;
+  transition: left 1s ease-out, top 1s ease-out;
+}
 
 
 
@@ -441,17 +482,16 @@ button { /* unterscheidet sich sonst von span */
 /*--------------------------------------------*/
 
 .kategory {
-  display: block;
-  opacity: 0;
-  transition: opacity 1.5s;
+  position:absolute;
+  display: none;
   z-index: 0;
-  position: fixed;
-  left: 0%;
-  top: 0%;
+  animation-name: kategory;
+  animation-duration: 2s;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
 }
 
 
-/*
 @keyframes kategory {
   from {
     opacity: 0;
@@ -460,7 +500,8 @@ button { /* unterscheidet sich sonst von span */
     opacity: 1;
   }
 }
-*/
+
+
 
 /*
 transform: translate3d(0, -100%, 0);
