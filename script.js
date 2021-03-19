@@ -86,9 +86,21 @@ export async function application() {
     modalContentDiv.className = "modalContent";
     modalDiv.appendChild(modalContentDiv);
 
-    var ueberschrift = document.createElement("h1");
+    //header
+    var divHeader = document.createElement("div"); //div anlegen
+    modalContentDiv.appendChild(divHeader);
+    var ueberschrift = document.createElement("h1"); //h1 in div anlegen
+    ueberschrift.setAttribute("style", "display:inline");
     ueberschrift.innerHTML = data.name;
-    modalContentDiv.appendChild(ueberschrift);
+    divHeader.appendChild(ueberschrift);
+    var sup = document.createElement("sup"); //sup in div anlegen
+    divHeader.appendChild(sup);
+    var headerLink = document.createElement("a"); //link in sup anlegen
+    var headerLinkInput = "https://de.wikipedia.org/wiki/" + data.name;
+    headerLink.setAttribute("href", headerLinkInput);
+    headerLink.setAttribute("target", "_blank");
+    headerLink.innerHTML = "  &#x2139;";
+    sup.appendChild(headerLink);
 
     var imgDiv = document.createElement("div");
     modalContentDiv.appendChild(imgDiv);
@@ -136,18 +148,51 @@ export async function application() {
       var innerTableRow = document.createElement("tr");
       innerTable.appendChild(innerTableRow);
 
+      //emoji-column
       var emojiCol = document.createElement("td");
       innerTableRow.appendChild(emojiCol);
       emojiCol.innerHTML = emojiArray[i];
 
+      //metadata-column
       var metadataCol = document.createElement("td");
       metadataCol.className = "hide-under-700px";
       innerTableRow.appendChild(metadataCol);
       metadataCol.innerHTML = metadataArray[i];
 
+      //data-column
       var dataCol = document.createElement("td");
       innerTableRow.appendChild(dataCol);
-      dataCol.innerHTML = dataArray[i];
+      
+      //Verwandlertext + Infolink
+      if (i === 3) { //Verwandler-Helptext 
+        dataCol.innerHTML = dataArray[i]; //verwandlerText anlegen
+        var verwandlerSup = document.createElement("sup"); //sup anlegen
+        dataCol.appendChild(verwandlerSup);
+        var verwandlerLink = document.createElement("a"); //link anlegen
+        var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
+        verwandlerLink.setAttribute("href", verwandlerLinkInput);
+        verwandlerLink.setAttribute("target", "_blank");
+        verwandlerLink.innerHTML = "  &#x2139;";
+        verwandlerSup.appendChild(verwandlerLink);
+      
+      //Iconclasstext + Infolink
+      } else if (i === 5) {
+        dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
+        var iconclassSup = document.createElement("sup"); //sup anlegen
+        dataCol.appendChild(iconclassSup);
+        var iconclassLink = document.createElement("a"); //link anlegen
+        var indexOfSpace = dataArray[i].indexOf(" ");
+        var iconclassLinkInput = "http://www.iconclass.org/rkd/" + dataArray[i].substring(0, indexOfSpace);
+        iconclassLink.setAttribute("href", iconclassLinkInput);
+        iconclassLink.setAttribute("target", "_blank");
+        iconclassLink.innerHTML = "  &#x2139;";
+        iconclassSup.appendChild(iconclassLink);
+
+      //alle anderen ohne Infolink
+      } else {
+        dataCol.innerHTML = dataArray[i];
+      }
+      
 
     }
     tableCol2.appendChild(innerTable);
@@ -367,46 +412,6 @@ export async function application() {
   }
 
 
-
-
-  /* Test JavaScript Animation
-  
-  
-    var animate, left = 0, imgObj = null;
-  
-    function init() {
-  
-      imgObj = document.getElementById('myImage');
-      imgObj.style.position = 'absolute';
-      imgObj.style.top = '240px';
-      imgObj.style.left = '-300px';
-      imgObj.style.visibility = 'hidden';
-  
-      moveRight();
-    }
-  
-    function moveRight() {
-      left = parseInt(imgObj.style.left, 10);
-  
-      if (10 >= left) {
-        imgObj.style.left = (left + 5) + 'px';
-        imgObj.style.visibility = 'visible';
-  
-        animate = setTimeout(function () { moveRight(); }, 20); // call moveRight in 20msec
-  
-        //stopanimate = setTimeout(moveRight,20);
-      } else {
-        stop();
-      }
-      //f();
-    }
-  
-    function stop() {
-      clearTimeout(animate);
-    }
-  
-    window.onload = function () { init(); };
-  */
 
 
 

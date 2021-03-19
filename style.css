@@ -50,14 +50,11 @@ image {
 /*                 Background                 */
 /*--------------------------------------------*/
 
-.bg {
-
-}
 
 body {
   height: 100%;
   margin: 0;
-  background-image: url("Bilder/Titlepage_to_Ovid's_'Metamorphoses'_MET_DP866566.jpg"); 
+  background-image: url("Bilder/Titlepage_Opacity60.jpg"); 
   z-index: -100;
   background-attachment: fixed;
   background-position: 100% 10%;

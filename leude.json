@@ -23,17 +23,17 @@
         ] 
     },
     "io": {
-        "name": "<a href='https://www.wikidata.org/wiki/Q179014' target='_blank'>Io</a>",
+        "name": "Io",
         "icon": "Figuren/Io/Io_450x450.png",
         "img": "Figuren/Io/Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io (c 1672)(aus Wikimedia).jpg", 
         "alt": "Gerbrand van den Eeckhout, Io, 1672",
         
         "ovMet": "1,568-688; 713-750",
-        "verwandlung": "<a href='https://www.wikidata.org/wiki/Q11748378' target='_blank'><dfn class='tooltip'>Kuh<span role='tooltip'><img src='375px-Wikidata-logo-en.svg.png' width='70'></span></dfn></a>",
-        "grund": "Vertuschen des Seitensprungs vor <a href='https://www.wikidata.org/wiki/Q38012' target='_blank'>Hera</a>", 
-        "verwandler": "<a href='https://www.wikidata.org/wiki/Q34201' target='_blank'>Zeus</a>",
-        "ort": "nach den Triften von <a href='https://www.wikidata.org/wiki/Q1236078' target='_blank'>Lerna</a>",
-        "iconclass": "<a href='http://www.iconclass.org/rkd/97CC6/'>97CC6 um ihre Entdeckung durch Jupiter zu verhindern, verwandelt Juno Io in eine Kuh (Ovid, Metamorphosen I 611)</a>",
+        "verwandlung": "Kuh",
+        "grund": "Vertuschen des Seitensprungs vor Hera", 
+        "verwandler": "Zeus",
+        "ort": "nach den Triften von Lerna",
+        "iconclass": "97CC6 um ihre Entdeckung durch Jupiter zu verhindern, verwandelt Juno Io in eine Kuh (Ovid, Metamorphosen I 611)",
         
         "uebersetzung": "(568) In Hämonien (Thessalien) liegt ein Hain, Tempe genannt, rings umgeben von einem steil ansteigenden Wald.<br>Durch diesen wälzt sich der Peneus (Peneios), der tief im Pindus (Grenzgebirge von Thessalien) entspringt. Mit schäumenden Fluten und in mächtigem Sturz sammelt er Wolken, die zarte Nebelschleier vor sich her treiben, und durch sein Aufspritzen lässt er es bis auf die Wälder ganz oben regnen und durch seinen Lärm zermürbt er ein größeres Gebiet als (nur) die benachbarte Umgebung.<br>Das ist die Heimat, der Wohnsitz, das sind die Heiligtümer des großen Stromes.<br>Hier saß er in einer Höhle, die aus den Klippen entstanden war und sprach Recht über die Gewässer und über die Nymphen, die die Fluten bewohnen.<br><br>(577) Hier strömen zuerst die einheimischen Flüsse zusammen, unschlüssig, ob sie dem Vater gratulieren oder ob sie im Beileid wünschen sollen: der von Pappeln umsäumte Spercheus, der rastlose Enipeus, der greise Apidanus, der sanfte Amphrysus und Aeas;<br>bald auch die anderen Flüsse, die ihre Fluten, welche ihr Ungestüm nach hier und dort trägt und die von den Irrwegen ermüdet sind, ins Meer führen.",
         "originaltext": "(568) Est nemus Haemoniae, praerupta quod undique claudit<br>silva: vocant Tempe; per quae Peneos ab imo<br>effusus Pindo spumosis volvitur undis<br>deiectuque gravi tenues agitantia fumos<br>nubila conducit summisque adspergine silvis<br>inpluit et sonitu plus quam vicina fatigat:<br>haec domus, haec sedes, haec sunt penetralia magni<br>amnis, in his residens facto de cautibus antro,<br>undis iura dabat nymphisque colentibus undas.<br><br>(577) conveniunt illuc popularia flumina primum,<br>nescia, gratentur consolenturne parentem,<br>populifer Sperchios et inrequietus Enipeus<br>Apidanosque senex lenisque Amphrysos et Aeas,<br>moxque amnes alii, qui, qua tulit inpetus illos,<br>in mare deducunt fessas erroribus undas.",
