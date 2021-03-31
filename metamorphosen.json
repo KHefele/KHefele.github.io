@@ -1,72 +1,69 @@
 {
-    "erstesBuch": {
-        "prooemium": {
-            "name": "Prooemium",
-            "stelle": "(1-4)",
-            "text": "Lust wird rege zum Sang, wie sich Formen in andere Körper Wandelten. Götter, o seid - ihr habt ja auch sie gewandelt - Meinem Beginnen geneigt, und vom Uranfange der Schöpfung Führt bis auf unsere Zeit des Gedichts fortlaufenden Faden."
-        },
-        "weltentstehung": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },    
-        "weltzeitalter": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "giganten": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "lycaon": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "flut": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "deucalionUndPyrrha": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "erneuerungTierwelt": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "python": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "daphne": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "io": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "syrinx": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        },
-        "phaeton": {
-            "name":"",
-            "stelle": "",
-            "text": ""
-        }
+    
+    "prooemium": {
+        "name": "Prooemium",
+        "stelle": "(1-4)",
+        "text": "Lust wird rege zum Sang, wie sich Formen in andere Körper Wandelten. Götter, o seid - ihr habt ja auch sie gewandelt - Meinem Beginnen geneigt, und vom Uranfange der Schöpfung Führt bis auf unsere Zeit des Gedichts fortlaufenden Faden."
     },
-    "zweitesBuch": {
-
+    "weltentstehung": {
+        "name":"Die Weltentstehung",
+        "stelle": "()",
+        "text": "Text zur Weltentstehung"
+    },    
+    "weltzeitalter": {
+        "name":"Die Weltzeitalter",
+        "stelle": "()",
+        "text": "Text zu den Weltzeitalter"
+    },
+    "giganten": {
+        "name":"Die Giganten",
+        "stelle": "()",
+        "text": "Text zu den Giganten"
+    },
+    "lycaon": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "flut": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "deucalionUndPyrrha": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "erneuerungTierwelt": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "python": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "daphne": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "io": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "syrinx": {
+        "name":"",
+        "stelle": "",
+        "text": ""
+    },
+    "phaeton": {
+        "name":"",
+        "stelle": "",
+        "text": ""
     }
+
 }

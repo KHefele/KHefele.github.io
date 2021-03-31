@@ -396,6 +396,60 @@ export async function application() {
     console.log("Die Geofunktion funktioniert");
   }
 
+  //text
+  
+  //create text-div
+  var textModalDiv = document.createElement("div");
+  textModalDiv.id = "textModal";
+  textModalDiv.className = "infoModal";
+  //textModalDiv.className = "kategory";
+  textModalDiv.style.textAlign = "left";
+  document.body.appendChild(textModalDiv);
+
+
+  //iterate through metamorphosen.json
+  for (var key in metamorphosen) {
+
+    var contentDiv = document.createElement("div");
+    contentDiv.id = key;
+    contentDiv.className = "modalContent";
+    textModalDiv.appendChild(contentDiv);
+
+    var header = document.createElement("h1");
+    header.innerHTML = metamorphosen[key].name + " " + metamorphosen[key].stelle;
+    contentDiv.appendChild(header);
+
+    var contentP = document.createElement("p");
+    contentDiv.className = "modalContent";
+    contentDiv.style = "padding: 25px 50px 0px";
+    contentP.innerHTML = metamorphosen[key].text;
+    contentDiv.appendChild(contentP);
+    
+
+  }
+  
+
+  //close-Btn
+  var buttonSpan = document.createElement("span");
+  buttonSpan.setAttribute("align", "center");
+  buttonSpan.className = "modalBtns";
+  buttonSpan.innerHTML = "SCHLIESSEN";
+  buttonSpan.onclick = function() { textModalDiv.style.display = "none" };
+  contentDiv.appendChild(buttonSpan);
+
+
+  var textBtn = document.getElementById("text");
+  textBtn.onclick = function () {
+    textModal.style.display = "block";
+    //textModal.style.animationPlayState = "running";
+
+    taxImg.style.display = "none";
+
+    chronoImg.style.display = "none";
+
+    geoImg.style.display = "none";
+  }
+
 
   //Unorganisiert
   var unorgBtn = document.getElementById("unorganisiert");
