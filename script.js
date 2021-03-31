@@ -109,8 +109,13 @@ export async function application() {
     var imgKlein = document.createElement("img"); 
     imgKlein.className = "display-under-1200px";
     imgKlein.alt = data.alt;
-    imgKlein.width = "300";
     imgKlein.src = data.img;
+    //imgKlein.width = "300";
+    if (imgKlein.naturalWidth > imgKlein.naturalHeight) {
+      imgKlein.width = "300";
+    } else {
+      imgKlein.height = "300";
+    } 
     imgDiv.appendChild(imgKlein);
 
     imgDiv.appendChild(document.createElement("br"));
@@ -128,9 +133,20 @@ export async function application() {
     //Nur bei großer Ansicht über 1200px
     var img = document.createElement("img");
     img.alt = data.alt;
-    img.width = "300";
     img.src = data.img;
+    //img.width = "300";
+    if (img.naturalWidth > img.naturalHeight) {
+      img.width = "300";
+    } else {
+      img.height = "300";
+    }
     tableCol.appendChild(img);
+
+    var copyrightP = document.createElement("p");
+    copyrightP.innerHTML = "&#xa9; " + data.source;
+    copyrightP.style.fontSize = "10px";
+    copyrightP.style.color = "#292929";
+    tableCol.appendChild(copyrightP);
 
 
     var tableCol2 = document.createElement("td");
