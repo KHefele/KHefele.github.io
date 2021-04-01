@@ -333,28 +333,7 @@ export async function application() {
 
 
 
-  //--------------------------------------------//
-  //      close modals (windows.onclick)        //
-  //--------------------------------------------//
 
-  // When the user clicks anywhere outside of the Modals, close it
-  window.onclick = function (event) {
-    if (event.target == startModal) {
-      startModal.style.display = "none";
-    }
-    if (event.target == infoModal) {
-      infoModal.style.display = "none";
-    }
-    if (event.target == lycaonModal) {
-      lycaonModal.style.display = "none";
-    }
-    if (event.target == ioModal) {
-      ioModal.style.display = "none";
-    }
-    if (event.target == actaeonModal) {
-      actaeonModal.style.display = "none";
-    }
-  }
 
 
 
@@ -514,6 +493,41 @@ export async function application() {
   }
 
 
+
+
+
+
+  
+  //--------------------------------------------//
+  //      close modals (windows.onclick)        //
+  //--------------------------------------------//
+
+
+  // When the user clicks anywhere outside of the Modals, close it
+  window.onclick = function (event) {
+    if (event.target == startModal) {
+      startModal.style.display = "none";
+    }
+    if (event.target == infoModal) {
+      infoModal.style.display = "none";
+    }
+    if (event.target == textModal) {
+      textModal.style.display = "none";
+    }
+
+    //close all metamorphosenModals
+    var modalNames = [];
+    for (key in leude) {
+      var modalName = key + "Modal";
+      modalNames.push(modalName);
+    }
+    for (var i = 0; i < modalNames.length; i++){
+      if (event.target.id == modalNames[i]) {
+        event.target.style.display = "none";
+      }
+    }
+    
+  }
 
 
 
