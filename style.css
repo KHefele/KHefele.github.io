@@ -7,10 +7,6 @@ h1, h2, h3, h4, h5, h6 {
  font-family: 'Crimson Text', serif;
 }
 
-div.disabled {
-  overflow-x: hidden; /*horizontal*/
-  overflow-y: scroll; /*vertical*/
-}
 
 input[type="checkbox"][readonly] {
   pointer-events: none;
@@ -155,9 +151,7 @@ button { /* unterscheidet sich sonst von span */
   color: white;
 }
 
-#ioBtn {
-  cursor: pointer;
-}
+
 
 
 
@@ -203,13 +197,14 @@ button { /* unterscheidet sich sonst von span */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-.dropdown-content a {
+.dropdown-content div {
   color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
-.dropdown-content a:hover {
+.dropdown-content div:hover {
   background-color: #733030;
 }
 .dropdown:hover .dropdown-content {
@@ -257,10 +252,7 @@ button { /* unterscheidet sich sonst von span */
   color: #aaaaaa;
   text-align: center;
 }
-.modalContentLeft {
-  color: #aaaaaa;
-  text-align: left;
-}
+
 .close {
   color: #aaaaaa;
   float: center;
@@ -305,14 +297,7 @@ button { /* unterscheidet sich sonst von span */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
-}
-a.metamorphosenModal:link, a.metamorphosenModal:visited, a.metamorphosenModal:active { /* funktioniert nicht */
-  color: #d6d6d6;
-  text-decoration: none;
-}
-a.metamorphosenModal:hover {
-  color: #c2c2c2;
-  text-decoration: none;
+  font-size: 14px;
 }
 
 .tooltip {
@@ -343,16 +328,25 @@ a.metamorphosenModal:hover {
 /*--------------------------------------------*/
 
 .popover__wrapper {
+  position: absolute;
   margin-top: 1.5rem;
   display: inline-block;
+  transition: left 1s ease-out, top 1s ease-out;
 }
+
+.iconImg:hover {
+  opacity: 0.8; /* Fehler bei aktuellem Wrapper, wenn Wrapper genauso groß, kann hover dem Wrapper übergeben werden*/
+  cursor: pointer;
+}   
+
+
 .popover__content {
   color: white;
   opacity: 0;
-  visibility: hidden;
+  /*visibility: hidden; > Visibility wird jetzt über JavaScript gesteuert s. popoverAufruf */
   position: absolute;
-  top: 100px;
-  left: calc(50% - 100px - 1.5rem);
+  /*top: 100px;*/
+  /*left: calc(50% - 100px - 1.5rem);*/
   transform: translate(0, 10px);
   background-color: rgba(0, 0, 0, 0.9); 
   padding: 1.5rem;
@@ -375,38 +369,10 @@ a.metamorphosenModal:hover {
   z-index: 10;
   position: absolute;
   opacity: 1;
-  visibility: visible;
+  /*visibility: visible; > JavaScript*/
   transform: translate(0, -20px);
   transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
-}
-.popover__message {
   text-align: center;
-}
-
-#lycaon {
-  position: fixed;
-  left: 20%;
-  top: 20%;
-}
-#io {
-  position: fixed;
-  left: 40%;
-  top: 20%;
-}
-#actaeon {
-  position: absolute;
-  z-index: 0;
-  left: 60%;
-  top: 20%;
-  transition: left 1s ease-out, top 1s ease-out;
-}
-
-#probeActaeon {
-  position: absolute;
-  z-index: 0;
-  left: 60%;
-  top: 20%;
-  transition: left 1s ease-out, top 1s ease-out;
 }
 
 
@@ -447,39 +413,12 @@ a.metamorphosenModal:hover {
 
 
 
-
-
-
-/*--------------------------------------------*/
-/*                relations                   */
-/*--------------------------------------------*/
-
-#father {
-  position: relative;
-}
-
-#son1 {
-  position: absolute;
-  top: 0;
-}
-
-#son2 {
-  position: absolute;
-  bottom: 0;
-}
-
-
-
-
-
-
-
 /*--------------------------------------------*/
 /*                Kategorien                  */
 /*--------------------------------------------*/
 
 .kategory {
-  position:absolute;
+ /* position:absolute; */
   display: none;
   z-index: 0;
   animation-name: kategory;
@@ -497,18 +436,6 @@ a.metamorphosenModal:hover {
     opacity: 1;
   }
 }
-
-
-
-/*
-transform: translate3d(0, -100%, 0);
-transform: none;
-*/
-
-
-
-
-
 
 
 

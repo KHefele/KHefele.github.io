@@ -17,12 +17,22 @@
 
 <body>
 
+  <!--
+  <div class="popover__wrapper">
+    <img src="Figuren/Io/Io_450x450.png" id="ioBtn" alt="Io" width="20%">
+  </div> 
+  <div class="popover__content">
+    <h3>Io</h3>
+    <p>Ov. met. 1,568-688; 713-750</p>
+    <img alt="Gerbrand van den Eeckhout, Io, 1672" src="Figuren/Io/Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io (c 1672)(aus Wikimedia).jpg" width="200px">
+  </div>
+-->
 
+  <!----------- Navigations-Kategorien/Popover ------------------->
+  <div id="kategorienUndPopoverDiv" style="position: relative;">
 
-
-  <div style="position: relative">
     <!----------- Img Taxonomie ------------------->
-    <img src="Kategorien/Test_Taxonomie.png" width="90%" id="taxonomie" class="kategory">
+    <img src="Kategorien/Test_Taxonomie.png" width="100%" id="taxonomie" class="kategory">
     
     <!----------- Img Chronologie ------------------->
     <img src="Kategorien/timeline.svg" width="150%" id="chronologie" class="kategory">
@@ -74,13 +84,11 @@
     <!--           Popover Section               -->
     <!--------------------------------------------->
   
-    <!-- Popover Lycaon -->
+    <!-- Popover Lycaon 
     <div id="lycaon" class="zeus">
       <div class="popover__wrapper">
-        <a href="#">
           <img src="Figuren/Lycaon/Lycaon_ausgeschnitten.png" id="lycaonBtn" class="popover__picture" id="lycaonBtn" alt="Lycaon"
-            width="100" height="100">
-        </a>
+            width="10%">
         <div class="popover__content">
           <div class="popover__message">
             <h3>Lycaon</h3>
@@ -90,26 +98,23 @@
         </div>
       </div>
     </div>
+    -->
   
-    <!-- Popover Io -->
-    <div id="io" class="popover__wrapper zeus hera">
-      <img src="Figuren/Io/Io_450x450.png" id="ioBtn" alt="Io" width="70">
-    </div>
+    <!--Popover Io 
+    <div id="io" class="popover__wrapper">
+      <img src="Figuren/Io/Io_450x450.png" id="ioBtn" alt="Io" width="20%">
+    </div> 
     <div class="popover__content">
-      <div class="popover__message">
-        <h3>Io</h3>
-        <p>Ov. met. 1,568-688; 713-750</p>
-      </div>
-      <img alt="Gerbrand van den Eeckhout, Io, 1672"
-        src="Figuren/Io/Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io (c 1672)(aus Wikimedia).jpg" width="200px">
+      <h3>Io</h3>
+      <p>Ov. met. 1,568-688; 713-750</p>
+      <img alt="Gerbrand van den Eeckhout, Io, 1672" src="Figuren/Io/Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io (c 1672)(aus Wikimedia).jpg" width="200px">
     </div>
-  
-    <!-- Popover Actaeon -->
+    --> 
+    
+    <!-- Popover Actaeon 
     <div id="actaeon" class="artemis">
       <div class="popover__wrapper">
-        <a href="#">
           <img src="Figuren/Actaeon/Aktaeon_600x600.png" id="actaeonBtn" alt="Aktaeon" width="20%">
-        </a>
         <div class="popover__content">
           <div class="popover__message">
             <h3>Actaeon</h3>
@@ -121,6 +126,7 @@
       </div>
     </div>
   </div>
+  -->
 
 
 
@@ -136,7 +142,7 @@
       <p class="modalHeader"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
       <br>
       <hr>
-      <p class="modalContentLeft">Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
+      <p style="text-align: left;">Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
         Geschichten, die diese erzählten? Jetzt hast du die Möglichkeit, diese Erinnerungen wieder auferstehen zu lassen
         -- diesmal allerdings mit einem weitaus größeren Bestand an Metamorphosen. Einige dieser Metamorphosen haben
         vielleicht schon Alexander der Große oder Caesar in den Händen gehalten oder für ihre weltverändernden Kriege
@@ -177,26 +183,32 @@
     <div class="dropdown">
       <button class="dropbtn" id="unorganisiert">Unorganisiert</button>
       <div class="dropdown-content" style="left:0;">
-        <a href="#" id="chrono">Chronologie</a>
-        <a href="#" id="tax">Taxonomie</a>
-        <a href="#" id="geo">Geographie</a>
+        <div id="chrono">Chronologie</div>
+        <div id="tax">Taxonomie</div>
+        <div id="geo">Geographie</div>
+        <div id="text">Fließtext</div>
       </div>
     </div>
     UND
     <div class="dropdown">
-      <input id="checkboxZeus" type="checkbox" style="display:block; text-align:left; float:left" readonly
-        checked><button class="dropbtn">alle Personen</button>
+      <button class="dropbtn">alle Personen</button>
       <div class="dropdown-content" style="left:0;">
-        <input id="checkboxZeus" type="checkbox" style="display:block; text-align:left; float:left" readonly checked><a
-          href="#" id="zeusButton">Zeus</a>
-        <input id="checkboxZeus" type="checkbox" style="display:block; text-align:left; float:left" readonly checked><a
-          href="#" id="artemisButton">Artemis</a>
-        <input id="checkboxZeus" type="checkbox" style="display:block; text-align:left; float:left" readonly checked><a
-          href="#" id="heraButton">Hera</a>
+        <div id="zeusButton">Zeus</div>
+        <div id="artemisButton">Artemis</div>
+        <div id="heraButton">Hera</div>
       </div>
     </div>
   </div>
 
+  <!-- Selected Dropdown funktioniert nicht, weil hier kein automatisches
+      <label for="navi" class="dropbtn">Unorganisiert</label>
+      <select id="navi" class="dropdown-content" style="left:0;">
+        <option value="unorganisiert" selected id="unorganisiert">Unorganisiert</option>
+        <option value="chronologie" id="chrono">Chronologie</option>
+        <option value="taxonomie" id="tax">Taxonomie</options>
+        <option value="geographie" id="geo">Geographie</options>
+      </select>
+  -->
 
   <h2 class="logo">VISUALIZED OVID</h2>
   <button id="infoBtn" class="infoBtn">Info</button>

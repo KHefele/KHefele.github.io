@@ -9,6 +9,7 @@ async function loadJSON(path)
 export async function application() {
 
   const leude = await loadJSON('leude.json'); // für Modals & Popover
+  const metamorphosen = await loadJSON('metamorphosen.json'); // für MetamorphosenText
 
 
 
@@ -45,6 +46,12 @@ export async function application() {
 
 
 
+
+
+
+
+
+
   //--------------------------------------------//
   //             Metamorphosen-Icons            //
   //--------------------------------------------//
@@ -69,12 +76,6 @@ export async function application() {
   }
 
 
-  createIcon(leude.lycaon);
-  createIcon(leude.io);
-  createIcon(leude.actaeon);
-  createIcon(leude.narciss);
-  createIcon(leude.kallisto);
-  createIcon(leude.daphne);
 
 
 
@@ -85,19 +86,71 @@ export async function application() {
 
   // generiert automatisiert Popover mithilfe der angelegten json-Datei
   // Parameter z.B. leude.actaeon
-  function makePopover(data) {
-    var popoverDiv = document.createElement("div");
-    // for-Schleife über alle classNames: popoverDiv.className = "";
-    popoverDiv.id = ""; // legt aktuell noch Positionen fest > automatisieren
-    document.body.appendChild(popoverDiv);
 
-    var popoverWrapperDiv = document.createElement("div");
-    popoverWrapperDiv.className = "popover__wrapper";
-    popoverDiv.appendChild(popoverWrapperDiv);
+  
+
+  function createPopover(data) {
+    var popoverContentDiv = document.createElement("div"); 
+    popoverContentDiv.className = "popover__content";
+    popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-18)) + "%";
+    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 10)+ "%";
+    popoverContentDiv.id = data.name.toLowerCase(); //sonst werden alle Popover gleichzeitig aufgerufen
+    popoverContentDiv.style.visibility = "hidden";
+    kategorienUndPopoverDiv.appendChild(popoverContentDiv);
+
+    var ueberschrift = document.createElement("h3");
+    ueberschrift.innerHTML = data.name;
+    popoverContentDiv.appendChild(ueberschrift);
+
+    var ovMet = document.createElement("p");
+    ovMet.innerHTML = data.ovMet;
+    popoverContentDiv.appendChild(ovMet);
+
+    var popoverImg = document.createElement("img");
+    popoverImg.src = data.img;
+    popoverImg.alt = data.alt;
+    popoverImg.style.width = "200px";
+    popoverContentDiv.appendChild(popoverImg);
   }
 
 
 
+
+
+
+
+  //--------------------------------------------//
+  //              Popover-Aufruf                //
+  //--------------------------------------------//
+
+
+
+  function popoverAufruf(data) {;
+    var idName = (data.name.toLowerCase()+ "Btn");
+    var iconBtn = document.getElementById(idName);
+    
+    iconBtn.onmouseover = function () {
+      var elementWithNameID = document.getElementById(data.name.toLowerCase());
+      elementWithNameID.style.visibility = "visible";
+    }
+    iconBtn.onmouseout = function () {
+      var elementWithNameID = document.getElementById(data.name.toLowerCase());
+      elementWithNameID.style.visibility = "hidden";
+    }
+  }
+
+/*
+  //--------------------------------------------//
+  //            Slider-Function                 //
+  //--------------------------------------------//
+
+  for (var key in leude) {
+    leude[key].ovMet indexOf
+    if (leude[key].ovMet > ) {
+
+    }
+  }
+*/
 
   //--------------------------------------------//
   //            Metamorphosen-Modals            //
@@ -105,8 +158,9 @@ export async function application() {
 
   // generiert automatisiert Modals mithilfe der angelegten json-Datei
   // Parameter z.B. leude.actaeon
-  function makeModal(data) {
+  function createModal(data) {
     var modalDiv = document.createElement("div");
+    modalDiv.id = data.name.toLowerCase() + "Modal";
     modalDiv.className = "metamorphosenModal";
     document.body.appendChild(modalDiv);
 
@@ -117,6 +171,16 @@ export async function application() {
     var modalContentDiv = document.createElement("div");
     modalContentDiv.className = "modalContent";
     modalDiv.appendChild(modalContentDiv);
+
+    var slidePrev = document.createElement("a");
+    slidePrev.innerHTML = "&#10094;";
+    slidePrev.id = "prev";
+    modalContentDiv.appendChild(slidePrev);
+
+    var slideNext = document.createElement("a");
+    slideNext.innerHTML = "&#10095";
+    slideNext.id = "next";
+    modalContentDiv.appendChild(slideNext);
 
     //header
     var divHeader = document.createElement("div"); //div anlegen
@@ -142,7 +206,6 @@ export async function application() {
     imgKlein.className = "display-under-1200px";
     imgKlein.alt = data.alt;
     imgKlein.src = data.img;
-    //imgKlein.width = "300";
     if (imgKlein.naturalWidth > imgKlein.naturalHeight) {
       imgKlein.width = "300";
     } else {
@@ -166,7 +229,6 @@ export async function application() {
     var img = document.createElement("img");
     img.alt = data.alt;
     img.src = data.img;
-    //img.width = "300";
     if (img.naturalWidth > img.naturalHeight) {
       img.width = "300";
     } else {
@@ -281,6 +343,7 @@ export async function application() {
     modalContentDiv.appendChild(document.createElement("br"));
 
     var buttonSpan = document.createElement("span");
+    buttonSpan.setAttribute("align", "center");
     buttonSpan.className = "modalBtns";
     buttonSpan.innerHTML = "SCHLIESSEN";
     buttonSpan.onclick = function() { modalDiv.style.display = "none" };
@@ -292,39 +355,35 @@ export async function application() {
     return modalDiv;
   }
 
+  /*
+  function generateAllModalsFromLeude() { //Probleme 
+    for (var key in leude) {
+      var spezKey = "leude." + key;
 
+      var spezModal = createModal(spezKey);
+      var spezBtn = document.getElementById(spezKey + "Btn");
 
+      spezBtn.onclick = function() { //open
+        spezModal.style.display = "block";
+      }
+    }
+  }
+  generateAllModalsFromLeude();
+  */
 
   //--------------------------------------------//
-  //            Popover-/Modal-Aufrufe          //
+  //              Modal-Aufrufe                 //
   //            > automatisieren                //
   //--------------------------------------------//
-
-  // Lycaon
-  var lycaonModal = makeModal(leude.lycaon);
-  var lycaonBtn = document.getElementById("lycaonBtn");
-
-  lycaonBtn.onclick = function () { // Open
-    lycaonModal.style.display = "block";
-  }
-
-
-  // Io
-  var ioModal = makeModal(leude.io);
-  var ioBtn = document.getElementById("ioBtn");
-
-  ioBtn.onclick = function () { // Open
-    ioModal.style.display = "block";
-  }
-
-
-  // Actaeon
-  //var actaeonPopover = makePopover(leude.actaeon);
-  var actaeonModal = makeModal(leude.actaeon);
-  var actaeonBtn = document.getElementById("actaeonBtn");
-
-  actaeonBtn.onclick = function () { // Open
-    actaeonModal.style.display = "block";
+  
+  
+  function modalAufruf(data) {
+    var currentModal = createModal(data);
+    var currentBtn = document.getElementById(data.name.toLowerCase() + "Btn");
+    
+    currentBtn.onclick = function () {
+      currentModal.style.display = "block";
+    }  
   }
 
 
@@ -333,8 +392,22 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //              Alles aufrufen                //
+  //--------------------------------------------//
 
 
+  function allesAufrufen() {
+    for (var key in leude){
+      createIcon(leude[key]);
+      createPopover(leude[key]);
+      popoverAufruf(leude[key]);
+      modalAufruf(leude[key]); //createModal wird innerhalb dieser Funktion aufgerufen
+    }
+  }
+
+  allesAufrufen();
+  
 
 
 
@@ -386,7 +459,6 @@ export async function application() {
   }
 
 
-
   //Taxonomie
   taxBtn.onclick = function () {
     chronoImg.style.display = "none";
@@ -417,9 +489,9 @@ export async function application() {
     geoImg.style.display = "block";
     geoImg.style.animationPlayState = "running";
 
-    var actaeon = document.getElementById("actaeon");
-    actaeon.style.left = "80%";
-    actaeon.style.top = "10%";
+    //var actaeon = document.getElementById("actaeonBtn");
+    actaeonBtn.style.left = "80%";
+    actaeonBtn.style.top = "10%";
     console.log("Die Geofunktion funktioniert");
   }
 
@@ -496,6 +568,19 @@ export async function application() {
 
 
 
+  //parent-div
+  var parentDiv = document.getElementById("kategorienUndPopoverDiv");
+  
+  if (!parentDiv.style.height) {
+    parentDiv.style.height = window.innerHeight + "px";
+  }
+
+  document.getElementsByTagName("BODY")[0].onresize = function() {resizeToWindowSize()};
+
+  function resizeToWindowSize() {
+    //console.log("div has been resized");
+    parentDiv.style.height = window.innerHeight + "px";
+  }
 
   
   //--------------------------------------------//
@@ -534,8 +619,9 @@ export async function application() {
 
 
 
+/*
   //--------------------------------------------//
-  //                  Personen                  //
+  //           Personen/Checkboxen              //
   //--------------------------------------------//
 
   function blendGodInOrOut(button, classArray) {
