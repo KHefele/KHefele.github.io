@@ -45,8 +45,40 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //             Metamorphosen-Icons            //
+  //--------------------------------------------//
+  
+  var kategorienUndPopoverDiv = document.getElementById("kategorienUndPopoverDiv");
+
+  function createIcon(data) {
+    var iconDiv = document.createElement("div");
+    iconDiv.className="popover__wrapper";
+    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
+    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
+    kategorienUndPopoverDiv.appendChild(iconDiv);
+
+    var iconImg = document.createElement("img"); 
+    iconImg.className = "iconImg";
+    iconImg.src = data.icon;
+    iconImg.id = data.name.toLowerCase() + "Btn"; //Ansprechpartner für onclick function Navigations-Kategorien s.u.
+    iconImg.style.width = data.width;
+    //iconImg.width = data.width; //grade 0 weil das scheiß parent-div 0 ist
+    iconImg.alt = data.alt;
+    iconDiv.appendChild(iconImg);
+  }
 
 
+  createIcon(leude.lycaon);
+  createIcon(leude.io);
+  createIcon(leude.actaeon);
+  createIcon(leude.narciss);
+  createIcon(leude.kallisto);
+  createIcon(leude.daphne);
+
+
+
+  
   //--------------------------------------------//
   //           Metamorphosen-Popover            //
   //--------------------------------------------//
