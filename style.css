@@ -298,6 +298,10 @@ button { /* unterscheidet sich sonst von span */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
   font-size: 14px;
+  animation-name: slowOpacity;
+  animation-duration: 0.5s;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
 }
 
 .tooltip {
@@ -318,6 +322,27 @@ button { /* unterscheidet sich sonst von span */
   z-index: 100;
   color: #000; 
   background-color: #733030;
+}
+
+
+.prevMet, .nextMet {
+  position: fixed;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+.prevMet:hover, .nextMet:hover {
+  color: #733030;
+}
+
+.prevMet {
+  top: 50%;
+  left: 10%;
+}
+
+.nextMet {
+  top: 50%;
+  right: 10%;
 }
 
 
@@ -421,14 +446,14 @@ button { /* unterscheidet sich sonst von span */
  /* position:absolute; */
   display: none;
   z-index: 0;
-  animation-name: kategory;
+  animation-name: slowOpacity;
   animation-duration: 2s;
   animation-play-state: paused;
   animation-fill-mode: forwards;
 }
 
 
-@keyframes kategory {
+@keyframes slowOpacity {
   from {
     opacity: 0;
   }

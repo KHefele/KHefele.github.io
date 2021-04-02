@@ -6,18 +6,18 @@
         "width": "10%",
         "koordinaten": {
             "unorganisiert": {
-                "top": "20",
+                "top": "40",
                 "left": "10"
                 },
             "chronologie": {
-                "top": "50",
+                "top": "10",
                 "left": "70"
                 },
             "taxonomie": {
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -55,18 +55,18 @@
         "width": "13%",
         "koordinaten": {
             "unorganisiert": {
-                "top": "20",
+                "top": "35",
                 "left": "20"
                 },
             "chronologie": {
-                "top": "50",
-                "left": "70"
+                "top": "20",
+                "left": "80"
                 },
             "taxonomie": {
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -115,7 +115,7 @@
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -165,7 +165,7 @@
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -215,7 +215,7 @@
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -265,7 +265,7 @@
                 "top": "60",
                 "left": "10"
                 },
-            "geologie": {
+            "geographie": {
                 "top": "80",
                 "left": "60"
                 }
@@ -301,30 +301,30 @@
     "syrinx": {
         "name": "Syrinx",
 
-        "icon": "Figuren/Syrinx/pan-playing-his-pipes-paulus-moreelse.jpg",
-        "width": "20%",
+        "icon": "Figuren/Syrinx/Syrinx_Icon.png",
+        "width": "40%",
         "koordinaten": {
             "unorganisiert": {
                 "top": "20",
-                "left": "80"
+                "left": "75"
                 },
             "chronologie": {
-                "top": "50%",
-                "left": "70%"
+                "top": "50",
+                "left": "70"
                 },
             "taxonomie": {
-                "top": "60%",
-                "left": "10%"
+                "top": "60",
+                "left": "10"
                 },
-            "geologie": {
-                "top": "80%",
-                "left": "60%"
+            "geographie": {
+                "top": "80",
+                "left": "60"
                 }
         },
 
-        "img": "Figuren/Syrinx/pan-playing-his-pipes-paulus-moreelse.jpg", 
-        "source": "https://www.pinterest.de/pin/321514860875552014/",
-        "alt": "Paulus Moreelse, Pan Playing his Pipes, ?",
+        "img": "Figuren/Syrinx/Syrinx.png", 
+        "source": "https://www.clevelandart.org/art/1973.212",
+        "alt": "Jean François de Troy, Pan and Syrinx, 1720",
         
         "ovMet": "1,689-746",
         "verwandlung": "Schilfrohr",
@@ -354,21 +354,21 @@
                 "left": "85"
                 },
             "chronologie": {
-                "top": "50%",
-                "left": "70%"
+                "top": "50",
+                "left": "70"
                 },
             "taxonomie": {
-                "top": "60%",
-                "left": "10%"
+                "top": "60",
+                "left": "10"
                 },
-            "geologie": {
-                "top": "80%",
-                "left": "60%"
+            "geographie": {
+                "top": "80",
+                "left": "60"
                 }
         },
 
         "img": "Figuren/Lykische Bauern/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Frösche.jpg", 
-        "source": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Fr%C3%B6sche.jpg",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/d/d6/<br>Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_<br>in_Fr%C3%B6sche.jpg",
         "alt": "Johann Georg Platzer, Latona verwandelt die lykischen Bauern in Froesche, ca. 1730",
         
         "ovMet": "6,313-381",

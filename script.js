@@ -51,6 +51,61 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //             Sortierte Tabellen             //
+  //--------------------------------------------//
+
+
+  var idListSorted = [];
+  var ovMetListSorted = [];
+
+  //array with IDs sorted by ovMet position
+  for (var key in leude) {
+    var currentId = key + "Modal";
+
+    var ovMetReplacedSemicolon = leude[key].ovMet.replace(",",".");
+    var indexOfHyphen = ovMetReplacedSemicolon.indexOf("-");
+    var ovMetFloat = parseFloat(ovMetReplacedSemicolon.substring(0, indexOfHyphen));
+  
+   
+    if (idListSorted.length < 1){  //initial
+      idListSorted.push(currentId);
+      ovMetListSorted.push(ovMetFloat);
+      //console.log("initial: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+
+    } else if (ovMetFloat < ovMetListSorted[0]) { //smaller number
+      idListSorted.unshift(currentId);
+      ovMetListSorted.unshift(ovMetFloat);
+      //console.log("number was smaller, so inserted at the beginning: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+
+    } else if (ovMetFloat > ovMetListSorted[ovMetListSorted.length-1]) { //bigger number
+      idListSorted.push(currentId);
+      ovMetListSorted.push(ovMetFloat);
+      //console.log("number was bigger, so inserted at the end: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+
+    } else {
+      for (var x = 0; x < ovMetListSorted.length; x++){
+        //console.log(ovMetFloat + "vs." + ovMetListSorted[x]);
+
+        if (ovMetFloat > ovMetListSorted[x]) { //when number is bigger than array entry: continue
+          continue;
+
+        } else { //when number is smaller than array entry: insert 
+          idListSorted.splice(x, 0, currentId);
+          ovMetListSorted.splice(x, 0, ovMetFloat);
+          //console.log("number was in the middle: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+          break;
+        }
+      }
+    }
+    
+    //console.log(idListSorted);
+    //console.log(ovMetListSorted);
+  }
+
+
+
+
 
   //--------------------------------------------//
   //             Metamorphosen-Icons            //
@@ -60,6 +115,7 @@ export async function application() {
 
   function createIcon(data) {
     var iconDiv = document.createElement("div");
+    iconDiv.id = data.name.toLowerCase() + "Wrapper";
     iconDiv.className="popover__wrapper";
     iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
     iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
@@ -67,6 +123,7 @@ export async function application() {
 
     var iconImg = document.createElement("img"); 
     iconImg.className = "iconImg";
+    iconImg.title = data.verwandlung;
     iconImg.src = data.icon;
     iconImg.id = data.name.toLowerCase() + "Btn"; //Ansprechpartner für onclick function Navigations-Kategorien s.u.
     iconImg.style.width = data.width;
@@ -91,10 +148,10 @@ export async function application() {
 
   function createPopover(data) {
     var popoverContentDiv = document.createElement("div"); 
+    popoverContentDiv.id = data.name.toLowerCase() + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
     popoverContentDiv.className = "popover__content";
     popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-18)) + "%";
     popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 10)+ "%";
-    popoverContentDiv.id = data.name.toLowerCase(); //sonst werden alle Popover gleichzeitig aufgerufen
     popoverContentDiv.style.visibility = "hidden";
     kategorienUndPopoverDiv.appendChild(popoverContentDiv);
 
@@ -130,27 +187,25 @@ export async function application() {
     var iconBtn = document.getElementById(idName);
     
     iconBtn.onmouseover = function () {
-      var elementWithNameID = document.getElementById(data.name.toLowerCase());
+      var elementWithNameID = document.getElementById(data.name.toLowerCase() + "Popover");
       elementWithNameID.style.visibility = "visible";
     }
     iconBtn.onmouseout = function () {
-      var elementWithNameID = document.getElementById(data.name.toLowerCase());
+      var elementWithNameID = document.getElementById(data.name.toLowerCase() + "Popover");
       elementWithNameID.style.visibility = "hidden";
     }
   }
 
-/*
-  //--------------------------------------------//
-  //            Slider-Function                 //
-  //--------------------------------------------//
 
-  for (var key in leude) {
-    leude[key].ovMet indexOf
-    if (leude[key].ovMet > ) {
 
-    }
-  }
-*/
+
+
+
+
+
+
+
+
 
   //--------------------------------------------//
   //            Metamorphosen-Modals            //
@@ -172,15 +227,21 @@ export async function application() {
     modalContentDiv.className = "modalContent";
     modalDiv.appendChild(modalContentDiv);
 
-    var slidePrev = document.createElement("a");
-    slidePrev.innerHTML = "&#10094;";
-    slidePrev.id = "prev";
-    modalContentDiv.appendChild(slidePrev);
+    if (!(modalDiv.id == idListSorted[0])) {
+      var slidePrevDiv = document.createElement("div");
+      slidePrevDiv.innerHTML = "&#10094;";
+      slidePrevDiv.className = "prevMet";
+      slidePrevDiv.title = "vorherige Verwandlung";
+      modalDiv.appendChild(slidePrevDiv);
+    }
 
-    var slideNext = document.createElement("a");
-    slideNext.innerHTML = "&#10095";
-    slideNext.id = "next";
-    modalContentDiv.appendChild(slideNext);
+    if (!(modalDiv.id == idListSorted[idListSorted.length-1])) {
+      var slideNextDiv = document.createElement("div");
+      slideNextDiv.innerHTML = "&#10095";
+      slideNextDiv.className = "nextMet";
+      slideNextDiv.title = "nächste Verwandlung";
+      modalDiv.appendChild(slideNextDiv);
+    }
 
     //header
     var divHeader = document.createElement("div"); //div anlegen
@@ -205,6 +266,7 @@ export async function application() {
     var imgKlein = document.createElement("img"); 
     imgKlein.className = "display-under-1200px";
     imgKlein.alt = data.alt;
+    imgKlein.title = data.alt;
     imgKlein.src = data.img;
     if (imgKlein.naturalWidth > imgKlein.naturalHeight) {
       imgKlein.width = "300";
@@ -228,6 +290,7 @@ export async function application() {
     //Nur bei großer Ansicht über 1200px
     var img = document.createElement("img");
     img.alt = data.alt;
+    img.title = data.alt;
     img.src = data.img;
     if (img.naturalWidth > img.naturalHeight) {
       img.width = "300";
@@ -355,21 +418,8 @@ export async function application() {
     return modalDiv;
   }
 
-  /*
-  function generateAllModalsFromLeude() { //Probleme 
-    for (var key in leude) {
-      var spezKey = "leude." + key;
 
-      var spezModal = createModal(spezKey);
-      var spezBtn = document.getElementById(spezKey + "Btn");
 
-      spezBtn.onclick = function() { //open
-        spezModal.style.display = "block";
-      }
-    }
-  }
-  generateAllModalsFromLeude();
-  */
 
   //--------------------------------------------//
   //              Modal-Aufrufe                 //
@@ -380,9 +430,10 @@ export async function application() {
   function modalAufruf(data) {
     var currentModal = createModal(data);
     var currentBtn = document.getElementById(data.name.toLowerCase() + "Btn");
-    
+
     currentBtn.onclick = function () {
       currentModal.style.display = "block";
+      currentModal.style.animationPlayState = "running";
     }  
   }
 
@@ -408,6 +459,97 @@ export async function application() {
 
   allesAufrufen();
   
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //            Slider-Functions                //
+  //--------------------------------------------//
+  
+
+
+  //get ID of currentlyDisplayedModal  
+  function getCurrentlyDisplayedModalId() {
+    for (var id = 0; id < idListSorted.length; id++){
+      var modal = document.getElementById(idListSorted[id]);
+      
+      if (modal.style.display == "block"){
+        console.log("modal wird gezeigt: " + idListSorted[id]);
+        return idListSorted[id];
+      }
+      
+    }
+    
+  }
+ 
+
+  //slider-function 
+  function slide(number) {
+    for (var idNumber = 0; idNumber < idListSorted.length; idNumber++){
+
+      if (idListSorted[idNumber] == getCurrentlyDisplayedModalId()) {
+        return idListSorted[idNumber + number];
+      }
+    }
+  }
+
+
+  //onclick-function 
+  var prevArray = document.getElementsByClassName("prevMet");
+  var nextArray = document.getElementsByClassName("nextMet");
+
+
+  for (var prevBtnNb = 0; prevBtnNb < prevArray.length; prevBtnNb++) {
+      
+      prevArray[prevBtnNb].onclick = function () {
+        console.log("prevBtn geklickt");
+        var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
+        var modalWanted = document.getElementById(slide(-1));
+        
+        modalNow.style.display = "none";
+        modalWanted.style.display = "block";
+        modalWanted.style.animationPlayState = "running";
+      }
+  }
+
+  for (var nextBtnNb = 0; nextBtnNb < nextArray.length; nextBtnNb++){
+    nextArray[nextBtnNb].onclick = function () {
+      console.log("nextBtn geklickt");
+      var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
+      var modalWanted = document.getElementById(slide(+1));
+        
+      modalNow.style.display = "none";
+      modalNow.style.animationPlayState = "running";
+
+      modalWanted.style.display = "block";
+      modalWanted.style.animationPlayState = "running";
+    }
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -456,6 +598,14 @@ export async function application() {
     chronoImg.style.animationPlayState = "running";
 
     console.log("Die Chronofunktion funktioniert");
+
+    for (var figur in leude){
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      console.log(figurIcon);
+      figurIcon.style.top = leude[figur].koordinaten.chronologie.top + "%";
+      figurIcon.style.left = leude[figur].koordinaten.chronologie.left + "%";
+    }
+
   }
 
 
@@ -471,7 +621,13 @@ export async function application() {
     taxImg.style.animationPlayState = "running";
     
     console.log("Die Taxfunktion funktioniert");
-
+     
+    for (var figur in leude){
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      console.log(figurIcon);
+      figurIcon.style.top = leude[figur].koordinaten.taxonomie.top + "%";
+      figurIcon.style.left = leude[figur].koordinaten.taxonomie.left + "%";
+    }
 
     /*
     var actaeon = document.getElementById("actaeon");
@@ -493,9 +649,20 @@ export async function application() {
     actaeonBtn.style.left = "80%";
     actaeonBtn.style.top = "10%";
     console.log("Die Geofunktion funktioniert");
+
+
+    for (var figur in leude){
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      console.log(figurIcon);
+      figurIcon.style.top = leude[figur].koordinaten.geographie.top + "%";
+      figurIcon.style.left = leude[figur].koordinaten.geographie.left + "%";
+    }
   }
 
-  //text
+
+
+
+  //Fließtext
   
   //create text-div
   var textModalDiv = document.createElement("div");
@@ -562,6 +729,13 @@ export async function application() {
 
     geoImg.style.opacity = "0";
     geoImg.style.display = "none";
+
+    for (var figur in leude){
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      console.log(figurIcon);
+      figurIcon.style.top = leude[figur].koordinaten.unorganisiert.top + "%";
+      figurIcon.style.left = leude[figur].koordinaten.unorganisiert.left + "%";
+    }
   }
 
 
