@@ -674,16 +674,21 @@ export async function application() {
     taxImg.style.display = "block";
     taxImg.style.animationPlayState = "running";
     
-    
-    console.log("Die Taxfunktion funktioniert");
-    
     //faunaDiv-data als startpunkt
     var figurPositionFaunaTop = document.getElementById("fauna").offsetTop;
-    var figurPositionFaunaLeft = document.getElementById("fauna").offsetLeft;
+    var figurPositionFaunaLeft = document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
 
     //floraDiv-data als startpunkt 
     var figurPositionFloraTop = document.getElementById("flora").offsetTop;
-    var figurPositionFloraLeft = document.getElementById("flora").offsetLeft;
+    var figurPositionFloraLeft = document.getElementById("flora").offsetLeft + 150;
+
+    var figurPositionElementeTop = document.getElementById("elemente").offsetTop;
+    var figurPositionElementeLeft = document.getElementById("elemente").offsetLeft + 150;
+
+    var figurPositionSonstigesTop = document.getElementById("sonstiges").offsetTop;
+    var figurPositionSonstigesLeft = document.getElementById("sonstiges").offsetLeft + 150;
+
+    
 
     //mitzählen für Prozentangaben
     var countFauna = 0;
@@ -691,9 +696,11 @@ export async function application() {
     var countElemente = 0;
     var countSonstiges = 0;
 
+    
+
     for (var figur in leude){
       var figurIcon = document.getElementById(figur + "Wrapper");
-    
+      
       
 
       if (leude[figur].taxonomie == "fauna"){
@@ -725,14 +732,25 @@ export async function application() {
       }
 
     }
-    
-    var all = countFauna + countFlora + countElemente + countSonstiges;
-    var faunaPercent = countFauna/all*100;
-    var floraPercent = countFlora/all*100;
-    var elementePercent = countElemente/all*100;
-    var sonstigesPercent = countSonstiges/all*100;
 
-    console.log(faunaPercent + floraPercent);
+    //balkenlaengen 
+    document.getElementById("fauna").style.width = figurPositionFaunaLeft + "px";
+    document.getElementById("flora").style.width = figurPositionFloraLeft + "px";
+    document.getElementById("elemente").style.width = figurPositionElementeLeft + "px";
+    document.getElementById("sonstiges").style.width = figurPositionSonstigesLeft + "px";
+
+    //prozentangaben taxonomie
+    var all = countFauna + countFlora + countElemente + countSonstiges;
+    var percentNumbers = [countFauna/all*100, countFlora/all*100, countElemente/all*100, countSonstiges/all*100];
+
+    var percentPArray = document.getElementsByClassName("percentTopright");
+
+    var p = 0;
+    for (var percentP = 0; percentP < percentPArray.length; percentP++) {
+      percentPArray[percentP].innerHTML = percentNumbers[p] + "%";
+      p++;
+    }
+    
     
   }
 

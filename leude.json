@@ -22,8 +22,8 @@
    
         "ovMet": "1,209-239",
         "verwandlung": "Wolf",
-        "grund": "Frevelmut gegenüber Zeus", 
-        "verwandler": "Zeus",
+        "grund": "Frevelmut gegenüber Jupiter", 
+        "verwandler": "Jupiter",
         "ort": "nach Cyllene und Lycaeus",
         "iconclass": "97C4 Jupiter verwandelt Lycaon in einen Wolf, weil er den Göttern Menschenfleisch als Speise vorgesetzt hat; Lycaons Haus wird vom Blitz zerstört (Ovid, Metamorphosen I 237)",
         
@@ -64,8 +64,8 @@
 
         "ovMet": "1,568-688; 713-750",
         "verwandlung": "Kuh",
-        "grund": "Vertuschen des Seitensprungs vor Hera", 
-        "verwandler": "Zeus",
+        "grund": "Vertuschen des Seitensprungs vor Juno", 
+        "verwandler": "Jupiter",
         "ort": "nach den Triften von Lerna",
         "iconclass": "97CC6 um ihre Entdeckung durch Jupiter zu verhindern, verwandelt Juno Io in eine Kuh (Ovid, Metamorphosen I 611)",
         
@@ -107,7 +107,7 @@
         "ovMet": "3,131-252",
         "verwandlung": "Hirsch",
         "grund": "Erblickt nackte Diana bei der Jagd", 
-        "verwandler": "Artemis",
+        "verwandler": "Diana",
         "ort": "Tal Gargaphie in Böotien",
         "iconclass": "97C1 Als Strafe dafür, daß er sie beim Baden beobachtet hat, verwandelt Diana den Jäger Aktäon in einen Hirsch (Ovid, Metamorphosen III, 193)",
         
@@ -235,8 +235,8 @@
         
         "ovMet": "2,401-531",
         "verwandlung": "Bärin",
-        "grund": "Bestrafung für Kallistos Affäre mit Zeus", 
-        "verwandler": "Hera",
+        "grund": "Bestrafung für Kallistos Affäre mit Jupiter", 
+        "verwandler": "Juno",
         "ort": "in einem Wald Arcadiens",
         "iconclass": "97CC2 Juno verwandelt Callisto, die sich um den jungen Arcas (ihren Sohn von Jupiter) kümmert, in einen Bären",
         

@@ -523,11 +523,13 @@ button { /* unterscheidet sich sonst von span */
 /* Taxonomie */
 
 .titleTopleft {
+  margin: 0;
   position: absolute;
   top: 8px;
   left: 16px;
   font-size: 18px;
   color: white;
+  font-family: 'Crimson Text', serif;
 }
 
 .percentTopright {
@@ -542,33 +544,33 @@ button { /* unterscheidet sich sonst von span */
 }
 
 .taxonomieKategorie {
-  position: absolute;
-  width: 30%;
-  height: 30%;
+  position: absolute; /* irgendwann über JS steuern, mit Breite der zusammengezählten Elemente*/
+  height: 10%;
 }
 
 #fauna {
-  top:15%;
+  
+  top:25%;
+  left:15%;
+  background-color: rgba(115, 48, 48, 0.8);
+}
+
+#flora {
+  top:40%;
   left:15%;
   background-color: rgba(100, 100, 100, 0.8);
 }
 
-#flora {
-  top:50%;
-  left:15%;
-  background-color: rgba(160, 160, 160, 0.8);
-}
-
 #elemente {
-  top:15%;
-  left:50%;
+  top:55%;
+  left:15%;
   background-color: rgba(25, 25, 25, 0.8);
 }
 
 #sonstiges {
-  top:50%;
-  left:50%;
-  background-color: rgba(115, 48, 48, 0.8);
+  top:70%;
+  left:15%;
+  background-color: rgba(160, 160, 160, 0.8);
 }
 
 #fauna:hover, #flora:hover, #elemente:hover, #sonstiges:hover {
