@@ -32,10 +32,34 @@
   <div id="kategorienUndPopoverDiv" style="position: relative;">
 
     <!----------- Img Taxonomie ------------------->
-    <img src="Kategorien/Test_Taxonomie.png" width="100%" id="taxonomie" class="kategory">
+    <div id="taxonomie" class="kategory" style="height:100%; width:100%; position:absolute">
+      <div id="fauna" class="taxonomieKategorie">
+        <p class="titleTopleft">Fauna</p>
+        <p class="percentTopright">10%</p>
+      </div>
+      <div id="flora" class="taxonomieKategorie">
+        <p class="titleTopleft">Flora</p>
+        <p class="percentTopright">10%</p>
+      </div>
+      <div id="elemente" class="taxonomieKategorie">
+        <p class="titleTopleft">Elemente</p>
+        <p class="percentTopright">10%</p>
+      </div>
+      <div id="sonstiges" class="taxonomieKategorie">
+        <p class="titleTopleft" >Sonstiges</p>
+        <p class="percentTopright">10%</p>
+      </div>
+    </div>
+
     
-    <!----------- Img Chronologie ------------------->
-    <img src="Kategorien/timeline.svg" width="150%" id="chronologie" class="kategory">
+    <!----------- Chronologie ------------------->
+    <div id="chronologie" style="height:100%; width:100%; position:absolute">
+      
+      <!-- Timeline -->
+      <div id="line"></div>
+      <div id="arrow"></div>
+     
+    </div>
   
     <!----------- Img Geographie ------------------->
     <img src="Kategorien/map_transparent.svg" width="100%" id="geographie" class="kategory"> 
@@ -88,11 +112,13 @@
 
   <!--------------- Start Modal --------------->
   <div id="startModal" class="startModal">
-    <div class="modalContent">
-      <h1 class="modalHeader">VISUALIZED OVID</h1>
-      <p class="modalHeader"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
+    <div class="modalHeader">
+      <h1 style="text-align: center;">VISUALIZED OVID</h1>
+      <p style="text-align: center;"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
       <br>
       <hr>
+    </div>
+    <div class="modalContent">
       <p style="text-align: left;">Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
         Geschichten, die diese erzählten? Jetzt hast du die Möglichkeit, diese Erinnerungen wieder auferstehen zu lassen
         -- diesmal allerdings mit einem weitaus größeren Bestand an Metamorphosen. Einige dieser Metamorphosen haben
@@ -102,14 +128,16 @@
       <br>
       <span class="modalBtns" id="closeStartModal">Los geht's</span>
       <span class="modalBtns" id="mehrInfoBtn">Mehr Infos</span>
-      <br>
+    </div>
+    <div class="modalFooter">
+
     </div>
   </div>
 
   <!-- Info Modal -->
   <div id="infoModal" class="infoModal">
     <div class="modalContent">
-      <h1 class="modalHeader"><em>Über das Projekt</em></h1>
+      <h1 style="text-align: center;"><em>Über das Projekt</em></h1>
       <p class="modalContentLeft">Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der <a
           href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a> entstanden ist.<br>Zur
         Umsetzung wurde eine Anzahl von technischen Hilfsmitteln sowie Code Libraries verwendet. Allen voran <a
@@ -134,7 +162,7 @@
     <div class="dropdown">
       <button class="dropbtn" id="unorganisiert">Unorganisiert</button>
       <div class="dropdown-content" style="left:0;">
-        <div id="chrono">Chronologie</div>
+        <div id="chrono">Erzählfolge</div>
         <div id="tax">Taxonomie</div>
         <div id="geo">Geographie</div>
         <div id="text">Fließtext</div>

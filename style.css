@@ -41,6 +41,27 @@ image {
 
 
 
+/*--------------------------------------------*/
+/*                 Scrollbar                  */
+/*--------------------------------------------*/
+
+
+
+
+body::-webkit-scrollbar {
+  width: 0.7em;
+  height: 0.7em;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 7px;
+}
+
 
 /*--------------------------------------------*/
 /*                 Background                 */
@@ -172,7 +193,7 @@ button { /* unterscheidet sich sonst von span */
   z-index: 1; 
   left: 2%;
   bottom: 2%;
-  background-color: rgba(0, 0, 0, 0.9); 
+  background-color: rgba(0, 0, 0, 0.8); 
 }
 .dropbtn {
   background-color: #733030;
@@ -240,6 +261,12 @@ button { /* unterscheidet sich sonst von span */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.7); 
 }
+
+.modalHeader {
+  color: #aaaaaa;
+  text-align: center;
+  /*height: 100px;*/
+}
 .modalContent {
   color: #aaaaaa;
   background-color: rgba(0,0,0,0.8);
@@ -248,9 +275,8 @@ button { /* unterscheidet sich sonst von span */
   width: 60%;
   overflow-x: auto;
 }
-.modalHeader {
-  color: #aaaaaa;
-  text-align: center;
+.modalFooter {
+  
 }
 
 .close {
@@ -270,10 +296,11 @@ button { /* unterscheidet sich sonst von span */
 /* --------------- Start-Modal -------------- */
 .startModal {
   text-align: center;
-  display: block; /* not Hidden by default */
+  display: none; /* not Hidden by default >>>>>>>>> später wieder auf block setzen <<<<<<<<<<*/
   position: fixed; /* Stay in place */
   z-index: 20; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 5%; /* Location of the box */
+  padding-bottom: 5%;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -290,6 +317,7 @@ button { /* unterscheidet sich sonst von span */
   position: fixed; /* Stay in place */
   z-index: 20; /* Sit on top */
   padding-top: 100px; /* Location of the box */
+  padding-bottom: 100px;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -330,9 +358,14 @@ button { /* unterscheidet sich sonst von span */
   color: white;
   font-size: 40px;
   cursor: pointer;
+  padding: 16px;
+  transition: 0.6s ease;
+  border-radius: 3px;
+
 }
 .prevMet:hover, .nextMet:hover {
   color: #733030;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .prevMet {
@@ -348,15 +381,22 @@ button { /* unterscheidet sich sonst von span */
 
 
 
+
+
+
 /*--------------------------------------------*/
 /*           Popover/Hover card               */
 /*--------------------------------------------*/
 
 .popover__wrapper {
   position: absolute;
-  margin-top: 1.5rem;
+  /*margin-top: 1.5rem;*/
   display: inline-block;
   transition: left 1s ease-out, top 1s ease-out;
+}
+
+.iconImg {
+  transform: translate(-50%, -50%); /* centered images! */
 }
 
 .iconImg:hover {
@@ -461,6 +501,81 @@ button { /* unterscheidet sich sonst von span */
     opacity: 1;
   }
 }
+
+
+
+
+/* Erzählfolge */
+
+#timeline {
+
+}
+
+#line {
+
+}
+
+#arrow {
+
+}
+
+
+/* Taxonomie */
+
+.titleTopleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+  color: white;
+}
+
+.percentTopright {
+  position: absolute;
+  top: 0px;
+  right: 16px;
+  font-size: 10px;
+  color: white;
+}
+.percentTopright:hover {
+  display: block;
+}
+
+.taxonomieKategorie {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+}
+
+#fauna {
+  top:15%;
+  left:15%;
+  background-color: rgba(100, 100, 100, 0.8);
+}
+
+#flora {
+  top:50%;
+  left:15%;
+  background-color: rgba(160, 160, 160, 0.8);
+}
+
+#elemente {
+  top:15%;
+  left:50%;
+  background-color: rgba(25, 25, 25, 0.8);
+}
+
+#sonstiges {
+  top:50%;
+  left:50%;
+  background-color: rgba(115, 48, 48, 0.8);
+}
+
+#fauna:hover, #flora:hover, #elemente:hover, #sonstiges:hover {
+  background-color: #733030;
+}
+
+
 
 
 

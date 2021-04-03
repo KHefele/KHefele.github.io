@@ -56,32 +56,32 @@ export async function application() {
   //--------------------------------------------//
 
 
-  var idListSorted = [];
+  var figuresListSorted = [];
   var ovMetListSorted = [];
 
   //array with IDs sorted by ovMet position
   for (var key in leude) {
-    var currentId = key + "Modal";
+    var currentId = key;
 
     var ovMetReplacedSemicolon = leude[key].ovMet.replace(",",".");
     var indexOfHyphen = ovMetReplacedSemicolon.indexOf("-");
     var ovMetFloat = parseFloat(ovMetReplacedSemicolon.substring(0, indexOfHyphen));
   
    
-    if (idListSorted.length < 1){  //initial
-      idListSorted.push(currentId);
+    if (figuresListSorted.length < 1){  //initial
+      figuresListSorted.push(currentId);
       ovMetListSorted.push(ovMetFloat);
-      //console.log("initial: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+      //console.log("initial: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
     } else if (ovMetFloat < ovMetListSorted[0]) { //smaller number
-      idListSorted.unshift(currentId);
+      figuresListSorted.unshift(currentId);
       ovMetListSorted.unshift(ovMetFloat);
-      //console.log("number was smaller, so inserted at the beginning: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+      //console.log("number was smaller, so inserted at the beginning: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
     } else if (ovMetFloat > ovMetListSorted[ovMetListSorted.length-1]) { //bigger number
-      idListSorted.push(currentId);
+      figuresListSorted.push(currentId);
       ovMetListSorted.push(ovMetFloat);
-      //console.log("number was bigger, so inserted at the end: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+      //console.log("number was bigger, so inserted at the end: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
     } else {
       for (var x = 0; x < ovMetListSorted.length; x++){
@@ -91,15 +91,15 @@ export async function application() {
           continue;
 
         } else { //when number is smaller than array entry: insert 
-          idListSorted.splice(x, 0, currentId);
+          figuresListSorted.splice(x, 0, currentId);
           ovMetListSorted.splice(x, 0, ovMetFloat);
-          //console.log("number was in the middle: \n id: " + idListSorted + " \n ovMet: " + ovMetListSorted);
+          //console.log("number was in the middle: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
           break;
         }
       }
     }
     
-    //console.log(idListSorted);
+    //console.log(figuresListSorted);
     //console.log(ovMetListSorted);
   }
 
@@ -126,8 +126,7 @@ export async function application() {
     iconImg.title = data.verwandlung;
     iconImg.src = data.icon;
     iconImg.id = data.name.toLowerCase() + "Btn"; //Ansprechpartner für onclick function Navigations-Kategorien s.u.
-    iconImg.style.width = data.width;
-    //iconImg.width = data.width; //grade 0 weil das scheiß parent-div 0 ist
+    iconImg.style.width = data.width + "px";
     iconImg.alt = data.alt;
     iconDiv.appendChild(iconImg);
   }
@@ -227,7 +226,7 @@ export async function application() {
     modalContentDiv.className = "modalContent";
     modalDiv.appendChild(modalContentDiv);
 
-    if (!(modalDiv.id == idListSorted[0])) {
+    if (!(modalDiv.id == figuresListSorted[0] + "Modal")) {
       var slidePrevDiv = document.createElement("div");
       slidePrevDiv.innerHTML = "&#10094;";
       slidePrevDiv.className = "prevMet";
@@ -235,7 +234,7 @@ export async function application() {
       modalDiv.appendChild(slidePrevDiv);
     }
 
-    if (!(modalDiv.id == idListSorted[idListSorted.length-1])) {
+    if (!(modalDiv.id == figuresListSorted[figuresListSorted.length-1] + "Modal")) {
       var slideNextDiv = document.createElement("div");
       slideNextDiv.innerHTML = "&#10095";
       slideNextDiv.className = "nextMet";
@@ -481,12 +480,12 @@ export async function application() {
 
   //get ID of currentlyDisplayedModal  
   function getCurrentlyDisplayedModalId() {
-    for (var id = 0; id < idListSorted.length; id++){
-      var modal = document.getElementById(idListSorted[id]);
+    for (var id = 0; id < figuresListSorted.length; id++){
+      var modal = document.getElementById(figuresListSorted[id] + "Modal");
       
       if (modal.style.display == "block"){
-        console.log("modal wird gezeigt: " + idListSorted[id]);
-        return idListSorted[id];
+        //console.log("modal wird gezeigt: " + figuresListSorted[id]);
+        return figuresListSorted[id] + "Modal";
       }
       
     }
@@ -496,10 +495,10 @@ export async function application() {
 
   //slider-function 
   function slide(number) {
-    for (var idNumber = 0; idNumber < idListSorted.length; idNumber++){
+    for (var idNumber = 0; idNumber < figuresListSorted.length; idNumber++){
 
-      if (idListSorted[idNumber] == getCurrentlyDisplayedModalId()) {
-        return idListSorted[idNumber + number];
+      if (figuresListSorted[idNumber] + "Modal" == getCurrentlyDisplayedModalId()) {
+        return figuresListSorted[idNumber + number] + "Modal";
       }
     }
   }
@@ -513,7 +512,7 @@ export async function application() {
   for (var prevBtnNb = 0; prevBtnNb < prevArray.length; prevBtnNb++) {
       
       prevArray[prevBtnNb].onclick = function () {
-        console.log("prevBtn geklickt");
+        //console.log("prevBtn geklickt");
         var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
         var modalWanted = document.getElementById(slide(-1));
         
@@ -525,7 +524,7 @@ export async function application() {
 
   for (var nextBtnNb = 0; nextBtnNb < nextArray.length; nextBtnNb++){
     nextArray[nextBtnNb].onclick = function () {
-      console.log("nextBtn geklickt");
+      //console.log("nextBtn geklickt");
       var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
       var modalWanted = document.getElementById(slide(+1));
         
@@ -571,42 +570,97 @@ export async function application() {
   var geoBtn = document.getElementById("geo");
   var geoImg = document.getElementById("geographie");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //Chronologie
-  /*var displayChrono = function () {
-    taxImg.style.display = "none";
-    geoImg.style.display = "none";
-    chronoImg.style.display = "block";
+
+  function setZeitstrahl(startLeft, fromTop, laenge, arrowPosition) {
+
+    var line = document.getElementById("line");
+    var arrow = document.getElementById("arrow");
+
+    //line
+    line.style.top = fromTop + "%";
+    line.style.position = "absolute";
+    line.style.animation = "slowOpacity";
+    line.style.animationDuration = "3s";
+    line.style.width = laenge + "%"; /*Problem*/
+    line.style.height = "5px";
+    line.style.background = "rgba(0, 0, 0, 0.5)";
+    line.style.left = startLeft + "%";
+    
+    //arrow
+    arrow.style.top = fromTop + "%";
+    arrow.style.position = "absolute";
+    arrow.style.animation = "slowOpacity";
+    arrow.style.animationDuration = "3s";
+    arrow.style.border = "10px solid rgba(0, 0, 0, 0.5)";
+    arrow.style.fontSize = "0;line-height:0;height:0;padding:0;margin:0";
+    arrow.style.borderTopColor = "transparent";
+    arrow.style.borderRightColor = "transparent";
+    arrow.style.borderBottomColor = "transparent";
+    arrow.style.left = arrowPosition + "%";
+    arrow.style.transform = "translate(0%, -40%)";
   }
-  var opacityChrono = function () {
-    taxImg.style.opacity = "0";
-    geoImg.style.opacity = "0";
-    chronoImg.style.opacity = "1";
-  }
+
+
   
-  chronoBtn.onclick = function (){
-    displayChrono();
-    opacityChrono();
+
+  var startIconsBy = 10;
+  var abstaendeZwischenIcons = 10;
+  var fromTop = 50;
+  var iconPosition = startIconsBy;
+
+
+  function setCoordinatesChrono() {
+    iconPosition = startIconsBy;
+    for (var h = 0; h < figuresListSorted.length; h++){
+
+      var figurIcon = document.getElementById(figuresListSorted[h] + "Wrapper");
+      figurIcon.style.top = fromTop + "%";
+      figurIcon.style.left = iconPosition + "%";
+      
+      iconPosition += abstaendeZwischenIcons;
+    }
+    setZeitstrahl(startIconsBy, fromTop, iconPosition-startIconsBy, iconPosition); //arguments: startLeft, fromTop, laenge, arrowPosition
   }
-  */
+
+  
+
+
+
   chronoBtn.onclick = function () {
     taxImg.style.display = "none";
     
     geoImg.style.display = "none";
-    
 
     chronoImg.style.display = "block";
-    chronoImg.style.animationPlayState = "running";
-
-    console.log("Die Chronofunktion funktioniert");
-
-    for (var figur in leude){
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      console.log(figurIcon);
-      figurIcon.style.top = leude[figur].koordinaten.chronologie.top + "%";
-      figurIcon.style.left = leude[figur].koordinaten.chronologie.left + "%";
-    }
-
+    setCoordinatesChrono();
+    
   }
+
+
+
+
+
+
+
+
+
+
+
 
 
   //Taxonomie
@@ -620,21 +674,74 @@ export async function application() {
     taxImg.style.display = "block";
     taxImg.style.animationPlayState = "running";
     
+    
     console.log("Die Taxfunktion funktioniert");
-     
+    
+    //faunaDiv-data als startpunkt
+    var figurPositionFaunaTop = document.getElementById("fauna").offsetTop;
+    var figurPositionFaunaLeft = document.getElementById("fauna").offsetLeft;
+
+    //floraDiv-data als startpunkt 
+    var figurPositionFloraTop = document.getElementById("flora").offsetTop;
+    var figurPositionFloraLeft = document.getElementById("flora").offsetLeft;
+
+    //mitzählen für Prozentangaben
+    var countFauna = 0;
+    var countFlora = 0;
+    var countElemente = 0;
+    var countSonstiges = 0;
+
     for (var figur in leude){
       var figurIcon = document.getElementById(figur + "Wrapper");
-      console.log(figurIcon);
-      figurIcon.style.top = leude[figur].koordinaten.taxonomie.top + "%";
-      figurIcon.style.left = leude[figur].koordinaten.taxonomie.left + "%";
+    
+      
+
+      if (leude[figur].taxonomie == "fauna"){
+        //console.log("figur zählt zu fauna");
+        
+        figurIcon.style.top = figurPositionFaunaTop + "px";
+        figurIcon.style.left = figurPositionFaunaLeft + "px";
+        
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        figurPositionFaunaLeft += figurIcon.offsetWidth;
+
+        countFauna += 1;
+
+      } else if (leude[figur].taxonomie == "flora"){
+        //console.log("figur zählt zu flora");
+        
+        figurIcon.style.top = figurPositionFloraTop + "px";
+        figurIcon.style.left = figurPositionFloraLeft + "px";
+
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        figurPositionFloraLeft += figurIcon.offsetWidth;
+
+        countFlora +=1;
+
+      } else if (leude[figur].taxonomie == "elemente"){
+        countElemente += 1;
+      } else if (leude[figur].taxonomie == "sonstiges"){
+        countSonstiges += 1;
+      }
+
     }
+    
+    var all = countFauna + countFlora + countElemente + countSonstiges;
+    var faunaPercent = countFauna/all*100;
+    var floraPercent = countFlora/all*100;
+    var elementePercent = countElemente/all*100;
+    var sonstigesPercent = countSonstiges/all*100;
 
-    /*
-    var actaeon = document.getElementById("actaeon");
-    actaeon.style.left = "10%";
-    */
-
+    console.log(faunaPercent + floraPercent);
+    
   }
+
+
+
+
+
+
+
 
   //Geographie
   geoBtn.onclick = function () {
@@ -644,11 +751,6 @@ export async function application() {
 
     geoImg.style.display = "block";
     geoImg.style.animationPlayState = "running";
-
-    //var actaeon = document.getElementById("actaeonBtn");
-    actaeonBtn.style.left = "80%";
-    actaeonBtn.style.top = "10%";
-    console.log("Die Geofunktion funktioniert");
 
 
     for (var figur in leude){
@@ -724,7 +826,6 @@ export async function application() {
     taxImg.style.opacity = "0";
     taxImg.style.display = "none";
 
-    chronoImg.style.opacity = "0";
     chronoImg.style.display = "none";
 
     geoImg.style.opacity = "0";
