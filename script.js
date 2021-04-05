@@ -113,12 +113,26 @@ export async function application() {
   
   var kategorienUndPopoverDiv = document.getElementById("kategorienUndPopoverDiv");
 
-  function createIcon(data) {
+  //zufallszahlgenerierung
+  function rand (min, max) {
+    var zufallszahl = 0; 
+    
+    do { //zufallszahl soll zwischen dem Bereich -100 und 0 oder 100 und 200 liegen
+      zufallszahl = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    while (zufallszahl > -10 && zufallszahl < 110);
+    
+    return zufallszahl;
+  }
+  //console.log("zufallszahl: " + rand(-100,200));
+
+
+  function createIcon(data) { //startposition anywhere (animation)
     var iconDiv = document.createElement("div");
     iconDiv.id = data.name.toLowerCase() + "Wrapper";
     iconDiv.className="popover__wrapper";
-    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
-    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
+    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%"; //rand(-100,200) + "%";
+    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%"; //rand(-100,200) + "%";
     kategorienUndPopoverDiv.appendChild(iconDiv);
 
     var iconImg = document.createElement("img"); 
@@ -131,8 +145,13 @@ export async function application() {
     iconDiv.appendChild(iconImg);
   }
 
-
-
+  /*
+  function iconPositioning(data) { //right positioning
+    var iconDiv = document.getElementById(data.name.toLowerCase() + "Wrapper");
+    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
+    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
+  }
+*/
 
 
   
@@ -148,9 +167,9 @@ export async function application() {
   function createPopover(data) {
     var popoverContentDiv = document.createElement("div"); 
     popoverContentDiv.id = data.name.toLowerCase() + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
-    popoverContentDiv.className = "popover__content";
-    popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-18)) + "%";
-    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 10)+ "%";
+    popoverContentDiv.className = "popover__content"; 
+    popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
+    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 15)+ "%";
     popoverContentDiv.style.visibility = "hidden";
     kategorienUndPopoverDiv.appendChild(popoverContentDiv);
 
@@ -450,6 +469,7 @@ export async function application() {
   function allesAufrufen() {
     for (var key in leude){
       createIcon(leude[key]);
+      //iconPositioning(leude[key]);
       createPopover(leude[key]);
       popoverAufruf(leude[key]);
       modalAufruf(leude[key]); //createModal wird innerhalb dieser Funktion aufgerufen
@@ -619,7 +639,7 @@ export async function application() {
   
 
   var startIconsBy = 10;
-  var abstaendeZwischenIcons = 10;
+  var abstaendeZwischenIcons = 6;
   var fromTop = 50;
   var iconPosition = startIconsBy;
 
@@ -699,10 +719,13 @@ export async function application() {
     
 
     for (var figur in leude){
+      
+      //ICONS VERSCHIEBEN
       var figurIcon = document.getElementById(figur + "Wrapper");
+      var figurPopover = document.getElementById(figur + "Popover");
       
       
-
+      //der richtigen Taxonomie zuordnen
       if (leude[figur].taxonomie == "fauna"){
         //console.log("figur zählt zu fauna");
         
@@ -719,6 +742,8 @@ export async function application() {
         
         figurIcon.style.top = figurPositionFloraTop + "px";
         figurIcon.style.left = figurPositionFloraLeft + "px";
+        //figurPopover.style.top = figurPositionFloraTop - (-10) + "px"; //= (data.koordinaten.unorganisiert.top - (-10)) + "%";
+        //figurPopover.style.left = figurPositionFloraLeft -15 + "px"; //= (data.koordinaten.unorganisiert.left - 15)+ "%";
 
         //Breite des gesetzten Icons zur Position des nächsten hinzufügen
         figurPositionFloraLeft += figurIcon.offsetWidth;
@@ -726,12 +751,31 @@ export async function application() {
         countFlora +=1;
 
       } else if (leude[figur].taxonomie == "elemente"){
-        countElemente += 1;
+
+        figurIcon.style.top = figurPositionElementeTop + "px";
+        figurIcon.style.left = figurPositionElementeLeft + "px";
+
+        figurPositionElementeLeft += figurIcon.offsetWidth;
+
+        countElemente +=1;
+
+
       } else if (leude[figur].taxonomie == "sonstiges"){
+        
+        figurIcon.style.top = figurPositionSonstigesTop + "px";
+        figurIcon.style.left = figurPositionSonstigesLeft + "px";
+
+        figurPositionSonstigesLeft += figurIcon.offsetWidth;
+
         countSonstiges += 1;
       }
-
+      
+       
+       
     }
+
+
+    
 
     //balkenlaengen 
     document.getElementById("fauna").style.width = figurPositionFaunaLeft + "px";
@@ -741,19 +785,57 @@ export async function application() {
 
     //prozentangaben taxonomie
     var all = countFauna + countFlora + countElemente + countSonstiges;
-    var percentNumbers = [countFauna/all*100, countFlora/all*100, countElemente/all*100, countSonstiges/all*100];
+    var percentNumbers = [Math.round(countFauna/all*100*10)/10, Math.round(countFlora/all*100*10)/10, Math.round(countElemente/all*100*10)/10, Math.round(countSonstiges/all*100*10)/10];
 
     var percentPArray = document.getElementsByClassName("percentTopright");
 
     var p = 0;
     for (var percentP = 0; percentP < percentPArray.length; percentP++) {
       percentPArray[percentP].innerHTML = percentNumbers[p] + "%";
+      percentPArray[percentP].style.display = "block";
       p++;
     }
+
+    
     
     
   }
 
+  //TaxonomieNames anzeigen 
+  var arrayTaxonomieNames = [];  
+
+
+  for (key in leude){
+    var iconWrapper = document.getElementById(key + "Wrapper");
+    var pTaxonomie = document.createElement("div");
+    pTaxonomie.className = "taxonomieNames";
+    pTaxonomie.innerHTML = leude[key].verwandlung;
+    iconWrapper.appendChild(pTaxonomie);
+    arrayTaxonomieNames.push(pTaxonomie);
+  }
+
+  
+  var taxKategoryArr = ["fauna", "flora", "elemente", "sonstiges"];
+
+  for (var t = 0; t< taxKategoryArr.length; t++){
+    
+    document.getElementById(taxKategoryArr[t]).onmouseover = function () {
+      for (var n = 0; n<arrayTaxonomieNames.length; n++){
+        arrayTaxonomieNames[n].style.display = "block";
+      }
+    }
+    
+    document.getElementById(taxKategoryArr[t]).onmouseout = function () {
+      for (var n = 0; n<arrayTaxonomieNames.length; n++){
+        arrayTaxonomieNames[n].style.display = "none";
+      }
+    }
+
+  }
+
+
+
+  
 
 
 

@@ -275,9 +275,7 @@ button { /* unterscheidet sich sonst von span */
   width: 60%;
   overflow-x: auto;
 }
-.modalFooter {
-  
-}
+
 
 .close {
   color: #aaaaaa;
@@ -393,16 +391,14 @@ button { /* unterscheidet sich sonst von span */
   /*margin-top: 1.5rem;*/
   display: inline-block;
   transition: left 1s ease-out, top 1s ease-out;
-}
-
-.iconImg {
   transform: translate(-50%, -50%); /* centered images! */
 }
+
 
 .iconImg:hover {
   opacity: 0.8; /* Fehler bei aktuellem Wrapper, wenn Wrapper genauso groß, kann hover dem Wrapper übergeben werden*/
   cursor: pointer;
-}   
+}  
 
 
 .popover__content {
@@ -414,7 +410,7 @@ button { /* unterscheidet sich sonst von span */
   /*left: calc(50% - 100px - 1.5rem);*/
   transform: translate(0, 10px);
   background-color: rgba(0, 0, 0, 0.9); 
-  padding: 1.5rem;
+  padding: 25px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   width: auto;
 }
@@ -549,7 +545,6 @@ button { /* unterscheidet sich sonst von span */
 }
 
 #fauna {
-  
   top:25%;
   left:15%;
   background-color: rgba(115, 48, 48, 0.8);
@@ -577,6 +572,14 @@ button { /* unterscheidet sich sonst von span */
   background-color: #733030;
 }
 
+
+.taxonomieNames {
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+  font-size: 12px;
+  color: white;
+  display: none;
+}
 
 
 

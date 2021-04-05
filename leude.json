@@ -7,8 +7,8 @@
         "taxonomie": "fauna",
         "koordinaten": {
             "unorganisiert": {
-                "top": "0",
-                "left": "35"
+                "top": "20",
+                "left": "10"
                 },
             "geographie": {
                 "top": "80",
@@ -330,5 +330,239 @@
             "",
             ""
         ] 
+    },
+
+    "echo": {
+        "name": "Echo",
+
+        "icon": "Figuren/Echo/Echo_Icon.png",
+        "width": "50",
+        "taxonomie": "elemente",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "31.5",
+                "left": "60"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Echo/Alexandre_Cabanel_-_Echo.jpg", 
+        "source": "https://de.wikipedia.org/wiki/Echo_<br>(Mythologie)#/media/Datei:Alexandre_Cabanel_-_Echo.jpg",
+        "alt": "Alexandre Cabanel, Echo, 1887",
+        
+        "ovMet": "3,339-510",
+        "verwandlung": "Stein",
+        "grund": "Einsamkeit aufgrund unerwiederter Liebe zu Narciss", 
+        "verwandler": "Juno",
+        "ort": "? (nachsehen)",
+        "iconclass": "97HH5 als sie um den toten Narcissus trauert, wird die Nymphe Echo in eine Stimme transformiert, ihre Knochen werden dagegen in Steine verwandelt (Ovid, Metamorphosen III 398)",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    },
+
+
+    "hyacinthus": {
+        "name": "Hyacinthus",
+
+        "icon": "Figuren/Hyacinthus/Hyacinthus_Icon.png",
+        "width": "65",
+        "taxonomie": "flora",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "31.5",
+                "left": "70"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Hyacinthus/Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project.jpg", 
+        "source": "https://commons.wikimedia.org/wiki/File:Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project.jpg",
+        "alt": "Giambattista Tiepolo, The Death of Hyacinthus, ca. 1752/1753",
+        
+        "ovMet": "10,162-216",
+        "verwandlung": "Hyacinthe",
+        "grund": "Schuldgefühle Apollos für Hyacinthus' Tod", 
+        "verwandler": "Apollo",
+        "ort": "? (nachsehen)",
+        "iconclass": "97B5 als Hyacinthus bei einem Unfall von Apollo mit einem Diskuswurf getötet worden ist, verwandelt der Gott sein Blut in eine Hyazinthe",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    }, 
+
+    "galatea": {
+        "name": "Galatea",
+
+        "icon": "Figuren/Galatea/Galatea_Icon.png",
+        "width": "65",
+        "taxonomie": "sonstiges",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "50",
+                "left": "60"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Galatea/0_Pygmalion_et_Galatée_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.jpg", 
+        "source": "https://de.m.wikipedia.org/wiki/Datei:<br>0_Pygmalion_et_Galat%C3%A9e_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.JPG",
+        "alt": "Anne Louis Girodet-Trioson, Pygmalion et Galatée, 1819",
+        
+        "ovMet": "10,243-297",
+        "verwandlung": "Frau",
+        "grund": "aus Mitleid verwandelt Venus Pygmalions Statue, in die er sich verliebt hat, in eine Frau", 
+        "verwandler": "Venus",
+        "ort": "? (nachsehen)",
+        "iconclass": "97O5 das Gebet des Pygmalion wird von Venus erhört: eine Statue (später Galatea genannt) erwacht zum Leben (Ovid, Metamorphosen X 280)",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    }, 
+    
+    "iphigenie": {
+        "name": "Iphigenie",
+
+        "icon": "Figuren/Iphigenie/Iphigenie_Icon.png",
+        "width": "50",
+        "taxonomie": "fauna",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "30"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Iphigenie/Collection_Motais_de_Narbonne_-_Le_sacrifice_d'Iphigénie_-_Gabriel-François_Doyen.jpg", 
+        "source": "https://de.m.wikipedia.org/wiki/Datei:Collection_Motais_de_Narbonne_-_Le_sacrifice_d%27Iphig%C3%A9nie_-_Gabriel-Fran%C3%A7ois_Doyen.jpg",
+        "alt": "Gabriel François Doyen, The sacrifice of Iphigenia, 1749",
+        
+        "ovMet": "12,24-38",
+        "verwandlung": "Hirschkuh",
+        "grund": "zur Rettung vor der Opferung", 
+        "verwandler": "Diana",
+        "ort": "? (nachsehen)",
+        "iconclass": "94D1321 Iphigenie wird von Diana gerettet, ein Hirsch (eine Hirschkuh) erscheint an ihrer Stelle",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    },
+
+    "alpheusundarethusa": {
+        "name": "Alpheusundarethusa",
+
+        "icon": "Figuren/Alpheus_and_Arethusa/Alpheus_and_Arethusa_Icon.png",
+        "width": "70",
+        "taxonomie": "elemente",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "30",
+                "left": "30"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Alpheus_and_Arethusa/Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg", 
+        "source": "https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg",
+        "alt": "Luigi Garzi (zugeschrieben), Alpheus and Arethusa, Ende 17./Anfang 18. Jh.",
+        
+        "ovMet": "5,572-641",
+        "verwandlung": "Quelle",
+        "grund": "Flucht vor Alpheus (Arethusa) / Gekränktheit (Alpheus)", 
+        "verwandler": "Götter / Zeit",
+        "ort": "? (nachsehen)",
+        "iconclass": "97HH1 Diana verwandelt ihre Begleiterin Arethusa in eine Quelle, nachdem sie ihr zunächst die Gestalt einer Wolke verliehen hatte, damit sie dem Flußgott Alpheus entkommen konnte (Ovid, Metamorphosen V 621) / <br>97H2 als er sich in Liebe nach Arethusa verzehrt, wird der Jäger Alpheus in einen Flußgott verwandelt (Pausanias V 7, 2)",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    },
+
+
+    "gefaehrtendesulixes": {
+        "name": "Gefaehrtendesulixes",
+
+        "icon": "Figuren/Gefaehrtendesulixes/Gefaehrten_Icon.png",
+        "width": "60",
+        "taxonomie": "fauna",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "40",
+                "left": "30"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Gefaehrtendesulixes/Jacob_Jordaens_(I)_-_Ulysses_threatening_Circe,_1630-35.jpg", 
+        "source": "https://upload.wikimedia.org/wikipedia/commons/6/63/Jacob_Jordaens_%28I%29_-_Ulysses_threatening_Circe%2C_1630-35.jpg",
+        "alt": "Jacob Jordaens, Ulysses threatening Circe, 1630",
+        
+        "ovMet": "14,223-308",
+        "verwandlung": "Schweine",
+        "grund": "trinken aus einem Kelch der Zauberin Cirke", 
+        "verwandler": "Circe",
+        "ort": "Insel Aiaia",
+        "iconclass": "97C8 die Gefährten des Odysseus werden in Schweine verwandelt, als sie aus dem Kelch trinken, der ihnen von der Zauberin Circe angeboten worden ist (Ovid, Metamorphosen XIV 276)",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
     }
+
+
+
+
 }
