@@ -127,19 +127,20 @@ button { /* unterscheidet sich sonst von span */
   outline: none;
 }
 
-/* --------------- Info-Button -------------- */
+
+/* --------------- other Info-Buttons -------------- */
 .infoBtn {
-  background-color: #733030;
+  background-color: transparent;
   float: right;
   display: block; 
   position: fixed;
   border: none;
   border-radius: 4px;
   z-index: 1;
-  right: 2%;
-  top: 2%;
+  right: 4%;
+  top: 4%;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -147,8 +148,8 @@ button { /* unterscheidet sich sonst von span */
   cursor: pointer;
 }
 .infoBtn:hover {
-  background-color: #994040;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  /*transform-origin: center;*/
 }
 
 /* -------------- Modal-Buttons ------------- */

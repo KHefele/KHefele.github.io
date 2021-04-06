@@ -354,7 +354,7 @@
         "alt": "Alexandre Cabanel, Echo, 1887",
         
         "ovMet": "3,339-510",
-        "verwandlung": "Stein",
+        "verwandlung": "Felsen",
         "grund": "Einsamkeit aufgrund unerwiederter Liebe zu Narciss", 
         "verwandler": "Juno",
         "ort": "? (nachsehen)",
@@ -524,6 +524,84 @@
     },
 
 
+
+    "caesar": {
+        "name": "Caesar",
+
+        "icon": "Figuren/Caesar/Caesar_Icon.png",
+        "width": "60",
+        "taxonomie": "elemente",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "40",
+                "left": "20"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Caesar/Caesar.png", 
+        "source": "https://www.the-artinspector.de/kopie-von-questions/was-ist-eine-%E2%80%9Eapotheose%E2%80%9C%3F",
+        "alt": "Louis Laguerre, Apotheose Caesars, 1692-1694",
+        
+        "ovMet": "15,745-851",
+        "verwandlung": "Stern",
+        "grund": "ewiges Leben", 
+        "verwandler": "Venus",
+        "ort": "? (nachsehen)",
+        "iconclass": "98B(CAESAR)69 die Apotheose Caesars; seine Seele wird von Venus in einen Kometen verwandelt",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    },
+
+
+    "cygnus": {
+        "name": "Cygnus",
+
+        "icon": "Figuren/Cygnus/Cygnus_Icon.png",
+        "width": "60",
+        "taxonomie": "fauna",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "50",
+                "left": "20"
+                },
+            "geographie": {
+                "top": "80",
+                "left": "60"
+                }
+        },
+
+        "img": "Figuren/Cygnus/zi_muc-f178e33ba392eeb67be124b6e7bfc41649c53411.jpg", 
+        "source": "Prometheus",
+        "alt": "?, ?, ?",
+        
+        "ovMet": "12,64-168",
+        "verwandlung": "Schwan",
+        "grund": "Rettung", 
+        "verwandler": "Neptun",
+        "ort": "? (nachsehen)",
+        "iconclass": "97D16 weil Philius sich weigert, seinem Freund Cycnus (dem Sohn Apollos) den Stier zu geben, den er mit der Hilfe des Herkules eingefangen hat, stürzt sich Cycnus von einer Klippe und wird in einen Schwan verwandelt (Ovid, Metamorphosen VII 371)",
+        
+        "uebersetzung": "",
+        "originaltext": "",
+        "vergleichsbilder": [
+            "",
+            "",
+            "",
+            ""
+        ] 
+    },
+
     "gefaehrtendesulixes": {
         "name": "Gefaehrtendesulixes",
 
@@ -561,8 +639,6 @@
             ""
         ] 
     }
-
-
 
 
 }

@@ -274,7 +274,7 @@ export async function application() {
     var headerLinkInput = "https://de.wikipedia.org/wiki/" + data.name;
     headerLink.setAttribute("href", headerLinkInput);
     headerLink.setAttribute("target", "_blank");
-    headerLink.innerHTML = "  &#x2139;";
+    headerLink.innerHTML = " <img src='Icons/iconmonstr-info-6-240.png' style='width: 13px; margin-bottom: 7px'>";
     sup.appendChild(headerLink);
 
     var imgDiv = document.createElement("div");
@@ -639,7 +639,7 @@ export async function application() {
   
 
   var startIconsBy = 10;
-  var abstaendeZwischenIcons = 6;
+  var abstaendeZwischenIcons = 10;
   var fromTop = 50;
   var iconPosition = startIconsBy;
 
