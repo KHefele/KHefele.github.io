@@ -128,7 +128,7 @@ button { /* unterscheidet sich sonst von span */
 }
 
 
-/* --------------- other Info-Buttons -------------- */
+/* --------------- Info-, Quiz- & Book-Button -------------- */
 .infoBtn {
   background-color: transparent;
   float: right;
@@ -137,20 +137,47 @@ button { /* unterscheidet sich sonst von span */
   border: none;
   border-radius: 4px;
   z-index: 1;
-  right: 4%;
-  top: 4%;
   color: white;
-  padding: 10px 10px;
+  padding: 10px 10px 20px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
 }
+
+.infoHoverName {
+  position: absolute;
+  color: #733030;
+  /*text-align: center;*/
+  display: none;
+  font-family: 'Crimson Text', serif;
+}
+
+
 .infoBtn:hover {
   background-color: rgba(0, 0, 0, 0.3);
   /*transform-origin: center;*/
 }
+
+#infoBtn{
+  right: 4%;
+  top: 4%;
+}
+
+#quizBtn{
+  right: 4%;
+  top: 12.5%;
+}
+
+#bookBtn{
+  right: 4%;
+  top: 21%;
+}
+
+
+
+
 
 /* -------------- Modal-Buttons ------------- */
 .modalBtns {
@@ -391,13 +418,13 @@ button { /* unterscheidet sich sonst von span */
   position: absolute;
   /*margin-top: 1.5rem;*/
   display: inline-block;
-  transition: left 1s ease-out, top 1s ease-out;
+  transition: left 1s ease-out, top 1s ease-out, opacity 0.5s ease-out;
   transform: translate(-50%, -50%); /* centered images! */
 }
 
 
 .iconImg:hover {
-  opacity: 0.8; /* Fehler bei aktuellem Wrapper, wenn Wrapper genauso groß, kann hover dem Wrapper übergeben werden*/
+  opacity: 0.8;
   cursor: pointer;
 }  
 
@@ -502,19 +529,6 @@ button { /* unterscheidet sich sonst von span */
 
 
 
-/* Erzählfolge */
-
-#timeline {
-
-}
-
-#line {
-
-}
-
-#arrow {
-
-}
 
 
 /* Taxonomie */
@@ -582,6 +596,23 @@ button { /* unterscheidet sich sonst von span */
   display: none;
 }
 
+
+
+
+/*--------------------------------------------*/
+/*                    Quiz                    */
+/*--------------------------------------------*/
+
+.multipleChoise {
+  border: white;
+  border-radius: 4px;
+  height: 3%;
+  width: 10%;
+}
+
+.multipleChoise:hover {
+  background-color: white;
+}
 
 
 

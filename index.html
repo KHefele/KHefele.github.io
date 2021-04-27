@@ -42,16 +42,22 @@
   
     
     <!----------- Chronologie ------------------->
-    <div id="chronologie" style="height:100%; width:100%; position:absolute; display:none;">
+    <div id="chronologie" style="height:50%; display:none;">
       
-      <!-- Timeline -->
+      <!-- Timeline 
       <div id="line"></div>
       <div id="arrow"></div>
-     
+      -->
     </div>
   
     <!----------- Img Geographie ------------------->
-    <img src="Kategorien/map_transparent.svg" width="100%" id="geographie" class="kategory"> 
+    <img src="Kategorien/greece.svg" style="left:20%; top: 10%; height:80%; position:absolute; display:none;" id="geographie" class="kategory"> 
+
+
+
+    <!----------- Alphabet ------------------->
+    <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none;">
+    </div>
 
   </div> <!-- Ende KategorienUndPopoverDiv-->
 
@@ -110,6 +116,22 @@
     </div>
   </div>
 
+    <!--------------- Quiz Modal ----------------->
+    <div id="quizModal" class="infoModal">
+      <div class="modalContent" id="quizStartContent">
+          <h1 style="text-align: center;"><em>Quiz</em></h1>
+          <p class="modalContentLeft">
+            Mit Metamorphosenbildung lässt sich in vielen Situationen punkten. 
+            <br>In welchen Themenbereichen können Sie Ihr Wissen unter Beweis stellen? 
+            <br>Zeigen Sie Ihre Stärken im Quiz.
+          </p>
+          <br>
+          <br>
+          <span class="modalBtns" id="zumQuizBtn">Zum Quiz</span>
+          <br>
+      </div>
+    </div>
+
 
 
 
@@ -145,7 +167,10 @@
 
 
   <h2 class="logo">VISUALIZED OVID</h2>
+  
   <button id="infoBtn" class="infoBtn" ><img src="Icons/iconmonstr-info-6-240.png" style="width: 30px;"></button>
+  <button id="quizBtn" class="infoBtn" ><img src="Icons/iconmonstr-help-6-240.png" style="width: 30px;"></button>
+  <button id="bookBtn" class="infoBtn" ><img src="Icons/iconmonstr-book-18-240.png" style="width: 30px;"></button>
 
 
   <!--------------------------------------------->

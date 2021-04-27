@@ -47,6 +47,53 @@ export async function application() {
 
 
 
+  //Hover Info-Button
+  var infoHoverName = document.createElement("div");
+  infoHoverName.className = "infoHoverName";
+  infoHoverName.innerHTML = "Info";
+  infoBtn.appendChild(infoHoverName);
+
+  infoBtn.onmouseover = function () {
+    infoHoverName.style.display = "block";
+  }
+
+  infoBtn.onmouseout = function () {
+    infoHoverName.style.display = "none";
+  }
+
+  //Hover Quiz-Button
+  var quizBtn = document.getElementById("quizBtn");
+
+  var quizHoverName = document.createElement("div");
+  quizHoverName.className = "infoHoverName";
+  quizHoverName.innerHTML = "Quiz";
+  quizBtn.appendChild(quizHoverName);
+
+  quizBtn.onmouseover = function () {
+    quizHoverName.style.display = "block";
+  }
+
+  quizBtn.onmouseout = function () {
+    quizHoverName.style.display = "none";
+  }
+
+  //Hover Book-Button
+  var bookBtn = document.getElementById("bookBtn");
+
+  var bookHoverName = document.createElement("div");
+  bookHoverName.className = "infoHoverName";
+  bookHoverName.innerHTML = "Gäste";
+  bookHoverName.style.left = "-10";
+  bookBtn.appendChild(bookHoverName);
+
+  bookBtn.onmouseover = function () {
+    bookHoverName.style.display = "block";
+  }
+
+  bookBtn.onmouseout = function () {
+    bookHoverName.style.display = "none";
+  }
+
 
 
 
@@ -104,6 +151,26 @@ export async function application() {
   }
 
 
+  //nach Pentaden sortiert 
+  var erstePentade = [];
+  var zweitePentade = [];
+  var drittePentade = [];
+
+  for (var h = 0; h < figuresListSorted.length; h++){
+    //console.log(ovMetListSorted[h]);
+    if (ovMetListSorted[h] < 5){
+      erstePentade.push(figuresListSorted[h]);
+    } else if (ovMetListSorted[h] > 5 && ovMetListSorted[h] < 10){
+      zweitePentade.push(figuresListSorted[h]);
+    } else {
+      drittePentade.push(figuresListSorted[h]);
+    };
+  }
+
+
+
+
+
 
 
 
@@ -129,7 +196,7 @@ export async function application() {
 
   function createIcon(data) { //startposition anywhere (animation)
     var iconDiv = document.createElement("div");
-    iconDiv.id = data.name.toLowerCase() + "Wrapper";
+    iconDiv.id = data.id + "Wrapper";
     iconDiv.className="popover__wrapper";
     iconDiv.style.top = data.koordinaten.unorganisiert.top + "%"; //rand(-100,200) + "%";
     iconDiv.style.left = data.koordinaten.unorganisiert.left + "%"; //rand(-100,200) + "%";
@@ -139,7 +206,7 @@ export async function application() {
     iconImg.className = "iconImg";
     iconImg.title = data.verwandlung;
     iconImg.src = data.icon;
-    iconImg.id = data.name.toLowerCase() + "Btn"; //Ansprechpartner für onclick function Navigations-Kategorien s.u.
+    iconImg.id = data.id + "Btn"; //Ansprechpartner für onclick function Navigations-Kategorien s.u.
     iconImg.style.width = data.width + "px";
     iconImg.alt = data.alt;
     iconDiv.appendChild(iconImg);
@@ -147,7 +214,7 @@ export async function application() {
 
   /*
   function iconPositioning(data) { //right positioning
-    var iconDiv = document.getElementById(data.name.toLowerCase() + "Wrapper");
+    var iconDiv = document.getElementById(data.id + "Wrapper");
     iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
     iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
   }
@@ -166,10 +233,10 @@ export async function application() {
 
   function createPopover(data) {
     var popoverContentDiv = document.createElement("div"); 
-    popoverContentDiv.id = data.name.toLowerCase() + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
+    popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
     popoverContentDiv.className = "popover__content"; 
     popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
-    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 15)+ "%";
+    popoverContentDiv.style.left = (data.width/2) + "px";
     popoverContentDiv.style.visibility = "hidden";
     kategorienUndPopoverDiv.appendChild(popoverContentDiv);
 
@@ -201,15 +268,18 @@ export async function application() {
 
 
   function popoverAufruf(data) {;
-    var idName = (data.name.toLowerCase()+ "Btn");
+    var idName = (data.id + "Btn");
     var iconBtn = document.getElementById(idName);
     
     iconBtn.onmouseover = function () {
-      var elementWithNameID = document.getElementById(data.name.toLowerCase() + "Popover");
+      var elementWithNameID = document.getElementById(data.id + "Popover");
       elementWithNameID.style.visibility = "visible";
+      // if (){
+      //   var data.id = iconBtn.
+      // }
     }
     iconBtn.onmouseout = function () {
-      var elementWithNameID = document.getElementById(data.name.toLowerCase() + "Popover");
+      var elementWithNameID = document.getElementById(data.id + "Popover");
       elementWithNameID.style.visibility = "hidden";
     }
   }
@@ -233,7 +303,7 @@ export async function application() {
   // Parameter z.B. leude.actaeon
   function createModal(data) {
     var modalDiv = document.createElement("div");
-    modalDiv.id = data.name.toLowerCase() + "Modal";
+    modalDiv.id = data.id + "Modal";
     modalDiv.className = "metamorphosenModal";
     document.body.appendChild(modalDiv);
 
@@ -312,15 +382,19 @@ export async function application() {
     img.src = data.img;
     if (img.naturalWidth > img.naturalHeight) {
       img.width = "300";
+      //tableCol.style.width = "400";
     } else {
       img.height = "300";
+      //tableCol.style.width = "400";
     }
     tableCol.appendChild(img);
 
     var copyrightP = document.createElement("p");
+    copyrightP.className = "copyrightP";
     copyrightP.innerHTML = "&#xa9; " + data.source;
     copyrightP.style.fontSize = "10px";
-    copyrightP.style.color = "#292929";
+    //copyrightP.style.width = "300px";
+    copyrightP.style.color = "#733030";
     tableCol.appendChild(copyrightP);
 
 
@@ -330,6 +404,7 @@ export async function application() {
 
     //innerTable
     var innerTable = document.createElement("table");
+    innerTable.style.marginLeft = "15px";
     
     var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
     var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass:"];
@@ -447,7 +522,7 @@ export async function application() {
   
   function modalAufruf(data) {
     var currentModal = createModal(data);
-    var currentBtn = document.getElementById(data.name.toLowerCase() + "Btn");
+    var currentBtn = document.getElementById(data.id + "Btn");
 
     currentBtn.onclick = function () {
       currentModal.style.display = "block";
@@ -548,10 +623,13 @@ export async function application() {
       var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
       var modalWanted = document.getElementById(slide(+1));
         
+      
+      //modalNow.style.animationFillMode = "backwards";
+      //modalNow.style.animationPlayState = "running";
       modalNow.style.display = "none";
-      modalNow.style.animationPlayState = "running";
 
       modalWanted.style.display = "block";
+      modalWanted.style.animationFillMode = "forwards";
       modalWanted.style.animationPlayState = "running";
     }
   }
@@ -590,6 +668,10 @@ export async function application() {
   var geoBtn = document.getElementById("geo");
   var geoImg = document.getElementById("geographie");
 
+  var alphaBtn = document.getElementById("alpha");
+  var alphaImg = document.getElementById("alphabet");
+
+
 
 
 
@@ -606,10 +688,38 @@ export async function application() {
 
   //Chronologie
 
-  function setZeitstrahl(startLeft, fromTop, laenge, arrowPosition) {
+  for (key in leude){
 
-    var line = document.getElementById("line");
-    var arrow = document.getElementById("arrow");
+    var iconWrapper = document.getElementById(key + "Wrapper");
+    var ovMetStelle = document.createElement("div");
+    ovMetStelle.className = "ovMetStelle";
+    ovMetStelle.style.textAlign = "center";
+    ovMetStelle.innerHTML = leude[key].ovMet;
+    //ovMetStelle.style.position = "absolute";
+    ovMetStelle.style.fontFamily = "'Crimson Text', serif";
+    ovMetStelle.style.fontSize = "10px";
+    ovMetStelle.style.display = "none";
+    iconWrapper.appendChild(ovMetStelle);
+
+  }
+
+
+  function setZeitstrahl(startLeft, fromTop, laenge, arrowPosition, beschrText) {
+
+    var line = document.createElement("div");
+    line.id = "line";
+    document.getElementById("chronologie").appendChild(line);
+    var arrow = document.createElement("div");
+    arrow.id = "arrow";
+    document.getElementById("chronologie").appendChild(arrow);
+
+    var text = document.createElement("div");
+    text.innerHTML = beschrText;
+    text.style.fontFamily = "'Crimson Text', serif";
+    text.style.position = "absolute";
+    text.style.top = fromTop - 1 + "%";
+    text.style.left = startLeft - 10 + "%";
+    document.getElementById("chronologie").appendChild(text);
 
     //line
     line.style.top = fromTop + "%";
@@ -618,7 +728,7 @@ export async function application() {
     line.style.animationDuration = "3s";
     line.style.width = laenge + "%"; /*Problem*/
     line.style.height = "5px";
-    line.style.background = "rgba(0, 0, 0, 0.5)";
+    line.style.background = "rgba(115, 48, 48, 0.6)";
     line.style.left = startLeft + "%";
     
     //arrow
@@ -626,7 +736,7 @@ export async function application() {
     arrow.style.position = "absolute";
     arrow.style.animation = "slowOpacity";
     arrow.style.animationDuration = "3s";
-    arrow.style.border = "10px solid rgba(0, 0, 0, 0.5)";
+    arrow.style.border = "10px solid rgba(115, 48, 48, 0.6)";
     arrow.style.fontSize = "0;line-height:0;height:0;padding:0;margin:0";
     arrow.style.borderTopColor = "transparent";
     arrow.style.borderRightColor = "transparent";
@@ -638,37 +748,90 @@ export async function application() {
 
   
 
-  var startIconsBy = 10;
-  var abstaendeZwischenIcons = 10;
-  var fromTop = 50;
+  var startIconsBy = 20; //from left
+  var abstaendeZwischenIcons = 5;
+  var erstePentadeFromTop = 25;
+  var zweitePentadeFromTop = 50;
+  var drittePentadeFromTop = 75;
   var iconPosition = startIconsBy;
 
+  //var figuresListSorted = [];
+  //var ovMetListSorted = [];
 
-  function setCoordinatesChrono() {
+  function setCoordinates(booleanErsterKlick) {
     iconPosition = startIconsBy;
-    for (var h = 0; h < figuresListSorted.length; h++){
-
-      var figurIcon = document.getElementById(figuresListSorted[h] + "Wrapper");
-      figurIcon.style.top = fromTop + "%";
+    
+    for (var h = 0; h < erstePentade.length; h++){
+      var figurIcon = document.getElementById(erstePentade[h] + "Wrapper");
+      figurIcon.style.top = erstePentadeFromTop + "%";
       figurIcon.style.left = iconPosition + "%";
       
       iconPosition += abstaendeZwischenIcons;
     }
-    setZeitstrahl(startIconsBy, fromTop, iconPosition-startIconsBy, iconPosition); //arguments: startLeft, fromTop, laenge, arrowPosition
+    if (booleanErsterKlick) {
+      setZeitstrahl(startIconsBy, erstePentadeFromTop, iconPosition-startIconsBy, iconPosition, "I. Pentade"); //arguments: startLeft, fromTop, laenge, arrowPosition
+    }
+    
+  
+
+    iconPosition = startIconsBy;
+    
+    for (var h = 0; h < zweitePentade.length; h++){
+      var figurIcon = document.getElementById(zweitePentade[h] + "Wrapper");
+      figurIcon.style.top = zweitePentadeFromTop + "%";
+      figurIcon.style.left = iconPosition + "%";
+      
+      iconPosition += abstaendeZwischenIcons;
+    }
+    if (booleanErsterKlick) {
+    setZeitstrahl(startIconsBy, zweitePentadeFromTop, iconPosition-startIconsBy, iconPosition, "II. Pentade"); //arguments: startLeft, fromTop, laenge, arrowPosition
+    }
+
+    iconPosition = startIconsBy;
+    
+    for (var h = 0; h < drittePentade.length; h++){
+      var figurIcon = document.getElementById(drittePentade[h] + "Wrapper");
+      figurIcon.style.top = drittePentadeFromTop + "%";
+      figurIcon.style.left = iconPosition + "%";
+      
+      iconPosition += abstaendeZwischenIcons;
+    }
+    if (booleanErsterKlick) {
+    setZeitstrahl(startIconsBy, drittePentadeFromTop, iconPosition-startIconsBy, iconPosition, "III. Pentade"); //arguments: startLeft, fromTop, laenge, arrowPosition
+    }
   }
 
   
 
 
-
+  var ersterKlickChrono = true;
   chronoBtn.onclick = function () {
     taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
     
     geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
 
+    alphaImg.style.display = "none";
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
+
+    setCoordinates(ersterKlickChrono);
     chronoImg.style.display = "block";
-    setCoordinatesChrono();
-    
+
+    ersterKlickChrono = false;
+    var ovMetStellen = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStellen.length; x++) {
+      ovMetStellen[x].style.display = "block";
+    }
   }
 
 
@@ -684,15 +847,42 @@ export async function application() {
 
 
   //Taxonomie
+
+
+  for (key in leude){
+    var iconWrapper = document.getElementById(key + "Wrapper");
+    var pTaxonomie = document.createElement("div");
+    pTaxonomie.className = "taxonomieNames";
+    pTaxonomie.innerHTML = leude[key].verwandlung;
+    iconWrapper.appendChild(pTaxonomie);
+  }
+
   taxBtn.onclick = function () {
-    chronoImg.style.display = "none";
-    
+    chronoImg.style.display = "none"; 
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
     
     geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
+
+    alphaImg.style.display = "none";
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
     
     
     taxImg.style.display = "block";
     taxImg.style.animationPlayState = "running";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "block";
+    }
     
     //faunaDiv-data als startpunkt
     var figurPositionFaunaTop = document.getElementById("fauna").offsetTop;
@@ -785,6 +975,8 @@ export async function application() {
 
     //prozentangaben taxonomie
     var all = countFauna + countFlora + countElemente + countSonstiges;
+    // var percentNumbers = [(countFauna/all*100), (countFlora/all*100), (countElemente/all*100), (countSonstiges/all*100)];
+    // var percentNumbers = [(countFauna/all*100).toString().slice(0,4), (countFlora/all*100).toString().slice(0,4), (countElemente/all*100).toString().slice(0,4), (countSonstiges/all*100).toString().slice(0,4)];
     var percentNumbers = [Math.round(countFauna/all*100*10)/10, Math.round(countFlora/all*100*10)/10, Math.round(countElemente/all*100*10)/10, Math.round(countSonstiges/all*100*10)/10];
 
     var percentPArray = document.getElementsByClassName("percentTopright");
@@ -801,37 +993,37 @@ export async function application() {
     
   }
 
-  //TaxonomieNames anzeigen 
-  var arrayTaxonomieNames = [];  
+  //TaxonomieNames anzeigen bei hover über Balken
+  // var arrayTaxonomieNames = [];  
 
 
-  for (key in leude){
-    var iconWrapper = document.getElementById(key + "Wrapper");
-    var pTaxonomie = document.createElement("div");
-    pTaxonomie.className = "taxonomieNames";
-    pTaxonomie.innerHTML = leude[key].verwandlung;
-    iconWrapper.appendChild(pTaxonomie);
-    arrayTaxonomieNames.push(pTaxonomie);
-  }
+  // for (key in leude){
+  //   var iconWrapper = document.getElementById(key + "Wrapper");
+  //   var pTaxonomie = document.createElement("div");
+  //   pTaxonomie.className = "taxonomieNames";
+  //   pTaxonomie.innerHTML = leude[key].verwandlung;
+  //   iconWrapper.appendChild(pTaxonomie);
+  //   arrayTaxonomieNames.push(pTaxonomie);
+  // }
 
   
-  var taxKategoryArr = ["fauna", "flora", "elemente", "sonstiges"];
+  // var taxKategoryArr = ["fauna", "flora", "elemente", "sonstiges"];
 
-  for (var t = 0; t< taxKategoryArr.length; t++){
+  // for (var t = 0; t< taxKategoryArr.length; t++){
     
-    document.getElementById(taxKategoryArr[t]).onmouseover = function () {
-      for (var n = 0; n<arrayTaxonomieNames.length; n++){
-        arrayTaxonomieNames[n].style.display = "block";
-      }
-    }
+  //   document.getElementById(taxKategoryArr[t]).onmouseover = function () {
+  //     for (var n = 0; n<arrayTaxonomieNames.length; n++){
+  //       arrayTaxonomieNames[n].style.display = "block";
+  //     }
+  //   }
     
-    document.getElementById(taxKategoryArr[t]).onmouseout = function () {
-      for (var n = 0; n<arrayTaxonomieNames.length; n++){
-        arrayTaxonomieNames[n].style.display = "none";
-      }
-    }
+  //   document.getElementById(taxKategoryArr[t]).onmouseout = function () {
+  //     for (var n = 0; n<arrayTaxonomieNames.length; n++){
+  //       arrayTaxonomieNames[n].style.display = "none";
+  //     }
+  //   }
 
-  }
+  // }
 
 
 
@@ -846,19 +1038,178 @@ export async function application() {
   //Geographie
   geoBtn.onclick = function () {
     taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
 
     chronoImg.style.display = "none";
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
+
+    alphaImg.style.display = "none";
+    //alphabetNames ausblenden, nach Alphabet-Funktion
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
 
     geoImg.style.display = "block";
     geoImg.style.animationPlayState = "running";
 
 
     for (var figur in leude){
+
       var figurIcon = document.getElementById(figur + "Wrapper");
-      console.log(figurIcon);
-      figurIcon.style.top = leude[figur].koordinaten.geographie.top + "%";
-      figurIcon.style.left = leude[figur].koordinaten.geographie.left + "%";
+      
+      
+      if (leude[figur].ort.startsWith("?")) {
+  
+        figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+        figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+        figurIcon.style.opacity = 0;
+        
+      } else {
+        figurIcon.style.top = leude[figur].koordinaten.geographie.top + "%";
+        figurIcon.style.left = leude[figur].koordinaten.geographie.left + "%";
+      }
+
     }
+  }
+
+
+
+  
+  //Alphabet
+
+  for (key in leude){
+
+    var iconWrapper = document.getElementById(key + "Wrapper");
+    var figurName = document.createElement("div");
+    figurName.className = "alphabetNames";
+    figurName.innerHTML = leude[key].name;
+    figurName.style.position = "absolute";
+    figurName.style.fontFamily = "'Crimson Text', serif";
+    figurName.style.fontSize = "10px";
+    figurName.style.display = "none";
+    figurName.style.left = leude[key].width + "px";
+    iconWrapper.appendChild(figurName);
+
+  }
+
+
+  var unsortedIds = [];
+  for (var figur in leude){
+    unsortedIds.push(leude[figur].id);
+  }
+  var sortedIds = unsortedIds.sort();
+
+
+  var ersterKlickAlpha = true;
+  alphaBtn.onclick = function () {
+
+
+    taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
+
+    chronoImg.style.display = "none";
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
+
+    geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
+    
+    alphaImg.style.display = "block";
+    var alphaNames = document.getElementsByClassName("alphabetNames");
+    for (var i = 0; i < alphaNames.length; i++){
+      //alphaNames[i].style.display = "block";
+      var iconWrapper = document.getElementById(alphaNames[i].parentElement.id);
+      var wrapperHeight = iconWrapper.offsetHeight;
+      console.log(wrapperHeight);
+      var alphaNamesHeight = alphaNames[i].scrollHeight; //WARUM FUNKTIONIERT DAS NICHT?
+      console.log(alphaNames[i] + alphaNamesHeight);
+      //unschöne Notlösung
+      alphaNames[i].style.top = wrapperHeight/2 - 5 + "px";
+
+    }
+
+    
+    var alphaDiv = document.getElementById("alphabet");
+    var startFromTop = 10;
+    var startFromLeft = 10;
+    var spaceBetweenIconsHorizontally = 18;
+    var spaceBetweenLetterBlocksHorizontally = 15;
+    var spaceBetweenIconsVertically = 10;
+
+    var topPosition = startFromTop; //ändern sich im Laufe der Schleife
+    var leftPosition = startFromLeft;
+
+
+    for (var id = 0; id < sortedIds.length; id++){
+
+      if (topPosition >= 70) { // nach unten scrollen verhindern, indem topPosition wieder auf Anfang und leftPosition größer
+        topPosition = startFromTop;
+        leftPosition += spaceBetweenIconsHorizontally;
+      }
+      
+      var letter = sortedIds[id].slice(0,1).toUpperCase(); //nur Anfangsbuchstaben in groß
+        
+
+
+
+      if (id == 0 || letter != sortedIds[id - 1].slice(0, 1).toUpperCase()) { //checken, dass Anfangsbuchstabe nicht bereits angezeigt wird
+
+        if (ersterKlickAlpha) {
+          var letterDiv = document.createElement("h1");
+          letterDiv.innerHTML = letter;
+          letterDiv.style.position = "absolute";
+          letterDiv.style.top = topPosition + "%";
+          letterDiv.style.left = leftPosition + "%";
+          letterDiv.style.color = "#733030";
+          letterDiv.style.animation = "slowOpacity";
+          letterDiv.style.animationDuration = "2s";
+          alphaDiv.appendChild(letterDiv);
+        }
+
+        topPosition += spaceBetweenLetterBlocksHorizontally;
+
+      }
+
+
+   
+      var figurIcon = document.getElementById(sortedIds[id] + "Wrapper"); //get IconWrapper 
+      figurIcon.style.top = topPosition + "%";
+      figurIcon.style.left = (leftPosition + 1.5) + "%";
+
+      topPosition += spaceBetweenIconsVertically;
+
+
+      
+      
+
+    }
+
+
+   
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "block";
+    }
+      
+
+
+
+    ersterKlickAlpha = false;
   }
 
 
@@ -912,10 +1263,28 @@ export async function application() {
     //textModal.style.animationPlayState = "running";
 
     taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
 
     chronoImg.style.display = "none";
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
 
     geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
+
+    //alphabetNames ausblenden, nach Alphabet-Funktion
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
   }
 
 
@@ -923,17 +1292,36 @@ export async function application() {
   var unorgBtn = document.getElementById("unorganisiert");
 
   unorgBtn.onclick = function () {
-    taxImg.style.opacity = "0";
+    //taxImg.style.opacity = "0";
     taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
 
     chronoImg.style.display = "none";
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
 
-    geoImg.style.opacity = "0";
+    //geoImg.style.opacity = "0";
     geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
+
+    //alphaImg.style.opacity = "0";
+    alphaImg.style.display = "none";
+    //alphabetNames ausblenden, nach Alphabet-Funktion
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
 
     for (var figur in leude){
       var figurIcon = document.getElementById(figur + "Wrapper");
-      console.log(figurIcon);
       figurIcon.style.top = leude[figur].koordinaten.unorganisiert.top + "%";
       figurIcon.style.left = leude[figur].koordinaten.unorganisiert.left + "%";
     }
@@ -957,7 +1345,93 @@ export async function application() {
     parentDiv.style.height = window.innerHeight + "px";
   }
 
+  /*
+  //--------------------------------------------//
+  //                   Quiz                     //
+  //--------------------------------------------//
+
+
+  //QuizModal
+  var quizModal = document.getElementById("quizModal");
+  //var quizBtn = document.getElementById("quizBtn"); // bereits oben deklariert!
+
+  quizBtn.onclick = function(){
+    quizModal.style.display = "block";
+  }
+
+  var zumQuizBtn = document.getElementById("zumQuizBtn");
+  var quizStartContent = document.getElementById("quizStartContent");
+
+  zumQuizBtn.onclick = function(){
+    quizStartContent.style.display = "none";
+  }
+
   
+  var punktestand = 0;
+  var bisherigeLeistungen = new Array(10);
+
+  function createQuiz(number) {
+  
+    var bigQuizDiv = document.createElement("div"); //allumfassendes Div
+    bigQuizDiv.className = "modalContent";
+    bigQuizDiv.id = "Frage" + number;
+    quizModal.appendChild(bigQuizDiv);
+
+    var anzahlDiv = document.createElement("div"); //Frage 1/10
+    anzahlDiv.style.textAlign = "right";
+    anzahlDiv.innerHTML = "Frage " + number + "/10";
+    bigQuizDiv.appendChild(anzahlDiv);
+
+    var antwortDiv = document.createElement("div"); //Multiple Choice
+    bigQuizDiv.appendChild(antwortDiv);
+
+    var 
+    className = "multipleChoise";
+    
+
+
+
+
+    //var fragenuebersichtDiv = document.createElement("div"); //Übersicht Leistung
+
+
+    var 
+
+    
+    
+    
+    if ( == ) {
+      innerHTML = "Richtig!";
+      punktestand += 1;
+      return true;
+    } else {
+      innerHTML = "Falsch!";
+      return false;
+    }
+      
+  }
+
+
+
+  for (var c = 1; c < 11; c++){
+    createQuiz(c);
+    bisherigeLeistungen.push()
+  }
+
+  //ErgebnisDiv
+  if (punktestand == ) {
+    
+  }
+
+  //by close, reset arrays!
+
+  */
+
+
+
+
+
+
   //--------------------------------------------//
   //      close modals (windows.onclick)        //
   //--------------------------------------------//
@@ -973,6 +1447,9 @@ export async function application() {
     }
     if (event.target == textModal) {
       textModal.style.display = "none";
+    }
+    if (event.target == quizModal){
+      quizModal.style.display = "none";
     }
 
     //close all metamorphosenModals
