@@ -21,13 +21,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Jan Cossier, Lycaon, 1640",
    
+        "wikidata": "Q501667",
         "ovMet": "1,209-239",
         "verwandlung": "Wolf",
         "grund": "Frevelmut gegenüber Jupiter", 
         "verwandler": "Jupiter",
         "ort": "nach Cyllene und Lycaeus",
         "iconclass": "97C4 Jupiter verwandelt Lycaon in einen Wolf, weil er den Göttern Menschenfleisch als Speise vorgesetzt hat; Lycaons Haus wird vom Blitz zerstört (Ovid, Metamorphosen I 237)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "(209) Jener verbüßt jedenfalls seine Strafe (diese Sorge könnt ihr fahrenlassen).<br>Was aber das Verbrechen, was die Strafe ist, darüber will ich euch aufklären:<br>Der schlechte Ruf dieser Zeit war uns zu Ohren gekommen.<br>Mein Wunsch ist, dass er sich als falsch erweist. So schwebe ich vom hohen Olymp herab und durchwandere als Gott in Menschengestalt die Länder der Erde.<br>Es dauert lange, aufzuzählen, wieviel Schuld sich überall findet: Der schlechte Ruf war besser als die Wirklichkeit.<br><br>(216) Ich hatte den Maenalus – schreckenerregend, weil er wilden Tieren Unterschlupf bietet – und die Cyllene und mit ihr die kalten Fichtenwälder des Lycaeus überschritten (Maenalus, Cyllene und Lycaeus sind Gebirge in der Landschaft Arkadien).<br>Hierauf betrete ich den Wohnsitz und das ungastliche Haus des arkadischen Tyrannen, während andauernde Dunkelheiten die Nacht in die Länge ziehen.<br>Ich gab Zeichen, dass ein Gott gekommen sei; das Volk hatte zu beten angefangen.<br>Lycaon lacht zunächst über die frommen Gebete, bald darauf spricht er:<br>„Ich werde mit klaren Mitteln prüfen, ob dieser ein Gott oder ein Sterblicher ist, und der wahre Sachverhalt wird nicht anzuzweifeln sein.“<br>Er hat vor, mich Erhabenen nachts im Schlaf mit einem unvermuteten Tod zu verderben:<br>Das gefällt ihm als Prüfung der Wahrheit.",
         "originaltext": "(209) ‘ille quidem poenas (curam hanc dimittite!) solvit <br>quod tamen admissum, quae sit vindicta, docebo.<br>Contigerat nostras infamia temporis aures; quam cupiens falsam summo delabor Olympo et deus humana lustro sub imagine terras.<br>Longa mora est, quantum noxae sit ubique repertum, enumerare: minor fuit ipsa infamia vero.<br><br>(216) Maenala transieram latebris horrenda ferarum et cum Cyllene gelidi pineta Lycaei:<br>Arcadis hinc sedes et inhospita tecta tyranni ingredior, traherent cum sera crepuscula noctem.<br>Signa dedi venisse deum, vulgusque precari coeperat:<br>inridet primo pia vota Lycaon, mox ait “experiar deus hic discrimine aperto an sit mortalis: nec erit dubitabile verum.”<br>Nocte gravem somno necopina perdere morte comparat:<br>Haec illi placet experientia veri;",
         "vergleichsbilder": [
@@ -64,13 +70,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/File:Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Gerbrand van den Eeckhout, Io, 1672",
 
+        "wikidata": "Q179014",
         "ovMet": "1,568-688; 713-750",
         "verwandlung": "Kuh",
         "grund": "Vertuschen des Seitensprungs vor Juno", 
         "verwandler": "Jupiter",
         "ort": "nach den Triften von Lerna",
         "iconclass": "97CC6 um ihre Entdeckung durch Jupiter zu verhindern, verwandelt Juno Io in eine Kuh (Ovid, Metamorphosen I 611)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "(568) In Hämonien (Thessalien) liegt ein Hain, Tempe genannt, rings umgeben von einem steil ansteigenden Wald.<br>Durch diesen wälzt sich der Peneus (Peneios), der tief im Pindus (Grenzgebirge von Thessalien) entspringt. Mit schäumenden Fluten und in mächtigem Sturz sammelt er Wolken, die zarte Nebelschleier vor sich her treiben, und durch sein Aufspritzen lässt er es bis auf die Wälder ganz oben regnen und durch seinen Lärm zermürbt er ein größeres Gebiet als (nur) die benachbarte Umgebung.<br>Das ist die Heimat, der Wohnsitz, das sind die Heiligtümer des großen Stromes.<br>Hier saß er in einer Höhle, die aus den Klippen entstanden war und sprach Recht über die Gewässer und über die Nymphen, die die Fluten bewohnen.<br><br>(577) Hier strömen zuerst die einheimischen Flüsse zusammen, unschlüssig, ob sie dem Vater gratulieren oder ob sie im Beileid wünschen sollen: der von Pappeln umsäumte Spercheus, der rastlose Enipeus, der greise Apidanus, der sanfte Amphrysus und Aeas;<br>bald auch die anderen Flüsse, die ihre Fluten, welche ihr Ungestüm nach hier und dort trägt und die von den Irrwegen ermüdet sind, ins Meer führen.",
         "originaltext": "(568) Est nemus Haemoniae, praerupta quod undique claudit<br>silva: vocant Tempe; per quae Peneos ab imo<br>effusus Pindo spumosis volvitur undis<br>deiectuque gravi tenues agitantia fumos<br>nubila conducit summisque adspergine silvis<br>inpluit et sonitu plus quam vicina fatigat:<br>haec domus, haec sedes, haec sunt penetralia magni<br>amnis, in his residens facto de cautibus antro,<br>undis iura dabat nymphisque colentibus undas.<br><br>(577) conveniunt illuc popularia flumina primum,<br>nescia, gratentur consolenturne parentem,<br>populifer Sperchios et inrequietus Enipeus<br>Apidanosque senex lenisque Amphrysos et Aeas,<br>moxque amnes alii, qui, qua tulit inpetus illos,<br>in mare deducunt fessas erroribus undas.",
         "vergleichsbilder": [
@@ -107,13 +119,19 @@
         "source": "<a href='https://de.wikipedia.org/wiki/Datei:Lucas_Cranach_d._%C3%84._012.jpg' target='_blank'>Wikipedia</a>",
         "alt": "Lucas Cranach d. Ä., Aktaeon, ca. 1540",
 
+        "wikidata": "Q208531",
         "ovMet": "3,131-252",
         "verwandlung": "Hirsch",
         "grund": "Erblickt nackte Diana bei der Jagd", 
         "verwandler": "Diana",
         "ort": "Tal Gargaphie in Böotien",
         "iconclass": "97C1 Als Strafe dafür, daß er sie beim Baden beobachtet hat, verwandelt Diana den Jäger Aktäon in einen Hirsch (Ovid, Metamorphosen III, 193)",
-        
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=767&cat_3=2556",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Actaeon",
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Actaeon?uselang=de"
+        },
+
         "uebersetzung": "(131) Schon stand Theben da; und dich, Cadmus, konnte man schon als jemanden ansehen, der durch seine Verbannung zum Erfolg kam:<br>Als Schwiegerkinder bekamst Du Mars und Venus, rechne den Nachwuchs von einer solch bedeutenden Gattin hinzu, so viele Töchter und Söhne und auch Enkel als teure Pfänder, die bereits junge Männer waren.<br>Aber freilich muss man immer auf den letzten Tag eines Menschen schauen und niemand darf vor seinem Tod und vor seinem Begräbnis glücklich genannt werden.<br><br>(138) Einen ersten Anlass zur Trauer, Cadmus, gab dir dein Enkel und die seltsamen Hörner, die seiner Stirn entsprossen, und ihr Hunde, gesättigt vom Blut eures Herrn;<br>wenn du aber gründlich nachforschst, wirst du auf kein Verbrechen stoßen, sondern auf einen Schicksalsschlag, der ihn traf; denn welches Verbrechen wäre ein Irrtum?",
         "originaltext": "(131) Iam stabant Thebae, poteras iam, Cadme, videri<br>exilio felix: soceri tibi Marsque Venusque<br>contigerant; huc adde genus de coniuge tanta,<br>tot natos natasque et, pignora cara, nepotes,<br>hos quoque iam iuvenes; sed scilicet ultima semper<br>exspectanda dies hominis, dicique beatus<br>ante obitum nemo supremaque funera debet.<br><br>(131) Prima nepos inter tot res tibi, Cadme, secundas<br>causa fuit luctus, alienaque cornua fronti<br>addita, vosque, canes satiatae sanguine erili.<br>at bene si quaeras, Fortunae crimen in illo,<br>non scelus invenies; quod enim scelus error habebat?<br>Mons erat infectus variarum caede ferarum,<br>iamque dies medius rerum contraxerat umbras<br>et sol ex aequo meta distabat utraque,<br>cum iuvenis placido per devia lustra vagantes<br>participes operum conpellat Hyantius ore:<br>‘lina madent, comites, ferrumque cruore ferarum,<br>fortunaeque dies habuit satis; altera lucem",
         "vergleichsbilder": [
@@ -151,13 +169,19 @@
         "source": "<a href='https://de.wikipedia.org/wiki/Datei:Piero_del_Pollaiolo_(attr.)_Apollo_and_Daphne.jpg' target='_blank'>Wikipedia</a>",
         "alt": "Piero del Pollaiolo, Apollo und Daphne, 1470-1480",
         
+        "wikidata": "",
         "ovMet": "1,452-451",
         "verwandlung": "Lorbeer",
         "grund": "zum Schutz vor dem Verfolger Apollo", 
         "verwandler": "Peneus (Daphnes Vater)",
         "ort": "? (nachsehen)",
         "iconclass": "97AA1 auf der Flucht vor Apollo wird Daphne von ihrem Vater Peneus in einen Lorbeerbaum verwandelt (Ovid, Metamorphosen I 548)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "(452) Die erste Liebe Phoebus‘ war Daphne, des Peneus Tochter –<br>eine Liebe, die ihm kein blindes Geschick schenkte, sondern der ungestüme Zorn Cupidos.<br>Delius (Phoebus Apollo), voller Stolz wegen des Sieges über die<br>Schlange, hatte diesen neulich gesehen, wie er mit gespannter Sehne die Enden des Bogens bog.<br><br>Er hatte gesagt: Was willst Du frivoler Knabe mit schweren Waffen?<br><br>Solche Lasten gehören auf unsere Schultern, die wir dem Wild wie dem Feind wirkliche Wunden zufügen können, die wir eben erst den giftgeschwollenen Python mit unzähligen Pfeilen erlegt haben, welcher mit seinem todbringenden Leib so viele Morgen (Flächenmaß: ein solch riesiges Gebiet) bedrängte.",
         "originaltext": "(452) Primus amor Phoebi Daphne Peneia, quem non fors ignara dedit, sed saeva Cupidinis ira,<br>Delius hunc nuper, victa serpente superbus, viderat adducto flectentem cornua nervo<br>‘quid’ que ‘tibi, lascive puer, cum fortibus armis?’ dixerat:<br><br>‘ista decent umeros gestamina nostros, qui dare certa ferae, dare vulnera possumus hosti, qui modo pestifero tot iugera ventre prementem stravimus innumeris tumidum Pythona sagittis.",
         "vergleichsbilder": [
@@ -195,13 +219,19 @@
         "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/1/11/Echo_and_Narcissus_-_John_William_Waterhouse.jpg' target='_blank'>Wikimedia</a>",
         "alt": "John William Waterhouse, Echo and Narcissus, 1903",
         
+        "wikidata": "",
         "ovMet": "3,339-510",
         "verwandlung": "Narzisse",
         "grund": "Trauer um unerfüllte Liebe zu seinem Spiegelbild", 
         "verwandler": "Nemesis",
         "ort": "?",
         "iconclass": "97B6 als Narcissus um die vergebliche Liebe zu seinem Spiegelbild trauert, wird er in eine Narzisse verwandelt (Ovid, Metamorphosen III 510)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "Jener, in den aeonischen Städten hinsichtlich seines Rufes sehr gefeiert, gab dem Volk das ihn besuchte, untadelhafte Antworten. Die erste Probe hinsichtlich der Glaubwürdigkeit seines gültigen Wortes nahm die blaue Liriope, welche der Cephisus vor langer Zeit mit einem gekrümmten Fluss umschlang und der ihr, in seinen Wellen eingeschlossen, Gewalt antat: Die sehr schöne Nymphe gebar aus ihrem schwangeren Bauch ein Kind, das man schon damals hätte lieben können, und nannte es Narcissus. Darüber befragt, ob er nach lange währendem Leben das reife Alter erreichen werde, sagte der die Zukunft kennende Seher: „Falls er nicht sich selbst kennenlernt.“ Lange schien die Antwort des Sehers gehaltlos, doch der Ausgang, die Sache, die Art des Todes und die Neuheit des Wahns beweist jene. Denn schon hatte der Cephisussohn zu 15 Jahren eines hinzugefügt und konnte als Knabe und als junger Mann gesehen werden. Ihn begehrten viele junge Männer und viele junge Frauen; aber es lag so hartherziger Hochmut in der zarten Gestalt. Keine jungen Männer und keine jungen Frauen berührten ihn. Ihn erblickte, während dieser ängstliche Hirsche in die Netze trieb, eine stimmbegabte Nymphe, die weder einem Sprechenden eine Antwort schuldig blieb noch gelernt hat, selbst als erste zu sprechen, die widerhallende Echo. Damals war Echo noch ein leibliches Wesen und nicht nur eine Stimme. Trotzdem hatte diese Schwätzerin auch schon damals keinen anderen Gebrauch des Mundes als sie heute hat, nämlich dass sie von vielen Worten die letzten zurückgeben konnte. Dies hatte Iuno getan, weil jene die Göttin, immer wenn Iuno die Nymphen hätte ertappen können, die bei Jupiter auf dem Berg lagen, schlau in einem langen Gespräch festgehalten hat, während die Nymphen geflohen sind. Nachdem Saturnia dies bemerkt hatte, sagte sie: „Dir wird über diese Zunge, durch die ich getäuscht worden bin, nur geringe Macht gegeben, und die Anwendung deiner Stimme ist sehr kurz.“ Und sie bekräftigt die Drohungen. Diese kann nur die Worte am Ende von etwas Gesprochenem wiederholen und gibt gehörte Worte wieder. Als sie also den durch entlegene Flure umherschweifenden Narcissus sah und in Liebe entbrannte, folgt sie heimlich den Fußspuren, und in je höherem Grade sie folgt, von desto näherer Flamme erglüht sie, nicht anders als wenn lebenskräftiger Schwefel, um die Spitze einer Fackel herum aufgestrichen, die Flammen an sich zieht, wenn sie auch nur in seine Nähe gebracht worden sind. Ach wie oft wollte sie mit schmeichelnden Worten an Narcissus herantreten und weiche Bitten gebrauchen! Die Natur widerstrebt und lässt nicht zu, dass sie damit anfängt; doch was sie zulässt, dazu ist jene bereit: Sie soll Laute erwarten und seine Worte zu ihm zurückschicken. Der junge Mann, der zufällig von seiner treuen Schar von Begleitern getrennt worden war, hatte gesagt: „Ist irgendjemand da?“, und, „jemand ist da“ hatte Echo geantwortet. Er ist erstaunt und als er seinen Blick in alle Richtungen schickt, ruft er mit lauter Stimme: „Komm!“ Jene ruft den Rufenden. Er blickt sich um, und da wieder keiner kommt, fragt er: „Warum fliehst du vor mir?“, und ebensoviele Wort, wie er gesagt hatte, vernimmt er. Er bleibt stehen, und getäuscht durch die abwechselnde Stimme, sagt er: „Las uns hier zusammenkommen!“ Und Echo, die keinen Laut jemals lieber antworten wollte, gab zurück: „Lass uns zusammenkommen!“ Und sie selbst stimmt ihren Worten freudig zu und ging aus dem Wald heraus, um die Arme um den erhofften Hals zu legen; jener flieht und flüchtend ruft er: „Nimm deine Hände für Umarmungen weg! Eher will ich sterben, als dass dir Macht über mich zu eigen sei.“ Jene antwortete nichts außer: „Dir sei Macht über mich zu eigen!“ Verschmäht verbirgt sie sich in Wäldern, bedeckt schamhaft ihr Gesicht mit Laub und lebt seitdem in einsamen Höhlen; aber dennoch bleibt die Liebe haften und wächst durch den Schmerz der Zurückweisung; wachsame Sorgen schwächen ihren beklagenswerten Leib, Magerkeit lässt die Haut runzeln und jeder Saft des Körpers verschwindet in die Lüfte; nur ihre Stimme und ihre Knochen bleiben übrig: Die Stimme bleibt, die Knochen, sagt man, hätten das Aussehen eines Steines angenommen. Von da an verbirgt sie sich in Wäldern und wird auf keinem Berg gesehen; von allen wird sie gehört: Der Klang ist es, der in jener lebt. So hatte er diese, so andere Nymphen, die sich in Wogen und in den Bergen zeigten, getäuscht, so hatte er vorher die Zusammenkunft mit Männern verspottet; darauf hatte einer, der verachtet worden war, die Hände zum Aether gestreckt und gesagt: „So soll er selbst lieben, so soll er, was er liebt, nicht erlangen!“ Er hatte gesprochen: Rhamnusia stimmte den gerechten Bitten zu. Es gab eine reine Quelle, silberglänzend durch das strahlende Wasser, die weder Hirten noch die auf Bergen weidenden Ziegen noch irgendein anderes Vieh je angerührt hatten; eine Quelle, die kein Vogel, kein wildes Tier und kein vom Baum gefallener Ast getrübt hatte. Ringsum wuchs Gras, das von der nahen Feuchtigkeit genährt wurde, und ein Wald, der nicht bereit war, zuzulassen, dass der Ort von der Sonne erwärmt würde. Hier legte sich der Junge nieder, erschöpft vom Eifer des Jagens und der Hitze, und er hatte die Anmut des Ortes und die Quelle im Auge; und während er seinen Durst stillen will, wuchs ein anderer Durst heran, und während er trinkt, liebt er, ergriffen von dem Abbild der gesehenen Schönheit, eine Hoffnung ohne Körper, und er hält das für einen Körper, was ein Schatten ist. Er staunt sich selbst an und unbewegt mit demselben Gesichtsausdruck stockt er wie eine geformte Statue aus parischem Marmor; auf den Boden gelegt betrachtet er das Sternenpaar, seine Augen, er betrachtet die Haare, eines Bacchus würdig, eines Apollo würdig, die jugendlichen Wangen, den elfenbeinernen Hals, die Schönheit des Gesichts, die in schneeweißen Glanz gemischte Röte, und er bewundert alles, wodurch er selbst bewundernswert ist: Ahnungslos begehrt er sich und der, der gutheißt, wird selbst gutheißen, und während er erstrebt, wird er erstrebt, und er entflammt und wird zugleich verzehrt. Wie häufig gab er der trügerischen Quelle vergeblich Küsse, wie häufig tauchte er seine Arme mitten in das Wasser, um den gesehenen Hals zu fassen, und ergriff sich in jenen (Wassern) nicht! Er weiß nicht, was er sieht; aber was er sieht, verzehrt jenen, und derselbe Irrtum, der seine Augen täuscht, regt sie an. Leichtgläubiger, was fasst du vergeblich nach dem flüchtigen Spiegelbild? Was du erstrebst, gibt es nirgends; was du liebst, wirst du, dich abwendend, verlieren! Das,was du siehst, ist der Schatten deines Abbildes, das dich zurückweist: Es hat nichts eigenes an sich; es kam und bleibt mit dir; es wird mit dir weggehen, wenn du weggehen könntest! Nicht die Sorge um Nahrung, nicht die Sorge um Ruhe vermag ihn von dort fortzuziehen, sondern er bestaunt, ins schattige Gras gestreckt, unersättlichen Auges die trügerische Gestalt. Und an den eigenen Augen geht er selbst zugrunde und, sich ein wenig erhebend und seine Arme zu den ringsum stehenden Wäldern reckend, spricht er: „Ach ihr Wälder, hat jemals einer grausamer geliebt? Ihr wisst nämlich Bescheid und seid für viele willkommene Verstecke gewesen. Erinnert ihr euch, weil eure Leben so viele Jahrhunderte andauern, in eurer langen Zeit an irgendeinen, der so zerschmolzen ist? Er gefällt und ich sehe ihn; aber das, was ich sehen und was mir gefällt, finde ich dennoch nicht; den Liebenden hält ein so großer Irrtum fest; auch leide ich stärker, denn kein gewaltiges Meer, keine Straße, keine Berge und auch keine Mauern mit verschlossenen Toren trennen uns; wir werden von wenigem Wasser einander ferngehalten! Er selbst wünscht, gehalten zu werden: Denn so häufig ich dem hellen Wasser Küsse gegeben habe, so häufig strebt er rücklings mit seinem Mund zu mir. Man könnte glauben, dass er berührt werden könne: Es ist ein Kleinstes, was den Liebenden im Weg ist. Wer auch immer du bist, komm hierher heraus! Was täuschst du mich, einzigartiger Knabe, und wohin gehst du, Ersehnter? Sicher ist es weder mein Aussehen noch mein Alter, wovor du fliehst, und auch Nymphen haben mich geliebt! Du versprichst mir mit deinem freundlichen Gesicht etwas Hoffnung, und wenn ich dir meine Arme entgegenstrecke, streckst du sie freiwillig aus, wenn ich gelacht habe, lächelst du mir zu; ich habe auch oft deine Tränen bemerkt, während ich weinte; durch Nicken gibst du auch Zeichen zurück, und wie ich durch die Bewegung deines ansehnlichen Mundes vermute, erwiderst du Worte, die nicht an meine Ohren gelangen! Dieser da bin ich: Ich habe es bemerkt, und mein Abbild täuscht mich nicht; ich werde von der Liebe zu mir verbrannt: Ich entfache die Flammen und ich ertrage sie. Was soll ich machen? Soll ich erbeten werden oder soll ich bitten? Was soll ich dann erbitten? Was ich wünsche ist bei mir: Die Fülle hat mich mittellos gemacht. O könnte ich mich von meinem Körper entfernen! Ein neuer Wunsch bei einem Liebenden, ich wollte, was ich liebe, wäre weg. Und schon raubt der Schmerz meine Kräfte, und es bleibt keine lange Zeit meines Lebens übrig, und ich gehe im ersten Lebensabschnitt zugrunde. Der Tod ist nicht schwer für mich, weil mir der Tod die Schmerzen nehmen wird; dieser, der geliebt wird, wollte ich, würde länger leben; Nun werden wir 2 einträchtig in einer einzigen Seele sterben.“ Er sagte es und wandte sich, kaum bei Sinnen, dem Antlitz wieder zu und wühlte mit seinen Tränen das Wasser auf. Durch die Bewegung wurde das Wasser undurchsichtig. Als er sah, dass die Gestalt nicht mehr zu erkennen war, rief er: „Wohin entfliehst du denn? Bleib! Verlass mich Liebenden nicht! Es sollte doch wohl erlaubt sein, das zu betrachten, was zu berühren nicht erlaubt ist, und dem armseligen Wahn Nahrung zu bieten!“ In seiner Trauer zog er sein Gewand oben vom Saum her herab und schlug sich mit seinen marmorfarbenen Handflächen auf die entblößte Brust. Von den Schlägen erhielt seine Brust eine rosige Farbe, genauso wie Äpfel, die teils weiß, teils rötlich glänzen, oder so wie verschiedenen Beeren der noch unreifen Traube purpurn werden. Als er diese (Gestalt) wieder klar im Wasser erkannte, ertrug er es nicht länger, sondern, so wie gelbes Wachs unter kleiner Flamme oder morgendlicher Tau unter der wärmenden Sonne zu vergehen pflegen, zerschmilzt, von der Liebe verzehrt, und wird allmählich von verborgenem Feuer zerstört. Und schon gibt es keine Farbe mehr, nachdem sich der Röte das Weiß beigemischt hat, und es verbleiben weder frische noch Lebenskraft noch, was eben noch zu sehen war und Gefallen erregte, der Körper, den Echo einst geliebt hatte. Als sie das sah, wurde sie dennoch von Schmerz ergriffen, obgleich sie zornig war und sich erinnerte; und sooft der beklagenswerte Junge „Wehe!“ gerufen hatte, wiederholte sie mit nachhallender Stimme „Wehe!“. Und jedes Mal, wenn jener seine Arme mit den Händen geschlagen hatte, erwiderte auch diese denselben Laut des Schlages. Die letzte Äußerung desjenigen, der in das gewohnte Wasser blickte, war folgende: „Ach, du vergeblich geliebter Junge!“ Und ebenso viele Worte schickte der Ostwind zurück, und nachdem „Lebewohl“ gesagt worden war, sprach auch Echo „Lebewohl“. In das grüne Gras ließ jener sein erschöpftes Haupt sinken. Der Tod schloss seine Augen , die die Schönheit ihres Herrn bewunderten. Und auch da noch, nachdem er von der Unterwelt aufgenommen worden war, betrachtete er sich im Wasser des Styx. Laut klagten seine Schwestern, die Najaden, und sie weihten ihr abgeschnittenes Haar dem Bruder. Laut klagten die Dryaden: In deren Klagen stimmt Echo mit ein. Und schon bereiteten sie den Scheiterhaufen, die gespaltenen Fackeln und die Totenbahre vor: Einen Körper gab es nirgends; sie finden eine in der Mitte safrangelbe Blume anstelle des Körpers, die von weißen Blättern umrahmt ist.",
         "originaltext": "Ille per Aonias fama celeberrimus urbes<br>inreprehensa dabat populo responsa petenti;... ",
         "vergleichsbilder": [
@@ -217,9 +247,9 @@
 
 
 
-    "kallisto": {
-        "id": "kallisto",
-        "name": "Kallisto",
+    "callisto": {
+        "id": "callisto",
+        "name": "Callisto",
 
         "icon": "Figuren/Kallisto/Kallisto.png",
         "width": "65",
@@ -239,13 +269,19 @@
         "source": "<a href='https://www.sothebys.com/en/articles/written-in-the-stars-sebastiano-riccis-arcas-and-callisto' target='_blank'>Sothebys</a>",
         "alt": "Sebastiano Ricci, Arcas and Callisto, ca. 1725-30",
         
+        "wikidata": "",
         "ovMet": "2,401-531",
         "verwandlung": "Bärin",
         "grund": "Bestrafung für Kallistos Affäre mit Jupiter", 
         "verwandler": "Juno",
         "ort": "in einem Wald Arcadiens",
         "iconclass": "97CC2 Juno verwandelt Callisto, die sich um den jungen Arcas (ihren Sohn von Jupiter) kümmert, in einen Bären",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "Unverzüglich nimmt er das Gesicht und die Gestalt Dianas an<br>und spricht zu ihr: „Meine Begleiterin, Jungfrau, Teil meiner Garde,<br>in welchen Gefilden warst du jagen?“ Von der Wiese erhebt sich die<br>Jungfrau und spricht: „Sei gegrüßt, Göttin, die du nach meinem Urteil –<br>soll er es selbst hören – größer noch bist als Jupiter.“ Er hört es, lacht<br>und freut sich darüber, sich selbst vorgezogen zu werden, und gibt ihr<br>Küsse, weder anständig genug, noch so, wie eine Jungfrau sie geben<br>sollte. Sie ist bereit, zu erzählen, in welchem Wald sie jagen war, doch<br>er behindert sie durch eine Umarmung und zeigt verbrecherisch sein<br>wahres Ich. Natürlich wehrt sie sich so sehr, wie es einer Frau eben<br>möglich ist (hättest du es nur gesehen, Juno, du wärst milder gewesen),<br>freilich kämpft sie; doch wen könnte ein Mädchen,<br>wer überhaupt könnte Jupiter bezwingen?",
         "originaltext": "Protinus induitur faciem cultumque Dianae<br>atque ait: „o comitum, virgo, pars una mearum,<br>in quibus es venata iugis?“ de caespite virgo<br>se levat et „salve numen, me iudice“ dixit,<br>„audiat ipse licet, maius Iove.“ ridet et audit<br>et sibi praeferri se gaudet et oscula iungit<br>nec moderata satis nec sic a virgine danda.<br>qua venata foret silva narrare parantem<br>impedit amplexu, nec se sine crimine prodit.<br>Illa quidem contra, quantum modo femina posset<br>(adspiceres utinam, Saturnia: mitior esses),<br>illa quidem pugnat; sed quem superare puella,<br>quisve Iovem poterat?",
         "vergleichsbilder": [
@@ -284,13 +320,19 @@
         "source": "<a href='https://www.clevelandart.org/art/1973.212' target='_blank'>Clevelandart</a>",
         "alt": "Jean François de Troy, Pan and Syrinx, 1720",
         
+        "wikidata": "",
         "ovMet": "1,689-746",
         "verwandlung": "Schilfrohr",
         "grund": "zum Schutz ihrer Jungfräulichkeit,Entkommen vor Pan", 
         "verwandler": "ihre Schwestern",
         "ort": "? (nachsehen)",
         "iconclass": "97BB5 auf der Flucht vor Pan wird die Nymphe Syrinx von ihren Schwestern, den Naiaden, in ein Schilfrohr verwandelt (Ovid, Metamorphosen I 705)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "(689)Darauf sprach der Gott:<br>Im eiskalten Gebirge Arkadiens war unter den Baumnymphen von Nonacris (Stadt und Berg in Arkadien) eine Naiade am berühmtesten – die Nymphen nannten sie Syrinx.<br>Nicht nur einmal hatte sie mit Satyrn, die ihr nachstellten, und was es sonst an Göttern in den schattigen Wäldern und auf dem fruchtbaren Land gab, ihr Spiel getrieben; sie selbst diente mit ihren Leidenschaften und ihrer Jungfräulichkeit der Göttin Ortygia (Beiname der Göttin Diana wegen deren Heimat Delos=Ortygia).<br>Da sie nach der Art Dianas gegürtet war, täuschte sie (die Leute) und man konnte glauben, sie sei die Tochter Latonias (Latonia war die Mutter der Zwillinge Apollo und Diana), wenn diese nicht einen Bogen aus Horn, jene nicht einen aus Gold gehabt hätte; auch so",
         "originaltext": "(689) Tum deus ‘Arcadiae gelidis sub montibus’ inquit<br>‘inter hamadryadas<br>celeberrima Nonacrinas<br>naias una fuit: nymphae Syringa vocabant.<br>non semel et satyros eluserat illa sequentes<br>et quoscumque deos umbrosaque silva feraxque<br>rus habet. Ortygiam studiis ipsaque colebat<br>virginitate deam; ritu quoque cincta Dianae<br>falleret et posset credi Latonia, si non<br>corneus huic arcus, si non foret aureus illi;<br>sic quoque fallebat.",
         "vergleichsbilder": [
@@ -323,13 +365,19 @@
         "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/d/d6/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Fr%C3%B6sche.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Johann Georg Platzer, Latona verwandelt die lykischen Bauern in Froesche, ca. 1730",
         
+        "wikidata": "",
         "ovMet": "6,313-381",
         "verwandlung": "Frösche",
         "grund": "Arroganz / Verwehren der Bitten Latonas", 
         "verwandler": "Latona",
         "ort": "? (nachsehen)",
         "iconclass": "97E4 als Latona und ihre Kinder ihren Durst stillen wollen, wird ihnen das von den lykischen Bauern verwehrt, die gerade ein Feld jäten; daraufhin verwandelt Latona die lykischen Bauern in Frösche (Ovid, Metamorphosen VI 369)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "(689)Darauf sprach der Gott:<br>Im eiskalten Gebirge Arkadiens war unter den Baumnymphen von Nonacris (Stadt und Berg in Arkadien) eine Naiade am berühmtesten – die Nymphen nannten sie Syrinx.<br>Nicht nur einmal hatte sie mit Satyrn, die ihr nachstellten, und was es sonst an Göttern in den schattigen Wäldern und auf dem fruchtbaren Land gab, ihr Spiel getrieben; sie selbst diente mit ihren Leidenschaften und ihrer Jungfräulichkeit der Göttin Ortygia (Beiname der Göttin Diana wegen deren Heimat Delos=Ortygia).<br>Da sie nach der Art Dianas gegürtet war, täuschte sie (die Leute) und man konnte glauben, sie sei die Tochter Latonias (Latonia war die Mutter der Zwillinge Apollo und Diana), wenn diese nicht einen Bogen aus Horn, jene nicht einen aus Gold gehabt hätte; auch so",
         "originaltext": "(689) Tum deus ‘Arcadiae gelidis sub montibus’ inquit<br>‘inter hamadryadas<br>celeberrima Nonacrinas<br>naias una fuit: nymphae Syringa vocabant.<br>non semel et satyros eluserat illa sequentes<br>et quoscumque deos umbrosaque silva feraxque<br>rus habet. Ortygiam studiis ipsaque colebat<br>virginitate deam; ritu quoque cincta Dianae<br>falleret et posset credi Latonia, si non<br>corneus huic arcus, si non foret aureus illi;<br>sic quoque fallebat.",
         "vergleichsbilder": [
@@ -362,13 +410,19 @@
         "source": "<a href='https://de.wikipedia.org/wiki/Echo_(Mythologie)#/media/Datei:Alexandre_Cabanel_-_Echo.jpg' target='_blank'>Wikipedia</a>",
         "alt": "Alexandre Cabanel, Echo, 1887",
         
+        "wikidata": "",
         "ovMet": "3,339-510",
         "verwandlung": "Felsen",
         "grund": "Einsamkeit aufgrund unerwiederter Liebe zu Narciss", 
         "verwandler": "Juno",
         "ort": "? (nachsehen)",
         "iconclass": "97HH5 als sie um den toten Narcissus trauert, wird die Nymphe Echo in eine Stimme transformiert, ihre Knochen werden dagegen in Steine verwandelt (Ovid, Metamorphosen III 398)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -402,13 +456,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/File:Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Giambattista Tiepolo, The Death of Hyacinthus, ca. 1752/1753",
         
+        "wikidata": "",
         "ovMet": "10,162-216",
         "verwandlung": "Hyacinthe",
         "grund": "Schuldgefühle Apollos für Hyacinthus' Tod", 
         "verwandler": "Apollo",
         "ort": "? (nachsehen)",
         "iconclass": "97B5 als Hyacinthus bei einem Unfall von Apollo mit einem Diskuswurf getötet worden ist, verwandelt der Gott sein Blut in eine Hyazinthe",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -441,13 +501,19 @@
         "source": "<a href='https://de.m.wikipedia.org/wiki/Datei:0_Pygmalion_et_Galat%C3%A9e_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.JPG' target='_blank'>Wikipedia</a>",
         "alt": "Anne Louis Girodet-Trioson, Pygmalion et Galatée, 1819",
         
+        "wikidata": "",
         "ovMet": "10,243-297",
         "verwandlung": "Frau",
         "grund": "aus Mitleid verwandelt Venus Pygmalions Statue, in die er sich verliebt hat, in eine Frau", 
         "verwandler": "Venus",
         "ort": "? (nachsehen)",
         "iconclass": "97O5 das Gebet des Pygmalion wird von Venus erhört: eine Statue (später Galatea genannt) erwacht zum Leben (Ovid, Metamorphosen X 280)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -480,13 +546,19 @@
         "source": "<a href='https://de.m.wikipedia.org/wiki/Datei:Collection_Motais_de_Narbonne_-_Le_sacrifice_d%27Iphig%C3%A9nie_-_Gabriel-Fran%C3%A7ois_Doyen.jpg' target='_blank'>Wikipedia</a>",
         "alt": "Gabriel François Doyen, The sacrifice of Iphigenia, 1749",
         
+        "wikidata": "",
         "ovMet": "12,24-38",
         "verwandlung": "Hirschkuh",
         "grund": "zur Rettung vor der Opferung", 
         "verwandler": "Diana",
         "ort": "? (nachsehen)",
         "iconclass": "94D1321 Iphigenie wird von Diana gerettet, ein Hirsch (eine Hirschkuh) erscheint an ihrer Stelle",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -519,13 +591,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Luigi Garzi (zugeschrieben), Alpheus and Arethusa, Ende 17./Anfang 18. Jh.",
         
+        "wikidata": "",
         "ovMet": "5,572-641",
         "verwandlung": "Quelle",
         "grund": "Flucht vor Alpheus (Arethusa) / Gekränktheit (Alpheus)", 
         "verwandler": "Götter / Zeit",
         "ort": "? (nachsehen)",
         "iconclass": "97HH1 Diana verwandelt ihre Begleiterin Arethusa in eine Quelle, nachdem sie ihr zunächst die Gestalt einer Wolke verliehen hatte, damit sie dem Flußgott Alpheus entkommen konnte (Ovid, Metamorphosen V 621) / <br>97H2 als er sich in Liebe nach Arethusa verzehrt, wird der Jäger Alpheus in einen Flußgott verwandelt (Pausanias V 7, 2)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -560,13 +638,19 @@
         "source": "<a href='https://www.the-artinspector.de/kopie-von-questions/was-ist-eine-%E2%80%9Eapotheose%E2%80%9C%3F' target='_blank'>The Artinspector</a>",
         "alt": "Louis Laguerre, Apotheose Caesars, 1692-1694",
         
+        "wikidata": "",
         "ovMet": "15,745-851",
         "verwandlung": "Stern",
         "grund": "ewiges Leben", 
         "verwandler": "Venus",
         "ort": "? (nachsehen)",
         "iconclass": "98B(CAESAR)69 die Apotheose Caesars; seine Seele wird von Venus in einen Kometen verwandelt",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -600,13 +684,19 @@
         "source": "Prometheus",
         "alt": "Unbekannte:r Künstler:in, Verwandlung der Heliaden in Bäume und des Cygnus in einen Schwan am Grabmal des Phaeton, vor 1750",
         
+        "wikidata": "",
         "ovMet": "12,64-168",
         "verwandlung": "Schwan",
         "grund": "Rettung", 
         "verwandler": "Neptun",
         "ort": "? (nachsehen)",
         "iconclass": "97D16 weil Philius sich weigert, seinem Freund Cycnus (dem Sohn Apollos) den Stier zu geben, den er mit der Hilfe des Herkules eingefangen hat, stürzt sich Cycnus von einer Klippe und wird in einen Schwan verwandelt (Ovid, Metamorphosen VII 371)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -639,13 +729,19 @@
         "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/6/63/Jacob_Jordaens_%28I%29_-_Ulysses_threatening_Circe%2C_1630-35.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Jacob Jordaens, Ulysses threatening Circe, 1630",
         
+        "wikidata": "",
         "ovMet": "14,223-308",
         "verwandlung": "Schweine",
         "grund": "trinken aus einem Kelch der Zauberin Cirke", 
         "verwandler": "Circe",
         "ort": "Insel Aiaia (laut Armin Wolf mit der Insel Ustica gleichzusetzen, Armin Wolf: Homers Reise. Auf den Spuren des Odysseus. Böhlau, 2009, S. 52 ff.)",
         "iconclass": "97C8 die Gefährten des Odysseus werden in Schweine verwandelt, als sie aus dem Kelch trinken, der ihnen von der Zauberin Circe angeboten worden ist (Ovid, Metamorphosen XIV 276)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -678,13 +774,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/File:Glaucus-et-scylla-jacques-dumont-romain-musee-troyes.JPG' target='_blank'>Wikimedia</a>",
         "alt": "Jacques Dumont le Romain, Glaucus and Scylla, ?",
         
+        "wikidata": "",
         "ovMet": "13,898-968",
         "verwandlung": "Meeresgott",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "Oceanus, Tethys (Meeresgötter)",
         "ort": "?",
         "iconclass": "95A(GLAUCUS)68 der Tod des Fischers Glaucus: er ißt das Gras, auf das er seine Fische gelegt hatte, und springt ins Wasser",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -717,13 +819,19 @@
         "source": "<a href='https://www.sammlung.pinakothek.de/de/artwork/o5xrdwAG7X' target='_blank'>Pinakothek München</a>",
         "alt": "Abraham Janssens, Apotheose des Aeneas, um 1620 - 1630",
         
+        "wikidata": "",
         "ovMet": "14,581-608",
         "verwandlung": "Gott Indiges",
         "grund": "um seine heldenhaften Taten zu eheren", 
         "verwandler": "Jupiter, Venus, Numicius",
         "ort": "?",
         "iconclass": "96C(AENEAS)69 Apotheose, Vergöttlichung des Aeneas",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -756,13 +864,19 @@
         "source": "CC 3.0! <a href='https://commons.wikimedia.org/wiki/File:La_ninfa_Egeria_dictando_a_Numa.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Ulpiano Checa, La ninfa Egeria dictando a Numa Pompilio las leyes de Roma, ?",
         
+        "wikidata": "",
         "ovMet": "15,479-551",
         "verwandlung": "Quelle",
         "grund": "durch ihre tränenreiche Trauer um ihren verstorbenen Mann, Numa Pompilius (2. König Roms)", 
         "verwandler": "Artemis, Phoebus’ Schwester",
         "ort": "Aricia",
         "iconclass": "97HH6 als der Kummer der Egeria über den Tod des Numa Pompilius nicht zu besänftigen ist, löst sie sich in Tränen auf und wird in eine Quelle verwandelt (Ovid, Metamorphosen XV 546)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -797,13 +911,19 @@
         "source": "<a href='https://de.wikipedia.org/wiki/Byblis_(Mythologie)#/media/Datei:William-Adolphe_Bouguereau_(1825-1905)_-_Biblis_(1884).jpg' target='_blank'>Wikipedia</a>",
         "alt": "William Adolphe Bouguerea, Biblis, 1884",
         
+        "wikidata": "",
         "ovMet": "9,454-665",
         "verwandlung": "Quelle",
         "grund": "Trauer über die unerwiederten Liebe zu ihrem Bruder Kaunos", 
         "verwandler": "-",
         "ort": "bei Milet (s. Fritz: Gedichte. Sammlung Tusculum, 2014, S. 320)",
         "iconclass": "97HH2 nachdem sie überall nach Caunus gesucht hat, legt sich Byblis nieder, löst sich in Tränen auf und wird in eine Quelle verwandelt (Ovid, Metamorphosen IX 663)",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
@@ -836,13 +956,19 @@
         "source": "<a href='https://commons.wikimedia.org/wiki/File:%27Hercules_and_Achelous%27_by_Cornelis_Cornelisz._van_Haarlem,_1590.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Cornelis Cornelisz. van Haarlem, Hercules und Achelous, 1590",
         
+        "wikidata": "",
         "ovMet": "9,1-97",
         "verwandlung": "Stier",
         "grund": "erhofft sich dadurch einen Vorteil im Kampf gegen Hercules", 
         "verwandler": "Achelous",
         "ort": "?",
         "iconclass": "94L4111 während er mit Herkules kämpft, verwandelt sich der Flußgott Achelous in einen Stier oder einen stierköpfigen Mann",
-        
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "", 
+            "wiki": ""
+        },
+
         "uebersetzung": "",
         "originaltext": "",
         "vergleichsbilder": [
