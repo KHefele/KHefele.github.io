@@ -236,7 +236,7 @@ export async function application() {
     popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
     popoverContentDiv.className = "popover__content"; 
     popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
-    popoverContentDiv.style.left = (data.width/2) + "px";
+    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
     popoverContentDiv.style.visibility = "hidden";
     kategorienUndPopoverDiv.appendChild(popoverContentDiv);
 
@@ -307,12 +307,12 @@ export async function application() {
     modalDiv.className = "metamorphosenModal";
     document.body.appendChild(modalDiv);
 
-    var modalHeaderDiv = document.createElement("div");
-    modalHeaderDiv.className = "modalHeader";
-    modalDiv.appendChild(modalHeaderDiv);
+    // var modalHeaderDiv = document.createElement("div");
+    // modalHeaderDiv.className = "modalHeader";
+    // modalDiv.appendChild(modalHeaderDiv);
 
     var modalContentDiv = document.createElement("div");
-    modalContentDiv.className = "modalContent";
+    modalContentDiv.className = "metamorphosenModalContent";
     modalDiv.appendChild(modalContentDiv);
 
     if (!(modalDiv.id == figuresListSorted[0] + "Modal")) {
@@ -334,23 +334,29 @@ export async function application() {
     //header
     var divHeader = document.createElement("div"); //div anlegen
     modalContentDiv.appendChild(divHeader);
+    divHeader.className = "metamorphosenModalHeader";
+    divHeader.appendChild(document.createElement("br"));
+    divHeader.appendChild(document.createElement("br"));
+    divHeader.appendChild(document.createElement("br"));
     var ueberschrift = document.createElement("h1"); //h1 in div anlegen
     ueberschrift.setAttribute("style", "display:inline");
     ueberschrift.innerHTML = data.name;
     divHeader.appendChild(ueberschrift);
-    var sup = document.createElement("sup"); //sup in div anlegen
-    divHeader.appendChild(sup);
-    var headerLink = document.createElement("a"); //link in sup anlegen
-    var headerLinkInput = "https://de.wikipedia.org/wiki/" + data.name;
-    headerLink.setAttribute("href", headerLinkInput);
-    headerLink.setAttribute("target", "_blank");
-    headerLink.innerHTML = " <img src='Icons/iconmonstr-info-6-240.png' style='width: 13px; margin-bottom: 7px'>";
-    sup.appendChild(headerLink);
+    if (data.wikidata != "-") { //Link anlegen wenn Wikidata Inhalte vorhanden 
+      var sup = document.createElement("sup"); //sup in div anlegen
+      divHeader.appendChild(sup);
+      var headerLink = document.createElement("a"); //link in sup anlegen
+      var headerLinkInput = "https://www.wikidata.org/wiki/" + data.wikidata + "?uselang=de";
+      headerLink.setAttribute("href", headerLinkInput);
+      headerLink.setAttribute("target", "_blank");
+      headerLink.innerHTML = " <img src='Icons/iconmonstr-help-2-240.png' style='width: 13px; margin-bottom: 7px'>";
+      sup.appendChild(headerLink);
+    }
 
     var imgDiv = document.createElement("div");
     modalContentDiv.appendChild(imgDiv);
 
-    //Nur bei kleinen Ansichten unter 1200px
+    //Nur bei kleinen Ansichten unter 1100px <-- 100px kleiner gemacht
     var imgKlein = document.createElement("img"); 
     imgKlein.className = "display-under-1200px";
     imgKlein.alt = data.alt;
@@ -406,11 +412,11 @@ export async function application() {
     var innerTable = document.createElement("table");
     innerTable.style.marginLeft = "15px";
     
-    var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;"];
-    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandler:", "Ort:", "Iconclass:"];
-    var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.iconclass];
+    var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#128064;", "&#127988;" ];
+    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Urheber:in:", "Ort:", "Vergleichswerke:", "Iconclass:" ];
+    var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.vergleichswerke, data.iconclass];
     
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 7; i++) {
       var innerTableRow = document.createElement("tr");
       innerTable.appendChild(innerTableRow);
 
@@ -440,9 +446,44 @@ export async function application() {
         verwandlerLink.setAttribute("target", "_blank");
         verwandlerLink.innerHTML = "  &#x2139;";
         verwandlerSup.appendChild(verwandlerLink);
+        //alternativ mit Link auf Text:
+        // var verwandlerLink = document.createElement("a"); //link anlegen
+        // var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
+        // verwandlerLink.setAttribute("href", verwandlerLinkInput);
+        // verwandlerLink.setAttribute("target", "_blank");
+        // verwandlerLink.innerHTML = dataArray[i];
+        // dataCol.appendChild(verwandlerLink);
       
       //Iconclasstext + Infolink
       } else if (i === 5) {
+        if (dataArray[i].warburg != "-") {
+          var warburgLink = document.createElement("a");
+          warburgLink.setAttribute("href", dataArray[i].warburg);
+          warburgLink.setAttribute("target", "_blank");
+          warburgLink.innerHTML = "&#x2B95; Warburg Institute Iconographic Database";
+          dataCol.appendChild(warburgLink);
+  
+          dataCol.appendChild(document.createElement("br"));
+        }
+        if (dataArray[i].bdo != "-") {
+          var bdoLink = document.createElement("a");
+          bdoLink.setAttribute("href", dataArray[i].bdo);
+          bdoLink.setAttribute("target", "_blank");
+          bdoLink.innerHTML = "&#x2B95; BDO Biblioteca Digital Ovidiana";
+          dataCol.appendChild(bdoLink);
+
+          dataCol.appendChild(document.createElement("br"));
+        }
+        if (dataArray[i].wiki != "-") {
+          var wikiLink = document.createElement("a");
+          wikiLink.setAttribute("href", dataArray[i].wiki);
+          wikiLink.setAttribute("target", "_blank");
+          wikiLink.innerHTML = "&#x2B95; Wikimedia Commons";
+          dataCol.appendChild(wikiLink);
+        }
+
+      
+      } else if (i === 6) {
         dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
         var iconclassSup = document.createElement("sup"); //sup anlegen
         dataCol.appendChild(iconclassSup);
@@ -453,11 +494,12 @@ export async function application() {
         iconclassLink.setAttribute("target", "_blank");
         iconclassLink.innerHTML = "  &#x2139;";
         iconclassSup.appendChild(iconclassLink);
-
+        
+      
       //alle anderen ohne Infolink
       } else {
         dataCol.innerHTML = dataArray[i];
-      }
+      };
       
 
     }
@@ -496,17 +538,37 @@ export async function application() {
     originaltextDetails.appendChild(originaltextP);
 
 
+    modalContentDiv.appendChild(document.createElement("br")); //sonst ist Details schon im Halbdunkel
     modalContentDiv.appendChild(document.createElement("br"));
 
+
+    var footerDiv = document.createElement("div");
+    footerDiv.className = "metamorphosenModalFooter";
+    footerDiv.appendChild(document.createElement("br"));
+    footerDiv.appendChild(document.createElement("br"));
+    footerDiv.appendChild(document.createElement("br"));
+    modalContentDiv.appendChild(footerDiv);
+    
+
     var buttonSpan = document.createElement("span");
-    buttonSpan.setAttribute("align", "center");
-    buttonSpan.className = "modalBtns";
-    buttonSpan.innerHTML = "SCHLIESSEN";
+    buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
     buttonSpan.onclick = function() { modalDiv.style.display = "none" };
+    buttonSpan.style.position = "fixed";
+    buttonSpan.style.left = "76%";
+    buttonSpan.style.top = "19%";
+    buttonSpan.style.cursor = "pointer";
     modalContentDiv.appendChild(buttonSpan);
 
 
-    modalContentDiv.appendChild(document.createElement("br"));
+    // var buttonSpan = document.createElement("span");
+    // buttonSpan.setAttribute("align", "center");
+    // buttonSpan.className = "modalBtns";
+    // buttonSpan.innerHTML = "SCHLIESSEN";
+    // buttonSpan.onclick = function() { modalDiv.style.display = "none" };
+    // modalContentDiv.appendChild(buttonSpan);
+
+
+    // modalContentDiv.appendChild(document.createElement("br"));
 
     return modalDiv;
   }
@@ -671,6 +733,12 @@ export async function application() {
   var alphaBtn = document.getElementById("alpha");
   var alphaImg = document.getElementById("alphabet");
 
+  var textBtn = document.getElementById("text");
+  var textImg = document.getElementById("fliesstext");
+
+  var grundBtn = document.getElementById("grund");
+  var grundImg = document.getElementById("verwandlungsgrund")
+
 
 
 
@@ -702,6 +770,16 @@ export async function application() {
     iconWrapper.appendChild(ovMetStelle);
 
   }
+
+  // var backgroundDiv = document.createElement("div");
+  // backgroundDiv.className = "ovMetStelle";
+  // backgroundDiv.style.textAlign = "center";
+  // ovMetStelle.innerHTML = leude[key].ovMet;
+  // //ovMetStelle.style.position = "absolute";
+  // ovMetStelle.style.fontFamily = "'Crimson Text', serif";
+  // ovMetStelle.style.fontSize = "10px";
+  // ovMetStelle.style.display = "none";
+  // chronoImg.appendChild(ovMetStelle);
 
 
   function setZeitstrahl(startLeft, fromTop, laenge, arrowPosition, beschrText) {
@@ -824,6 +902,11 @@ export async function application() {
       alphabetNames[x].style.display = "none";
     }
 
+    textImg.style.display = "none";
+
+
+    grundImg.style.display = "none";
+
     setCoordinates(ersterKlickChrono);
     chronoImg.style.display = "block";
 
@@ -883,6 +966,12 @@ export async function application() {
     for (var x = 0; x < taxonomieNames.length; x++) {
       taxonomieNames[x].style.display = "block";
     }
+
+    textImg.style.display = "none";
+
+    grundImg.style.display = "none";
+
+
     
     //faunaDiv-data als startpunkt
     var figurPositionFaunaTop = document.getElementById("fauna").offsetTop;
@@ -912,7 +1001,7 @@ export async function application() {
       
       //ICONS VERSCHIEBEN
       var figurIcon = document.getElementById(figur + "Wrapper");
-      var figurPopover = document.getElementById(figur + "Popover");
+      //var figurPopover = document.getElementById(figur + "Popover");
       
       
       //der richtigen Taxonomie zuordnen
@@ -1060,6 +1149,11 @@ export async function application() {
     geoImg.style.animationPlayState = "running";
 
 
+    textImg.style.display = "none";
+
+    grundImg.style.display = "none";
+
+
     for (var figur in leude){
 
       var figurIcon = document.getElementById(figur + "Wrapper");
@@ -1128,7 +1222,13 @@ export async function application() {
       var figurIcon = document.getElementById(figur + "Wrapper");
       figurIcon.style.opacity = 1;
     }
+
+
+    textImg.style.display = "none";
+
     
+    grundImg.style.display = "none";
+
     alphaImg.style.display = "block";
     var alphaNames = document.getElementsByClassName("alphabetNames");
     for (var i = 0; i < alphaNames.length; i++){
@@ -1220,10 +1320,10 @@ export async function application() {
   //create text-div
   var textModalDiv = document.createElement("div");
   textModalDiv.id = "textModal";
-  textModalDiv.className = "infoModal";
   //textModalDiv.className = "kategory";
   textModalDiv.style.textAlign = "left";
-  document.body.appendChild(textModalDiv);
+  textImg.appendChild(textModalDiv);
+
 
 
   //iterate through metamorphosen.json
@@ -1231,36 +1331,43 @@ export async function application() {
 
     var contentDiv = document.createElement("div");
     contentDiv.id = key;
-    contentDiv.className = "modalContent";
+    //contentDiv.className = "textModalContent";
     textModalDiv.appendChild(contentDiv);
 
     var header = document.createElement("h1");
-    header.innerHTML = metamorphosen[key].name + " " + metamorphosen[key].stelle;
+    header.className = "textModalHeader";
+    header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
     contentDiv.appendChild(header);
 
     var contentP = document.createElement("p");
-    contentDiv.className = "modalContent";
-    contentDiv.style = "padding: 25px 50px 0px";
+    contentDiv.className = "textModalContent";
+    /*contentDiv.style = "padding: 25px 50px 0px";*/
     contentP.innerHTML = metamorphosen[key].text;
     contentDiv.appendChild(contentP);
     
 
   }
-  
+  var footer = document.createElement("div");
+  footer.className = "textModalFooter";
+  footer.appendChild(document.createElement("br"));
+  //footer.appendChild(document.createElement("br"));
+  textModalDiv.appendChild(footer);
+  // for (var key in leude){
+  //   var zugehoerigeGeschichte = document.getElementById(leude[key].id);
+  //   var getWrapper = leude[key].id + "Wrapper";
+  //   console.log(zugehoerigeGeschichte.offsetTop)
+  // }
 
-  //close-Btn
-  var buttonSpan = document.createElement("span");
-  buttonSpan.setAttribute("align", "center");
-  buttonSpan.className = "modalBtns";
-  buttonSpan.innerHTML = "SCHLIESSEN";
-  buttonSpan.onclick = function() { textModalDiv.style.display = "none" };
-  contentDiv.appendChild(buttonSpan);
+  // //close-Btn
+  // var buttonSpan = document.createElement("span");
+  // buttonSpan.setAttribute("align", "center");
+  // buttonSpan.className = "modalBtns";
+  // buttonSpan.innerHTML = "SCHLIESSEN";
+  // buttonSpan.onclick = function() { textModalDiv.style.display = "none" };
+  // contentDiv.appendChild(buttonSpan);
 
-
-  var textBtn = document.getElementById("text");
   textBtn.onclick = function () {
-    textModal.style.display = "block";
-    //textModal.style.animationPlayState = "running";
+    textImg.style.display = "block";
 
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
@@ -1279,12 +1386,16 @@ export async function application() {
       var figurIcon = document.getElementById(figur + "Wrapper");
       figurIcon.style.opacity = 1;
     }
-
+    
+    alphaImg.style.display = "none";
     //alphabetNames ausblenden, nach Alphabet-Funktion
     var alphabetNames = document.getElementsByClassName("alphabetNames"); 
     for (var x = 0; x < alphabetNames.length; x++) {
       alphabetNames[x].style.display = "none";
     }
+
+    grundImg.style.display = "none";
+
   }
 
 
@@ -1320,6 +1431,10 @@ export async function application() {
       alphabetNames[x].style.display = "none";
     }
 
+    textImg.style.display = "none";
+
+    grundImg.style.display = "none";
+
     for (var figur in leude){
       var figurIcon = document.getElementById(figur + "Wrapper");
       figurIcon.style.top = leude[figur].koordinaten.unorganisiert.top + "%";
@@ -1329,6 +1444,159 @@ export async function application() {
 
 
 
+
+
+
+  //Verwandlungsgrund
+
+  grundBtn.onclick = function () {
+    
+
+    taxImg.style.display = "none";
+    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+    for (var x = 0; x < taxonomieNames.length; x++) {
+      taxonomieNames[x].style.display = "none";
+    }
+
+    chronoImg.style.display = "none";
+    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+    for (var x = 0; x < ovMetStelle.length; x++) {
+      ovMetStelle[x].style.display = "none";
+    }
+
+    //geoImg.style.opacity = "0";
+    geoImg.style.display = "none";
+    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = 1;
+    }
+
+    //alphaImg.style.opacity = "0";
+    alphaImg.style.display = "none";
+    //alphabetNames ausblenden, nach Alphabet-Funktion
+    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+    for (var x = 0; x < alphabetNames.length; x++) {
+      alphabetNames[x].style.display = "none";
+    }
+
+    textImg.style.display = "none";
+
+    grundImg.style.display = "block";
+
+
+
+
+
+    // s. CSS positions
+    var positionSchutzTop = 25; //document.getElementById("schutz").offsetTop;
+    var positionSchutzLeft = 19;//document.getElementById("schutz").offsetLeft;
+
+    var positionBestrafungTop = 25; //document.getElementById("bestrafung").offsetTop;
+    var positionBestrafungLeft = 54; //document.getElementById("bestrafung").offsetLeft;
+
+    var positionBegierdeTop = 54;//document.getElementById("begierde").offsetTop;
+    var positionBegierdeLeft = 19; //document.getElementById("begierde").offsetLeft;
+
+    var positionEhrungTop = 54;//document.getElementById("ehrung").offsetTop;
+    var positionEhrungLeft = 54;//document.getElementById("ehrung").offsetLeft;
+
+    var positionSonstigerGrundTop = 80; //document.getElementById("sonstigerGrund").offsetTop;
+    var positionSonstigerGrundLeft = 25; //document.getElementById("sonstigerGrund").offsetLeft;
+
+    
+
+    //mitzählen für Prozentangaben
+    var countSchutz = 0;
+    var countBestrafung = 0;
+    var countBegierde = 0;
+    var countEhrung = 0;
+    var countSonstigerGrund = 0;
+
+    
+
+    for (var figur in leude){
+      
+      //ICONS VERSCHIEBEN
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      //var figurPopover = document.getElementById(figur + "Popover");
+      
+      
+      //dem richtigen Grund zuordnen
+      if (leude[figur].grund == "Schutz"){
+        //console.log("figur zählt zu schutz");
+        
+        figurIcon.style.top = positionSchutzTop + "%";
+        figurIcon.style.left = positionSchutzLeft + "%";
+        
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        positionSchutzLeft += 5; //figurIcon.offsetWidth;
+
+        countSchutz += 1;
+
+      } else if (leude[figur].grund == "Bestrafung"){
+        //console.log("figur zählt zu bestrafung");
+        
+        figurIcon.style.top = positionBestrafungTop + "%";
+        figurIcon.style.left = positionBestrafungLeft + "%";
+
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        positionBestrafungLeft += 5; //figurIcon.offsetWidth;
+
+        countBestrafung +=1;
+
+      } else if (leude[figur].grund == "unerfüllte Begierde"){
+
+        figurIcon.style.top = positionBegierdeTop + "%";
+        figurIcon.style.left = positionBegierdeLeft + "%";
+
+        positionBegierdeLeft += 5; //figurIcon.offsetWidth;
+
+        countBegierde +=1;
+
+
+      } else if (leude[figur].grund == "postume Ehrung"){
+        
+        figurIcon.style.top = positionEhrungTop + "%";
+        figurIcon.style.left = positionEhrungLeft + "%";
+
+        positionEhrungLeft += 5; //figurIcon.offsetWidth;
+
+        countEhrung += 1;
+      } else {
+        
+        figurIcon.style.top = positionSonstigerGrundTop + "%";
+        figurIcon.style.left = positionSonstigerGrundLeft + "%";
+
+        positionSonstigerGrundLeft += 5; //figurIcon.offsetWidth;
+
+        countSonstigerGrund += 1;
+      }
+    }
+
+
+    // //blocklaengen 
+    // document.getElementById("fauna").style.width = figurPositionFaunaLeft + "px";
+    // document.getElementById("flora").style.width = figurPositionFloraLeft + "px";
+    // document.getElementById("elemente").style.width = figurPositionElementeLeft + "px";
+    // document.getElementById("sonstiges").style.width = figurPositionSonstigesLeft + "px";
+
+    //prozentangaben taxonomie
+    var allGrund = countSchutz + countBegierde + countBestrafung + countEhrung + countSonstigerGrund;
+    // var percentNumbers = [(countFauna/all*100), (countFlora/all*100), (countElemente/all*100), (countSonstiges/all*100)];
+    // var percentNumbers = [(countFauna/all*100).toString().slice(0,4), (countFlora/all*100).toString().slice(0,4), (countElemente/all*100).toString().slice(0,4), (countSonstiges/all*100).toString().slice(0,4)];
+    var percentNumbersGrund = [Math.round(countSchutz/allGrund*100*10)/10, Math.round(countBestrafung/allGrund*100*10)/10, Math.round(countBegierde/allGrund*100*10)/10, Math.round(countEhrung/allGrund*100*10)/10, Math.round(countSonstigerGrund/allGrund*100*10)/10];
+    console.log(percentNumbersGrund);
+
+    var percentPGrundArray = document.getElementsByClassName("percentToprightGrund");
+
+    for (var g = 0; g < percentPGrundArray.length; g++) {
+      percentPGrundArray[g].innerHTML = percentNumbersGrund[g] + "%";
+      percentPGrundArray[g].style.display = "block";
+    }
+
+
+    
+  }
 
 
   //parent-div
@@ -1444,9 +1712,6 @@ export async function application() {
     }
     if (event.target == infoModal) {
       infoModal.style.display = "none";
-    }
-    if (event.target == textModal) {
-      textModal.style.display = "none";
     }
     if (event.target == quizModal){
       quizModal.style.display = "none";

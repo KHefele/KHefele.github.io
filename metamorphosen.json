@@ -1,68 +1,257 @@
 {
     
     "prooemium": {
-        "name": "Prooemium",
-        "stelle": "(1-4)",
+        "name": "Vorwort des Dichters",
+        "stelle": "1,1-4",
         "text": "Lust wird rege zum Sang, wie sich Formen in andere Körper Wandelten. Götter, o seid - ihr habt ja auch sie gewandelt - Meinem Beginnen geneigt, und vom Uranfange der Schöpfung Führt bis auf unsere Zeit des Gedichts fortlaufenden Faden."
     },
     "weltentstehung": {
-        "name":"Die Weltentstehung",
-        "stelle": "()",
-        "text": "Text zur Weltentstehung"
+        "name":"Entstehung der Welt und des Menschen",
+        "stelle": "",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur"
     },    
     "weltzeitalter": {
-        "name":"Die Weltzeitalter",
-        "stelle": "()",
-        "text": "Text zu den Weltzeitalter"
+        "name":"Die vier Weltalter",
+        "stelle": "",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur"
     },
     "giganten": {
         "name":"Die Giganten",
-        "stelle": "()",
-        "text": "Text zu den Giganten"
+        "stelle": "",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.  At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur"
+    },
+    "götterversammlungI": {
+        "name":"Die Götterversammlung (I)",
+        "stelle": "",
+        "text": "Text zur Götterversammlung"
     },
     "lycaon": {
-        "name":"",
+        "name":"Lycaon",
         "stelle": "",
         "text": ""
     },
-    "flut": {
-        "name":"",
+    "götterversammlungII": {
+        "name":"Die Götterversammlung (II)",
+        "stelle": "",
+        "text": "Text zur Götterversammlung"
+    },
+    "sintflut": {
+        "name":"Die Sintflut",
         "stelle": "",
         "text": ""
     },
     "deucalionUndPyrrha": {
-        "name":"",
+        "name":"Deucalion und Pyrrha",
         "stelle": "",
         "text": ""
     },
-    "erneuerungTierwelt": {
-        "name":"",
+    "urzeugung": {
+        "name":"Die Urzeugung",
         "stelle": "",
         "text": ""
     },
     "python": {
-        "name":"",
+        "name":"Apollo tötet Python",
         "stelle": "",
         "text": ""
     },
     "daphne": {
-        "name":"",
+        "name":"Apollo und Daphne",
         "stelle": "",
         "text": ""
     },
     "io": {
-        "name":"",
+        "name":"Iuppiter und Io (I)",
         "stelle": "",
         "text": ""
     },
     "syrinx": {
-        "name":"",
+        "name":"Pan und Syrinx",
         "stelle": "",
         "text": ""
     },
-    "phaeton": {
-        "name":"",
+    "ioII": {
+        "name":"Iuppiter und Io (II)",
         "stelle": "",
+        "text": ""
+    },
+    "phaetonI": {
+        "name":"Phaethon (I)",
+        "stelle": "",
+        "text": ""
+    },
+    "phaetonII": {
+        "name":"Phaethon (II)",
+        "stelle": "",
+        "text": ""
+    },
+    "callisto": {
+        "name":"Iuppiter und Callisto",
+        "stelle": "",
+        "text": ""
+    },
+    "coronisI": {
+        "name":"Apollo und Coronis (I)",
+        "stelle": "",
+        "text": ""
+    },
+    "krähe": {
+        "name":"Die Krähe - Nyctimene",
+        "stelle": "",
+        "text": ""
+    },
+    "coronisII": {
+        "name":"Apollo und Coronis (I)",
+        "stelle": "",
+        "text": ""
+    },
+    "ocyroe": {
+        "name":"Phaethon (I)",
+        "stelle": "",
+        "text": ""
+    },
+    "battus": {
+        "name":"Battus",
+        "stelle": "",
+        "text": ""
+    },
+    "aglaurosMercurHerse": {
+        "name":"Aglauros, Mercur und Herse",
+        "stelle": "",
+        "text": ""
+    },
+    "europa": {
+        "name":"Iuppiter und Europa",
+        "stelle": "",
+        "text": ""
+    },
+    "cadmus": {
+        "name":"Cadmus",
+        "stelle": "3,1-137",
+        "text": ""
+    },
+    "actaeon": {
+        "name":"Actaeon",
+        "stelle": "3,138-252",
+        "text": ""
+    },
+    "semele": {
+        "name":"Iuppiter und Semele",
+        "stelle": "3,253-315",
+        "text": ""
+    },
+    "tiresias": {
+        "name":"Tiresias",
+        "stelle": "3,316-338",
+        "text": ""
+    },
+    "narcissusEcho": {
+        "name":"Narcissus und Echo",
+        "stelle": "",
+        "text": ""
+    },
+    "pentheusI": {
+        "name":"Pentheus (I)",
+        "stelle": "",
+        "text": ""
+    },
+    "schiffer": {
+        "name":"Die tyrrhenischen Schiffer",
+        "stelle": "",
+        "text": ""
+    },
+    "pentheusII": {
+        "name":"Pentheus (II)",
+        "stelle": "",
+        "text": ""
+    },
+    "minayastoechterI": {
+        "name":"Die Minayastöchter (I)",
+        "stelle": "4,1-36",
+        "text": ""
+    },
+
+
+
+    "alpheusundarethusa": {
+        "name":"Alpeus und Arethusa",
+        "stelle": "?",
+        "text": ""
+    },
+
+
+
+    "lykischebauern": {
+        "name":"Lykische Bauern",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "achelous": {
+        "name":"Achelous",
+        "stelle": "?",
+        "text": ""
+    },
+
+
+    "byblis": {
+        "name":"Byblis",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "hyacinthus": {
+        "name":"Hyacinthus",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "galatea": {
+        "name":"Galatea",
+        "stelle": "?",
+        "text": ""
+    }, 
+
+    "iphigenie": {
+        "name":"Iphigenie",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "cygnus": {
+        "name":"Cygnus",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "glaucus": {
+        "name":"Glaucus",
+        "stelle": "?",
+        "text": ""
+    },
+
+    
+    "gefaehrtendesulixes": {
+        "name":"Gefaehrten des Ulixes",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "aeneas": {
+        "name":"Aeneas",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "egeria": {
+        "name":"Egeria",
+        "stelle": "?",
+        "text": ""
+    },
+
+    "caesar": {
+        "name":"Caesar",
+        "stelle": "?",
         "text": ""
     }
 
