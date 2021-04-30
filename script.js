@@ -194,7 +194,9 @@ export async function application() {
   //console.log("zufallszahl: " + rand(-100,200));
 
 
-  function createIcon(data) { //startposition anywhere (animation)
+  function createIconAndPopover(data) { //startposition anywhere (animation)
+    
+    //Icon
     var iconDiv = document.createElement("div");
     iconDiv.id = data.id + "Wrapper";
     iconDiv.className="popover__wrapper";
@@ -210,6 +212,32 @@ export async function application() {
     iconImg.style.width = data.width + "px";
     iconImg.alt = data.alt;
     iconDiv.appendChild(iconImg);
+
+
+    //Popover
+    var popoverContentDiv = document.createElement("div"); 
+    popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
+    popoverContentDiv.className = "popover__content"; 
+    //popoverContentDiv.style.top = "0%";
+    //popoverContentDiv.style.left = "0%";
+    //popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
+    //popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
+    //popoverContentDiv.style.visibility = "hidden";
+    iconDiv.appendChild(popoverContentDiv);
+
+    var ueberschrift = document.createElement("h3");
+    ueberschrift.innerHTML = data.name;
+    popoverContentDiv.appendChild(ueberschrift);
+
+    var ovMet = document.createElement("p");
+    ovMet.innerHTML = data.ovMet;
+    popoverContentDiv.appendChild(ovMet);
+
+    var popoverImg = document.createElement("img");
+    popoverImg.src = data.img;
+    popoverImg.alt = data.alt;
+    popoverImg.style.width = "200px";
+    popoverContentDiv.appendChild(popoverImg);
   }
 
   /*
@@ -231,29 +259,29 @@ export async function application() {
 
   
 
-  function createPopover(data) {
-    var popoverContentDiv = document.createElement("div"); 
-    popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
-    popoverContentDiv.className = "popover__content"; 
-    popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
-    popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
-    popoverContentDiv.style.visibility = "hidden";
-    kategorienUndPopoverDiv.appendChild(popoverContentDiv);
+  // function createPopover(data) {
+  //   var popoverContentDiv = document.createElement("div"); 
+  //   popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
+  //   popoverContentDiv.className = "popover__content"; 
+  //   popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
+  //   popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
+  //   popoverContentDiv.style.visibility = "hidden";
+  //   kategorienUndPopoverDiv.appendChild(popoverContentDiv);
 
-    var ueberschrift = document.createElement("h3");
-    ueberschrift.innerHTML = data.name;
-    popoverContentDiv.appendChild(ueberschrift);
+  //   var ueberschrift = document.createElement("h3");
+  //   ueberschrift.innerHTML = data.name;
+  //   popoverContentDiv.appendChild(ueberschrift);
 
-    var ovMet = document.createElement("p");
-    ovMet.innerHTML = data.ovMet;
-    popoverContentDiv.appendChild(ovMet);
+  //   var ovMet = document.createElement("p");
+  //   ovMet.innerHTML = data.ovMet;
+  //   popoverContentDiv.appendChild(ovMet);
 
-    var popoverImg = document.createElement("img");
-    popoverImg.src = data.img;
-    popoverImg.alt = data.alt;
-    popoverImg.style.width = "200px";
-    popoverContentDiv.appendChild(popoverImg);
-  }
+  //   var popoverImg = document.createElement("img");
+  //   popoverImg.src = data.img;
+  //   popoverImg.alt = data.alt;
+  //   popoverImg.style.width = "200px";
+  //   popoverContentDiv.appendChild(popoverImg);
+  // }
 
 
 
@@ -267,22 +295,22 @@ export async function application() {
 
 
 
-  function popoverAufruf(data) {;
-    var idName = (data.id + "Btn");
-    var iconBtn = document.getElementById(idName);
+  // function popoverAufruf(data) {;
+  //   var idName = (data.id + "Btn");
+  //   var iconBtn = document.getElementById(idName);
     
-    iconBtn.onmouseover = function () {
-      var elementWithNameID = document.getElementById(data.id + "Popover");
-      elementWithNameID.style.visibility = "visible";
-      // if (){
-      //   var data.id = iconBtn.
-      // }
-    }
-    iconBtn.onmouseout = function () {
-      var elementWithNameID = document.getElementById(data.id + "Popover");
-      elementWithNameID.style.visibility = "hidden";
-    }
-  }
+  //   iconBtn.onmouseover = function () {
+  //     var elementWithNameID = document.getElementById(data.id + "Popover");
+  //     elementWithNameID.style.visibility = "visible";
+  //     // if (){
+  //     //   var data.id = iconBtn.
+  //     // }
+  //   }
+  //   iconBtn.onmouseout = function () {
+  //     var elementWithNameID = document.getElementById(data.id + "Popover");
+  //     elementWithNameID.style.visibility = "hidden";
+  //   }
+  // }
 
 
 
@@ -605,10 +633,10 @@ export async function application() {
 
   function allesAufrufen() {
     for (var key in leude){
-      createIcon(leude[key]);
+      createIconAndPopover(leude[key]);
       //iconPositioning(leude[key]);
-      createPopover(leude[key]);
-      popoverAufruf(leude[key]);
+      //createPopover(leude[key]);
+      //popoverAufruf(leude[key]);
       modalAufruf(leude[key]); //createModal wird innerhalb dieser Funktion aufgerufen
     }
   }

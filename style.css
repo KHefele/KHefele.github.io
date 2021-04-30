@@ -527,9 +527,8 @@ button { /* unterscheidet sich sonst von span */
   transform: translate(-50%, -50%); /* centered images! */
   z-index: 35;
 }
-
 .iconImg {
-  /*z-index: 35;*/
+  
 }
 
 .iconImg:hover {
@@ -541,10 +540,10 @@ button { /* unterscheidet sich sonst von span */
 .popover__content {
   color: white;
   opacity: 0;
-  /*visibility: hidden; > Visibility wird jetzt über JavaScript gesteuert s. popoverAufruf */
-  position: relative;
-  /*top: 100px;*/
-  /*left: calc(50% - 100px - 1.5rem);*/
+  visibility: hidden; /* NICHT MEHR: Visibility wird jetzt über JavaScript gesteuert s. popoverAufruf */
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 100px - 1.5rem);
   transform: translate(0, 10px);
   background-color: rgba(0, 0, 0, 0.9); 
   padding: 25px;
@@ -553,7 +552,7 @@ button { /* unterscheidet sich sonst von span */
 }
 .popover__content:before { /* nur das Dreieck! */
   position: absolute;
-  /*z-index: -1;*/
+  z-index: -1;
   content: "";
   right: calc(50% - 10px);
   top: -8px;
@@ -563,11 +562,14 @@ button { /* unterscheidet sich sonst von span */
   transition-duration: 0.3s;
   transition-property: transform;
 }
-.popover__wrapper:hover ~ .popover__content {
+.popover__wrapper:hover {
   z-index: 39;
-  position: absolute;
+}
+.popover__wrapper:hover .popover__content {
+  z-index: 39;
+  /* position: absolute; */
   opacity: 1;
-  /*visibility: visible; > JavaScript*/
+  visibility: visible; /* nicht mehr über JavaScript*/
   transform: translate(0, -20px);
   transition: all 0.5s cubic-bezier(0.75, -0.02, 0.2, 0.97);
   text-align: center;
