@@ -1,9 +1,9 @@
 async function loadJSON(path)
 {    
-    return fetch(path)
-        .then((response) => {
-            return response.json()
-        })
+  return fetch(path)
+  .then((response) => {
+    return response.json()
+  })
 }
 
 export async function application() {
@@ -12,6 +12,9 @@ export async function application() {
   const metamorphosen = await loadJSON('metamorphosen.json'); // für MetamorphosenText
 
 
+  if (location.hash === "") {
+    location.hash = "#";
+  }
 
 
   //--------------------------------------------//
@@ -22,6 +25,11 @@ export async function application() {
   // StartModal
   var startModal = document.getElementById("startModal"); // Get startModal
   var spanStart = document.getElementById("closeStartModal");   // Get <span> element that closes the startModal
+
+  if (location.hash === "") {
+    startModal.style.display = "block";
+  }
+
 
   spanStart.onclick = function () { // Close
     startModal.style.display = "none";
@@ -103,6 +111,9 @@ export async function application() {
   //--------------------------------------------//
 
 
+
+  //ALPHABET
+
   var figuresListSorted = [];
   var ovMetListSorted = [];
 
@@ -158,9 +169,9 @@ export async function application() {
 
   for (var h = 0; h < figuresListSorted.length; h++){
     //console.log(ovMetListSorted[h]);
-    if (ovMetListSorted[h] < 5){
+    if (ovMetListSorted[h] < 6){
       erstePentade.push(figuresListSorted[h]);
-    } else if (ovMetListSorted[h] > 5 && ovMetListSorted[h] < 10){
+    } else if (ovMetListSorted[h] > 6 && ovMetListSorted[h] < 11){
       zweitePentade.push(figuresListSorted[h]);
     } else {
       drittePentade.push(figuresListSorted[h]);
@@ -169,8 +180,100 @@ export async function application() {
 
 
 
+  var currentListSorted = figuresListSorted; //default 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //Verwandlerlisten
+
+  //Beispiel:
+  var verw = {
+    "jupiter":{
+      "namenDerVerwandelten": ["Berta", "Hannah"]
+    }, 
+    "diana": {
+      "namenDerVerwandelten":["Berta", "Hannah"]
+    }
+  };
+  //console.log(verwandler.jupiter.namenDerVerwandelten);
+
+  var verwandlerArray = [];
+  var verwandlerDict = {}; 
+  for (key in leude){
+    var currentVerwandler = leude[key].verwandler;
+    if (currentVerwandler === "-"){continue};
+    console.log(currentVerwandler)
+
+    //Bereinigung
+    for (var buchstabe = 0; buchstabe < currentVerwandler.length; buchstabe ++){
+  
+      //unnötige Info in Klammern rausschmeißen
+      if (currentVerwandler[buchstabe] === "(") { 
+        var indexOfLeftBracket = buchstabe;
+        var indexOfRightBracket = currentVerwandler.indexOf(")");
+        currentVerwandler = currentVerwandler.substring(0, indexOfLeftBracket).concat(currentVerwandler.substr(indexOfRightBracket+1));
+        currentVerwandler.trim();
+      }
+    
+    }
+
+    //insert, if key isn't already in dict
+    if (!(currentVerwandler in verwandlerDict)) { 
+      verwandlerDict[currentVerwandler] = {
+        "nameDerVerwandelten": [leude[key].name]
+      };
+      
+    } else {
+      verwandlerDict[currentVerwandler].nameDerVerwandelten.push(leude[key].name);
+    }
+    //count if more than 1 
+    // } else { 
+    //   verwandlerCountDict[leude[key].verwandler] = verwandlerCountDict[leude[key].verwandler] + 1;
+    // }
+    // verwandlerDict[currentVerwandler] = 
+
+
+    
+
+
+
+          // //falls mehrere Protagonisten genannt > separieren
+          // if (currentVerwandler[buchstabe] === ",") { 
+          //   var indexOfKomma = buchstabe;
+          //   var firstVerwandler = currentVerwandler.substring(0, indexOfKomma);
+          //   var secondVerwandler = currentVerwandler.substring(indexOfKomma + 2);
+    
+          //   for (var b = 0; b < secondVerwandler.length; b++){ //Fall 3 Verwandler
+    
+          //   }  
+          // } else {
+          //   verwandlerArray.push(currentVerwandler);
+          // }
+
+    
+
+  }
+  console.log(verwandlerDict);
+
+
+
+ 
 
 
 
@@ -200,8 +303,18 @@ export async function application() {
     var iconDiv = document.createElement("div");
     iconDiv.id = data.id + "Wrapper";
     iconDiv.className="popover__wrapper";
-    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%"; //rand(-100,200) + "%";
-    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%"; //rand(-100,200) + "%";
+    iconDiv.style.top = rand(-10,110) + "%";
+    iconDiv.style.left = rand(-10,110) + "%";
+    iconDiv.style.opacity = "0";
+
+    function setCoordinatesIcons(){
+      if (location.hash === ""){
+        iconDiv.style.top = data.koordinaten.unorganisiert.top + "%"; //rand(-100,200) + "%";
+        iconDiv.style.left = data.koordinaten.unorganisiert.left + "%"; //rand(-100,200) + "%";
+      }
+      iconDiv.style.opacity = "1";
+    }
+    window.setTimeout(setCoordinatesIcons, 1000);
     kategorienUndPopoverDiv.appendChild(iconDiv);
 
     var iconImg = document.createElement("img"); 
@@ -214,109 +327,62 @@ export async function application() {
     iconDiv.appendChild(iconImg);
 
 
-    //Popover
+    //Popover - nach unten 
+    
     var popoverContentDiv = document.createElement("div"); 
     popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
     popoverContentDiv.className = "popover__content"; 
-    //popoverContentDiv.style.top = "0%";
-    //popoverContentDiv.style.left = "0%";
-    //popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
-    //popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
-    //popoverContentDiv.style.visibility = "hidden";
+    popoverContentDiv.style.cursor = "pointer";
     iconDiv.appendChild(popoverContentDiv);
 
-    var ueberschrift = document.createElement("h3");
+    //console.log(iconDiv.style.top);
+    //popoverContentDiv.style.top = iconDiv.style.top + 
+
+    var ueberschrift = document.createElement("h4");
+    ueberschrift.style.margin = "0%";
     ueberschrift.innerHTML = data.name;
     popoverContentDiv.appendChild(ueberschrift);
 
     var ovMet = document.createElement("p");
+    ovMet.style.fontSize = "12px";
     ovMet.innerHTML = data.ovMet;
     popoverContentDiv.appendChild(ovMet);
 
     var popoverImg = document.createElement("img");
     popoverImg.src = data.img;
     popoverImg.alt = data.alt;
-    popoverImg.style.width = "200px";
+    if (popoverImg.naturalWidth > popoverImg.naturalHeight) {
+      popoverImg.width = "150";
+    } else {
+      popoverImg.height = "150";
+    } 
+    //popoverImg.style.width = "200px";
     popoverContentDiv.appendChild(popoverImg);
+
+    //Popover - nach oben
+    //console.log(popoverContentDiv.style.height);
+    if ((popoverContentDiv.style.top + popoverContentDiv.height) > 100) {
+      
+      
+      console.log("zu groß");
+    }
   }
 
-  /*
-  function iconPositioning(data) { //right positioning
-    var iconDiv = document.getElementById(data.id + "Wrapper");
-    iconDiv.style.top = data.koordinaten.unorganisiert.top + "%";
-    iconDiv.style.left = data.koordinaten.unorganisiert.left + "%";
-  }
-*/
-
-
   
-  //--------------------------------------------//
-  //           Metamorphosen-Popover            //
-  //--------------------------------------------//
-
-  // generiert automatisiert Popover mithilfe der angelegten json-Datei
-  // Parameter z.B. leude.actaeon
-
   
 
-  // function createPopover(data) {
-  //   var popoverContentDiv = document.createElement("div"); 
-  //   popoverContentDiv.id = data.id + "Popover"; //sonst werden alle Popover gleichzeitig aufgerufen
-  //   popoverContentDiv.className = "popover__content"; 
-  //   popoverContentDiv.style.top = (data.koordinaten.unorganisiert.top - (-10)) + "%";
-  //   popoverContentDiv.style.left = (data.koordinaten.unorganisiert.left - 8)+ "%";
-  //   popoverContentDiv.style.visibility = "hidden";
-  //   kategorienUndPopoverDiv.appendChild(popoverContentDiv);
-
-  //   var ueberschrift = document.createElement("h3");
-  //   ueberschrift.innerHTML = data.name;
-  //   popoverContentDiv.appendChild(ueberschrift);
-
-  //   var ovMet = document.createElement("p");
-  //   ovMet.innerHTML = data.ovMet;
-  //   popoverContentDiv.appendChild(ovMet);
-
-  //   var popoverImg = document.createElement("img");
-  //   popoverImg.src = data.img;
-  //   popoverImg.alt = data.alt;
-  //   popoverImg.style.width = "200px";
-  //   popoverContentDiv.appendChild(popoverImg);
-  // }
-
-
-
-
 
 
 
   //--------------------------------------------//
-  //              Popover-Aufruf                //
+  //            Globale Variablen               //
   //--------------------------------------------//
 
 
 
-  // function popoverAufruf(data) {;
-  //   var idName = (data.id + "Btn");
-  //   var iconBtn = document.getElementById(idName);
-    
-  //   iconBtn.onmouseover = function () {
-  //     var elementWithNameID = document.getElementById(data.id + "Popover");
-  //     elementWithNameID.style.visibility = "visible";
-  //     // if (){
-  //     //   var data.id = iconBtn.
-  //     // }
-  //   }
-  //   iconBtn.onmouseout = function () {
-  //     var elementWithNameID = document.getElementById(data.id + "Popover");
-  //     elementWithNameID.style.visibility = "hidden";
-  //   }
-  // }
-
-
-
-
-
-
+  var aktuellesModal;
+  var aktuelleModalID;
+  var aktuelleKategorie = ""; 
 
 
 
@@ -343,21 +409,22 @@ export async function application() {
     modalContentDiv.className = "metamorphosenModalContent";
     modalDiv.appendChild(modalContentDiv);
 
-    if (!(modalDiv.id == figuresListSorted[0] + "Modal")) {
+    //slide
+    //if (!(modalDiv.id == figuresListSorted[0] + "Modal")) { 
       var slidePrevDiv = document.createElement("div");
       slidePrevDiv.innerHTML = "&#10094;";
       slidePrevDiv.className = "prevMet";
       slidePrevDiv.title = "vorherige Verwandlung";
       modalDiv.appendChild(slidePrevDiv);
-    }
+    //}
 
-    if (!(modalDiv.id == figuresListSorted[figuresListSorted.length-1] + "Modal")) {
+    //if (!(modalDiv.id == figuresListSorted[figuresListSorted.length-1] + "Modal")) {
       var slideNextDiv = document.createElement("div");
       slideNextDiv.innerHTML = "&#10095";
       slideNextDiv.className = "nextMet";
       slideNextDiv.title = "nächste Verwandlung";
       modalDiv.appendChild(slideNextDiv);
-    }
+    //}
 
     //header
     var divHeader = document.createElement("div"); //div anlegen
@@ -441,7 +508,7 @@ export async function application() {
     innerTable.style.marginLeft = "15px";
     
     var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#128064;", "&#127988;" ];
-    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Urheber:in:", "Ort:", "Vergleichswerke:", "Iconclass:" ];
+    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandelnde:r:", "Ort:", "Vergleichswerke:", "Iconclass:" ];
     var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.vergleichswerke, data.iconclass];
     
     for (var i = 0; i < 7; i++) {
@@ -533,45 +600,54 @@ export async function application() {
     }
     tableCol2.appendChild(innerTable);
 
+    // modalContentDiv.appendChild(document.createElement("hr"));
 
-    modalContentDiv.appendChild(document.createElement("hr"));
 
+    // // Details - Übersetzung
+    // var detailsDiv = document.createElement("div");
+    // detailsDiv.className = "modalContentLeft";
+    // modalContentDiv.appendChild(detailsDiv);
 
-    // Details - Übersetzung
-    var detailsDiv = document.createElement("div");
-    detailsDiv.className = "modalContentLeft";
-    modalContentDiv.appendChild(detailsDiv);
+    // var uebersetzungsDetails = document.createElement("details");
+    // detailsDiv.appendChild(uebersetzungsDetails);
 
-    var uebersetzungsDetails = document.createElement("details");
-    detailsDiv.appendChild(uebersetzungsDetails);
+    // var uebersetzungsSummary = document.createElement("summary");
+    // uebersetzungsSummary.innerHTML = "Übersetzung (M. von Albrecht)"
+    // uebersetzungsDetails.appendChild(uebersetzungsSummary);
 
-    var uebersetzungsSummary = document.createElement("summary");
-    uebersetzungsSummary.innerHTML = "Übersetzung (M. von Albrecht)"
-    uebersetzungsDetails.appendChild(uebersetzungsSummary);
+    // var uebersetzungsP = document.createElement("p");
+    // uebersetzungsP.innerHTML = data.uebersetzung;
+    // uebersetzungsDetails.appendChild(uebersetzungsP);
 
-    var uebersetzungsP = document.createElement("p");
-    uebersetzungsP.innerHTML = data.uebersetzung;
-    uebersetzungsDetails.appendChild(uebersetzungsP);
+    // // Details - Originaltext
+    // var originaltextDetails = document.createElement("details");
+    // detailsDiv.appendChild(originaltextDetails);
 
-    // Details - Originaltext
-    var originaltextDetails = document.createElement("details");
-    detailsDiv.appendChild(originaltextDetails);
+    // var originaltextSummary = document.createElement("summary");
+    // originaltextSummary.innerHTML = "Originaltext";
+    // originaltextDetails.appendChild(originaltextSummary);
 
-    var originaltextSummary = document.createElement("summary");
-    originaltextSummary.innerHTML = "Originaltext";
-    originaltextDetails.appendChild(originaltextSummary);
-
-    var originaltextP = document.createElement("p");
-    originaltextP.innerHTML = data.originaltext;
-    originaltextDetails.appendChild(originaltextP);
+    // var originaltextP = document.createElement("p");
+    // originaltextP.innerHTML = data.originaltext;
+    // originaltextDetails.appendChild(originaltextP);
 
 
     modalContentDiv.appendChild(document.createElement("br")); //sonst ist Details schon im Halbdunkel
-    modalContentDiv.appendChild(document.createElement("br"));
 
 
     var footerDiv = document.createElement("div");
     footerDiv.className = "metamorphosenModalFooter";
+    //footerDiv.appendChild(document.createElement("br"));
+
+    var zurGeschichteLink = document.createElement("a");
+    zurGeschichteLink.className = "metamorphosenModalBtns";
+    zurGeschichteLink.style.position = "absolute";
+    zurGeschichteLink.innerHTML = "&#10149; zur Geschichte";
+    zurGeschichteLink.setAttribute("href", "#");
+    zurGeschichteLink.style.right = "-1%";
+    footerDiv.appendChild(zurGeschichteLink);
+
+    footerDiv.appendChild(document.createElement("br"));
     footerDiv.appendChild(document.createElement("br"));
     footerDiv.appendChild(document.createElement("br"));
     footerDiv.appendChild(document.createElement("br"));
@@ -580,23 +656,17 @@ export async function application() {
 
     var buttonSpan = document.createElement("span");
     buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
-    buttonSpan.onclick = function() { modalDiv.style.display = "none" };
+    buttonSpan.onclick = function() { 
+      modalDiv.style.display = "none";
+      aktuellesModal = undefined;
+      //location hash
+      location.hash = "#" + aktuelleKategorie;
+    };
     buttonSpan.style.position = "fixed";
     buttonSpan.style.left = "76%";
     buttonSpan.style.top = "19%";
     buttonSpan.style.cursor = "pointer";
     modalContentDiv.appendChild(buttonSpan);
-
-
-    // var buttonSpan = document.createElement("span");
-    // buttonSpan.setAttribute("align", "center");
-    // buttonSpan.className = "modalBtns";
-    // buttonSpan.innerHTML = "SCHLIESSEN";
-    // buttonSpan.onclick = function() { modalDiv.style.display = "none" };
-    // modalContentDiv.appendChild(buttonSpan);
-
-
-    // modalContentDiv.appendChild(document.createElement("br"));
 
     return modalDiv;
   }
@@ -609,15 +679,38 @@ export async function application() {
   //            > automatisieren                //
   //--------------------------------------------//
   
-  
-  function modalAufruf(data) {
+
+
+
+  var modalAufruf = function (data) {
     var currentModal = createModal(data);
     var currentBtn = document.getElementById(data.id + "Btn");
+    
 
-    currentBtn.onclick = function () {
+    
+    function modalAufBlock() {
       currentModal.style.display = "block";
       currentModal.style.animationPlayState = "running";
-    }  
+  
+      aktuellesModal = data.id;
+      aktuelleModalID = currentListSorted.indexOf(data.id);
+  
+      //location hash
+      if (aktuelleKategorie === ""){
+        location.hash = "#" + aktuellesModal;
+      } else {
+        location.hash = "#" + aktuelleKategorie + "#" + aktuellesModal;
+      }
+    }
+
+    //Onclick auf Icon
+    currentBtn.onclick = modalAufBlock;
+
+    //Onclick auf Popover
+    var currentPopover = document.getElementById(data.id + "Popover");
+
+    currentPopover.onclick = modalAufBlock;
+
   }
 
 
@@ -634,9 +727,6 @@ export async function application() {
   function allesAufrufen() {
     for (var key in leude){
       createIconAndPopover(leude[key]);
-      //iconPositioning(leude[key]);
-      //createPopover(leude[key]);
-      //popoverAufruf(leude[key]);
       modalAufruf(leude[key]); //createModal wird innerhalb dieser Funktion aufgerufen
     }
   }
@@ -646,11 +736,115 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //               Location Hash                //
+  //--------------------------------------------//
+
+  var locHash = location.hash;
+  
+  var locationHashElements = location.hash.split("#");
+  console.log(locationHashElements);
+
+  for (var e = 0; e < locationHashElements.length; e++){
+
+    //leere Einträge entfernen
+    if (locationHashElements[e] === "") {
+      locationHashElements.shift();
+    }
+    console.log(locationHashElements);
+
+    //kategorie herausfinden und aus Tabelle entfernen
+    if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "fliesstext") {
+      var startKategorieHash = locationHashElements[e];
+      locationHashElements.shift();
+    }
+
+    //uebrig bleibt ModalID, falls vorhanden
+    if (locationHashElements.length > 0) {
+      var startModalHash = locationHashElements[e];
+    }
+  }
+  console.log("startKategorieHash: " + startKategorieHash);
+  console.log("startModalHash: " + startModalHash);
   
 
+  if (typeof startModalHash !== "undefined"){
+    aktuellesModal = startModalHash;
+    aktuelleModalID = currentListSorted.indexOf(aktuellesModal);
+    console.log(aktuelleModalID)
+
+    var getModal = document.getElementById(startModalHash + "Modal");
+    getModal.style.display = "block";
+    getModal.style.animationPlayState = "running";
+  }
 
 
 
+  
+  //kategorien ausführen
+  function setLocationHash() {
+
+    if (location.hash.startsWith("#erzaehlfolge")) {
+      window.setTimeout(erzaehlfolgeFunction, 300);
+  
+    } else if (location.hash.startsWith("#taxonomie")) {
+      window.setTimeout(taxonomieFunction, 300);
+  
+    } else if (location.hash.startsWith("#geographie")) {  
+      window.setTimeout(geographieFunction, 300);
+  
+    } else if (location.hash.startsWith("#alphabet")) {
+      window.setTimeout(alphabetFunction, 300);
+  
+    } else if (location.hash.startsWith("#grund")) {
+      window.setTimeout(grundFunction, 300);
+  
+    } else if (location.hash.startsWith("#fliesstext")) {
+      window.setTimeout(fliesstextFunction, 300);
+  
+      // var fliesstextID = locHash.substring(12);
+  
+      // //document.onreadystatechange = function () {
+      //   //if (document.readyState === 'complete') {
+      //     var myElement = document.getElementById(fliesstextID);
+      //     var topPos = myElement.offsetTop; //getBoundingClientRect();
+      //     console.log(topPos);
+      //   //}
+      // // }
+      
+  
+  
+  
+      //document.getElementById("textModal").scrollTop = topPos;
+  
+  
+      // console.log(document.getElementById(fliesstextID));
+      // document.getElementById(fliesstextID).style.color = "#733030";
+      // window.scrollTo(0, 1000);
+      // document.getElementById(fliesstextID).scrollIntoView();
+      
+      // for (key in metamorphosen) {
+      //   if (fliesstextID === metamorphosen[key].id){
+      //     var currentText = document.getElementById(key);
+      //     currentText.style.top = "-1";
+          
+      //     var currentHeader = document.getElementById(key + "Header");
+      //     currentHeader.style.color = "#733030";
+          
+      //   }
+      // }
+  
+    } else if (location.hash != "") {
+      //locHash = "";
+      //alert('Die URL mit der Endung "' + location.hash + '" existiert nicht. Du wurdest auf die Startseite weitergeleitet.');
+    }
+
+  }
+
+
+
+  setLocationHash();
+  window.onhashchange = setLocationHash;
 
 
 
@@ -660,32 +854,21 @@ export async function application() {
   //--------------------------------------------//
   //            Slider-Functions                //
   //--------------------------------------------//
-  
-
-
-  //get ID of currentlyDisplayedModal  
-  function getCurrentlyDisplayedModalId() {
-    for (var id = 0; id < figuresListSorted.length; id++){
-      var modal = document.getElementById(figuresListSorted[id] + "Modal");
-      
-      if (modal.style.display == "block"){
-        //console.log("modal wird gezeigt: " + figuresListSorted[id]);
-        return figuresListSorted[id] + "Modal";
-      }
-      
-    }
-    
-  }
  
 
   //slider-function 
   function slide(number) {
-    for (var idNumber = 0; idNumber < figuresListSorted.length; idNumber++){
-
-      if (figuresListSorted[idNumber] + "Modal" == getCurrentlyDisplayedModalId()) {
-        return figuresListSorted[idNumber + number] + "Modal";
-      }
-    }
+    //for (var idNumber = 0; idNumber < figuresListSorted.length; idNumber++){
+      var neueID = aktuelleModalID + number;
+      //if (currentListSorted[idNumber] == aktuellesModal) {
+        if (neueID >= currentListSorted.length) { //falls größer als length, wieder bei 0 anfangen
+          neueID -= currentListSorted.length;
+        } else if (neueID < 0) { //falls kleiner als 0, wieder bei length anfangen
+          neueID += currentListSorted.length;
+        }
+        return neueID;
+      //}
+    //}
   }
 
 
@@ -694,25 +877,46 @@ export async function application() {
   var nextArray = document.getElementsByClassName("nextMet");
 
 
-  for (var prevBtnNb = 0; prevBtnNb < prevArray.length; prevBtnNb++) {
+  for (var s = 0; s < prevArray.length; s++) {
       
-      prevArray[prevBtnNb].onclick = function () {
-        //console.log("prevBtn geklickt");
-        var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
-        var modalWanted = document.getElementById(slide(-1));
-        
-        modalNow.style.display = "none";
-        modalWanted.style.display = "block";
-        modalWanted.style.animationPlayState = "running";
+    prevArray[s].onclick = function () {
+      //console.log("prevBtn geklickt");
+
+      var modalNow = document.getElementById(aktuellesModal + "Modal");
+      console.log(aktuellesModal)
+
+      aktuelleModalID = slide(-1);
+      aktuellesModal = currentListSorted[aktuelleModalID];
+
+      
+      var modalWanted = document.getElementById(aktuellesModal + "Modal");
+      
+      modalNow.style.display = "none";
+      modalWanted.style.display = "block";
+      modalWanted.style.animationPlayState = "running";
+
+      //location hash
+      if (aktuelleKategorie === ""){
+        location.hash = "#" + aktuellesModal;
+      } else {
+        location.hash = "#" + aktuelleKategorie + "#" + aktuellesModal;
       }
+      
+      
+    }
   }
 
   for (var nextBtnNb = 0; nextBtnNb < nextArray.length; nextBtnNb++){
     nextArray[nextBtnNb].onclick = function () {
+      
+      var modalNow = document.getElementById(aktuellesModal + "Modal");
+
+      aktuelleModalID = slide(+1);
+      aktuellesModal = currentListSorted[aktuelleModalID];
+
+      var modalWanted = document.getElementById(aktuellesModal + "Modal");
       //console.log("nextBtn geklickt");
-      var modalNow = document.getElementById(getCurrentlyDisplayedModalId());
-      var modalWanted = document.getElementById(slide(+1));
-        
+      //console.log(modalNow);
       
       //modalNow.style.animationFillMode = "backwards";
       //modalNow.style.animationPlayState = "running";
@@ -721,6 +925,16 @@ export async function application() {
       modalWanted.style.display = "block";
       modalWanted.style.animationFillMode = "forwards";
       modalWanted.style.animationPlayState = "running";
+
+
+      //location hash
+      if (aktuelleKategorie === ""){
+        location.hash = "#" + aktuellesModal;
+      } else {
+        location.hash = "#" + aktuelleKategorie + "#" + aktuellesModal;
+      }
+
+      
     }
   }
 
@@ -793,21 +1007,11 @@ export async function application() {
     ovMetStelle.innerHTML = leude[key].ovMet;
     //ovMetStelle.style.position = "absolute";
     ovMetStelle.style.fontFamily = "'Crimson Text', serif";
-    ovMetStelle.style.fontSize = "10px";
+    ovMetStelle.style.fontSize = "8px";
     ovMetStelle.style.display = "none";
     iconWrapper.appendChild(ovMetStelle);
 
   }
-
-  // var backgroundDiv = document.createElement("div");
-  // backgroundDiv.className = "ovMetStelle";
-  // backgroundDiv.style.textAlign = "center";
-  // ovMetStelle.innerHTML = leude[key].ovMet;
-  // //ovMetStelle.style.position = "absolute";
-  // ovMetStelle.style.fontFamily = "'Crimson Text', serif";
-  // ovMetStelle.style.fontSize = "10px";
-  // ovMetStelle.style.display = "none";
-  // chronoImg.appendChild(ovMetStelle);
 
 
   function setZeitstrahl(startLeft, fromTop, laenge, arrowPosition, beschrText) {
@@ -823,8 +1027,8 @@ export async function application() {
     text.innerHTML = beschrText;
     text.style.fontFamily = "'Crimson Text', serif";
     text.style.position = "absolute";
-    text.style.top = fromTop - 1 + "%";
-    text.style.left = startLeft - 10 + "%";
+    text.style.top = fromTop - 10 + "%";
+    text.style.left = startLeft + "%";
     document.getElementById("chronologie").appendChild(text);
 
     //line
@@ -854,17 +1058,15 @@ export async function application() {
 
   
 
-  var startIconsBy = 20; //from left
-  var abstaendeZwischenIcons = 5;
-  var erstePentadeFromTop = 25;
-  var zweitePentadeFromTop = 50;
+  var startIconsBy = 12; //from left
+  var abstaendeZwischenIcons = 3.5;
+  var erstePentadeFromTop = 30;
+  var zweitePentadeFromTop = 52.5;
   var drittePentadeFromTop = 75;
   var iconPosition = startIconsBy;
 
-  //var figuresListSorted = [];
-  //var ovMetListSorted = [];
-
   function setCoordinates(booleanErsterKlick) {
+    
     iconPosition = startIconsBy;
     
     for (var h = 0; h < erstePentade.length; h++){
@@ -911,7 +1113,10 @@ export async function application() {
 
 
   var ersterKlickChrono = true;
-  chronoBtn.onclick = function () {
+  
+
+  function erzaehlfolgeFunction() {
+    
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
     for (var x = 0; x < taxonomieNames.length; x++) {
@@ -936,6 +1141,11 @@ export async function application() {
     grundImg.style.display = "none";
 
     setCoordinates(ersterKlickChrono);
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width * 60 / 100 + "px"; //60%
+      //console.log(iconWrapper.style.width);
+    }
     chronoImg.style.display = "block";
 
     ersterKlickChrono = false;
@@ -943,10 +1153,18 @@ export async function application() {
     for (var x = 0; x < ovMetStellen.length; x++) {
       ovMetStellen[x].style.display = "block";
     }
+
+    aktuelleKategorie = "erzaehlfolge";
+    location.hash = "#" + aktuelleKategorie;
+
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash += "#" + aktuellesModal;
+    }
+    
+
   }
 
-
-
+  chronoBtn.onclick = erzaehlfolgeFunction;
 
 
 
@@ -968,7 +1186,14 @@ export async function application() {
     iconWrapper.appendChild(pTaxonomie);
   }
 
-  taxBtn.onclick = function () {
+
+  function taxonomieFunction () {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width * 80 / 100 + "px"; //80%
+    }
+
+
     chronoImg.style.display = "none"; 
     var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
     for (var x = 0; x < ovMetStelle.length; x++) {
@@ -1001,20 +1226,23 @@ export async function application() {
 
 
     
-    //faunaDiv-data als startpunkt
-    var figurPositionFaunaTop = document.getElementById("fauna").offsetTop;
-    var figurPositionFaunaLeft = document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
+    //startpunkt von Top sind gleichzusetzen mit CSS id attributes, left + 10
+    var figurPositionFaunaTop = 25; //document.getElementById("fauna").offsetTop;
+    var figurPositionFaunaLeft = 16.5; //document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
 
-    //floraDiv-data als startpunkt 
-    var figurPositionFloraTop = document.getElementById("flora").offsetTop;
-    var figurPositionFloraLeft = document.getElementById("flora").offsetLeft + 150;
+    var figurPositionFloraTop = 40; //document.getElementById("flora").offsetTop;
+    var figurPositionFloraLeft = 16.5; //document.getElementById("flora").offsetLeft + 150;
 
-    var figurPositionElementeTop = document.getElementById("elemente").offsetTop;
-    var figurPositionElementeLeft = document.getElementById("elemente").offsetLeft + 150;
+    var figurPositionElementeTop = 55; //document.getElementById("elemente").offsetTop;
+    var figurPositionElementeLeft = 16.5; //document.getElementById("elemente").offsetLeft + 150;
 
-    var figurPositionSonstigesTop = document.getElementById("sonstiges").offsetTop;
-    var figurPositionSonstigesLeft = document.getElementById("sonstiges").offsetLeft + 150;
+    var figurPositionSonstigesTop = 70; // document.getElementById("sonstiges").offsetTop;
+    var figurPositionSonstigesLeft = 16.5; //document.getElementById("sonstiges").offsetLeft + 150;
 
+
+    //Abstand zwischen Icons und Länge des Balkens nach Icons
+    var abstand = 4;
+    var balkenende = 12; //nicht weniger als 11! Da Anfang noch abgezogen werden muss Anfang entspricht ca. 11
     
 
     //mitzählen für Prozentangaben
@@ -1024,55 +1252,54 @@ export async function application() {
     var countSonstiges = 0;
 
     
-
-    for (var figur in leude){
+    // for (var id in figuresListSorted){
+    //   console.log(figuresListSorted[id]);
+    // }
+    for (var id in figuresListSorted){
       
       //ICONS VERSCHIEBEN
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      //var figurPopover = document.getElementById(figur + "Popover");
+      var figurIcon = document.getElementById(figuresListSorted[id] + "Wrapper");
       
       
       //der richtigen Taxonomie zuordnen
-      if (leude[figur].taxonomie == "fauna"){
+      if (leude[figuresListSorted[id]].taxonomie == "fauna"){
         //console.log("figur zählt zu fauna");
         
-        figurIcon.style.top = figurPositionFaunaTop + "px";
-        figurIcon.style.left = figurPositionFaunaLeft + "px";
+        figurIcon.style.top = figurPositionFaunaTop + "%";
+        figurIcon.style.left = figurPositionFaunaLeft + "%";
         
         //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        figurPositionFaunaLeft += figurIcon.offsetWidth;
+        figurPositionFaunaLeft += abstand; //figurIcon.offsetWidth;
 
         countFauna += 1;
 
-      } else if (leude[figur].taxonomie == "flora"){
+      } else if (leude[figuresListSorted[id]].taxonomie == "flora"){
         //console.log("figur zählt zu flora");
         
-        figurIcon.style.top = figurPositionFloraTop + "px";
-        figurIcon.style.left = figurPositionFloraLeft + "px";
-        //figurPopover.style.top = figurPositionFloraTop - (-10) + "px"; //= (data.koordinaten.unorganisiert.top - (-10)) + "%";
-        //figurPopover.style.left = figurPositionFloraLeft -15 + "px"; //= (data.koordinaten.unorganisiert.left - 15)+ "%";
-
+        figurIcon.style.top = figurPositionFloraTop + "%";
+        figurIcon.style.left = figurPositionFloraLeft + "%";
+      
         //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        figurPositionFloraLeft += figurIcon.offsetWidth;
+        figurPositionFloraLeft += abstand;
 
         countFlora +=1;
 
-      } else if (leude[figur].taxonomie == "elemente"){
+      } else if (leude[figuresListSorted[id]].taxonomie == "elemente"){
 
-        figurIcon.style.top = figurPositionElementeTop + "px";
-        figurIcon.style.left = figurPositionElementeLeft + "px";
+        figurIcon.style.top = figurPositionElementeTop + "%";
+        figurIcon.style.left = figurPositionElementeLeft + "%";
 
-        figurPositionElementeLeft += figurIcon.offsetWidth;
+        figurPositionElementeLeft += abstand;
 
         countElemente +=1;
 
 
-      } else if (leude[figur].taxonomie == "sonstiges"){
+      } else if (leude[figuresListSorted[id]].taxonomie == "sonstiges"){
         
-        figurIcon.style.top = figurPositionSonstigesTop + "px";
-        figurIcon.style.left = figurPositionSonstigesLeft + "px";
+        figurIcon.style.top = figurPositionSonstigesTop + "%";
+        figurIcon.style.left = figurPositionSonstigesLeft + "%";
 
-        figurPositionSonstigesLeft += figurIcon.offsetWidth;
+        figurPositionSonstigesLeft += abstand;
 
         countSonstiges += 1;
       }
@@ -1085,10 +1312,10 @@ export async function application() {
     
 
     //balkenlaengen 
-    document.getElementById("fauna").style.width = figurPositionFaunaLeft + "px";
-    document.getElementById("flora").style.width = figurPositionFloraLeft + "px";
-    document.getElementById("elemente").style.width = figurPositionElementeLeft + "px";
-    document.getElementById("sonstiges").style.width = figurPositionSonstigesLeft + "px";
+    document.getElementById("fauna").style.width = countFauna*abstand + balkenende + "%"; 
+    document.getElementById("flora").style.width = countFlora*abstand + balkenende + "%";
+    document.getElementById("elemente").style.width = countElemente*abstand + balkenende + "%";
+    document.getElementById("sonstiges").style.width = countSonstiges*abstand + balkenende + "%";
 
     //prozentangaben taxonomie
     var all = countFauna + countFlora + countElemente + countSonstiges;
@@ -1101,14 +1328,18 @@ export async function application() {
     var p = 0;
     for (var percentP = 0; percentP < percentPArray.length; percentP++) {
       percentPArray[percentP].innerHTML = percentNumbers[p] + "%";
-      percentPArray[percentP].style.display = "block";
       p++;
     }
 
-    
-    
+    aktuelleKategorie = "taxonomie";
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
     
   }
+
+  taxBtn.onclick = taxonomieFunction;
 
   //TaxonomieNames anzeigen bei hover über Balken
   // var arrayTaxonomieNames = [];  
@@ -1153,7 +1384,13 @@ export async function application() {
 
 
   //Geographie
-  geoBtn.onclick = function () {
+  function geographieFunction() {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width + "px"; //100%
+    }
+    
+    
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
     for (var x = 0; x < taxonomieNames.length; x++) {
@@ -1199,27 +1436,35 @@ export async function application() {
       }
 
     }
+    aktuelleKategorie = "geographie"
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
   }
+
+  geoBtn.onclick = geographieFunction;
 
 
 
   
   //Alphabet
 
-  for (key in leude){
+  //Alphabet-Names unter Icons anzeigen
+  // for (key in leude){
 
-    var iconWrapper = document.getElementById(key + "Wrapper");
-    var figurName = document.createElement("div");
-    figurName.className = "alphabetNames";
-    figurName.innerHTML = leude[key].name;
-    figurName.style.position = "absolute";
-    figurName.style.fontFamily = "'Crimson Text', serif";
-    figurName.style.fontSize = "10px";
-    figurName.style.display = "none";
-    figurName.style.left = leude[key].width + "px";
-    iconWrapper.appendChild(figurName);
+  //   var iconWrapper = document.getElementById(key + "Wrapper");
+  //   var figurName = document.createElement("div");
+  //   figurName.className = "alphabetNames";
+  //   figurName.innerHTML = leude[key].name;
+  //   figurName.style.position = "relative";
+  //   figurName.style.fontFamily = "'Crimson Text', serif";
+  //   figurName.style.fontSize = "10px";
+  //   figurName.style.display = "none";
+  //   figurName.style.top = "10%";
+  //   iconWrapper.appendChild(figurName);
 
-  }
+  // }
 
 
   var unsortedIds = [];
@@ -1230,8 +1475,11 @@ export async function application() {
 
 
   var ersterKlickAlpha = true;
-  alphaBtn.onclick = function () {
-
+  function alphabetFunction() {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width + "px"; //100%
+    }
 
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
@@ -1263,9 +1511,9 @@ export async function application() {
       //alphaNames[i].style.display = "block";
       var iconWrapper = document.getElementById(alphaNames[i].parentElement.id);
       var wrapperHeight = iconWrapper.offsetHeight;
-      console.log(wrapperHeight);
+      //console.log(wrapperHeight);
       var alphaNamesHeight = alphaNames[i].scrollHeight; //WARUM FUNKTIONIERT DAS NICHT?
-      console.log(alphaNames[i] + alphaNamesHeight);
+      //console.log(alphaNames[i] + alphaNamesHeight);
       //unschöne Notlösung
       alphaNames[i].style.top = wrapperHeight/2 - 5 + "px";
 
@@ -1273,10 +1521,10 @@ export async function application() {
 
     
     var alphaDiv = document.getElementById("alphabet");
-    var startFromTop = 10;
+    var startFromTop = 15;
     var startFromLeft = 10;
-    var spaceBetweenIconsHorizontally = 18;
-    var spaceBetweenLetterBlocksHorizontally = 15;
+    var spaceBetweenIconsHorizontally = 5;
+    //var spaceBetweenLetterBlocksVertically = 15;
     var spaceBetweenIconsVertically = 10;
 
     var topPosition = startFromTop; //ändern sich im Laufe der Schleife
@@ -1285,15 +1533,9 @@ export async function application() {
 
     for (var id = 0; id < sortedIds.length; id++){
 
-      if (topPosition >= 70) { // nach unten scrollen verhindern, indem topPosition wieder auf Anfang und leftPosition größer
-        topPosition = startFromTop;
-        leftPosition += spaceBetweenIconsHorizontally;
-      }
-      
+
+      //Anfangsbuchstaben setzen
       var letter = sortedIds[id].slice(0,1).toUpperCase(); //nur Anfangsbuchstaben in groß
-        
-
-
 
       if (id == 0 || letter != sortedIds[id - 1].slice(0, 1).toUpperCase()) { //checken, dass Anfangsbuchstabe nicht bereits angezeigt wird
 
@@ -1302,24 +1544,26 @@ export async function application() {
           letterDiv.innerHTML = letter;
           letterDiv.style.position = "absolute";
           letterDiv.style.top = topPosition + "%";
-          letterDiv.style.left = leftPosition + "%";
+          letterDiv.style.left = startFromLeft + "%";
           letterDiv.style.color = "#733030";
           letterDiv.style.animation = "slowOpacity";
           letterDiv.style.animationDuration = "2s";
           alphaDiv.appendChild(letterDiv);
         }
 
-        topPosition += spaceBetweenLetterBlocksHorizontally;
+        leftPosition = startFromLeft;
+        leftPosition += spaceBetweenIconsHorizontally*2;
+        topPosition += spaceBetweenIconsVertically;
 
       }
 
 
-   
+      //Wrapper setzen
       var figurIcon = document.getElementById(sortedIds[id] + "Wrapper"); //get IconWrapper 
-      figurIcon.style.top = topPosition + "%";
-      figurIcon.style.left = (leftPosition + 1.5) + "%";
+      figurIcon.style.top = (topPosition - 4) + "%";
+      figurIcon.style.left = (leftPosition) + "%";
 
-      topPosition += spaceBetweenIconsVertically;
+      leftPosition += spaceBetweenIconsHorizontally;
 
 
       
@@ -1338,7 +1582,15 @@ export async function application() {
 
 
     ersterKlickAlpha = false;
+
+    aktuelleKategorie = "alphabet"
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
   }
+
+  alphaBtn.onclick = alphabetFunction;
 
 
 
@@ -1364,37 +1616,38 @@ export async function application() {
 
     var header = document.createElement("h1");
     header.className = "textModalHeader";
+    header.id = key + "Header";
     header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
     contentDiv.appendChild(header);
 
     var contentP = document.createElement("p");
     contentDiv.className = "textModalContent";
     /*contentDiv.style = "padding: 25px 50px 0px";*/
-    contentP.innerHTML = metamorphosen[key].text;
+    contentP.innerHTML = metamorphosen[key].text + "<br><br>";
     contentDiv.appendChild(contentP);
-    
 
   }
   var footer = document.createElement("div");
   footer.className = "textModalFooter";
-  footer.appendChild(document.createElement("br"));
-  //footer.appendChild(document.createElement("br"));
   textModalDiv.appendChild(footer);
-  // for (var key in leude){
-  //   var zugehoerigeGeschichte = document.getElementById(leude[key].id);
-  //   var getWrapper = leude[key].id + "Wrapper";
-  //   console.log(zugehoerigeGeschichte.offsetTop)
-  // }
 
-  // //close-Btn
-  // var buttonSpan = document.createElement("span");
-  // buttonSpan.setAttribute("align", "center");
-  // buttonSpan.className = "modalBtns";
-  // buttonSpan.innerHTML = "SCHLIESSEN";
-  // buttonSpan.onclick = function() { textModalDiv.style.display = "none" };
-  // contentDiv.appendChild(buttonSpan);
+  var copyrightText = document.createElement("div");
+  footer.appendChild(copyrightText);
+  copyrightText.style.fontSize = "8px";
+  copyrightText.style.position = "relative";
+  copyrightText.style.padding = "2% 9% 4% 10%"; //s. .textModalContent-Einstellungen
+  copyrightText.innerHTML = "&#xa9; Quelle: ";
+  var copyrightLink = document.createElement("a");
+  copyrightLink.setAttribute("href", "http://www.zeno.org/Lesesaal/N/9781482656428?page=0");
+  copyrightLink.innerHTML = "Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael Holzinger. Übers. von Reinhart Suchier. Berlin 2013."
+  copyrightText.appendChild(copyrightLink);
 
-  textBtn.onclick = function () {
+  function fliesstextFunction() {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width + "px"; //100%
+    }
+    
     textImg.style.display = "block";
 
     taxImg.style.display = "none";
@@ -1424,13 +1677,33 @@ export async function application() {
 
     grundImg.style.display = "none";
 
+    aktuelleKategorie = "fliesstext";
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
+
   }
+
+  textBtn.onclick = fliesstextFunction;
+
+
+
+
+
+
 
 
   //Unorganisiert
   var unorgBtn = document.getElementById("unorganisiert");
 
   unorgBtn.onclick = function () {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width + "px"; //100%
+    }
+    
+    
     //taxImg.style.opacity = "0";
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
@@ -1468,6 +1741,12 @@ export async function application() {
       figurIcon.style.top = leude[figur].koordinaten.unorganisiert.top + "%";
       figurIcon.style.left = leude[figur].koordinaten.unorganisiert.left + "%";
     }
+
+    aktuelleKategorie = "";
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
   }
 
 
@@ -1477,8 +1756,11 @@ export async function application() {
 
   //Verwandlungsgrund
 
-  grundBtn.onclick = function () {
-    
+  function grundFunction() {
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width * 80 / 100 + "px"; //80%
+    }
 
     taxImg.style.display = "none";
     var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
@@ -1525,6 +1807,12 @@ export async function application() {
     var positionBegierdeTop = 54;//document.getElementById("begierde").offsetTop;
     var positionBegierdeLeft = 19; //document.getElementById("begierde").offsetLeft;
 
+    var positionBitteTop = 90;//document.getElementById("begierde").offsetTop;
+    var positionBitteLeft = 25; //document.getElementById("begierde").offsetLeft;
+
+    var positionKampfTop = 100;//document.getElementById("begierde").offsetTop;
+    var positionKampfLeft = 25; //document.getElementById("begierde").offsetLeft;
+
     var positionEhrungTop = 54;//document.getElementById("ehrung").offsetTop;
     var positionEhrungLeft = 54;//document.getElementById("ehrung").offsetLeft;
 
@@ -1538,19 +1826,21 @@ export async function application() {
     var countBestrafung = 0;
     var countBegierde = 0;
     var countEhrung = 0;
+    var countBitte = 0;
+    var countKampf = 0;
     var countSonstigerGrund = 0;
 
     
 
-    for (var figur in leude){
+    for (var id in figuresListSorted){
       
       //ICONS VERSCHIEBEN
-      var figurIcon = document.getElementById(figur + "Wrapper");
+      var figurIcon = document.getElementById(figuresListSorted[id] + "Wrapper");
       //var figurPopover = document.getElementById(figur + "Popover");
       
       
       //dem richtigen Grund zuordnen
-      if (leude[figur].grund == "Schutz"){
+      if (leude[figuresListSorted[id]].grund == "Schutz"){
         //console.log("figur zählt zu schutz");
         
         figurIcon.style.top = positionSchutzTop + "%";
@@ -1561,7 +1851,7 @@ export async function application() {
 
         countSchutz += 1;
 
-      } else if (leude[figur].grund == "Bestrafung"){
+      } else if (leude[figuresListSorted[id]].grund.includes("Bestrafung")){
         //console.log("figur zählt zu bestrafung");
         
         figurIcon.style.top = positionBestrafungTop + "%";
@@ -1572,7 +1862,7 @@ export async function application() {
 
         countBestrafung +=1;
 
-      } else if (leude[figur].grund == "unerfüllte Begierde"){
+      } else if (leude[figuresListSorted[id]].grund == "Trauer"){
 
         figurIcon.style.top = positionBegierdeTop + "%";
         figurIcon.style.left = positionBegierdeLeft + "%";
@@ -1582,7 +1872,7 @@ export async function application() {
         countBegierde +=1;
 
 
-      } else if (leude[figur].grund == "postume Ehrung"){
+      } else if (leude[figuresListSorted[id]].grund == "postume Ehrung"){
         
         figurIcon.style.top = positionEhrungTop + "%";
         figurIcon.style.left = positionEhrungLeft + "%";
@@ -1590,6 +1880,25 @@ export async function application() {
         positionEhrungLeft += 5; //figurIcon.offsetWidth;
 
         countEhrung += 1;
+      
+      } else if (leude[figuresListSorted[id]].grund.includes("Wunsch")){
+        
+        figurIcon.style.top = positionBitteTop + "%";
+        figurIcon.style.left = positionBitteLeft + "%";
+
+        positionBitteLeft += 5; //figurIcon.offsetWidth;
+
+        countBitte += 1;
+
+      } else if (leude[figuresListSorted[id]].grund.includes("Kampf")){
+        
+        figurIcon.style.top = positionKampfTop + "%";
+        figurIcon.style.left = positionKampfLeft + "%";
+
+        positionKampfLeft += 5; //figurIcon.offsetWidth;
+
+        countKampf += 1;
+      
       } else {
         
         figurIcon.style.top = positionSonstigerGrundTop + "%";
@@ -1601,30 +1910,76 @@ export async function application() {
       }
     }
 
-
-    // //blocklaengen 
-    // document.getElementById("fauna").style.width = figurPositionFaunaLeft + "px";
-    // document.getElementById("flora").style.width = figurPositionFloraLeft + "px";
-    // document.getElementById("elemente").style.width = figurPositionElementeLeft + "px";
-    // document.getElementById("sonstiges").style.width = figurPositionSonstigesLeft + "px";
-
-    //prozentangaben taxonomie
+    //prozentangaben Verwandlungsgrund
     var allGrund = countSchutz + countBegierde + countBestrafung + countEhrung + countSonstigerGrund;
-    // var percentNumbers = [(countFauna/all*100), (countFlora/all*100), (countElemente/all*100), (countSonstiges/all*100)];
-    // var percentNumbers = [(countFauna/all*100).toString().slice(0,4), (countFlora/all*100).toString().slice(0,4), (countElemente/all*100).toString().slice(0,4), (countSonstiges/all*100).toString().slice(0,4)];
     var percentNumbersGrund = [Math.round(countSchutz/allGrund*100*10)/10, Math.round(countBestrafung/allGrund*100*10)/10, Math.round(countBegierde/allGrund*100*10)/10, Math.round(countEhrung/allGrund*100*10)/10, Math.round(countSonstigerGrund/allGrund*100*10)/10];
-    console.log(percentNumbersGrund);
+    //console.log(percentNumbersGrund);
 
     var percentPGrundArray = document.getElementsByClassName("percentToprightGrund");
 
     for (var g = 0; g < percentPGrundArray.length; g++) {
       percentPGrundArray[g].innerHTML = percentNumbersGrund[g] + "%";
-      percentPGrundArray[g].style.display = "block";
     }
 
-
-    
+    aktuelleKategorie = "grund";
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
   }
+
+  grundBtn.onclick = grundFunction;
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //            Mark-Kategorien                 //
+  //--------------------------------------------//
+
+  //Geschlecht
+  document.getElementById("kategorienUndPopoverDiv");
+  var markGeschlechtM = document.getElementById("markGeschlechtM");
+  //console.log(markGeschlechtM)
+  
+  function markGeschlecht(){
+    for (figur in leude){
+      
+      if (leude[figur].geschlecht === "m"){
+        //var zuFaebendesIcon = document.getElementById(figur + "Btn");
+        //zuFaebendesIcon.style.animationPlayState = "running";
+      } else {
+        var nichtZuFaebendesIcon = document.getElementById(figur + "Btn");
+        nichtZuFaebendesIcon.style.opacity = "18%";
+      }
+    }
+  }
+
+  markGeschlechtM.onclick = markGeschlecht;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //parent-div
@@ -1763,6 +2118,10 @@ export async function application() {
 
 
 
+
+
+
+  
 
 /*
   //--------------------------------------------//

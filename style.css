@@ -26,10 +26,11 @@ td {
 }
 
 .logo {
+  color: rgb(78, 78, 78);
   float: right;
   display: block; 
   position: fixed;
-  left: 2%;
+  left: 5%;
   top: 2%;
 }
 
@@ -246,6 +247,28 @@ button { /* unterscheidet sich sonst von span */
 }
 
 
+.metamorphosenModalBtns {
+  background-color: #733030;
+  display: block; 
+  border: none;
+  border-radius: 4px;
+  z-index: 1;
+  right: 2%;
+  top: 2%;
+  padding: 15px 32px;
+  text-decoration: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+a.metamorphosenModalBtns {
+  color: white;
+}
+.metamorphosenModalBtns:hover {
+  background-color: #994040;
+  color: white;
+}
+
+
 
 
 
@@ -268,7 +291,7 @@ button { /* unterscheidet sich sonst von span */
   bottom: 2%;
   background-color: rgba(0, 0, 0, 0.8); 
 }
-.dropbtn {
+.dropbtn, .dropbtnZwei {
   background-color: #733030;
   color: white;
   border-radius: 4px;
@@ -277,12 +300,13 @@ button { /* unterscheidet sich sonst von span */
   border: none;
   cursor: pointer;
 }
-.dropdown {
+.dropdown, .dropdownZwei {
   position: relative;
   display: inline-block;
 }
-.dropdown-content {
+.dropdown-content, .dropdown-content-zwei {
   display: none;
+  width: 200px;
   position: absolute;
   right: 0;
   background-color: #733030;
@@ -291,13 +315,15 @@ button { /* unterscheidet sich sonst von span */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 40;
 }
-.dropdown-content div {
+.dropdown-content div, .dropdown-content-zwei div{
   color: white;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   cursor: pointer;
 }
+
+/*erstes Dropdown-Menü*/
 .dropdown-content div:hover {
   background-color: #733030;
 }
@@ -308,6 +334,16 @@ button { /* unterscheidet sich sonst von span */
   background-color: #994040;
 }
 
+/*zweites Dropdown-Menü*/
+.dropdown-content-zwei div:hover {
+  background-color: #733030;
+}
+.dropdownZwei:hover .dropdown-content-zwei {
+  display: block;
+}
+.dropdownZwei:hover .dropbtnZwei {
+  background-color: #994040;
+}
 
 
 
@@ -376,8 +412,8 @@ button { /* unterscheidet sich sonst von span */
   overflow: auto; /* Enable scroll if needed */
 }
 .textModalContent {
-  padding-right: 50px;
-  padding-left: 61.2px; /*wg. scrollbar*/
+  padding-right: 9%;
+  padding-left: 10%; /*wg. scrollbar*/
   position: relative;
 }
 
@@ -386,20 +422,20 @@ button { /* unterscheidet sich sonst von span */
   position: sticky;
   background-color: rgba(227, 222, 216, 1);
   /* shad.attr.: horizontal, vertical, blur, spread, color */
-  box-shadow: 0px 17px 10px 10px rgba(227, 222, 216, 1); 
+  box-shadow: 0px 17px 7px 7px rgba(227, 222, 216, 1); 
 }
 .textModalFooter {
   bottom: -1%;
   position: sticky;
   background-color: rgba(227, 222, 216, 1);
   /* shad.attr.: horizontal, vertical, blur, spread, color */
-  box-shadow: 0px -17px 10px 10px rgba(227, 222, 216, 1); 
+  box-shadow: 0px -17px 7px 5px rgba(227, 222, 216, 1); 
 }
 
 /* --------------- Start-Modal -------------- */
 .startModal {
   text-align: center;
-  display: block; /* not Hidden by default >>>>>>>>> später wieder auf block setzen <<<<<<<<<<*/
+  display: none; /* Hidden by default >>>>>>>>> später wieder auf block setzen <<<<<<<<<<*/
   position: fixed; /* Stay in place */
   z-index: 100; /* Sit on top */
   padding-top: 5%; /* Location of the box */
@@ -456,9 +492,7 @@ button { /* unterscheidet sich sonst von span */
 }
 .metamorphosenModalFooter {
   position: sticky;
-  bottom: -1%;
-  left: -1%; /* doesn't work */
-  width: 101%;
+  bottom: 0%;
   background-color: rgba(0, 0, 0, 1);
   box-shadow: 0 -5px 25px 15px rgb(0, 0, 0);
 }
@@ -523,27 +557,40 @@ button { /* unterscheidet sich sonst von span */
   position: absolute;
   /*margin-top: 1.5rem;*/
   display: inline-block;
-  transition: left 1s ease-out, top 1s ease-out, opacity 0.5s ease-out;
+  transition: left 1s ease-out, top 1s ease-out, opacity 1s ease-in;
   transform: translate(-50%, -50%); /* centered images! */
   z-index: 35;
 }
-.iconImg {
-  
-}
 
+.iconImg {
+  transition: width 1s;
+  animation-name: filter-animation;
+  animation-duration: 2s;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+}  
 .iconImg:hover {
   opacity: 0.8;
   cursor: pointer;
-}  
+}
+@keyframes filter-animation {
+  from {
+    filter: none;
+  }
+  to {
+    filter: sepia() hue-rotate(150deg) saturate(200%);
+  }
+}
 
 
 .popover__content {
   color: white;
   opacity: 0;
-  visibility: hidden; /* NICHT MEHR: Visibility wird jetzt über JavaScript gesteuert s. popoverAufruf */
+  visibility: hidden; 
   position: absolute;
-  top: 100px;
-  left: calc(50% - 100px - 1.5rem);
+  /* top: 20px;   +20 da es sich bei hover um so viel nach oben verschiebt */
+  left: calc(50% - 75px - 1.5rem); /*neu in JS berechnen! Da width jetzt nicht immer gleich*/
+  top: calc(var(--popover__Wrapper-width) 100%); /* neu in JS berechnen: an der stelle top + 100% height des parents*/
   transform: translate(0, 10px);
   background-color: rgba(0, 0, 0, 0.9); 
   padding: 25px;
@@ -642,7 +689,7 @@ button { /* unterscheidet sich sonst von span */
 
 
 
-/* Taxonomie */
+/* Taxonomie und Verwandlungsgrund */
 
 .titleTopleft {
   margin: 0;
@@ -656,13 +703,11 @@ button { /* unterscheidet sich sonst von span */
 
 .percentTopright, .percentToprightGrund {
   position: absolute;
+  display: none;
   top: 0px;
   right: 16px;
   font-size: 10px;
   color: white;
-}
-.percentTopright:hover, .percentToprightGrund:hover {
-  display: block;
 }
 
 .taxonomieKategorie {
@@ -672,31 +717,62 @@ button { /* unterscheidet sich sonst von span */
 
 #fauna {
   top:25%;
-  left:15%;
+  left:7%;
   background-color: rgba(115, 48, 48, 0.8);
 }
 
 #flora {
   top:40%;
-  left:15%;
+  left:7%;
   background-color: rgba(100, 100, 100, 0.8);
 }
 
 #elemente {
   top:55%;
-  left:15%;
+  left:7%;
   background-color: rgba(25, 25, 25, 0.8);
 }
 
 #sonstiges {
   top:70%;
-  left:15%;
+  left:7%;
   background-color: rgba(160, 160, 160, 0.8);
 }
 
 #fauna:hover, #flora:hover, #elemente:hover, #sonstiges:hover {
   background-color: #733030;
 }
+
+#fauna:hover #countFauna {
+  display: block;
+}
+#flora:hover #countFlora {
+  display: block;
+}
+#elemente:hover #countElemente {
+  display: block;
+}
+#sonstiges:hover #countSonstiges {
+  display: block;
+}
+
+
+#schutz:hover #countSchutz {
+  display: block;
+}
+#bestrafung:hover #countBestrafung {
+  display: block;
+}
+#begierde:hover #countTrauer {
+  display: block;
+}
+#ehrung:hover #countEhrung {
+  display: block;
+}
+#sonstigerGrund:hover #countSonstigerGrund {
+  display: block;
+}
+
 
 
 .taxonomieNames {

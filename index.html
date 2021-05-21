@@ -24,19 +24,19 @@
     <div id="taxonomie" class="kategory" style="height:100%; width:100%; position:absolute">
       <div id="fauna" class="taxonomieKategorie">
         <p class="titleTopleft">Fauna</p>
-        <p class="percentTopright"></p>
+        <p class="percentTopright" id="countFauna"></p>
       </div>
       <div id="flora" class="taxonomieKategorie">
         <p class="titleTopleft">Flora</p>
-        <p class="percentTopright"></p>
+        <p class="percentTopright" id="countFlora"></p>
       </div>
       <div id="elemente" class="taxonomieKategorie">
         <p class="titleTopleft">Elemente</p>
-        <p class="percentTopright"></p>
+        <p class="percentTopright" id="countElemente"></p>
       </div>
       <div id="sonstiges" class="taxonomieKategorie">
         <p class="titleTopleft" >Sonstiges</p>
-        <p class="percentTopright"></p>
+        <p class="percentTopright" id="countSonstiges"></p>
       </div>
     </div>
   
@@ -44,7 +44,7 @@
     
     <!----------- Chronologie ------------------->
     <div id="chronologie" style="height:50%; display:none;">
-      <div style="width: 80%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 8%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+      <div style="width: 85%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 8%; animation-name:slowOpacity; animation-duration: 3s;"></div>
       
       <!-- Timeline 
       <div id="line"></div>
@@ -59,7 +59,7 @@
 
     <!----------- Alphabet ------------------->
     <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none;">
-      <div style="width: 100%; height:75%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+      <div style="width: 90%; height:140%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
     </div>
 
     <!----------- Fließtext  ------------------->
@@ -71,23 +71,23 @@
     <div id="verwandlungsgrund" style="position: absolute; display: none; height:10%; height:100%; width:100%; position:absolute; animation-name:slowOpacity; animation-duration: 3s;">
       <div id="schutz" class="verwandlungsKategorie">
         <p class="titleTopleft">Schutz</p>
-        <p class="percentToprightGrund"></p>
+        <p class="percentToprightGrund" id="countSchutz"></p>
       </div>
       <div id="bestrafung" class="taxonomieKategorie">
-        <p class="titleTopleft">Bestrafung</p>
-        <p class="percentToprightGrund"></p>
+        <p class="titleTopleft">Bestrafung / Rache</p>
+        <p class="percentToprightGrund" id="countBestrafung"></p>
       </div>
       <div id="begierde" class="taxonomieKategorie">
-        <p class="titleTopleft">unerfüllte Begierde</p>
-        <p class="percentToprightGrund"></p>
+        <p class="titleTopleft">Trauer</p>
+        <p class="percentToprightGrund" id="countTrauer"></p>
       </div>
       <div id="ehrung" class="taxonomieKategorie">
-        <p class="titleTopleft" >postume Ehrung</p>
-        <p class="percentToprightGrund"></p>
+        <p class="titleTopleft" >Postume Ehrung</p>
+        <p class="percentToprightGrund" id="countEhrung"></p>
       </div>
       <div id="sonstigerGrund" class="taxonomieKategorie">
         <p class="titleTopleft" >Sonstiges</p>
-        <p class="percentToprightGrund"></p>
+        <p class="percentToprightGrund" id="countSonstigerGrund"></p>
       </div>
     </div>
 
@@ -110,15 +110,23 @@
   <div id="startModal" class="startModal">
     <div class="modalContent">
       <h1 class="modalHeader">VISUALIZED OVID</h1>
-      <p class="modalHeader"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
+      <p class="modalHeader"><em>Von Covid zu Ovid</em></p>
       <br>
       <hr>
-      <p style="text-align: left;">Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
+      <p style="text-align: left;">
+        Keine Lust mehr auf Covid? Komm zu Ovid! 
+        <br>
+        Wenn das Reisen derzeit leider eingeschränkt ist, warum nicht eine Reise durch die Metamorphosen der Sterblichen zu unternehmen?
+        <br>
+        <br>
+        Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
           Geschichten, die diese erzählten? Jetzt hast du die Möglichkeit, diese Erinnerungen wieder auferstehen zu lassen
           -- diesmal allerdings mit einem weitaus größeren Bestand an Metamorphosen. Einige dieser Metamorphosen haben
           vielleicht schon Alexander der Große oder Caesar in den Händen gehalten oder für ihre weltverändernden Kriege
           ausgegeben. Hier hast Du die Möglichkeit, diese Geschichten mit verschiedenen Filtern zu ordnen und zu erkunden.
           Hilf uns, Ordnung in die Metamorphosen zu bringen…</p>
+        <br>
+        Viel Spaß mit <s>C</s>OVID!
       <br>
       <span class="modalBtns" id="closeStartModal">Los geht's</span>
       <span class="modalBtns" id="mehrInfoBtn">Mehr Infos</span>
@@ -174,7 +182,7 @@
   <!--------------------------------------------->
 
   <div class="navigation">
-    ORDNEN NACH:
+    &nbsp; Ordnen nach &nbsp;
     <div class="dropdown">
       <button class="dropbtn" id="unorganisiert">Unorganisiert</button>
       <div class="dropdown-content" style="left:0;">
@@ -183,10 +191,23 @@
         <div id="geo"><img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div>
         <div id="alpha"><img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div>
         <div id="grund"><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Grund</div>
+        <div id="verwandelnder"><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde:r</div>
         <div id="text"><img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div>
       </div>
     </div>
-    UND
+      &nbsp; &nbsp; in Verbindung mit &nbsp;
+    <div class="dropdownZwei">
+      <button class="dropbtnZwei" id="keineAuswahl">Keine Auswahl</button>
+      <div class="dropdown-content-zwei" style="left:0;">
+        <div id="markChrono"><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge > I. Pentade, II. ...</div>
+        <div id="markTax"><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie > Fauna, Flora ...</div>
+        <div id="markGrund"><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Grund</div>
+        <div id="markVerwandelnder"><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde:r</div>
+        <div id="markGeschlechtM"><img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Männlich </div>
+      </div>
+    </div>
+    
+    <!-- UND
     <div class="dropdown">
       <button class="dropbtn">alle Personen</button>
       <div class="dropdown-content" style="left:0;">
@@ -194,7 +215,7 @@
         <div id="dianaButton">Diana</div>
         <div id="junoButton">Juno</div>
       </div>
-    </div>
+    </div> -->
   </div>
 
 
