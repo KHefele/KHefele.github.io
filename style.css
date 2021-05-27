@@ -42,6 +42,9 @@ image {
 
 
 
+
+
+
 /*--------------------------------------------*/
 /*                 Scrollbar                  */
 /*--------------------------------------------*/
@@ -281,7 +284,7 @@ a.metamorphosenModalBtns {
 
 .navigation {
   color: white;
-  padding-left: 10px;
+  padding: 0.8%;
   float: left;
   display: block; 
   position: fixed;
@@ -403,10 +406,10 @@ a.metamorphosenModalBtns {
 #textModal { /* The Modal (background) */
   position: relative;
   z-index: 1;
-  height: 70%;
-  width: 60%;
-  top: 15%;
-  left: 20%;
+  height: 77%;
+  width: 70%;
+  top: 10%;
+  left: 15%;
   color: #000000;
   background-color: rgba(227, 222, 216, 1);
   overflow: auto; /* Enable scroll if needed */
@@ -499,7 +502,10 @@ a.metamorphosenModalBtns {
 
 .tooltip {
   position: relative;
+  color: #733030;
+  cursor: pointer;
 }
+
 
 .tooltip span[role=tooltip] {
   display: none;
@@ -508,13 +514,15 @@ a.metamorphosenModalBtns {
 .tooltip:hover span[role=tooltip] {
   display: block;  
   position: absolute; 
-  bottom: 2em;
-  left: -6em;
-  width: 15em;
+  bottom: 0em;
+  left: -3em;
+  /*width: 15em;*/
   padding: 0.5em;
+  margin:35%;
   z-index: 100;
-  color: #000; 
-  background-color: #733030;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.856);
+  border-radius: 3px;
 }
 
 
@@ -712,30 +720,35 @@ a.metamorphosenModalBtns {
 
 .taxonomieKategorie {
   position: absolute; /* irgendwann über JS steuern, mit Breite der zusammengezählten Elemente*/
-  height: 10%;
+  height: 27%;
 }
 
 #fauna {
-  top:25%;
+  top:12%;
   left:7%;
+  width: 85%;
   background-color: rgba(115, 48, 48, 0.8);
 }
 
 #flora {
-  top:40%;
+  top:43%;
   left:7%;
+  width: 30%;
   background-color: rgba(100, 100, 100, 0.8);
 }
 
 #elemente {
-  top:55%;
-  left:7%;
+  top:43%;
+  left:39.5%;
+  width: 52.5%;
   background-color: rgba(25, 25, 25, 0.8);
 }
 
 #sonstiges {
-  top:70%;
+  top:74%;
   left:7%;
+  height: 15%;
+  width: 85%;
   background-color: rgba(160, 160, 160, 0.8);
 }
 
@@ -757,22 +770,6 @@ a.metamorphosenModalBtns {
 }
 
 
-#schutz:hover #countSchutz {
-  display: block;
-}
-#bestrafung:hover #countBestrafung {
-  display: block;
-}
-#begierde:hover #countTrauer {
-  display: block;
-}
-#ehrung:hover #countEhrung {
-  display: block;
-}
-#sonstigerGrund:hover #countSonstigerGrund {
-  display: block;
-}
-
 
 
 .taxonomieNames {
@@ -787,51 +784,98 @@ a.metamorphosenModalBtns {
 
 /* Verwandlungsgrund */
 
-#schutz {
-  position: absolute;
-  top:15%;
-  left:15%;
-  width: 30%;
-  height: 25%;
-  background-color: rgba(115, 48, 48, 0.8);
-}
-
 #bestrafung {
   top:15%;
-  left:50%;
-  width: 35%;
-  height: 25%;
+  left:7.5%;
+  width: 86%;
+  height: 9%;
   background-color: rgba(100, 100, 100, 0.8);
+}
+#wunsch {
+  top:25%;
+  left:7.5%;
+  width: 55%;
+  height: 9%;
+  background-color: rgba(194, 189, 184, 0.8)
+}
+
+#schutz {
+  position: absolute;
+  top:35%;
+  left:7.5%;
+  width: 43%;
+  height: 9%;
+  background-color: rgba(115, 48, 48, 0.8);
 }
 
 #begierde {
   top:45%;
-  left:15%;
-  width: 30%;
-  height: 25%;
+  left:7.5%;
+  width: 39%;
+  height: 9%;
   background-color: rgba(25, 25, 25, 0.8);
 }
 
 #ehrung {
-  top:45%;
-  left:50%;
-  width: 35%;
-  height: 25%;
+  top:55%;
+  left:7.5%;
+  width: 39%;
+  height: 9%;
   background-color: rgba(160, 160, 160, 0.8);
+}
+
+#kampf {
+  top:65%;
+  left:7.5%;
+  width: 27%;
+  height: 9%;
+  background-color: rgba(194, 189, 184, 0.8)
 }
 
 #sonstigerGrund {
   top:75%;
-  left:15%;
-  width: 70%;
-  height: 10%;
+  left:7.5%;
+  width: 27%;
+  height: 9%;
   background-color:  rgba(75, 31, 31, 0.8);
 }
 
-#schutz:hover, #bestrafung:hover, #begierde:hover, #ehrung:hover, #sonstigerGrund:hover {
+#bestrafung:hover, #wunsch:hover, #schutz:hover, #begierde:hover, #ehrung:hover, #kampf:hover, #sonstigerGrund:hover {
   background-color: #733030;
 }
 
+
+#bestrafung:hover #countBestrafung {
+  display: block;
+}
+#wunsch:hover #countWunsch {
+  display: block;
+}
+#schutz:hover #countSchutz {
+  display: block;
+}
+#begierde:hover #countTrauer {
+  display: block;
+}
+#ehrung:hover #countEhrung {
+  display: block;
+}
+#kampf:hover #countKampf {
+  display: block;
+}
+#sonstigerGrund:hover #countSonstigerGrund {
+  display: block;
+}
+
+
+
+
+
+
+.verwandelndeNames {
+  text-align: center;
+  font-family: 'Crimson Text', serif;
+}
 
 
 
@@ -996,3 +1040,25 @@ img.hover-shadow {
 .hover-shadow:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.parent {color: #FFFFFF; display: inline-block; position: relative; line-height: 30px;background-color: #733030;}
+.parent div{padding-left: 3%;cursor: pointer;  color: #FFFFFF;text-decoration: none; }
+.parent:hover > ul {bottom: 100%;display:block;position:absolute;text-align: left; }
+.child {display: none; width: 150%;}
+.child li {background-color: #733030;line-height: 30px;border-right:#994040 1px solid; width:80%;padding: 2%;}
+ul{list-style: none;margin: 0; padding: 0px; min-width:10em;}
+ul ul ul{left: 100%;top: -200%;margin-left:1px;}
+li:hover {background-color: #994040;}
+.parent li:hover {background-color: #994040;}
+.expand{font-size:12px;float:right;margin-right:5px;}

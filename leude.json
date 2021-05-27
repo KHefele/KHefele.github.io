@@ -806,7 +806,7 @@
         "ovMet": "14,581-608",
         "verwandlung": "Gott Indiges",
         "grund": "postume Ehrung", 
-        "verwandler": "Jupiter, Venus, Numicius",
+        "verwandler": "Venus",
         "ort": "?",
         "iconclass": "96C(AENEAS)69 Apotheose, Vergöttlichung des Aeneas",
         "vergleichswerke": {
@@ -847,10 +847,10 @@
         "alt": "Ulpiano Checa, La ninfa Egeria dictando a Numa Pompilio las leyes de Roma, ?",
         
         "wikidata": "Q582268",
-        "ovMet": "15,479-551",
+        "ovMet": "15,479-552",
         "verwandlung": "Quelle",
         "grund": "Trauer", 
-        "verwandler": "Artemis, Phoebus’ Schwester",
+        "verwandler": "Diana ('Phoebus’ Schwester')",
         "ort": "Aricia",
         "iconclass": "97HH6 als der Kummer der Egeria über den Tod des Numa Pompilius nicht zu besänftigen ist, löst sie sich in Tränen auf und wird in eine Quelle verwandelt (Ovid, Metamorphosen XV 546)",
         "vergleichswerke": {
@@ -1292,8 +1292,8 @@
         "geschlecht": "w",
         "koordinaten": {
             "unorganisiert": {
-                "top": "10",
-                "left": "90"
+                "top": "60",
+                "left": "50"
             },
             "geographie": {
                 "top": "60",
@@ -1997,7 +1997,7 @@
         "ovMet": "10,298-502",
         "verwandlung": "Myrtenbaum",
         "grund": "auf eigenen Wunsch", 
-        "verwandler": "Götter",
+        "verwandler": "'[Die] Götter'",
         "ort": "? (nachschauen)",
         "iconclass": "97AA4 Myrrha wird in einen Myrtenbaum verwandelt, als sie vor ihrem zornigen Vater flieht (Ovid, Metamorphoses X 489)",
         "vergleichswerke": {
@@ -2119,18 +2119,390 @@
         "alt": "Iconmonstr, Bildsuche, 2021",
         
         "wikidata": "Q578888",
-        "ovMet": "10,560-707",
-        "verwandlung": "Löwe",
-        "grund": "Bestrafung für Undankbarkeit gegenüber Venus' und Entweihung eines Tempels", 
-        "verwandler": "Götter",
+        "ovMet": "11,410-748",
+        "verwandlung": "[Eis]Vogel",
+        "grund": "postume Ehrung", 
+        "verwandler": "'[Die] Götter'",
         "ort": "? (nachschauen)",
         "iconclass": "97DD13 als Alcyone den Leichnam ihres Mannes Ceyx findet, der an das Ufer gespült worden ist, werden die beiden Eheleute in Eisvögel verwandelt (Ovid, Metamorphosen XI 741)",
         "vergleichswerke": {
-            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=98&cat_3=3377&cat_4=6242",
-            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Atalanta", 
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=102&cat_3=3381",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Ceyx", 
             "wiki": "https://commons.wikimedia.org/wiki/Category:Ceyx_and_Alcyone"
         }
+    },
+
+
+
+
+ 
+    "alcyone": {
+        "id": "alcyone",
+        "name": "Alcyone",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "fauna",
+        "geschlecht": "w",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q578888",
+        "ovMet": "11,410-748",
+        "verwandlung": "[Eis]Vogel",
+        "grund": "Schutz", 
+        "verwandler": "'[Die] Götter'",
+        "ort": "? (nachschauen)",
+        "iconclass": "97DD13 als Alcyone den Leichnam ihres Mannes Ceyx findet, der an das Ufer gespült worden ist, werden die beiden Eheleute in Eisvögel verwandelt (Ovid, Metamorphosen XI 741)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=102&cat_3=3381",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Alcyone", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Ceyx_and_Alcyone"
+        }
+    },
+
+
+
+
+ 
+    "aesacus": {
+        "id": "aesacus",
+        "name": "Aesacus",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "fauna",
+        "geschlecht": "m",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q409520",
+        "ovMet": "11,749-795",
+        "verwandlung": "[Eis]Vogel",
+        "grund": "Schutz", 
+        "verwandler": "Thetys",
+        "ort": "? (nachschauen)",
+        "iconclass": "97D11 weil er den Tod der Hesperia (oder Asterope) verursacht hat, stürzt sich der verzweifelte Aesacus in das Meer und wird von Thetys in einen Tauchvogel verwandelt (Ovid, Metamorphosen XI 783)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=385",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Aesacos", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Aesacus"
+        }
+    },
+
+
+
+
+
+
+
+    "caenis": {
+        "id": "caenis",
+        "name": "Caenis",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "sonstiges",
+        "geschlecht": "d",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q1132772",
+        "ovMet": "12,169-209",
+        "verwandlung": "Mann",
+        "grund": "auf eigenen Wunsch", 
+        "verwandler": "Neptun",
+        "ort": "? (nachschauen)",
+        "iconclass": "97K1 nachdem Neptun Caenis geraubt hat, verwandelt er sie auf ihre Bitte in den unverwundbaren Helden Caenus (Ovid, Metamorphosen XII 201)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=386&cat_3=3261",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Cenaeus", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Caeneus"
+        }
+    },
+
+
+
+
+    "caenus": {
+        "id": "caenus",
+        "name": "Caenus",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "fauna",
+        "geschlecht": "d",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q1132772",
+        "ovMet": "12,210-535",
+        "verwandlung": "Vogel",
+        "grund": "postume Ehrung", 
+        "verwandler": "Neptun",
+        "ort": "? (nachschauen)",
+        "iconclass": "97D15 als Caenus (ursprünglich das Mädchen Caenis) in der Schlacht zwischen Lapithen und Kentauren stirbt, wird er in einen Vogel verwandelt (Ovid, Metamorphosen XII 522)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=386&cat_3=3261",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Cenaeus", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Caeneus"
+        }
+    },
+
+
+
+    "periclymenus": {
+        "id": "periclymenus",
+        "name": "Periclymenus",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "fauna",
+        "geschlecht": "m",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q3899862",
+        "ovMet": "12,536-579",
+        "verwandlung": "Adler",
+        "grund": "Erhoffen auf einen Vorteil im Kampf", 
+        "verwandler": "Neptun",
+        "ort": "? (nachschauen)",
+        "iconclass": "94L424 Herkules erobert die Stadt Pylus und verwundet dabei Mars und Juno; Periclymenus, der älteste Sohn des Neleus, wird als Adler von Herkules getötet, nachdem er sich zuvor in andere Gestalten verwandelt hat",
+        "vergleichswerke": {
+            "warburg": "-",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Periclymenus", 
+            "wiki": "-"
+        }
+    },
+
+
+
+
+    "acis": {
+        "id": "acis",
+        "name": "Acis",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "sonstiges",
+        "geschlecht": "m",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q419156",
+        "ovMet": "13,750-897",
+        "verwandlung": "Fluss(-gott)",
+        "grund": "postume Ehrung", 
+        "verwandler": "Galatea",
+        "ort": "? (nachschauen)",
+        "iconclass": "97H1 Galatea verwandelt Acis in einen Flußgott, als er von Polyphemus erschlagen worden ist (Ovid, Metamorphosen XIII 885)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=46&cat_3=82",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Acis", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Acis"
+        }
+    },
+
+
+
+
+
+
+    "vertumnus": {
+        "id": "vertumnus",
+        "name": "Vertumnus",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "sonstiges",
+        "geschlecht": "d",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q2119919",
+        "ovMet": "14,622-697",
+        "verwandlung": "alte Frau",
+        "grund": "-", 
+        "verwandler": "-",
+        "ort": "? (nachschauen)",
+        "iconclass": "96A18211 in der Gestalt einer alten Frau wirbt Vertumnus um Pomona",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=194",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Vertumnus", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Vertumnus_and_Pomona"
+        }
+    },
+
+
+
+
+
+    "romulus": {
+        "id": "romulus",
+        "name": "Romulus",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "sonstiges",
+        "geschlecht": "m",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q2197",
+        "ovMet": "14,805-828",
+        "verwandlung": "Gott Quirinus",
+        "grund": "postume Ehrung", 
+        "verwandler": "Jupiter",
+        "ort": "? (nachschauen)",
+        "iconclass": "96C(ROMULUS)69 die Apotheose des Romulus: während er seine Truppen abschreitet, erhebt sich ein Sturm; Romulus, der in eine Wolke gehüllt ist, verschwindet; er wird zum Gott Quirinus",
+        "vergleichswerke": {
+            "warburg": "-",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Romulus", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Romulus"
+        }
+    },
+
+
+
+
+
+    "midas": {
+        "id": "midas",
+        "name": "Midas",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
+        "taxonomie": "fauna",
+        "geschlecht": "w",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+        
+        "wikidata": "Q308398",
+        "ovMet": "11,85-193",
+        "verwandlung": "Esel(-sohren)",
+        "grund": "Bestrafung", 
+        "verwandler": "Apollo",
+        "ort": "? (nachschauen)",
+        "iconclass": "97C6 weil Midas sich in dem musikalischen Wettstreit zwischen Pan und Apollo für ersteren entschieden hat, verleiht ihm Apollo zur Strafe Eselsohren (Ovid, Metamorphosen XI 174)",
+        "vergleichswerke": {
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=99&cat_3=792&cat_4=9993",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Midas", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:King_Midas_in_art"
+        }
     }
+
+
+
+
 
 
 }

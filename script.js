@@ -55,6 +55,11 @@ export async function application() {
 
 
 
+
+  //--------------------------------------------//
+  //          Start-/Info-Icons                 //
+  //--------------------------------------------//
+
   //Hover Info-Button
   var infoHoverName = document.createElement("div");
   infoHoverName.className = "infoHoverName";
@@ -106,13 +111,36 @@ export async function application() {
 
 
 
+
+
+
+  
+  /*--------------------------------------------//
+    
+    .----------------. 
+    | .--------------. |
+    | |     ____     | |
+    | |   .'    '.   | |
+    | |  |  .--.  |  | |
+    | |  | |    | |  | |
+    | |  |  `--'  |  | |
+    | |   '.____.'   | |
+    | |              | |
+    | '--------------' |
+    '----------------' 
+  
+
+    Sortierte Tabellen
+
+    1. Alphabet
+    2. Verwandlerlisten
+
+  //--------------------------------------------*/
+
+
   //--------------------------------------------//
-  //             Sortierte Tabellen             //
+  //             1. Alphabet                    //
   //--------------------------------------------//
-
-
-
-  //ALPHABET
 
   var figuresListSorted = [];
   var ovMetListSorted = [];
@@ -195,12 +223,9 @@ export async function application() {
 
 
 
-
-
-
-
-
-  //Verwandlerlisten
+  //--------------------------------------------//
+  //          2. Verwandlerlisten               //
+  //--------------------------------------------//
 
   //Beispiel:
   var verw = {
@@ -218,7 +243,7 @@ export async function application() {
   for (key in leude){
     var currentVerwandler = leude[key].verwandler;
     if (currentVerwandler === "-"){continue};
-    console.log(currentVerwandler)
+    //console.log(currentVerwandler)
 
     //Bereinigung
     for (var buchstabe = 0; buchstabe < currentVerwandler.length; buchstabe ++){
@@ -233,14 +258,18 @@ export async function application() {
     
     }
 
+
+    var verwandeltenLink = "<a href='http://127.0.0.1:5500/#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
+
     //insert, if key isn't already in dict
     if (!(currentVerwandler in verwandlerDict)) { 
+      
       verwandlerDict[currentVerwandler] = {
-        "nameDerVerwandelten": [leude[key].name]
+        "nameDerVerwandelten": [verwandeltenLink]
       };
       
     } else {
-      verwandlerDict[currentVerwandler].nameDerVerwandelten.push(leude[key].name);
+      verwandlerDict[currentVerwandler].nameDerVerwandelten.push(verwandeltenLink);
     }
     //count if more than 1 
     // } else { 
@@ -269,7 +298,7 @@ export async function application() {
     
 
   }
-  console.log(verwandlerDict);
+  //console.log(verwandlerDict);
 
 
 
@@ -277,8 +306,49 @@ export async function application() {
 
 
 
+
+
+
+
+  /*--------------------------------------------//
+    
+    .----------------. 
+    | .--------------. |
+    | |     __       | |
+    | |    /  |      | |
+    | |    `| |      | |
+    | |     | |      | |
+    | |    _| |_     | |
+    | |   |_____|    | |
+    | |              | |
+    | '--------------' |
+    '----------------'             
+  
+  
+    Grundfunktionalität
+
+    0. Globale Variablen
+    1. Metamorphosen-Icons/-Popover
+    2. Metamorphosen-Modals
+    3. Modal-Aufrufe
+    4. Alles aufrufen
+    5. Slider-Functions
+
+  //--------------------------------------------*/
+
+
+  
+  //Globale Variablen
+  var aktuellesModal;
+  var aktuelleModalID;
+  var aktuelleKategorie = ""; 
+
+
+
+
+
   //--------------------------------------------//
-  //             Metamorphosen-Icons            //
+  //    1. Metamorphosen-Icons/-Popover         //
   //--------------------------------------------//
   
   var kategorienUndPopoverDiv = document.getElementById("kategorienUndPopoverDiv");
@@ -374,23 +444,13 @@ export async function application() {
 
 
 
-  //--------------------------------------------//
-  //            Globale Variablen               //
-  //--------------------------------------------//
-
-
-
-  var aktuellesModal;
-  var aktuelleModalID;
-  var aktuelleKategorie = ""; 
-
 
 
 
 
 
   //--------------------------------------------//
-  //            Metamorphosen-Modals            //
+  //         2. Metamorphosen-Modals            //
   //--------------------------------------------//
 
   // generiert automatisiert Modals mithilfe der angelegten json-Datei
@@ -533,6 +593,7 @@ export async function application() {
       //Verwandlertext + Infolink
       if (i === 3) { //Verwandler-Helptext 
         dataCol.innerHTML = dataArray[i]; //verwandlerText anlegen
+        if (dataArray[i] === "-"){continue};
         var verwandlerSup = document.createElement("sup"); //sup anlegen
         dataCol.appendChild(verwandlerSup);
         var verwandlerLink = document.createElement("a"); //link anlegen
@@ -675,8 +736,7 @@ export async function application() {
 
 
   //--------------------------------------------//
-  //              Modal-Aufrufe                 //
-  //            > automatisieren                //
+  //           3. Modal-Aufrufe                 //
   //--------------------------------------------//
   
 
@@ -720,7 +780,7 @@ export async function application() {
 
 
   //--------------------------------------------//
-  //              Alles aufrufen                //
+  //             4. Alles aufrufen              //
   //--------------------------------------------//
 
 
@@ -736,123 +796,9 @@ export async function application() {
 
 
 
-  //--------------------------------------------//
-  //               Location Hash                //
-  //--------------------------------------------//
-
-  var locHash = location.hash;
-  
-  var locationHashElements = location.hash.split("#");
-  console.log(locationHashElements);
-
-  for (var e = 0; e < locationHashElements.length; e++){
-
-    //leere Einträge entfernen
-    if (locationHashElements[e] === "") {
-      locationHashElements.shift();
-    }
-    console.log(locationHashElements);
-
-    //kategorie herausfinden und aus Tabelle entfernen
-    if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "fliesstext") {
-      var startKategorieHash = locationHashElements[e];
-      locationHashElements.shift();
-    }
-
-    //uebrig bleibt ModalID, falls vorhanden
-    if (locationHashElements.length > 0) {
-      var startModalHash = locationHashElements[e];
-    }
-  }
-  console.log("startKategorieHash: " + startKategorieHash);
-  console.log("startModalHash: " + startModalHash);
-  
-
-  if (typeof startModalHash !== "undefined"){
-    aktuellesModal = startModalHash;
-    aktuelleModalID = currentListSorted.indexOf(aktuellesModal);
-    console.log(aktuelleModalID)
-
-    var getModal = document.getElementById(startModalHash + "Modal");
-    getModal.style.display = "block";
-    getModal.style.animationPlayState = "running";
-  }
-
-
-
-  
-  //kategorien ausführen
-  function setLocationHash() {
-
-    if (location.hash.startsWith("#erzaehlfolge")) {
-      window.setTimeout(erzaehlfolgeFunction, 300);
-  
-    } else if (location.hash.startsWith("#taxonomie")) {
-      window.setTimeout(taxonomieFunction, 300);
-  
-    } else if (location.hash.startsWith("#geographie")) {  
-      window.setTimeout(geographieFunction, 300);
-  
-    } else if (location.hash.startsWith("#alphabet")) {
-      window.setTimeout(alphabetFunction, 300);
-  
-    } else if (location.hash.startsWith("#grund")) {
-      window.setTimeout(grundFunction, 300);
-  
-    } else if (location.hash.startsWith("#fliesstext")) {
-      window.setTimeout(fliesstextFunction, 300);
-  
-      // var fliesstextID = locHash.substring(12);
-  
-      // //document.onreadystatechange = function () {
-      //   //if (document.readyState === 'complete') {
-      //     var myElement = document.getElementById(fliesstextID);
-      //     var topPos = myElement.offsetTop; //getBoundingClientRect();
-      //     console.log(topPos);
-      //   //}
-      // // }
-      
-  
-  
-  
-      //document.getElementById("textModal").scrollTop = topPos;
-  
-  
-      // console.log(document.getElementById(fliesstextID));
-      // document.getElementById(fliesstextID).style.color = "#733030";
-      // window.scrollTo(0, 1000);
-      // document.getElementById(fliesstextID).scrollIntoView();
-      
-      // for (key in metamorphosen) {
-      //   if (fliesstextID === metamorphosen[key].id){
-      //     var currentText = document.getElementById(key);
-      //     currentText.style.top = "-1";
-          
-      //     var currentHeader = document.getElementById(key + "Header");
-      //     currentHeader.style.color = "#733030";
-          
-      //   }
-      // }
-  
-    } else if (location.hash != "") {
-      //locHash = "";
-      //alert('Die URL mit der Endung "' + location.hash + '" existiert nicht. Du wurdest auf die Startseite weitergeleitet.');
-    }
-
-  }
-
-
-
-  setLocationHash();
-  window.onhashchange = setLocationHash;
-
-
-
-
-
 
   //--------------------------------------------//
-  //            Slider-Functions                //
+  //          5. Slider-Functions               //
   //--------------------------------------------//
  
 
@@ -896,11 +842,7 @@ export async function application() {
       modalWanted.style.animationPlayState = "running";
 
       //location hash
-      if (aktuelleKategorie === ""){
-        location.hash = "#" + aktuellesModal;
-      } else {
-        location.hash = "#" + aktuelleKategorie + "#" + aktuellesModal;
-      }
+      setLocationHash();
       
       
     }
@@ -928,16 +870,187 @@ export async function application() {
 
 
       //location hash
-      if (aktuelleKategorie === ""){
-        location.hash = "#" + aktuellesModal;
-      } else {
-        location.hash = "#" + aktuelleKategorie + "#" + aktuellesModal;
-      }
+      setLocationHash();
 
       
     }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  /*--------------------------------------------//
+    
+    .----------------. 
+    | .--------------. |
+    | |    _____     | |
+    | |   / ___ `.   | |
+    | |  |_/___) |   | |
+    | |   .'____.'   | |
+    | |  / /____     | |
+    | |  |_______|   | |
+    | |              | |
+    | '--------------' |
+    '----------------' 
+  
+  
+    Location Hash
+
+    0. URL separieren
+    1. Location Hash ausführen
+    2. Location Hash setzen
+
+  //--------------------------------------------*/
+ 
+  var locationHashElements = location.hash.split("#");
+  //console.log(locationHashElements);
+
+  for (var e = 0; e < locationHashElements.length; e++){
+
+    //leere Einträge entfernen
+    if (locationHashElements[e] === "") {
+      locationHashElements.shift();
+    }
+    //console.log(locationHashElements);
+
+    //kategorie herausfinden und aus Tabelle entfernen
+    if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "verwandelnde" || locationHashElements[e] === "fliesstext") {
+      var startKategorieHash = locationHashElements[e];
+      locationHashElements.shift();
+    }
+
+    //uebrig bleibt ModalID, falls vorhanden
+    if (locationHashElements.length > 0) {
+      var startModalHash = locationHashElements[e];
+    }
+  }
+  //console.log("startKategorieHash: " + startKategorieHash);
+  //console.log("startModalHash: " + startModalHash);
+  
+
+  if (typeof startModalHash !== "undefined"){
+    aktuellesModal = startModalHash;
+    aktuelleModalID = currentListSorted.indexOf(aktuellesModal);
+    console.log(aktuelleModalID)
+
+    var getModal = document.getElementById(startModalHash + "Modal");
+    getModal.style.display = "block";
+    getModal.style.animationPlayState = "running";
+  }
+
+
+
+  
+  //Location Hash ausführen
+  function doLocationHash() {
+
+    if (location.hash.startsWith("#erzaehlfolge")) {
+      window.setTimeout(erzaehlfolgeFunction, 300);
+  
+    } else if (location.hash.startsWith("#taxonomie")) {
+      window.setTimeout(taxonomieFunction, 300);
+  
+    } else if (location.hash.startsWith("#geographie")) {  
+      window.setTimeout(geographieFunction, 300);
+  
+    } else if (location.hash.startsWith("#alphabet")) {
+      window.setTimeout(alphabetFunction, 300);
+  
+    } else if (location.hash.startsWith("#grund")) {
+      window.setTimeout(grundFunction, 300);
+  
+    } else if (location.hash.startsWith("#fliesstext")) {
+      window.setTimeout(fliesstextFunction, 300);
+
+    } else if (location.hash.startsWith("#verwandelnde")) {
+      window.setTimeout(verwandelndeFunction, 300);
+  
+      // var fliesstextID = locHash.substring(12);
+  
+      // //document.onreadystatechange = function () {
+      //   //if (document.readyState === 'complete') {
+      //     var myElement = document.getElementById(fliesstextID);
+      //     var topPos = myElement.offsetTop; //getBoundingClientRect();
+      //     console.log(topPos);
+      //   //}
+      // // }
+      
+  
+  
+  
+      //document.getElementById("textModal").scrollTop = topPos;
+  
+  
+      // console.log(document.getElementById(fliesstextID));
+      // document.getElementById(fliesstextID).style.color = "#733030";
+      // window.scrollTo(0, 1000);
+      // document.getElementById(fliesstextID).scrollIntoView();
+      
+      // for (key in metamorphosen) {
+      //   if (fliesstextID === metamorphosen[key].id){
+      //     var currentText = document.getElementById(key);
+      //     currentText.style.top = "-1";
+          
+      //     var currentHeader = document.getElementById(key + "Header");
+      //     currentHeader.style.color = "#733030";
+          
+      //   }
+      // }
+  
+    } else if (location.hash != "") {
+      //locHash = "";
+      //alert('Die URL mit der Endung "' + location.hash + '" existiert nicht. Du wurdest auf die Startseite weitergeleitet.');
+    }
+
+  }
+  doLocationHash();
+  //window.onhashchange = doLocationHash;
+
+
+  //wird in jeder Kategorie-Funktion mit Argument, in der Slider-Funktion ohne aufgerufen
+  function setLocationHash(aktKat){
+
+    //
+    if (typeof aktKat === "undefined") {
+      aktKat = aktuelleKategorie;
+    }
+
+    //setzt aktuelle Kategorie
+    aktuelleKategorie = aktKat;
+
+    //setzt location hash: index.html/[#aktuelleKategorie [, #aktuellesModal]]
+    location.hash = "#" + aktuelleKategorie;
+    if (typeof aktuellesModal !== "undefined"){
+      location.hash +="#" + aktuellesModal;
+    }
+  }
+
+
+
+
+
+
+
+
   
 
 
@@ -947,22 +1060,40 @@ export async function application() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  //--------------------------------------------//
-  //                 Kategorien                 //
-  //--------------------------------------------//
-
+  /*--------------------------------------------//
+    
+    .----------------. 
+    | .--------------. |
+    | |    ______    | |
+    | |   / ____ `.  | |
+    | |   `'  __) |  | |
+    | |   _  |__ '.  | |
+    | |  | \____) |  | |
+    | |   \______.'  | |
+    | |              | |
+    | '--------------' |
+    '----------------' 
   
+
+    Kategorien
+
+    0. allgemeine Funktionen
+    1. Erzählfolge
+    2. Taxonomie
+    3. Geographie
+    4. Alphabet
+    5. Verwandlungsgrund
+    6. Verwandelnde
+    7. Fließtext
+    8. Unorganisiert
+
+  //--------------------------------------------*/
+
+
+
+
+
+  //get needed elements from index.html
   var chronoBtn = document.getElementById("chrono");
   var chronoImg = document.getElementById("chronologie");
 
@@ -979,7 +1110,88 @@ export async function application() {
   var textImg = document.getElementById("fliesstext");
 
   var grundBtn = document.getElementById("grund");
-  var grundImg = document.getElementById("verwandlungsgrund")
+  var grundImg = document.getElementById("verwandlungsgrund");
+
+  var verwandelndeBtn = document.getElementById("verwandelnder");
+  var verwandelndeImg = document.getElementById("verwandelnde");
+
+
+
+
+
+  // folgende Funktionen werden bei allen Kategorien aufgerufen
+
+  //setzt den Wrapper auf die angegebene Prozentzahl
+  function setWidthPercent(percent){
+    for (key in leude){
+      var iconWrapper = document.getElementById(key + "Btn");
+      iconWrapper.style.width = leude[key].width * percent / 100 + "px";
+    }
+  }
+
+  
+  //setzt alle Einstellungen der nicht aufgerufenen Kategorien zurück
+  function setBackOtherKategories(aktKat){
+    
+    // 1. Kategorie zurücksetzen: Erzählfolge
+    if (aktKat != "erzaehlfolge"){
+      chronoImg.style.display = "none";
+      var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+      for (var x = 0; x < ovMetStelle.length; x++) {
+        ovMetStelle[x].style.display = "none";
+      }
+    }
+
+    // 2. Kategorie zurücksetzen: Taxonomie
+    if (aktKat != "taxonomie"){
+      taxImg.style.display = "none";
+      var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+      for (var x = 0; x < taxonomieNames.length; x++) {
+        taxonomieNames[x].style.display = "none";
+      }
+    }
+
+    // 3. Kategorie zurücksetzen: Geographie
+    if (aktKat != "geographie"){
+      geoImg.style.display = "none";
+      for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+        var figurIcon = document.getElementById(figur + "Wrapper");
+        figurIcon.style.opacity = 1;
+      }
+    }
+
+    // 4. Kategorie zurücksetzen: Alphabet
+    if (aktKat != "alphabet"){
+      alphaImg.style.display = "none";
+      var alphabetNames = document.getElementsByClassName("alphabetNames"); 
+      for (var x = 0; x < alphabetNames.length; x++) {
+        alphabetNames[x].style.display = "none";
+      }
+    }
+
+    // 5. Kategorie zurücksetzen: Grund 
+    if (aktKat != "grund"){
+      grundImg.style.display = "none";
+    }
+
+    // 6. Kategorie zurücksetzen: Verwandelnde
+    if (aktKat != "verwandelnde"){
+      verwandelndeImg.style.display = "none";
+      for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+        var figurIcon = document.getElementById(figur + "Wrapper");
+        figurIcon.style.opacity = 1;
+      }
+    }
+    
+    // 7. Kategorie zurücksetzen: Fließtext
+    if (aktKat != "fliesstext"){
+      textImg.style.display = "none";
+      for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
+        var figurIcon = document.getElementById(figur + "Wrapper");
+        figurIcon.style.opacity = 1;
+      }
+    }
+  }
 
 
 
@@ -996,7 +1208,12 @@ export async function application() {
 
 
 
-  //Chronologie
+
+
+
+  //--------------------------------------------//
+  //              1. Erzählfolge                //
+  //--------------------------------------------//
 
   for (key in leude){
 
@@ -1117,35 +1334,12 @@ export async function application() {
 
   function erzaehlfolgeFunction() {
     
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
-    
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
-    }
+    setWidthPercent(60);
+    setBackOtherKategories("erzaehlfolge");
+    setLocationHash("erzaehlfolge");
 
-    alphaImg.style.display = "none";
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
-
-    textImg.style.display = "none";
-
-
-    grundImg.style.display = "none";
 
     setCoordinates(ersterKlickChrono);
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width * 60 / 100 + "px"; //60%
-      //console.log(iconWrapper.style.width);
-    }
     chronoImg.style.display = "block";
 
     ersterKlickChrono = false;
@@ -1153,15 +1347,6 @@ export async function application() {
     for (var x = 0; x < ovMetStellen.length; x++) {
       ovMetStellen[x].style.display = "block";
     }
-
-    aktuelleKategorie = "erzaehlfolge";
-    location.hash = "#" + aktuelleKategorie;
-
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash += "#" + aktuellesModal;
-    }
-    
-
   }
 
   chronoBtn.onclick = erzaehlfolgeFunction;
@@ -1175,7 +1360,22 @@ export async function application() {
 
 
 
-  //Taxonomie
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               2. Taxonomie                 //
+  //--------------------------------------------//
 
 
   for (key in leude){
@@ -1188,30 +1388,11 @@ export async function application() {
 
 
   function taxonomieFunction () {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width * 80 / 100 + "px"; //80%
-    }
 
+    setWidthPercent(80);
+    setBackOtherKategories("taxonomie");
+    setLocationHash("taxonomie");
 
-    chronoImg.style.display = "none"; 
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
-    
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
-    }
-
-    alphaImg.style.display = "none";
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
-    
     
     taxImg.style.display = "block";
     taxImg.style.animationPlayState = "running";
@@ -1220,29 +1401,25 @@ export async function application() {
       taxonomieNames[x].style.display = "block";
     }
 
-    textImg.style.display = "none";
-
-    grundImg.style.display = "none";
-
 
     
     //startpunkt von Top sind gleichzusetzen mit CSS id attributes, left + 10
-    var figurPositionFaunaTop = 25; //document.getElementById("fauna").offsetTop;
-    var figurPositionFaunaLeft = 16.5; //document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
+    var figurPositionFaunaTop = 20; //document.getElementById("fauna").offsetTop;
+    var figurPositionFaunaLeft = 14; //document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
 
-    var figurPositionFloraTop = 40; //document.getElementById("flora").offsetTop;
-    var figurPositionFloraLeft = 16.5; //document.getElementById("flora").offsetLeft + 150;
+    var figurPositionFloraTop = 51; //document.getElementById("flora").offsetTop;
+    var figurPositionFloraLeft = 14; //document.getElementById("flora").offsetLeft + 150;
 
-    var figurPositionElementeTop = 55; //document.getElementById("elemente").offsetTop;
-    var figurPositionElementeLeft = 16.5; //document.getElementById("elemente").offsetLeft + 150;
+    var figurPositionElementeTop = 51; //document.getElementById("elemente").offsetTop;
+    var figurPositionElementeLeft = 47; //document.getElementById("elemente").offsetLeft + 150;
 
-    var figurPositionSonstigesTop = 70; // document.getElementById("sonstiges").offsetTop;
-    var figurPositionSonstigesLeft = 16.5; //document.getElementById("sonstiges").offsetLeft + 150;
+    var figurPositionSonstigesTop = 83.5; // document.getElementById("sonstiges").offsetTop;
+    var figurPositionSonstigesLeft = 14; //document.getElementById("sonstiges").offsetLeft + 150;
 
 
     //Abstand zwischen Icons und Länge des Balkens nach Icons
-    var abstand = 4;
-    var balkenende = 12; //nicht weniger als 11! Da Anfang noch abgezogen werden muss Anfang entspricht ca. 11
+    var abstandHorizontal = 5.5;
+    var abstandVertical = 12;
     
 
     //mitzählen für Prozentangaben
@@ -1251,10 +1428,7 @@ export async function application() {
     var countElemente = 0;
     var countSonstiges = 0;
 
-    
-    // for (var id in figuresListSorted){
-    //   console.log(figuresListSorted[id]);
-    // }
+
     for (var id in figuresListSorted){
       
       //ICONS VERSCHIEBEN
@@ -1264,34 +1438,73 @@ export async function application() {
       //der richtigen Taxonomie zuordnen
       if (leude[figuresListSorted[id]].taxonomie == "fauna"){
         //console.log("figur zählt zu fauna");
-        
-        figurIcon.style.top = figurPositionFaunaTop + "%";
-        figurIcon.style.left = figurPositionFaunaLeft + "%";
-        
-        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        figurPositionFaunaLeft += abstand; //figurIcon.offsetWidth;
 
         countFauna += 1;
+        
+        if (countFauna == 1) { //setzen des ersten Icons, ACHTUNG: Zählung beginnt bei 1
+          figurIcon.style.top = figurPositionFaunaTop + "%";
+          figurIcon.style.left = figurPositionFaunaLeft + "%";
+
+        } else if (countFauna%2 == 0){ //wenn CountFauna gerade, dann plus top 
+          figurPositionFaunaTop += abstandVertical;
+
+          figurIcon.style.top = figurPositionFaunaTop + "%";
+          figurIcon.style.left = figurPositionFaunaLeft + "%";
+
+        } else { //wenn CountFauna ungerade, dann plus left und minus top 
+          figurPositionFaunaTop -= abstandVertical;
+          figurPositionFaunaLeft += abstandHorizontal;
+
+          figurIcon.style.top = figurPositionFaunaTop + "%";
+          figurIcon.style.left = figurPositionFaunaLeft + "%";
+        }
+
+
+        
 
       } else if (leude[figuresListSorted[id]].taxonomie == "flora"){
-        //console.log("figur zählt zu flora");
         
-        figurIcon.style.top = figurPositionFloraTop + "%";
-        figurIcon.style.left = figurPositionFloraLeft + "%";
-      
-        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        figurPositionFloraLeft += abstand;
+        countFlora += 1;
+        
+        if (countFlora == 1) { //setzen des ersten Icons, ACHTUNG: Zählung beginnt bei 1
+          figurIcon.style.top = figurPositionFloraTop + "%";
+          figurIcon.style.left = figurPositionFloraLeft + "%";
 
-        countFlora +=1;
+        } else if (countFlora%2 == 0){ //wenn CountFlora gerade, dann plus top 
+          figurPositionFloraTop += abstandVertical;
+
+          figurIcon.style.top = figurPositionFloraTop + "%";
+          figurIcon.style.left = figurPositionFloraLeft + "%";
+
+        } else { //wenn CountFlora ungerade, dann plus left und minus top 
+          figurPositionFloraTop -= abstandVertical;
+          figurPositionFloraLeft += abstandHorizontal;
+
+          figurIcon.style.top = figurPositionFloraTop + "%";
+          figurIcon.style.left = figurPositionFloraLeft + "%";
+        }
 
       } else if (leude[figuresListSorted[id]].taxonomie == "elemente"){
 
-        figurIcon.style.top = figurPositionElementeTop + "%";
-        figurIcon.style.left = figurPositionElementeLeft + "%";
+        countElemente += 1;
+        
+        if (countElemente == 1) { //setzen des ersten Icons, ACHTUNG: Zählung beginnt bei 1
+          figurIcon.style.top = figurPositionElementeTop + "%";
+          figurIcon.style.left = figurPositionElementeLeft + "%";
 
-        figurPositionElementeLeft += abstand;
+        } else if (countElemente%2 == 0){ //wenn CountElemente gerade, dann plus top 
+          figurPositionElementeTop += abstandVertical;
 
-        countElemente +=1;
+          figurIcon.style.top = figurPositionElementeTop + "%";
+          figurIcon.style.left = figurPositionElementeLeft + "%";
+
+        } else { //wenn CountElemente ungerade, dann plus left und minus top 
+          figurPositionElementeTop -= abstandVertical;
+          figurPositionElementeLeft += abstandHorizontal;
+
+          figurIcon.style.top = figurPositionElementeTop + "%";
+          figurIcon.style.left = figurPositionElementeLeft + "%";
+        }
 
 
       } else if (leude[figuresListSorted[id]].taxonomie == "sonstiges"){
@@ -1299,7 +1512,7 @@ export async function application() {
         figurIcon.style.top = figurPositionSonstigesTop + "%";
         figurIcon.style.left = figurPositionSonstigesLeft + "%";
 
-        figurPositionSonstigesLeft += abstand;
+        figurPositionSonstigesLeft += abstandHorizontal;
 
         countSonstiges += 1;
       }
@@ -1307,15 +1520,6 @@ export async function application() {
        
        
     }
-
-
-    
-
-    //balkenlaengen 
-    document.getElementById("fauna").style.width = countFauna*abstand + balkenende + "%"; 
-    document.getElementById("flora").style.width = countFlora*abstand + balkenende + "%";
-    document.getElementById("elemente").style.width = countElemente*abstand + balkenende + "%";
-    document.getElementById("sonstiges").style.width = countSonstiges*abstand + balkenende + "%";
 
     //prozentangaben taxonomie
     var all = countFauna + countFlora + countElemente + countSonstiges;
@@ -1331,48 +1535,9 @@ export async function application() {
       p++;
     }
 
-    aktuelleKategorie = "taxonomie";
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
-    
   }
-
   taxBtn.onclick = taxonomieFunction;
 
-  //TaxonomieNames anzeigen bei hover über Balken
-  // var arrayTaxonomieNames = [];  
-
-
-  // for (key in leude){
-  //   var iconWrapper = document.getElementById(key + "Wrapper");
-  //   var pTaxonomie = document.createElement("div");
-  //   pTaxonomie.className = "taxonomieNames";
-  //   pTaxonomie.innerHTML = leude[key].verwandlung;
-  //   iconWrapper.appendChild(pTaxonomie);
-  //   arrayTaxonomieNames.push(pTaxonomie);
-  // }
-
-  
-  // var taxKategoryArr = ["fauna", "flora", "elemente", "sonstiges"];
-
-  // for (var t = 0; t< taxKategoryArr.length; t++){
-    
-  //   document.getElementById(taxKategoryArr[t]).onmouseover = function () {
-  //     for (var n = 0; n<arrayTaxonomieNames.length; n++){
-  //       arrayTaxonomieNames[n].style.display = "block";
-  //     }
-  //   }
-    
-  //   document.getElementById(taxKategoryArr[t]).onmouseout = function () {
-  //     for (var n = 0; n<arrayTaxonomieNames.length; n++){
-  //       arrayTaxonomieNames[n].style.display = "none";
-  //     }
-  //   }
-
-  // }
-
 
 
   
@@ -1383,40 +1548,30 @@ export async function application() {
 
 
 
-  //Geographie
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               3. Geographie                //
+  //--------------------------------------------//
+
   function geographieFunction() {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width + "px"; //100%
-    }
-    
-    
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
 
-    chronoImg.style.display = "none";
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
-
-    alphaImg.style.display = "none";
-    //alphabetNames ausblenden, nach Alphabet-Funktion
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
+    setWidthPercent(100);
+    setBackOtherKategories("geographie");
+    setLocationHash("geographie");
+  
 
     geoImg.style.display = "block";
     geoImg.style.animationPlayState = "running";
-
-
-    textImg.style.display = "none";
-
-    grundImg.style.display = "none";
 
 
     for (var figur in leude){
@@ -1436,11 +1591,6 @@ export async function application() {
       }
 
     }
-    aktuelleKategorie = "geographie"
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
   }
 
   geoBtn.onclick = geographieFunction;
@@ -1448,7 +1598,34 @@ export async function application() {
 
 
   
-  //Alphabet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               4. Alphabet                  //
+  //--------------------------------------------//
 
   //Alphabet-Names unter Icons anzeigen
   // for (key in leude){
@@ -1476,34 +1653,11 @@ export async function application() {
 
   var ersterKlickAlpha = true;
   function alphabetFunction() {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width + "px"; //100%
-    }
 
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
+    setWidthPercent(90);
+    setBackOtherKategories("alphabet");
+    setLocationHash("alphabet");
 
-    chronoImg.style.display = "none";
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
-
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
-    }
-
-
-    textImg.style.display = "none";
-
-    
-    grundImg.style.display = "none";
 
     alphaImg.style.display = "block";
     var alphaNames = document.getElementsByClassName("alphabetNames");
@@ -1522,7 +1676,7 @@ export async function application() {
     
     var alphaDiv = document.getElementById("alphabet");
     var startFromTop = 15;
-    var startFromLeft = 10;
+    var startFromLeft = 9;
     var spaceBetweenIconsHorizontally = 5;
     //var spaceBetweenLetterBlocksVertically = 15;
     var spaceBetweenIconsVertically = 10;
@@ -1552,7 +1706,7 @@ export async function application() {
         }
 
         leftPosition = startFromLeft;
-        leftPosition += spaceBetweenIconsHorizontally*2;
+        leftPosition += spaceBetweenIconsHorizontally*1.3;
         topPosition += spaceBetweenIconsVertically;
 
       }
@@ -1582,12 +1736,6 @@ export async function application() {
 
 
     ersterKlickAlpha = false;
-
-    aktuelleKategorie = "alphabet"
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
   }
 
   alphaBtn.onclick = alphabetFunction;
@@ -1595,8 +1743,299 @@ export async function application() {
 
 
 
-  //Fließtext
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //                  5. Grund                  //
+  //--------------------------------------------//
+
   
+  //Verwandlungsgrund
+
+  function grundFunction() {
+    
+    setWidthPercent(80);
+    setBackOtherKategories("grund");
+    setLocationHash("grund");
+  
+
+    grundImg.style.display = "block";
+
+
+
+
+
+    // s. CSS positions
+    var positionBestrafungTop = 19.5; //document.getElementById("bestrafung").offsetTop;
+    var positionBestrafungLeft = 17; //document.getElementById("bestrafung").offsetLeft;
+
+    var positionBitteTop = 29.5;//document.getElementById("begierde").offsetTop;
+    var positionBitteLeft = 17; //document.getElementById("begierde").offsetLeft;
+
+    var positionSchutzTop = 39.5; //document.getElementById("schutz").offsetTop;
+    var positionSchutzLeft = 17;//document.getElementById("schutz").offsetLeft;
+
+    var positionBegierdeTop = 49.5;//document.getElementById("begierde").offsetTop;
+    var positionBegierdeLeft = 17; //document.getElementById("begierde").offsetLeft;
+
+    var positionEhrungTop = 59.5;//document.getElementById("ehrung").offsetTop;
+    var positionEhrungLeft = 17;//document.getElementById("ehrung").offsetLeft;
+
+    var positionKampfTop = 69.5;//document.getElementById("begierde").offsetTop;
+    var positionKampfLeft = 17; //document.getElementById("begierde").offsetLeft;
+
+    
+    var positionSonstigerGrundTop = 79.5; //document.getElementById("sonstigerGrund").offsetTop;
+    var positionSonstigerGrundLeft = 17; //document.getElementById("sonstigerGrund").offsetLeft;
+
+    
+
+    //mitzählen für Prozentangaben
+    var countSchutz = 0;
+    var countBestrafung = 0;
+    var countBegierde = 0;
+    var countEhrung = 0;
+    var countBitte = 0;
+    var countKampf = 0;
+    var countSonstigerGrund = 0;
+
+
+    //Abstand
+    var abstand = 4;
+
+    
+
+    for (var id in figuresListSorted){
+      
+      //ICONS VERSCHIEBEN
+      var figurIcon = document.getElementById(figuresListSorted[id] + "Wrapper");
+      //var figurPopover = document.getElementById(figur + "Popover");
+      
+      
+      //dem richtigen Grund zuordnen
+      if (leude[figuresListSorted[id]].grund == "Schutz"){
+        //console.log("figur zählt zu schutz");
+        
+        figurIcon.style.top = positionSchutzTop + "%";
+        figurIcon.style.left = positionSchutzLeft + "%";
+        
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        positionSchutzLeft += abstand; //figurIcon.offsetWidth;
+
+        countSchutz += 1;
+
+      } else if (leude[figuresListSorted[id]].grund.includes("Bestrafung")){
+        //console.log("figur zählt zu bestrafung");
+        
+        figurIcon.style.top = positionBestrafungTop + "%";
+        figurIcon.style.left = positionBestrafungLeft + "%";
+
+        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
+        positionBestrafungLeft += abstand; //figurIcon.offsetWidth;
+
+        countBestrafung +=1;
+
+      } else if (leude[figuresListSorted[id]].grund == "Trauer"){
+
+        figurIcon.style.top = positionBegierdeTop + "%";
+        figurIcon.style.left = positionBegierdeLeft + "%";
+
+        positionBegierdeLeft += abstand; //figurIcon.offsetWidth;
+
+        countBegierde +=1;
+
+
+      } else if (leude[figuresListSorted[id]].grund == "postume Ehrung"){
+        
+        figurIcon.style.top = positionEhrungTop + "%";
+        figurIcon.style.left = positionEhrungLeft + "%";
+
+        positionEhrungLeft += abstand; //figurIcon.offsetWidth;
+
+        countEhrung += 1;
+      
+      } else if (leude[figuresListSorted[id]].grund.includes("Wunsch")){
+        
+        figurIcon.style.top = positionBitteTop + "%";
+        figurIcon.style.left = positionBitteLeft + "%";
+
+        positionBitteLeft += abstand; //figurIcon.offsetWidth;
+
+        countBitte += 1;
+
+      } else if (leude[figuresListSorted[id]].grund.includes("Kampf")){
+        
+        figurIcon.style.top = positionKampfTop + "%";
+        figurIcon.style.left = positionKampfLeft + "%";
+
+        positionKampfLeft += abstand; //figurIcon.offsetWidth;
+
+        countKampf += 1;
+      
+      } else {
+        
+        figurIcon.style.top = positionSonstigerGrundTop + "%";
+        figurIcon.style.left = positionSonstigerGrundLeft + "%";
+
+        positionSonstigerGrundLeft += abstand; //figurIcon.offsetWidth;
+
+        countSonstigerGrund += 1;
+      }
+    }
+
+    //prozentangaben Verwandlungsgrund, Achtung: Richtige Reihenfolge beachten:
+    //Bestrafung, Wunsch, Schutz, Begierde/Trauer, Ehrung, Kampf, SonstigerGrund
+    var allGrund = countBestrafung + countBitte + countSchutz + countBegierde + countEhrung + countKampf + countSonstigerGrund;
+    var percentNumbersGrund = [Math.round(countBestrafung/allGrund*100*10)/10, Math.round(countBitte/allGrund*100*10)/10, Math.round(countSchutz/allGrund*100*10)/10, Math.round(countBegierde/allGrund*100*10)/10, Math.round(countEhrung/allGrund*100*10)/10, Math.round(countKampf/allGrund*100*10)/10, Math.round(countSonstigerGrund/allGrund*100*10)/10];
+
+    var percentPGrundArray = document.getElementsByClassName("percentToprightGrund");
+
+    for (var g = 0; g < percentPGrundArray.length; g++) {
+      percentPGrundArray[g].innerHTML = percentNumbersGrund[g] + "%";
+    }
+  }
+
+  grundBtn.onclick = grundFunction;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               6. Verwandelnde              //
+  //--------------------------------------------//
+  
+  //x = sin (winkel) * r + c(left)
+  //y = ""
+
+
+  //Argumente
+  var startFromTopVerw = 20;
+  var abstaendeIconsVerw = 10;
+
+  function setVerwandelnder(verwandelnderName, styleLeft) {
+    var setVerwandelnderName = document.createElement("div");
+    setVerwandelnderName.className = "verwandelndeNames";
+    setVerwandelnderName.innerHTML = verwandelnderName;
+    setVerwandelnderName.style.position = "absolute";
+    setVerwandelnderName.style.left = styleLeft -2 + "%";
+    setVerwandelnderName.style.top = startFromTopVerw + "%";
+    verwandelndeImg.appendChild(setVerwandelnderName);
+
+    var helpvarStartFromTop = startFromTopVerw*1.5;
+
+    for (key in leude){
+
+      var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
+      
+
+  
+      if (leude[key].verwandler.startsWith(verwandelnderName)){
+        
+        iconWrapper.style.top = helpvarStartFromTop + "%";
+        iconWrapper.style.left = styleLeft + "%";
+  
+        helpvarStartFromTop += abstaendeIconsVerw;
+  
+      }
+    }
+  }
+
+
+
+
+  
+  function verwandelndeFunction() {
+
+    setWidthPercent(100);
+    setBackOtherKategories("verwandelnde");
+    setLocationHash("verwandelnde");
+
+    verwandelndeImg.style.display = "block";
+
+
+    
+
+
+
+
+    //Olympier  
+    setVerwandelnder("Jupiter", 10);
+    setVerwandelnder("Neptun", 20);
+    setVerwandelnder("Venus", 30);
+    setVerwandelnder("Diana", 40);
+    setVerwandelnder("Minerva", 50);
+    setVerwandelnder("Mercur", 60);
+    setVerwandelnder("Apollo", 70);
+    setVerwandelnder("Ceres", 80);
+    setVerwandelnder("Juno", 90);
+
+    //alle anderen
+    for (key in leude){
+
+      var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
+
+      if (!(leude[key].verwandler.startsWith("Jupiter")) && !(leude[key].verwandler.startsWith("Neptun")) && !(leude[key].verwandler.startsWith("Venus")) && !(leude[key].verwandler.startsWith("Diana")) && !(leude[key].verwandler.startsWith("Minerva")) && !(leude[key].verwandler.startsWith("Mercur")) && !(leude[key].verwandler.startsWith("Apollo")) && !(leude[key].verwandler.startsWith("Ceres")) && !(leude[key].verwandler.startsWith("Juno"))){
+        
+        iconWrapper.style.top = (Math.floor(Math.random() * (80 - 30 + 1)) + 30) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
+        iconWrapper.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+        iconWrapper.style.opacity = 0;
+  
+      }
+    }
+
+  
+
+  }
+
+  verwandelndeBtn.onclick = verwandelndeFunction;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               7. Fließtext                 //
+  //--------------------------------------------//
+  
+
+
+
   //create text-div
   var textModalDiv = document.createElement("div");
   textModalDiv.id = "textModal";
@@ -1621,16 +2060,114 @@ export async function application() {
     contentDiv.appendChild(header);
 
     var contentP = document.createElement("p");
-    contentDiv.className = "textModalContent";
-    /*contentDiv.style = "padding: 25px 50px 0px";*/
-    contentP.innerHTML = metamorphosen[key].text + "<br><br>";
     contentDiv.appendChild(contentP);
+    contentDiv.className = "textModalContent";
+    var textTable = document.createElement("table"); //table
+    textTable.className = "fliesstextTables";
+    contentP.appendChild(textTable);
+    var textRow = document.createElement("tr"); //tr
+    //textRow.style.position = "relative";
+    textTable.appendChild(textRow);
+
+    //lateinischer MetamorphosenText
+    var textColumnLatein = document.createElement("td");
+    textColumnLatein.className = "lateinisch";
+    textRow.appendChild(textColumnLatein);
+    //textColumnLatein.style.width = "50%";
+    //textColumnLatein.style.position = "absolute";
+    textColumnLatein.style.padding = "5px";
+    textColumnLatein.innerHTML = metamorphosen[key].latein + "<br><br>";
+
+    //deutscher MetamorphosenText
+    var textColumnDeutsch = document.createElement("td");
+    textColumnDeutsch.className = "deutsch";
+    textRow.appendChild(textColumnDeutsch);
+    //textColumnDeutsch.style.width = "50%";
+    //textColumnDeutsch.style.position = "absolute";
+    textColumnDeutsch.style.padding = "5px";
+    textColumnDeutsch.innerHTML = metamorphosen[key].text + "<br><br>";
+
+
 
   }
+
+
+
+  //Checkboxen latein-deutsch
+  var lateinBtn = document.getElementById("lateinischerOriginaltext");
+  var lateinTexte = document.getElementsByClassName("lateinisch");
+
+  var deutschBtn = document.getElementById("deutscheUebersetzung");
+  var deutschTexte = document.getElementsByClassName("deutsch");
+
+
+  var getTextTables = document.getElementsByClassName("fliesstextTables");
+  console.log(getTextTables[0].clientWidth);
+
+  lateinBtn.onclick = function () {
+    if (lateinBtn.checked == false){
+
+      deutschBtn.setAttribute('disabled','disabled');
+
+      for (var l = 0; l < lateinTexte.length; l++){
+        //textColumnLatein.style.width = "1%";
+        lateinTexte[l].style.display = "none";
+      }
+    } else {
+      deutschBtn.removeAttribute('disabled');
+      
+      for (var l = 0; l < lateinTexte.length; l++){
+        lateinTexte[l].style.display = "block";
+      }
+    }
+  }
+
+  
+  deutschBtn.onclick = function (){
+    if (deutschBtn.checked == false){
+      
+      //Latein-Btn disablen, damit Fall nicht eintritt, dass gar kein Text
+      lateinBtn.setAttribute('disabled','disabled');
+
+      for (var l = 0; l < deutschTexte.length; l++){
+        //textColumnDeutsch.style.width = "1%";
+        deutschTexte[l].style.display = "none";
+      }
+    } else {
+      
+      lateinBtn.removeAttribute('disabled');
+      
+      for (var l = 0; l < deutschTexte.length; l++){
+        deutschTexte[l].style.display = "block";
+      }
+    }
+  }
+
+
+
+  //
+  var jupiterStellenArray = document.getElementsByClassName("jupiter");
+  //console.log(jupiterStellenArray)
+  for (var j = 0; j < jupiterStellenArray.length; j++){
+
+    var tooltipSpan = document.createElement("span");
+    tooltipSpan.setAttribute("role", "tooltip");
+    
+    var verwandelteString = "";
+    for (var v = 0; v < verwandlerDict.Jupiter.nameDerVerwandelten.length; v++){
+      verwandelteString += verwandlerDict.Jupiter.nameDerVerwandelten[v] + "&nbsp; <img src='Icons/iconmonstr-share-11-240.png' style='width: 13.5px;'><br>";
+    }
+    tooltipSpan.innerHTML = "Jupiter" + "s<br>Verwandlungen:<br><br> " + verwandelteString;
+    jupiterStellenArray[j].appendChild(tooltipSpan);
+
+  }
+
+  //Footer Div
   var footer = document.createElement("div");
   footer.className = "textModalFooter";
   textModalDiv.appendChild(footer);
 
+  //Quellenangabe Div und Link
   var copyrightText = document.createElement("div");
   footer.appendChild(copyrightText);
   copyrightText.style.fontSize = "8px";
@@ -1642,47 +2179,25 @@ export async function application() {
   copyrightLink.innerHTML = "Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael Holzinger. Übers. von Reinhart Suchier. Berlin 2013."
   copyrightText.appendChild(copyrightLink);
 
+  //Funktion, die Fliesstext auf Block setzt (+ Rest auf none)
   function fliesstextFunction() {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width + "px"; //100%
-    }
+
+    setWidthPercent(100);
+    setBackOtherKategories("fliesstext");
+    setLocationHash("fliesstext");
     
     textImg.style.display = "block";
 
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
 
-    chronoImg.style.display = "none";
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
+    //Icons aktuell ausgeblendet, damit sie nicht stören
+    for (var figur in leude){
 
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
       var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
+  
+      figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+      figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+      figurIcon.style.opacity = 0;
     }
-    
-    alphaImg.style.display = "none";
-    //alphabetNames ausblenden, nach Alphabet-Funktion
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
-
-    grundImg.style.display = "none";
-
-    aktuelleKategorie = "fliesstext";
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
-
   }
 
   textBtn.onclick = fliesstextFunction;
@@ -1694,59 +2209,30 @@ export async function application() {
 
 
 
-  //Unorganisiert
+
+
+
+
+
+  //--------------------------------------------//
+  //             8. Unorganisiert               //
+  //--------------------------------------------//
+
+  
   var unorgBtn = document.getElementById("unorganisiert");
 
   unorgBtn.onclick = function () {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width + "px"; //100%
-    }
+
+    setWidthPercent(100);
+    setBackOtherKategories();
+    setLocationHash("");
     
-    
-    //taxImg.style.opacity = "0";
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
-
-    chronoImg.style.display = "none";
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
-
-    //geoImg.style.opacity = "0";
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
-    }
-
-    //alphaImg.style.opacity = "0";
-    alphaImg.style.display = "none";
-    //alphabetNames ausblenden, nach Alphabet-Funktion
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
-
-    textImg.style.display = "none";
-
-    grundImg.style.display = "none";
 
     for (var figur in leude){
       var figurIcon = document.getElementById(figur + "Wrapper");
       figurIcon.style.top = leude[figur].koordinaten.unorganisiert.top + "%";
       figurIcon.style.left = leude[figur].koordinaten.unorganisiert.left + "%";
     }
-
-    aktuelleKategorie = "";
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
   }
 
 
@@ -1754,201 +2240,49 @@ export async function application() {
 
 
 
-  //Verwandlungsgrund
-
-  function grundFunction() {
-    for (key in leude){
-      var iconWrapper = document.getElementById(key + "Btn");
-      iconWrapper.style.width = leude[key].width * 80 / 100 + "px"; //80%
-    }
-
-    taxImg.style.display = "none";
-    var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
-    for (var x = 0; x < taxonomieNames.length; x++) {
-      taxonomieNames[x].style.display = "none";
-    }
-
-    chronoImg.style.display = "none";
-    var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
-    for (var x = 0; x < ovMetStelle.length; x++) {
-      ovMetStelle[x].style.display = "none";
-    }
-
-    //geoImg.style.opacity = "0";
-    geoImg.style.display = "none";
-    for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
-      var figurIcon = document.getElementById(figur + "Wrapper");
-      figurIcon.style.opacity = 1;
-    }
-
-    //alphaImg.style.opacity = "0";
-    alphaImg.style.display = "none";
-    //alphabetNames ausblenden, nach Alphabet-Funktion
-    var alphabetNames = document.getElementsByClassName("alphabetNames"); 
-    for (var x = 0; x < alphabetNames.length; x++) {
-      alphabetNames[x].style.display = "none";
-    }
-
-    textImg.style.display = "none";
-
-    grundImg.style.display = "block";
 
 
 
 
 
-    // s. CSS positions
-    var positionSchutzTop = 25; //document.getElementById("schutz").offsetTop;
-    var positionSchutzLeft = 19;//document.getElementById("schutz").offsetLeft;
 
-    var positionBestrafungTop = 25; //document.getElementById("bestrafung").offsetTop;
-    var positionBestrafungLeft = 54; //document.getElementById("bestrafung").offsetLeft;
 
-    var positionBegierdeTop = 54;//document.getElementById("begierde").offsetTop;
-    var positionBegierdeLeft = 19; //document.getElementById("begierde").offsetLeft;
 
-    var positionBitteTop = 90;//document.getElementById("begierde").offsetTop;
-    var positionBitteLeft = 25; //document.getElementById("begierde").offsetLeft;
-
-    var positionKampfTop = 100;//document.getElementById("begierde").offsetTop;
-    var positionKampfLeft = 25; //document.getElementById("begierde").offsetLeft;
-
-    var positionEhrungTop = 54;//document.getElementById("ehrung").offsetTop;
-    var positionEhrungLeft = 54;//document.getElementById("ehrung").offsetLeft;
-
-    var positionSonstigerGrundTop = 80; //document.getElementById("sonstigerGrund").offsetTop;
-    var positionSonstigerGrundLeft = 25; //document.getElementById("sonstigerGrund").offsetLeft;
-
+    /*--------------------------------------------//
     
-
-    //mitzählen für Prozentangaben
-    var countSchutz = 0;
-    var countBestrafung = 0;
-    var countBegierde = 0;
-    var countEhrung = 0;
-    var countBitte = 0;
-    var countKampf = 0;
-    var countSonstigerGrund = 0;
-
-    
-
-    for (var id in figuresListSorted){
-      
-      //ICONS VERSCHIEBEN
-      var figurIcon = document.getElementById(figuresListSorted[id] + "Wrapper");
-      //var figurPopover = document.getElementById(figur + "Popover");
-      
-      
-      //dem richtigen Grund zuordnen
-      if (leude[figuresListSorted[id]].grund == "Schutz"){
-        //console.log("figur zählt zu schutz");
-        
-        figurIcon.style.top = positionSchutzTop + "%";
-        figurIcon.style.left = positionSchutzLeft + "%";
-        
-        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        positionSchutzLeft += 5; //figurIcon.offsetWidth;
-
-        countSchutz += 1;
-
-      } else if (leude[figuresListSorted[id]].grund.includes("Bestrafung")){
-        //console.log("figur zählt zu bestrafung");
-        
-        figurIcon.style.top = positionBestrafungTop + "%";
-        figurIcon.style.left = positionBestrafungLeft + "%";
-
-        //Breite des gesetzten Icons zur Position des nächsten hinzufügen
-        positionBestrafungLeft += 5; //figurIcon.offsetWidth;
-
-        countBestrafung +=1;
-
-      } else if (leude[figuresListSorted[id]].grund == "Trauer"){
-
-        figurIcon.style.top = positionBegierdeTop + "%";
-        figurIcon.style.left = positionBegierdeLeft + "%";
-
-        positionBegierdeLeft += 5; //figurIcon.offsetWidth;
-
-        countBegierde +=1;
-
-
-      } else if (leude[figuresListSorted[id]].grund == "postume Ehrung"){
-        
-        figurIcon.style.top = positionEhrungTop + "%";
-        figurIcon.style.left = positionEhrungLeft + "%";
-
-        positionEhrungLeft += 5; //figurIcon.offsetWidth;
-
-        countEhrung += 1;
-      
-      } else if (leude[figuresListSorted[id]].grund.includes("Wunsch")){
-        
-        figurIcon.style.top = positionBitteTop + "%";
-        figurIcon.style.left = positionBitteLeft + "%";
-
-        positionBitteLeft += 5; //figurIcon.offsetWidth;
-
-        countBitte += 1;
-
-      } else if (leude[figuresListSorted[id]].grund.includes("Kampf")){
-        
-        figurIcon.style.top = positionKampfTop + "%";
-        figurIcon.style.left = positionKampfLeft + "%";
-
-        positionKampfLeft += 5; //figurIcon.offsetWidth;
-
-        countKampf += 1;
-      
-      } else {
-        
-        figurIcon.style.top = positionSonstigerGrundTop + "%";
-        figurIcon.style.left = positionSonstigerGrundLeft + "%";
-
-        positionSonstigerGrundLeft += 5; //figurIcon.offsetWidth;
-
-        countSonstigerGrund += 1;
-      }
-    }
-
-    //prozentangaben Verwandlungsgrund
-    var allGrund = countSchutz + countBegierde + countBestrafung + countEhrung + countSonstigerGrund;
-    var percentNumbersGrund = [Math.round(countSchutz/allGrund*100*10)/10, Math.round(countBestrafung/allGrund*100*10)/10, Math.round(countBegierde/allGrund*100*10)/10, Math.round(countEhrung/allGrund*100*10)/10, Math.round(countSonstigerGrund/allGrund*100*10)/10];
-    //console.log(percentNumbersGrund);
-
-    var percentPGrundArray = document.getElementsByClassName("percentToprightGrund");
-
-    for (var g = 0; g < percentPGrundArray.length; g++) {
-      percentPGrundArray[g].innerHTML = percentNumbersGrund[g] + "%";
-    }
-
-    aktuelleKategorie = "grund";
-    location.hash = "#" + aktuelleKategorie;
-    if (typeof aktuellesModal !== "undefined"){
-      location.hash +="#" + aktuellesModal;
-    }
-  }
-
-  grundBtn.onclick = grundFunction;
-
-
-
-
-
-
-
-  //--------------------------------------------//
-  //            Mark-Kategorien                 //
-  //--------------------------------------------//
-
-  //Geschlecht
-  document.getElementById("kategorienUndPopoverDiv");
-  var markGeschlechtM = document.getElementById("markGeschlechtM");
-  //console.log(markGeschlechtM)
+    .----------------. 
+    | .--------------. |
+    | |   _    _     | |
+    | |  | |  | |    | |
+    | |  | |__| |_   | |
+    | |  |____   _|  | |
+    | |      _| |_   | |
+    | |     |_____|  | |
+    | |              | |
+    | '--------------' |
+    '----------------' 
   
-  function markGeschlecht(){
+
+    Mark-Kategorien
+
+    0. allgemeine Funktionen
+    1. Geschlecht
+
+  //--------------------------------------------*/
+
+  
+  //--------------------------------------------//
+  //                1. Geschlecht               //
+  //--------------------------------------------//
+  
+  var markGeschlechtM = document.getElementById("markGeschlechtM");
+  var markGeschlechtW = document.getElementById("markGeschlechtW"); //noch nicht angelegt
+  var markGeschlechtD = document.getElementById("markGeschlechtD"); //noch nicht angelegt 
+  
+  function markGeschlecht(wmd){
     for (figur in leude){
       
-      if (leude[figur].geschlecht === "m"){
+      if (leude[figur].geschlecht === wmd){
         //var zuFaebendesIcon = document.getElementById(figur + "Btn");
         //zuFaebendesIcon.style.animationPlayState = "running";
       } else {
@@ -1958,7 +2292,9 @@ export async function application() {
     }
   }
 
-  markGeschlechtM.onclick = markGeschlecht;
+  //markGeschlechtM.onclick = markGeschlecht("m");
+  //markGeschlechtW.onclick = markGeschlecht("w");
+  //markGeschlechtD.onclick = markGeschlecht("d");
 
 
 

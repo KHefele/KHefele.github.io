@@ -35,7 +35,7 @@
         <p class="percentTopright" id="countElemente"></p>
       </div>
       <div id="sonstiges" class="taxonomieKategorie">
-        <p class="titleTopleft" >Sonstiges</p>
+        <p class="titleTopleft" >Antropomorphes</p>
         <p class="percentTopright" id="countSonstiges"></p>
       </div>
     </div>
@@ -59,36 +59,57 @@
 
     <!----------- Alphabet ------------------->
     <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none;">
-      <div style="width: 90%; height:140%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+      <div style="width: 90%; height:168%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
     </div>
 
     <!----------- Fließtext  ------------------->
     <div id="fliesstext" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
       <!--<div style="width: 100%; height:75%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>-->
+      <div style="position: absolute; top:15%; left:65%;z-index: 20;">
+        <input type="checkbox" id="deutscheUebersetzung" name="d" checked>
+        <label for="d">deutsche Übersetzung</label>
+        <br>
+        <input type="checkbox" id="lateinischerOriginaltext" name="l" checked>
+        <label for="l">lateinischer Originaltext</label>
+      </div>
     </div>
 
     <!----------- Verwandlungsgrund  ------------------->
     <div id="verwandlungsgrund" style="position: absolute; display: none; height:10%; height:100%; width:100%; position:absolute; animation-name:slowOpacity; animation-duration: 3s;">
+      <div id="bestrafung" class="taxonomieKategorie">
+        <p class="titleTopleft">Bestrafung /<br>Rache</p>
+        <p class="percentToprightGrund" id="countBestrafung"></p>
+      </div>
+      <div id="wunsch" class="taxonomieKategorie">
+        <p class="titleTopleft">Bitte /<br>Wunsch</p>
+        <p class="percentToprightGrund" id="countWunsch"></p>
+      </div>
       <div id="schutz" class="verwandlungsKategorie">
         <p class="titleTopleft">Schutz</p>
         <p class="percentToprightGrund" id="countSchutz"></p>
-      </div>
-      <div id="bestrafung" class="taxonomieKategorie">
-        <p class="titleTopleft">Bestrafung / Rache</p>
-        <p class="percentToprightGrund" id="countBestrafung"></p>
       </div>
       <div id="begierde" class="taxonomieKategorie">
         <p class="titleTopleft">Trauer</p>
         <p class="percentToprightGrund" id="countTrauer"></p>
       </div>
       <div id="ehrung" class="taxonomieKategorie">
-        <p class="titleTopleft" >Postume Ehrung</p>
+        <p class="titleTopleft" >Postume<br>Ehrung</p>
         <p class="percentToprightGrund" id="countEhrung"></p>
+      </div>
+      <div id="kampf" class="taxonomieKategorie">
+        <p class="titleTopleft" >Kampf-<br>vorteil</p>
+        <p class="percentToprightGrund" id="countKampf"></p>
       </div>
       <div id="sonstigerGrund" class="taxonomieKategorie">
         <p class="titleTopleft" >Sonstiges</p>
         <p class="percentToprightGrund" id="countSonstigerGrund"></p>
       </div>
+    </div>
+
+
+    <!----------- Verwandelnde ------------------->
+    <div id="verwandelnde" style="height:100%; width:100%; position:absolute; display:none;">
+      <div style="width: 90%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
     </div>
 
   </div> <!-- Ende KategorienUndPopoverDiv-->
@@ -183,40 +204,83 @@
 
   <div class="navigation">
     &nbsp; Ordnen nach &nbsp;
-    <div class="dropdown">
-      <button class="dropbtn" id="unorganisiert">Unorganisiert</button>
-      <div class="dropdown-content" style="left:0;">
-        <div id="chrono"><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div>
-        <div id="tax"><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie</div>
-        <div id="geo"><img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div>
-        <div id="alpha"><img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div>
-        <div id="grund"><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Grund</div>
-        <div id="verwandelnder"><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde:r</div>
-        <div id="text"><img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div>
-      </div>
-    </div>
-      &nbsp; &nbsp; in Verbindung mit &nbsp;
-    <div class="dropdownZwei">
-      <button class="dropbtnZwei" id="keineAuswahl">Keine Auswahl</button>
-      <div class="dropdown-content-zwei" style="left:0;">
-        <div id="markChrono"><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge > I. Pentade, II. ...</div>
-        <div id="markTax"><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie > Fauna, Flora ...</div>
-        <div id="markGrund"><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Grund</div>
-        <div id="markVerwandelnder"><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde:r</div>
-        <div id="markGeschlechtM"><img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Männlich </div>
-      </div>
-    </div>
-    
-    <!-- UND
-    <div class="dropdown">
-      <button class="dropbtn">alle Personen</button>
-      <div class="dropdown-content" style="left:0;">
-        <div id="jupiterButton"><img src="Icons/iconmonstr-connection-1-240.png" style="width: 20px;"> Jupiter</div>
-        <div id="dianaButton">Diana</div>
-        <div id="junoButton">Juno</div>
-      </div>
-    </div> -->
+    <ul style="display: inline-block;">
+      <li class="parent" id="startKategorie" style="border-radius: 4px; text-align: center;width: 95%;"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+      <ul class="child">
+        <li class="parent" id="unorganisiert"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
+        <li class="parent" id="chrono"><div><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
+        <li class="parent" id="tax"><div><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie</div></li>
+        <li class="parent" id="geo"><div><img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
+        <li class="parent" id="alpha"><div><img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
+        <li class="parent" id="grund"><div><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Verw.-Grund</div></li>
+        <li class="parent" id="verwandelnder"><div><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
+        <li class="parent" id="text"><div><img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
+      </ul>
+    </ul>
+      
+    &nbsp; in Verbindung mit &nbsp;
+
+    <ul style="display: inline-block;">
+      <li class="parent" id="startMarkKategorie" style="border-radius: 4px; text-align: center;width: 95%;"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+      <ul class="child">
+        <li class="parent" id="markKeineAuswahl"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+        <!-- Erzählfolge -->
+        <li class="parent" id="markChrono"><div><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge<span class="expand">»</span></div>
+          <ul class="child">
+            <li><div>I. Pentade</div></li>
+            <li><div>II. Pentade</div></li>
+            <li><div>III. Pentade</div></li>
+          </ul>
+        </li>
+        <!-- Taxonomie -->
+        <li class="parent" id="markTax"><div><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie<span class="expand">»</span></div>
+          <ul class="child">
+            <li><div>Fauna</div></li>
+            <li><div>Flora</div></li>
+            <li><div>Elemente</div></li>
+            <li><div>Antropomorphes</div></li>
+          </ul>
+        </li>
+        <!-- Verw.-Grund -->
+        <li class="parent" id="markGrund"><div><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Verw.-Grund<span class="expand">»</span></div>
+          <ul class="child">
+            <li><div>Bestrafung/Rache</div></li>
+            <li><div>Bitte/Wunsch</div></li>
+            <li><div>Schutz</div></li>
+            <li><div>Trauer</div></li>
+            <li><div>postume Ehrung</div></li>
+            <li><div>Kampfvorteil</div></li>
+            <li><div>Sonstiges</div></li>
+          </ul>
+        </li>
+        <!-- Verwandelnde -->
+        <li class="parent" id="markVerwandelnde"><div><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde<span class="expand">»</span></div>
+          <ul class="child">
+            <li><div>Jupiter</div></li>
+            <li><div>Neptun</div></li>
+            <li><div>Venus</div></li>
+            <li><div>Diana</div></li>
+            <li><div>Minerva</div></li>
+            <li><div>Mercur</div></li>
+            <li><div>Apollo</div></li>
+            <li><div>Ceres</div></li>
+            <li><div>Juno</div></li>
+          </ul>
+        </li>
+        <!-- Geschlecht -->
+        <li class="parent" id="markGeschlecht"><div><img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Geschlecht<span class="expand">»</span></div>
+          <ul class="child">
+            <li><div id="markGeschlechtW">Weiblich</div></li>
+            <li><div id="markGeschlechtM">Männlich</div></li>
+            <li><div id="markGeschlechtD">Divers</div></li>
+          </ul>
+        </li>
+    </ul>
   </div>
+
+
+
+
 
 
 
