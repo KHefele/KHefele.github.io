@@ -220,8 +220,8 @@ button { /* unterscheidet sich sonst von span */
 }
 
 #bookBtn{
-  right: 4%;
-  top: 21%;
+  right: 8%;
+  top: 4%;
 }
 
 
@@ -407,9 +407,9 @@ a.metamorphosenModalBtns {
   position: relative;
   z-index: 1;
   height: 77%;
-  width: 70%;
-  top: 10%;
-  left: 15%;
+  width: 50%;
+  top: 12%;
+  left: 45%;
   color: #000000;
   background-color: rgba(227, 222, 216, 1);
   overflow: auto; /* Enable scroll if needed */
@@ -500,9 +500,24 @@ a.metamorphosenModalBtns {
   box-shadow: 0 -5px 25px 15px rgb(0, 0, 0);
 }
 
+
+.verwandlerLink {
+  display: inline-block;
+  cursor: pointer;
+  color: #733030;
+  font-size: 110%;
+}
+.verwandlerLink:hover {
+  color: #994040;
+}
+
+
 .tooltip {
   position: relative;
   color: #733030;
+}
+.tooltip:hover {
+  color:#994040;
   cursor: pointer;
 }
 
@@ -521,8 +536,9 @@ a.metamorphosenModalBtns {
   margin:35%;
   z-index: 100;
   color: white;
-  background-color: rgba(0, 0, 0, 0.856);
+  background-color: rgb(92, 92, 92);
   border-radius: 3px;
+  cursor:auto;
 }
 
 
@@ -565,13 +581,13 @@ a.metamorphosenModalBtns {
   position: absolute;
   /*margin-top: 1.5rem;*/
   display: inline-block;
-  transition: left 1s ease-out, top 1s ease-out, opacity 1s ease-in;
+  transition: width 3s, visibility 3s, left 1s ease-out, top 1s ease-out, opacity 1s ease-in;
   transform: translate(-50%, -50%); /* centered images! */
   z-index: 35;
 }
 
 .iconImg {
-  transition: width 1s;
+  transition: width 1.5s ease-out;
   animation-name: filter-animation;
   animation-duration: 2s;
   animation-play-state: paused;
@@ -744,7 +760,7 @@ a.metamorphosenModalBtns {
   background-color: rgba(25, 25, 25, 0.8);
 }
 
-#sonstiges {
+#anthropomorphes {
   top:74%;
   left:7%;
   height: 15%;
@@ -752,7 +768,7 @@ a.metamorphosenModalBtns {
   background-color: rgba(160, 160, 160, 0.8);
 }
 
-#fauna:hover, #flora:hover, #elemente:hover, #sonstiges:hover {
+#fauna:hover, #flora:hover, #elemente:hover, #anthropomorphes:hover {
   background-color: #733030;
 }
 
@@ -765,7 +781,7 @@ a.metamorphosenModalBtns {
 #elemente:hover #countElemente {
   display: block;
 }
-#sonstiges:hover #countSonstiges {
+#anthropomorphes:hover #countAnthropomorphes {
   display: block;
 }
 
@@ -1053,10 +1069,10 @@ img.hover-shadow {
 
 
 .parent {color: #FFFFFF; display: inline-block; position: relative; line-height: 30px;background-color: #733030;}
-.parent div{padding-left: 3%;cursor: pointer;  color: #FFFFFF;text-decoration: none; }
+.parent div{cursor: pointer;  color: #FFFFFF;text-decoration: none; }
 .parent:hover > ul {bottom: 100%;display:block;position:absolute;text-align: left; }
-.child {display: none; width: 150%;}
-.child li {background-color: #733030;line-height: 30px;border-right:#994040 1px solid; width:80%;padding: 2%;}
+.child {display: none; width: 100%;}
+.child li {background-color: #733030;line-height: 30px;border-right:#994040 1px solid; width:100%;padding: 2%;}
 ul{list-style: none;margin: 0; padding: 0px; min-width:10em;}
 ul ul ul{left: 100%;top: -200%;margin-left:1px;}
 li:hover {background-color: #994040;}

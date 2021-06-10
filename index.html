@@ -34,9 +34,9 @@
         <p class="titleTopleft">Elemente</p>
         <p class="percentTopright" id="countElemente"></p>
       </div>
-      <div id="sonstiges" class="taxonomieKategorie">
-        <p class="titleTopleft" >Antropomorphes</p>
-        <p class="percentTopright" id="countSonstiges"></p>
+      <div id="anthropomorphes" class="taxonomieKategorie">
+        <p class="titleTopleft" >Anthropomorphes</p>
+        <p class="percentTopright" id="countAnthropomorphes"></p>
       </div>
     </div>
   
@@ -65,7 +65,7 @@
     <!----------- Fließtext  ------------------->
     <div id="fliesstext" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
       <!--<div style="width: 100%; height:75%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>-->
-      <div style="position: absolute; top:15%; left:65%;z-index: 20;">
+      <div style="position: absolute; top:90%; left:80%;z-index: 20;">
         <input type="checkbox" id="deutscheUebersetzung" name="d" checked>
         <label for="d">deutsche Übersetzung</label>
         <br>
@@ -140,15 +140,16 @@
         Wenn das Reisen derzeit leider eingeschränkt ist, warum nicht eine Reise durch die Metamorphosen der Sterblichen zu unternehmen?
         <br>
         <br>
-        Erinnerst du dich daran, mit den Metamorphosen deiner Eltern gespielt zu haben? An die
-          Geschichten, die diese erzählten? Jetzt hast du die Möglichkeit, diese Erinnerungen wieder auferstehen zu lassen
-          -- diesmal allerdings mit einem weitaus größeren Bestand an Metamorphosen. Einige dieser Metamorphosen haben
-          vielleicht schon Alexander der Große oder Caesar in den Händen gehalten oder für ihre weltverändernden Kriege
-          ausgegeben. Hier hast Du die Möglichkeit, diese Geschichten mit verschiedenen Filtern zu ordnen und zu erkunden.
-          Hilf uns, Ordnung in die Metamorphosen zu bringen…</p>
+        SO GEHT'S: 
+        <br>
+        Jedes Icon repräsentiert die Geschichte eines:r Sterblichen, der:die in den Metamorphosen Ovids verwandelt wurde. Klicke diese an, wenn du mehr über die Verwandlungsumstände erfahren möchtest.
+        <br>
+        Außerdem kannst du die Geschichten unter ausgewählten Gesichtspunkten anreihen bzw. neue Zusammenhänge bringen. Durch die Navitations-Leiste links unten, kannst du verschiedene Kategorien auswählen, und die Icons danach anordnen lassen. 
+        <br>
         <br>
         Viel Spaß mit <s>C</s>OVID!
       <br>
+      </p>
       <span class="modalBtns" id="closeStartModal">Los geht's</span>
       <span class="modalBtns" id="mehrInfoBtn">Mehr Infos</span>
     </div>
@@ -169,7 +170,10 @@
         Anmerkungen und Fehlermeldungen bitte an: 
         <br>
         <img src="Icons/iconmonstr-email-1-240.png" style="width: 18px;">
-        <a href="mailto:katharina.hefele@fau.de">Katharina Hefele, katharina.hefele@fau.de</a> 
+        <a href="mailto:katharina.hefele@fau.de">Katharina Hefele, katharina.hefele@fau.de</a>
+        
+        
+        <div>Some Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </p>
       <br>
       <span class="modalBtns" id="closeInfoBtn">SCHLIESSEN</span>
@@ -177,8 +181,29 @@
     </div>
   </div>
 
+    <!--------------- Quellen Modal ----------------->
+    <div id="quellenModal" class="metamorphosenModal">
+      <div class="metamorphosenModalContent" id="quellenContent">
+        <div class="metamorphosenModalHeader">
+          <br>
+          <h1>Bibliographie</h1>
+        </div>
+        Wolf, Armin: Homers Reise. Auf den Spuren des Odysseus. Böhlau, 2009
+        <br>
+        <br>
+        <span class="modalBtn
+        
+        s" id="zumQuizBtn">Zum Quiz</span>
+        <br>
+        <div class="metamorphosenModalFooter">
+          <br>
+          <h1>Bibliographie</h1>
+        </div>
+      </div>
+    </div>
+
     <!--------------- Quiz Modal ----------------->
-    <div id="quizModal" class="infoModal">
+    <!-- <div id="quizModal" class="infoModal">
       <div class="modalContent" id="quizStartContent">
           <h1 style="text-align: center;"><em>Quiz</em></h1>
           <p class="modalContentLeft">
@@ -191,7 +216,7 @@
           <span class="modalBtns" id="zumQuizBtn">Zum Quiz</span>
           <br>
       </div>
-    </div>
+    </div> -->
 
 
 
@@ -205,76 +230,80 @@
   <div class="navigation">
     &nbsp; Ordnen nach &nbsp;
     <ul style="display: inline-block;">
-      <li class="parent" id="startKategorie" style="border-radius: 4px; text-align: center;width: 95%;"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
-      <ul class="child">
-        <li class="parent" id="unorganisiert"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
-        <li class="parent" id="chrono"><div><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
-        <li class="parent" id="tax"><div><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie</div></li>
-        <li class="parent" id="geo"><div><img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
-        <li class="parent" id="alpha"><div><img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
-        <li class="parent" id="grund"><div><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Verw.-Grund</div></li>
-        <li class="parent" id="verwandelnder"><div><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
-        <li class="parent" id="text"><div><img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
+      <li class="parent" id="startKategorie" style="border-radius: 4px; text-align: center;width: 200px;"><div id="insertCurrentCategoryHere"><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+      <ul class="child" id="kategoryPopUp">
+        <li class="parent" id="unorganisiert"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
+        <li class="parent" id="chrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
+        <li class="parent" id="tax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation</div></li>
+        <li class="parent" id="geo"><div>&nbsp;<img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
+        <li class="parent" id="alpha"><div>&nbsp;<img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
+        <li class="parent" id="grund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verwandlungsgrund</div></li>
+        <li class="parent" id="verwandelnder"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
+        <li class="parent" id="text"><div>&nbsp;<img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
       </ul>
+      </li>
     </ul>
       
     &nbsp; in Verbindung mit &nbsp;
 
     <ul style="display: inline-block;">
-      <li class="parent" id="startMarkKategorie" style="border-radius: 4px; text-align: center;width: 95%;"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
-      <ul class="child">
-        <li class="parent" id="markKeineAuswahl"><div><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+      <li class="parent" id="startMarkKategorie" style="border-radius: 4px; text-align: center;width: 200px;"><div id="insertCurrentMarkCategoryHere"><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
+      <ul class="child" id="markKategoryPopUp">
+        <li class="parent" id="markKeineAuswahl"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
         <!-- Erzählfolge -->
-        <li class="parent" id="markChrono"><div><img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge<span class="expand">»</span></div>
+        <li class="parent" id="markChrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge<span class="expand">»</span></div>
           <ul class="child">
-            <li><div>I. Pentade</div></li>
-            <li><div>II. Pentade</div></li>
-            <li><div>III. Pentade</div></li>
+            <li><div id="markPentadeI">&nbsp;<img src="Icons/iconmonstr-arrow-1.png" style="width: 20px;"> I. Pentade</div></li>
+            <li><div id="markPentadeII">&nbsp;<img src="Icons/iconmonstr-arrow-2.png" style="width: 20px;"> II. Pentade</div></li>
+            <li><div id="markPentadeIII">&nbsp;<img src="Icons/iconmonstr-arrow-3.png" style="width: 20px;"> III. Pentade</div></li>
           </ul>
         </li>
         <!-- Taxonomie -->
-        <li class="parent" id="markTax"><div><img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Taxonomie<span class="expand">»</span></div>
+        <li class="parent" id="markTax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation<span class="expand">»</span></div>
           <ul class="child">
-            <li><div>Fauna</div></li>
-            <li><div>Flora</div></li>
-            <li><div>Elemente</div></li>
-            <li><div>Antropomorphes</div></li>
+            <li><div id="markFauna">&nbsp;<img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Fauna</div></li>
+            <li><div id="markFlora">&nbsp;<img src="Icons/iconmonstr-flower-3-240.png" style="width: 20px;"> Flora</div></li>
+            <li><div id="markElemente">&nbsp;<img src="Icons/iconmonstr-drop-7-240.png" style="width: 19px;"> Elemente</div></li>
+            <li><div id="markAnthropomorphes">&nbsp;<img src="Icons/iconmonstr-accessibility-2-240.png" style="width: 20px;"> Anthropomorphes</div></li>
           </ul>
         </li>
         <!-- Verw.-Grund -->
-        <li class="parent" id="markGrund"><div><img src="Icons/iconmonstr-help-1-240.png" style="width: 17px;"> Verw.-Grund<span class="expand">»</span></div>
+        <li class="parent" id="markGrund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verw.-Grund<span class="expand">»</span></div>
           <ul class="child">
-            <li><div>Bestrafung/Rache</div></li>
-            <li><div>Bitte/Wunsch</div></li>
-            <li><div>Schutz</div></li>
-            <li><div>Trauer</div></li>
-            <li><div>postume Ehrung</div></li>
-            <li><div>Kampfvorteil</div></li>
-            <li><div>Sonstiges</div></li>
+            <li><div id="markBestrafung">&nbsp;<img src="Icons/gerechtigkeit.png" style="width: 17px;"> Bestrafung/Rache</div></li>
+            <li><div id="markWunsch">&nbsp;<img src="Icons/iconmonstr-speech-bubble-7-240.png" style="width: 17px;"> Bitte/Wunsch</div></li>
+            <li><div id="markSchutz">&nbsp;<img src="Icons/iconmonstr-shield-17-240.png" style="width: 17px;"> Schutz</div></li>
+            <li><div id="markTrauer">&nbsp;<img src="Icons/iconmonstr-drop-6-240.png" style="width: 17px;"> Trauer</div></li>
+            <li><div id="markPostumeEhrung">&nbsp;<img src="Icons/tombstone.png" style="width: 17px;"> postume Ehrung</div></li>
+            <li><div id="markKampfvorteil">&nbsp;<img src="Icons/iconmonstr-boxing-1-240.png" style="width: 17px;"> Kampfvorteil</div></li>
+            <li><div id="markSonstiges">&nbsp;<img src="Icons/ellipsis.png" style="width: 17px;"> Sonstiges</div></li>
           </ul>
         </li>
         <!-- Verwandelnde -->
-        <li class="parent" id="markVerwandelnde"><div><img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde<span class="expand">»</span></div>
+        <li class="parent" id="markVerwandelnde"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde<span class="expand">»</span></div>
           <ul class="child">
-            <li><div>Jupiter</div></li>
-            <li><div>Neptun</div></li>
-            <li><div>Venus</div></li>
-            <li><div>Diana</div></li>
-            <li><div>Minerva</div></li>
-            <li><div>Mercur</div></li>
-            <li><div>Apollo</div></li>
-            <li><div>Ceres</div></li>
-            <li><div>Juno</div></li>
+            <li><div id="markJupiter">&nbsp;<img src="Icons/iconmonstr-connection-1-240.png" style="width: 18px;"> Jupiter</div></li>
+            <li><div id="markNeptun">&nbsp;<img src="Icons/trident.png" style="width: 18px;"> Neptun</div></li>
+            <li><div id="markVenus">&nbsp;<img src="Icons/iconmonstr-favorite-1-240.png" style="width: 16px;"> Venus</div></li>
+            <li><div id="markDiana">&nbsp;<img src="Icons/bow-and-arrow.png" style="width: 18px;"> Diana</div></li>
+            <li><div id="markMinerva">&nbsp;<img src="Icons/roman-helmet.png" style="width: 18px;"> Minerva</div></li>
+            <li><div id="markMercur">&nbsp;<img src="Icons/hermes.png" style="width: 18px;"> Mercur</div></li>
+            <li><div id="markApollo">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Apollo</div></li>
+            <li><div id="markCeres">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Ceres</div></li>
+            <li><div id="markJuno">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Juno</div></li>
           </ul>
         </li>
         <!-- Geschlecht -->
-        <li class="parent" id="markGeschlecht"><div><img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Geschlecht<span class="expand">»</span></div>
+        <li class="parent" id="markGeschlecht"><div>&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Geschlecht<span class="expand">»</span></div>
           <ul class="child">
-            <li><div id="markGeschlechtW">Weiblich</div></li>
-            <li><div id="markGeschlechtM">Männlich</div></li>
-            <li><div id="markGeschlechtD">Divers</div></li>
+            <li><div id="markGeschlechtW">&nbsp;<img src="Icons/iconmonstr-gender-2-240.png" style="width: 17px;"> Weiblich</div></li>
+            <li><div id="markGeschlechtM">&nbsp;<img src="Icons/iconmonstr-gender-1-240.png" style="width: 17px;"> Männlich</div></li>
+            <li><div id="markGeschlechtD">&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Divers</div></li>
           </ul>
         </li>
+      
+      </ul>
+      </li>
     </ul>
   </div>
 
@@ -286,9 +315,9 @@
 
   <h2 class="logo">VISUALIZED OVID</h2>
   
-  <button id="infoBtn" class="infoBtn" ><img src="Icons/iconmonstr-info-6-240.png" style="width: 30px;"></button>
-  <button id="quizBtn" class="infoBtn" ><img src="Icons/iconmonstr-help-6-240.png" style="width: 30px;"></button>
-  <button id="bookBtn" class="infoBtn" ><img src="Icons/iconmonstr-book-18-240.png" style="width: 30px;"></button>
+  <button id="infoBtn" class="infoBtn" ><img src="Icons/help.png" style="width: 30px;"></button>
+  <!-- <button id="quizBtn" class="infoBtn" ><img src="Icons/iconmonstr-help-6-240.png" style="width: 30px;"></button> -->
+  <button id="bookBtn" class="infoBtn" ><img src="Icons/literature.png" style="width: 30px;"></button>
 
 
   <!--------------------------------------------->

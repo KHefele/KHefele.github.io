@@ -53,6 +53,19 @@ export async function application() {
   }
 
 
+    // Quellen Modal
+    var quellenModal = document.getElementById("quellenModal");   // Get infoModall
+    var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
+    //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+  
+    quellenBtn.onclick = function () { // Open
+      quellenModal.style.display = "block";
+    }
+    // closeInfoBtn.onclick = function () { // Close
+    //   infoModal.style.display = "none";
+    // }
+
+
 
 
 
@@ -74,29 +87,29 @@ export async function application() {
     infoHoverName.style.display = "none";
   }
 
-  //Hover Quiz-Button
-  var quizBtn = document.getElementById("quizBtn");
+  // //Hover Quiz-Button
+  // var quizBtn = document.getElementById("quizBtn");
 
-  var quizHoverName = document.createElement("div");
-  quizHoverName.className = "infoHoverName";
-  quizHoverName.innerHTML = "Quiz";
-  quizBtn.appendChild(quizHoverName);
+  // var quizHoverName = document.createElement("div");
+  // quizHoverName.className = "infoHoverName";
+  // quizHoverName.innerHTML = "Quiz";
+  // quizBtn.appendChild(quizHoverName);
 
-  quizBtn.onmouseover = function () {
-    quizHoverName.style.display = "block";
-  }
+  // quizBtn.onmouseover = function () {
+  //   quizHoverName.style.display = "block";
+  // }
 
-  quizBtn.onmouseout = function () {
-    quizHoverName.style.display = "none";
-  }
+  // quizBtn.onmouseout = function () {
+  //   quizHoverName.style.display = "none";
+  // }
 
   //Hover Book-Button
   var bookBtn = document.getElementById("bookBtn");
 
   var bookHoverName = document.createElement("div");
   bookHoverName.className = "infoHoverName";
-  bookHoverName.innerHTML = "Gäste";
-  bookHoverName.style.left = "-10";
+  bookHoverName.innerHTML = "Quellen";
+  bookHoverName.style.left = "-1%";
   bookBtn.appendChild(bookHoverName);
 
   bookBtn.onmouseover = function () {
@@ -144,6 +157,8 @@ export async function application() {
 
   var figuresListSorted = [];
   var ovMetListSorted = [];
+
+  console.log(figuresListSorted)
 
   //array with IDs sorted by ovMet position
   for (var key in leude) {
@@ -252,49 +267,65 @@ export async function application() {
       if (currentVerwandler[buchstabe] === "(") { 
         var indexOfLeftBracket = buchstabe;
         var indexOfRightBracket = currentVerwandler.indexOf(")");
-        currentVerwandler = currentVerwandler.substring(0, indexOfLeftBracket).concat(currentVerwandler.substr(indexOfRightBracket+1));
+        currentVerwandler = currentVerwandler.substring(0, indexOfLeftBracket-1).concat(currentVerwandler.substr(indexOfRightBracket+1));
         currentVerwandler.trim();
       }
     
     }
 
+    //falls mehrere Protagonisten genannt
+    if (currentVerwandler.includes(",")){
 
-    var verwandeltenLink = "<a href='http://127.0.0.1:5500/#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
+      //Schleife durch Buchstaben des Verwandler-Strings, um Komma-Index herauszufinden
+      for (var b = 0; b < currentVerwandler.length; b ++){
+        
+        //Hilfs-Array soll Protagonisten speichern
+        var moreThanOneVerwandler = [];
+        
+        //durch Komma-Index Protagonisten separieren und zu Hilfs-Array hinzufügen
+        if (currentVerwandler[b] === ",") { 
+          var indexOfKomma = b;
+          
+          moreThanOneVerwandler.push(currentVerwandler.substring(0, indexOfKomma));
+          moreThanOneVerwandler.push(currentVerwandler.substring(indexOfKomma + 2));
+        }
 
-    //insert, if key isn't already in dict
-    if (!(currentVerwandler in verwandlerDict)) { 
-      
-      verwandlerDict[currentVerwandler] = {
-        "nameDerVerwandelten": [verwandeltenLink]
-      };
-      
+        //Schleife über Hilfs-Array
+        for (var t = 0; t < moreThanOneVerwandler.length; t++){
+
+          //Protagonisten-Array durchlaufen und einfügen, wenn keys noch nicht im dict existieren
+          if (!(moreThanOneVerwandler[t] in verwandlerDict)) { 
+          
+            verwandlerDict[moreThanOneVerwandler[t]] = {
+              "nameDerVerwandelten": [leude[key].name]
+            };
+          
+          //falls schon existiert, nur noch den/die Verwandelte:n hinzufügen 
+          } else {
+            verwandlerDict[moreThanOneVerwandler[i]].nameDerVerwandelten.push(leude[key].name);
+          }
+        }
+      }
+
+
+    //falls nur ein Protagonist genannt:
     } else {
-      verwandlerDict[currentVerwandler].nameDerVerwandelten.push(verwandeltenLink);
+
+      //NOCH UMBAUEN > in TABELLE UND ABRUFEN 
+      var verwandeltenLink = "<a href='http://127.0.0.1:5500/#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
+
+      //insert, if key isn't already in dict
+      if (!(currentVerwandler in verwandlerDict)) { 
+        
+        verwandlerDict[currentVerwandler] = {
+          "nameDerVerwandelten": [verwandeltenLink]
+        };
+      
+      //falls schon existiert, nur noch den/die Verwandelte:n hinzufügen 
+      } else {
+        verwandlerDict[currentVerwandler].nameDerVerwandelten.push(verwandeltenLink);
+      }
     }
-    //count if more than 1 
-    // } else { 
-    //   verwandlerCountDict[leude[key].verwandler] = verwandlerCountDict[leude[key].verwandler] + 1;
-    // }
-    // verwandlerDict[currentVerwandler] = 
-
-
-    
-
-
-
-          // //falls mehrere Protagonisten genannt > separieren
-          // if (currentVerwandler[buchstabe] === ",") { 
-          //   var indexOfKomma = buchstabe;
-          //   var firstVerwandler = currentVerwandler.substring(0, indexOfKomma);
-          //   var secondVerwandler = currentVerwandler.substring(indexOfKomma + 2);
-    
-          //   for (var b = 0; b < secondVerwandler.length; b++){ //Fall 3 Verwandler
-    
-          //   }  
-          // } else {
-          //   verwandlerArray.push(currentVerwandler);
-          // }
-
     
 
   }
@@ -505,6 +536,7 @@ export async function application() {
       headerLink.setAttribute("href", headerLinkInput);
       headerLink.setAttribute("target", "_blank");
       headerLink.innerHTML = " <img src='Icons/iconmonstr-help-2-240.png' style='width: 13px; margin-bottom: 7px'>";
+      headerLink.title = "Wikidata";
       sup.appendChild(headerLink);
     }
 
@@ -553,6 +585,7 @@ export async function application() {
     var copyrightP = document.createElement("p");
     copyrightP.className = "copyrightP";
     copyrightP.innerHTML = "&#xa9; " + data.source;
+    copyrightP.title = "Bildquelle";
     copyrightP.style.fontSize = "10px";
     //copyrightP.style.width = "300px";
     copyrightP.style.color = "#733030";
@@ -567,9 +600,9 @@ export async function application() {
     var innerTable = document.createElement("table");
     innerTable.style.marginLeft = "15px";
     
-    var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#128064;", "&#127988;" ];
-    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandelnde:r:", "Ort:", "Vergleichswerke:", "Iconclass:" ];
-    var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.vergleichswerke, data.iconclass];
+    var emojiArray = ["&#x1F4CD;", "&#x1F32A;", "&#x2754;", "&#x1F464;", "&#x1F5FA;", "&#127988;", "&#128064;"];
+    var metadataArray = ["Ov. met.:", "Verwandlung:", "Grund:", "Verwandelnde:r:", "Ort:", "Iconclass:", "Vergleichswerke:"];
+    var dataArray = [data.ovMet, data.verwandlung, data.grund, data.verwandler, data.ort, data.iconclass, data.vergleichswerke];
     
     for (var i = 0; i < 7; i++) {
       var innerTableRow = document.createElement("tr");
@@ -592,16 +625,20 @@ export async function application() {
       
       //Verwandlertext + Infolink
       if (i === 3) { //Verwandler-Helptext 
-        dataCol.innerHTML = dataArray[i]; //verwandlerText anlegen
-        if (dataArray[i] === "-"){continue};
-        var verwandlerSup = document.createElement("sup"); //sup anlegen
-        dataCol.appendChild(verwandlerSup);
-        var verwandlerLink = document.createElement("a"); //link anlegen
-        var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
-        verwandlerLink.setAttribute("href", verwandlerLinkInput);
-        verwandlerLink.setAttribute("target", "_blank");
-        verwandlerLink.innerHTML = "  &#x2139;";
-        verwandlerSup.appendChild(verwandlerLink);
+        var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
+        dataCol.innerHTML = dataArray[i].replaceAll(regex, "<dfn class='tooltip $&'>$&</dfn>"); //verwandlerText anlegen
+        //if (dataArray[i] === "-"){continue};
+        //dataArray[i] = dataArray[i].replaceAll(/(Jupiter|Diana)/g, "<dfn class='tooltip $&'>$&</dfn>")
+        
+        // var verwandlerSup = document.createElement("sup"); //sup anlegen
+        // dataCol.appendChild(verwandlerSup);
+        // var verwandlerLink = document.createElement("div"); //link anlegen
+        // verwandlerLink.className = "verwandlerLink"; //hier Farbe, hover, inline-block eingestellt
+        // verwandlerLink.innerHTML = "&nbsp; &#x2139;";
+        // // var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
+        // // verwandlerLink.setAttribute("href", verwandlerLinkInput);
+        // // verwandlerLink.setAttribute("target", "_blank");
+        // verwandlerSup.appendChild(verwandlerLink);
         //alternativ mit Link auf Text:
         // var verwandlerLink = document.createElement("a"); //link anlegen
         // var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
@@ -610,13 +647,32 @@ export async function application() {
         // verwandlerLink.innerHTML = dataArray[i];
         // dataCol.appendChild(verwandlerLink);
       
-      //Iconclasstext + Infolink
+
+        //Iconclasstext + Infolink
       } else if (i === 5) {
+        //dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
+        var iconclassLink = document.createElement("a"); //link auf Zahlenkombination anlegen
+        var indexOfSpace = dataArray[i].indexOf(" ");
+        var iconclassLinkInput = "http://www.iconclass.org/rkd/" + dataArray[i].substring(0, indexOfSpace);
+        iconclassLink.setAttribute("href", iconclassLinkInput);
+        iconclassLink.setAttribute("target", "_blank");
+        iconclassLink.innerHTML = dataArray[i].substring(0, indexOfSpace);
+        iconclassLink.title = "Iconclass-Verknüpfung";
+        dataCol.appendChild(iconclassLink);
+
+        var restVomFestIconclass = dataArray[i].substring(indexOfSpace); //text hinzufügen
+        var iconclassText = document.createElement("span");
+        iconclassText.innerHTML = restVomFestIconclass;
+        dataCol.appendChild(iconclassText);
+
+      //Weiterführende Bilderverlinkungen
+      } else if (i === 6) {
         if (dataArray[i].warburg != "-") {
           var warburgLink = document.createElement("a");
           warburgLink.setAttribute("href", dataArray[i].warburg);
           warburgLink.setAttribute("target", "_blank");
           warburgLink.innerHTML = "&#x2B95; Warburg Institute Iconographic Database";
+          warburgLink.title = "Vergleichswerke Warburg";
           dataCol.appendChild(warburgLink);
   
           dataCol.appendChild(document.createElement("br"));
@@ -626,6 +682,7 @@ export async function application() {
           bdoLink.setAttribute("href", dataArray[i].bdo);
           bdoLink.setAttribute("target", "_blank");
           bdoLink.innerHTML = "&#x2B95; BDO Biblioteca Digital Ovidiana";
+          bdoLink.title = "Vergleichswerke BDO";
           dataCol.appendChild(bdoLink);
 
           dataCol.appendChild(document.createElement("br"));
@@ -635,21 +692,9 @@ export async function application() {
           wikiLink.setAttribute("href", dataArray[i].wiki);
           wikiLink.setAttribute("target", "_blank");
           wikiLink.innerHTML = "&#x2B95; Wikimedia Commons";
+          wikiLink.title = "Vergleichswerke Wikimedia";
           dataCol.appendChild(wikiLink);
         }
-
-      
-      } else if (i === 6) {
-        dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
-        var iconclassSup = document.createElement("sup"); //sup anlegen
-        dataCol.appendChild(iconclassSup);
-        var iconclassLink = document.createElement("a"); //link anlegen
-        var indexOfSpace = dataArray[i].indexOf(" ");
-        var iconclassLinkInput = "http://www.iconclass.org/rkd/" + dataArray[i].substring(0, indexOfSpace);
-        iconclassLink.setAttribute("href", iconclassLinkInput);
-        iconclassLink.setAttribute("target", "_blank");
-        iconclassLink.innerHTML = "  &#x2139;";
-        iconclassSup.appendChild(iconclassLink);
         
       
       //alle anderen ohne Infolink
@@ -700,6 +745,7 @@ export async function application() {
     footerDiv.className = "metamorphosenModalFooter";
     //footerDiv.appendChild(document.createElement("br"));
 
+    //Verlinkung zur jeweiligen Metamorphosen-Geschichte im Fließtext
     var zurGeschichteLink = document.createElement("a");
     zurGeschichteLink.className = "metamorphosenModalBtns";
     zurGeschichteLink.style.position = "absolute";
@@ -707,6 +753,28 @@ export async function application() {
     zurGeschichteLink.setAttribute("href", "#");
     zurGeschichteLink.style.right = "-1%";
     footerDiv.appendChild(zurGeschichteLink);
+
+    zurGeschichteLink.onclick = function () {
+      
+      //Hilfsvariable, in der die ID des zuzeigende Fliestext-Headers gespeichert wird
+      var scrollToFliesstextHeader = aktuellesModal + "Header";
+
+      //aktuelles Modal ausblenden
+      document.getElementById(aktuellesModal + "Modal").style.display = "none";
+      aktuellesModal = undefined;
+
+      //Fließtextfunction ausführen
+      fliesstextFunction();
+
+      //passenden Header ins Sichtfeld scrollen 
+      var scrollToFliesstextHeader = document.getElementById(scrollToFliesstextHeader);
+      scrollToFliesstextHeader.scrollIntoView();
+
+      // //location hash setzen
+      // aktuelleKategorie = "loca"
+      // location.hash = "#" + aktuelleKategorie;
+    };
+    
 
     footerDiv.appendChild(document.createElement("br"));
     footerDiv.appendChild(document.createElement("br"));
@@ -804,6 +872,7 @@ export async function application() {
 
   //slider-function 
   function slide(number) {
+    console.log(aktuellesModal)
     //for (var idNumber = 0; idNumber < figuresListSorted.length; idNumber++){
       var neueID = aktuelleModalID + number;
       //if (currentListSorted[idNumber] == aktuellesModal) {
@@ -1133,10 +1202,17 @@ export async function application() {
   //setzt alle Einstellungen der nicht aufgerufenen Kategorien zurück
   function setBackOtherKategories(aktKat){
     
+    //funktioniert noch nicht, dass Popup nach verwendung ausgeblendet wird
+    var kategoryPopUp = document.getElementById("kategoryPopUp");
+    //console.log(kategoryPopUp)
+    //kategoryPopUp.style.display = "none";
+    
     // 1. Kategorie zurücksetzen: Erzählfolge
     if (aktKat != "erzaehlfolge"){
       chronoImg.style.display = "none";
       var ovMetStelle = document.getElementsByClassName("ovMetStelle"); 
+
+      //OvMetStellen-Namen ausblenden
       for (var x = 0; x < ovMetStelle.length; x++) {
         ovMetStelle[x].style.display = "none";
       }
@@ -1146,6 +1222,8 @@ export async function application() {
     if (aktKat != "taxonomie"){
       taxImg.style.display = "none";
       var taxonomieNames = document.getElementsByClassName("taxonomieNames"); 
+
+      //TaxonomieNamen ausblenden
       for (var x = 0; x < taxonomieNames.length; x++) {
         taxonomieNames[x].style.display = "none";
       }
@@ -1157,6 +1235,7 @@ export async function application() {
       for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
         var figurIcon = document.getElementById(figur + "Wrapper");
         figurIcon.style.opacity = 1;
+        figurIcon.style.visibility = "visible";
       }
     }
 
@@ -1180,6 +1259,7 @@ export async function application() {
       for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
         var figurIcon = document.getElementById(figur + "Wrapper");
         figurIcon.style.opacity = 1;
+        figurIcon.style.visibility = "visible";
       }
     }
     
@@ -1189,10 +1269,19 @@ export async function application() {
       for (var figur in leude){ //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
         var figurIcon = document.getElementById(figur + "Wrapper");
         figurIcon.style.opacity = 1;
+        figurIcon.style.visibility = "visible";
       }
     }
   }
 
+
+
+  
+    //insert current categoryname in Dropdown-Menu
+    function insertCurrentCategory(kategoriename, bildnameInIcons, widthInPx){
+      var insertCurrentCategoryHere = document.getElementById("insertCurrentCategoryHere");
+      insertCurrentCategoryHere.innerHTML = "<img src='Icons/"+ bildnameInIcons + "' style='width: " + widthInPx + "px;'> "+ kategoriename;
+    }
 
 
 
@@ -1337,6 +1426,12 @@ export async function application() {
     setWidthPercent(60);
     setBackOtherKategories("erzaehlfolge");
     setLocationHash("erzaehlfolge");
+    insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
+
+    var kategoryPopUp = document.getElementById("kategoryPopUp");
+    //console.log(kategoryPopUp)
+    //kategoryPopUp.style.display = "none";
+    //kategoryPopUp.style.display = "inline-block";
 
 
     setCoordinates(ersterKlickChrono);
@@ -1392,6 +1487,7 @@ export async function application() {
     setWidthPercent(80);
     setBackOtherKategories("taxonomie");
     setLocationHash("taxonomie");
+    insertCurrentCategory("Klassifikation", "ancient.png", 21)
 
     
     taxImg.style.display = "block";
@@ -1405,16 +1501,16 @@ export async function application() {
     
     //startpunkt von Top sind gleichzusetzen mit CSS id attributes, left + 10
     var figurPositionFaunaTop = 20; //document.getElementById("fauna").offsetTop;
-    var figurPositionFaunaLeft = 14; //document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
+    var figurPositionFaunaLeft = 12; //document.getElementById("fauna").offsetLeft + 150; //letzte Zahl damit Titel noch gelesen werden kann
 
     var figurPositionFloraTop = 51; //document.getElementById("flora").offsetTop;
-    var figurPositionFloraLeft = 14; //document.getElementById("flora").offsetLeft + 150;
+    var figurPositionFloraLeft = 12; //document.getElementById("flora").offsetLeft + 150;
 
     var figurPositionElementeTop = 51; //document.getElementById("elemente").offsetTop;
-    var figurPositionElementeLeft = 47; //document.getElementById("elemente").offsetLeft + 150;
+    var figurPositionElementeLeft = 45; //document.getElementById("elemente").offsetLeft + 150;
 
-    var figurPositionSonstigesTop = 83.5; // document.getElementById("sonstiges").offsetTop;
-    var figurPositionSonstigesLeft = 14; //document.getElementById("sonstiges").offsetLeft + 150;
+    var figurPositionAnthropomorphesTop = 83.5; // document.getElementById("sonstiges").offsetTop;
+    var figurPositionAnthropomorphesLeft = 12; //document.getElementById("sonstiges").offsetLeft + 150;
 
 
     //Abstand zwischen Icons und Länge des Balkens nach Icons
@@ -1426,7 +1522,7 @@ export async function application() {
     var countFauna = 0;
     var countFlora = 0;
     var countElemente = 0;
-    var countSonstiges = 0;
+    var countAnthropomorphes = 0;
 
 
     for (var id in figuresListSorted){
@@ -1507,14 +1603,13 @@ export async function application() {
         }
 
 
-      } else if (leude[figuresListSorted[id]].taxonomie == "sonstiges"){
-        
-        figurIcon.style.top = figurPositionSonstigesTop + "%";
-        figurIcon.style.left = figurPositionSonstigesLeft + "%";
+      } else if (leude[figuresListSorted[id]].taxonomie == "anthropomorphes"){
+        figurIcon.style.top = figurPositionAnthropomorphesTop + "%";
+        figurIcon.style.left = figurPositionAnthropomorphesLeft + "%";
 
-        figurPositionSonstigesLeft += abstandHorizontal;
+        figurPositionAnthropomorphesLeft += abstandHorizontal;
 
-        countSonstiges += 1;
+        countAnthropomorphes += 1;
       }
       
        
@@ -1522,10 +1617,10 @@ export async function application() {
     }
 
     //prozentangaben taxonomie
-    var all = countFauna + countFlora + countElemente + countSonstiges;
-    // var percentNumbers = [(countFauna/all*100), (countFlora/all*100), (countElemente/all*100), (countSonstiges/all*100)];
-    // var percentNumbers = [(countFauna/all*100).toString().slice(0,4), (countFlora/all*100).toString().slice(0,4), (countElemente/all*100).toString().slice(0,4), (countSonstiges/all*100).toString().slice(0,4)];
-    var percentNumbers = [Math.round(countFauna/all*100*10)/10, Math.round(countFlora/all*100*10)/10, Math.round(countElemente/all*100*10)/10, Math.round(countSonstiges/all*100*10)/10];
+    var all = countFauna + countFlora + countElemente + countAnthropomorphes;
+    // var percentNumbers = [(countFauna/all*100), (countFlora/all*100), (countElemente/all*100), (countAnthropomorphes/all*100)];
+    // var percentNumbers = [(countFauna/all*100).toString().slice(0,4), (countFlora/all*100).toString().slice(0,4), (countElemente/all*100).toString().slice(0,4), (countAnthropomorphes/all*100).toString().slice(0,4)];
+    var percentNumbers = [Math.round(countFauna/all*100*10)/10, Math.round(countFlora/all*100*10)/10, Math.round(countElemente/all*100*10)/10, Math.round(countAnthropomorphes/all*100*10)/10];
 
     var percentPArray = document.getElementsByClassName("percentTopright");
 
@@ -1568,6 +1663,7 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories("geographie");
     setLocationHash("geographie");
+    insertCurrentCategory("Geographie", "iconmonstr-globe-8-240.png", 18);
   
 
     geoImg.style.display = "block";
@@ -1584,6 +1680,7 @@ export async function application() {
         figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
         figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
         figurIcon.style.opacity = 0;
+        figurIcon.style.visibility = "hidden";
         
       } else {
         figurIcon.style.top = leude[figur].koordinaten.geographie.top + "%";
@@ -1657,6 +1754,7 @@ export async function application() {
     setWidthPercent(90);
     setBackOtherKategories("alphabet");
     setLocationHash("alphabet");
+    insertCurrentCategory("Alphabet", "iconmonstr-sort-14-240.png", 20);
 
 
     alphaImg.style.display = "block";
@@ -1770,6 +1868,7 @@ export async function application() {
     setWidthPercent(80);
     setBackOtherKategories("grund");
     setLocationHash("grund");
+    insertCurrentCategory("Verwandlungsgrund", "question.png", 19);
   
 
     grundImg.style.display = "block";
@@ -1950,13 +2049,13 @@ export async function application() {
 
     var helpvarStartFromTop = startFromTopVerw*1.5;
 
-    for (key in leude){
+    for (var id in figuresListSorted){
 
-      var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
+      var iconWrapper = document.getElementById(figuresListSorted[id] + "Wrapper");
       
 
   
-      if (leude[key].verwandler.startsWith(verwandelnderName)){
+      if (leude[figuresListSorted[id]].verwandler.startsWith(verwandelnderName)){
         
         iconWrapper.style.top = helpvarStartFromTop + "%";
         iconWrapper.style.left = styleLeft + "%";
@@ -1976,6 +2075,7 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories("verwandelnde");
     setLocationHash("verwandelnde");
+    insertCurrentCategory("Verwandelnde", "iconmonstr-magic-5-240.png", 18);
 
     verwandelndeImg.style.display = "block";
 
@@ -2006,6 +2106,7 @@ export async function application() {
         iconWrapper.style.top = (Math.floor(Math.random() * (80 - 30 + 1)) + 30) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
         iconWrapper.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
         iconWrapper.style.opacity = 0;
+        iconWrapper.style.visibility = "hidden";
   
       }
     }
@@ -2033,6 +2134,45 @@ export async function application() {
   //               7. Fließtext                 //
   //--------------------------------------------//
   
+
+
+
+  // 1. Marker im Text setzen > später sollen diese bereits in metamorphosen.json gesetzt sein
+
+  for (var key in metamorphosen){
+    // console.log("count"); 
+    var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
+    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn class='tooltip $&'>$&</dfn>")
+  }
+
+
+
+
+
+
+
+
+
+
+  //Bilder anlegen
+  for (var i = 0; i < figuresListSorted.length; i++){
+    
+    var metImg = document.createElement("img");
+    var imgSource = "Figuren/" + figuresListSorted[i] + "/" + figuresListSorted[i] + ".jpg";
+    console.log(imgSource)
+    metImg.src = imgSource;
+    textImg.appendChild(metImg);
+    
+    //positioning
+    metImg.style.position = "absolute";
+    metImg.style.width = "40%";
+    metImg.style.top = "12%";
+    metImg.style.left = "2.5%";
+    
+
+    
+  }
+
 
 
 
@@ -2073,7 +2213,8 @@ export async function application() {
     var textColumnLatein = document.createElement("td");
     textColumnLatein.className = "lateinisch";
     textRow.appendChild(textColumnLatein);
-    //textColumnLatein.style.width = "50%";
+    textColumnLatein.style.width = "50%";
+    textColumnLatein.style.display = "inline-block";
     //textColumnLatein.style.position = "absolute";
     textColumnLatein.style.padding = "5px";
     textColumnLatein.innerHTML = metamorphosen[key].latein + "<br><br>";
@@ -2082,7 +2223,8 @@ export async function application() {
     var textColumnDeutsch = document.createElement("td");
     textColumnDeutsch.className = "deutsch";
     textRow.appendChild(textColumnDeutsch);
-    //textColumnDeutsch.style.width = "50%";
+    textColumnDeutsch.style.width = "50%";
+    textColumnDeutsch.style.display = "inline-block";
     //textColumnDeutsch.style.position = "absolute";
     textColumnDeutsch.style.padding = "5px";
     textColumnDeutsch.innerHTML = metamorphosen[key].text + "<br><br>";
@@ -2102,65 +2244,102 @@ export async function application() {
 
 
   var getTextTables = document.getElementsByClassName("fliesstextTables");
-  console.log(getTextTables[0].clientWidth);
+  //console.log(getTextTables[0].clientWidth);
 
   lateinBtn.onclick = function () {
-    if (lateinBtn.checked == false){
+
+    //Fall: lateinBtn raus machen, deutschBtn gecheckt
+    if (lateinBtn.checked === false){
 
       deutschBtn.setAttribute('disabled','disabled');
 
       for (var l = 0; l < lateinTexte.length; l++){
-        //textColumnLatein.style.width = "1%";
         lateinTexte[l].style.display = "none";
+        lateinTexte[l].style.width = "0%";
+        deutschTexte[l].style.width = "100%";
       }
+
+    //Fall: lateinBtn rein machen, deutschBtn gecheckt
     } else {
       deutschBtn.removeAttribute('disabled');
       
       for (var l = 0; l < lateinTexte.length; l++){
-        lateinTexte[l].style.display = "block";
+        lateinTexte[l].style.display = "inline-block";
+        deutschTexte[l].style.width = "50%";
+        lateinTexte[l].style.width = "50%";
       }
     }
   }
 
   
   deutschBtn.onclick = function (){
-    if (deutschBtn.checked == false){
+
+    //Fall: deutschBtn raus nehmen, lateinBtn gecheckt
+    if (deutschBtn.checked === false){
       
       //Latein-Btn disablen, damit Fall nicht eintritt, dass gar kein Text
       lateinBtn.setAttribute('disabled','disabled');
 
       for (var l = 0; l < deutschTexte.length; l++){
-        //textColumnDeutsch.style.width = "1%";
         deutschTexte[l].style.display = "none";
+        deutschTexte[l].style.width = "0%";
+        lateinTexte[l].style.width = "100%";
       }
+
+    //Fall: deutschBtn rein nehmen, lateinBtn gecheckt
     } else {
       
       lateinBtn.removeAttribute('disabled');
       
       for (var l = 0; l < deutschTexte.length; l++){
-        deutschTexte[l].style.display = "block";
+        deutschTexte[l].style.display = "inline-block";
+        deutschTexte[l].style.width = "50%";
+        lateinTexte[l].style.width = "50%";
       }
     }
   }
 
 
+  
 
-  //
-  var jupiterStellenArray = document.getElementsByClassName("jupiter");
-  //console.log(jupiterStellenArray)
-  for (var j = 0; j < jupiterStellenArray.length; j++){
+  // 2. Popover/Tooltip setzen
 
-    var tooltipSpan = document.createElement("span");
-    tooltipSpan.setAttribute("role", "tooltip");
-    
-    var verwandelteString = "";
-    for (var v = 0; v < verwandlerDict.Jupiter.nameDerVerwandelten.length; v++){
-      verwandelteString += verwandlerDict.Jupiter.nameDerVerwandelten[v] + "&nbsp; <img src='Icons/iconmonstr-share-11-240.png' style='width: 13.5px;'><br>";
+  //var markerArray = document.getElementsByClassName
+
+  function setTooltipForVerwandelnde (godName) {
+    var tooltipArray = document.getElementsByClassName(godName);
+
+    for (var j = 0; j < tooltipArray.length; j++){
+  
+      var tooltipSpan = document.createElement("span");
+      tooltipSpan.setAttribute("role", "tooltip");
+      
+      var verwandelteString = "";
+      for (var v = 0; v < verwandlerDict[godName].nameDerVerwandelten.length; v++){
+        verwandelteString += verwandlerDict[godName].nameDerVerwandelten[v] + "&nbsp; <img src='Icons/iconmonstr-share-11-240.png' style='width: 13.5px;'><br>";
+      }
+
+      //Aposthroph statt Genitiv-S, wenn Gottheit mit "s" endet
+      if (godName.endsWith("s")){
+        tooltipSpan.innerHTML = godName + "'<br>Verwandlungen:<br><br> " + verwandelteString;
+      } else {
+        tooltipSpan.innerHTML = godName + "s<br>Verwandlungen:<br><br> " + verwandelteString;
+      }
+      
+      tooltipArray[j].appendChild(tooltipSpan);
+  
     }
-    tooltipSpan.innerHTML = "Jupiter" + "s<br>Verwandlungen:<br><br> " + verwandelteString;
-    jupiterStellenArray[j].appendChild(tooltipSpan);
-
   }
+
+  for (key in verwandlerDict){
+    setTooltipForVerwandelnde(key);
+  }
+
+
+
+
+
+
 
   //Footer Div
   var footer = document.createElement("div");
@@ -2185,6 +2364,7 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories("fliesstext");
     setLocationHash("fliesstext");
+    insertCurrentCategory("Fließtext", "iconmonstr-script-2-240.png", 20);
     
     textImg.style.display = "block";
 
@@ -2193,10 +2373,15 @@ export async function application() {
     for (var figur in leude){
 
       var figurIcon = document.getElementById(figur + "Wrapper");
+      //var figurImg = document.getElementById(figur + "Btn");
   
       figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
       figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
       figurIcon.style.opacity = 0;
+      figurIcon.style.visibility = "hidden";
+      
+      //figurIcon.style.visibility = "hidden"; > mit window.setTimeout(..., 1000);
+      //figurImg.style.width = "0px";
     }
   }
 
@@ -2226,6 +2411,7 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories();
     setLocationHash("");
+    insertCurrentCategory("Keine Auswahl", "iconmonstr-circle-5-240.png", 19);
     
 
     for (var figur in leude){
@@ -2266,35 +2452,253 @@ export async function application() {
     Mark-Kategorien
 
     0. allgemeine Funktionen
-    1. Geschlecht
+    1. keine Auswahl
+    2. Erzaehlfolge
+    3. Taxonomie
+    4. Verw.-Grund
+    5. Verwandelnde
+    6. Geschlecht
 
   //--------------------------------------------*/
 
   
+
+  //insert current categoryname in Dropdown-Menu
+  function insertCurrentMarkCategory(kategorienameII, bildnameInIconsII, widthInPxII){
+    var insertCurrentMarkCategoryHere = document.getElementById("insertCurrentMarkCategoryHere");
+    insertCurrentMarkCategoryHere.innerHTML = "<img src='Icons/"+ bildnameInIconsII + "' style='width: " + widthInPxII + "px;'> "+ kategorienameII;
+  }
+
+
+
+
   //--------------------------------------------//
-  //                1. Geschlecht               //
+  //             1. keine Auswahl               //
   //--------------------------------------------//
+
+  var markKeineAuswahl = document.getElementById("markKeineAuswahl");
+  markKeineAuswahl.onclick = function () {
+    insertCurrentMarkCategory("Keine Auswahl", "iconmonstr-circle-5-240.png", "19");
+    
+    for (figur in leude){
+      document.getElementById(figur + "Wrapper").style.opacity = "100%";
+    }
+  }
+
   
-  var markGeschlechtM = document.getElementById("markGeschlechtM");
-  var markGeschlechtW = document.getElementById("markGeschlechtW"); //noch nicht angelegt
-  var markGeschlechtD = document.getElementById("markGeschlechtD"); //noch nicht angelegt 
-  
-  function markGeschlecht(wmd){
+
+
+  //--------------------------------------------//
+  //              2. Erzaehlfolge               //
+  //--------------------------------------------//
+
+  function markPentade(start, end){
+    
+    var curKategoriename = "";
+    if (start === 1) { curKategoriename = "I. Pentade";
+    } else if (start === 6) { curKategoriename = "II. Pentade";
+    } else { curKategoriename = "III. Pentade"; }
+    insertCurrentMarkCategory(curKategoriename, "iconmonstr-arrow-32-240.png", 20);
+
+    // //PopUp ausblenden > funktioniert so nicht 
+    // var markKategoryPopUp = document.getElementById("markKategoryPopUp");
+    // markKategoryPopUp.style.display = "none";
+
     for (figur in leude){
       
-      if (leude[figur].geschlecht === wmd){
-        //var zuFaebendesIcon = document.getElementById(figur + "Btn");
-        //zuFaebendesIcon.style.animationPlayState = "running";
-      } else {
-        var nichtZuFaebendesIcon = document.getElementById(figur + "Btn");
-        nichtZuFaebendesIcon.style.opacity = "18%";
+      //alle Icons wieder einblenden
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = "100%";
+
+      //Zahl vor dem Komma extrahieren und in Int umwandeln
+      var ovMetZahlVorKomma = parseInt(leude[figur].ovMet.substr(0, leude[figur].ovMet.indexOf(",")));
+
+      //wenn Zahl kleiner als start oder größer als end, ausblenden
+      if (ovMetZahlVorKomma < start || ovMetZahlVorKomma > end){
+        figurIcon.style.opacity = "10%";
+      }
+
+    }
+  }
+
+  var markPentadeI = document.getElementById("markPentadeI");
+  var markPentadeII = document.getElementById("markPentadeII");
+  var markPentadeIII = document.getElementById("markPentadeIII");
+
+  markPentadeI.onclick = () => markPentade(1,5);
+  markPentadeII.onclick = () => markPentade(6,10);
+  markPentadeIII.onclick = () => markPentade(11,15);
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               3. Taxonomie                 //
+  //--------------------------------------------//
+
+  function markTaxonomie(taxArgument){
+    insertCurrentMarkCategory(taxArgument.charAt(0).toUpperCase() + taxArgument.slice(1), "ancient.png", 21);
+
+    for (figur in leude){
+
+      //alle Icons wieder einblenden
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = "100%";
+
+      if (!(leude[figur].taxonomie === taxArgument)){
+        figurIcon.style.opacity = "10%";
+      }
+
+    }
+
+  }
+
+  var markFauna = document.getElementById("markFauna");
+  var markFlora = document.getElementById("markFlora");
+  var markElemente = document.getElementById("markElemente");
+  var markAnthropomorphes = document.getElementById("markAnthropomorphes");
+
+
+  markFauna.onclick = () => markTaxonomie("fauna"); 
+  markFlora.onclick = () => markTaxonomie("flora");
+  markElemente.onclick = () => markTaxonomie("elemente");
+  markAnthropomorphes.onclick = () => markTaxonomie("anthropomorphes");
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //              4. Verw.-Grund                //
+  //--------------------------------------------//
+
+
+  function markVerwandlungsgrund(grund){
+    insertCurrentMarkCategory(grund, "question.png", 19);
+    
+    for (figur in leude){
+
+      //alle Icons wieder einblenden
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = "100%";
+
+      if (!(leude[figur].grund.includes(grund))){
+        figurIcon.style.opacity = "10%";
+      }
+
+    }
+
+  }
+
+  var markBestrafung = document.getElementById("markBestrafung");
+  var markWunsch = document.getElementById("markWunsch");
+  var markSchutz = document.getElementById("markSchutz");
+  var markTrauer = document.getElementById("markTrauer");
+  var markPostumeEhrung = document.getElementById("markPostumeEhrung");
+  var markKampfvorteil = document.getElementById("markKampfvorteil");
+  var markSonstiges = document.getElementById("markSonstiges");
+
+  markBestrafung.onclick = () => markVerwandlungsgrund("Bestrafung");
+  markWunsch.onclick = () => markVerwandlungsgrund("Wunsch");
+  markSchutz.onclick = () => markVerwandlungsgrund("Schutz");
+  markTrauer.onclick = () => markVerwandlungsgrund("Trauer");
+  markPostumeEhrung.onclick = () => markVerwandlungsgrund("Ehrung");
+  markKampfvorteil.onclick = () => markVerwandlungsgrund("Kampf");
+  //markSonstiges.onclick = markVerwandlungsgrund("?"); ???????????
+
+
+
+
+  //--------------------------------------------//
+  //             5. Verwandelnde                //
+  //--------------------------------------------//
+
+
+
+  
+  function markVerwandelnde(gottheit){
+    insertCurrentMarkCategory(gottheit, "iconmonstr-magic-5-240.png", 18);
+
+    for (figur in leude){
+
+      //alle Icons wieder einblenden
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = "100%";
+
+      if (!(leude[figur].verwandler.includes(gottheit))){
+        figurIcon.style.opacity = "10%";
       }
     }
   }
 
-  //markGeschlechtM.onclick = markGeschlecht("m");
-  //markGeschlechtW.onclick = markGeschlecht("w");
-  //markGeschlechtD.onclick = markGeschlecht("d");
+  
+  var markJupiter = document.getElementById("markJupiter"); 
+  var markNeptun = document.getElementById("markNeptun");
+  var markVenus = document.getElementById("markVenus"); 
+  var markDiana = document.getElementById("markDiana"); 
+  var markMinerva = document.getElementById("markMinerva"); 
+  var markMercur = document.getElementById("markMercur"); 
+  var markApollo = document.getElementById("markApollo"); 
+  var markCeres = document.getElementById("markCeres"); 
+  var markJuno = document.getElementById("markJuno"); 
+
+  
+  markJupiter.onclick = () => markVerwandelnde("Jupiter");
+  markNeptun.onclick = () => markVerwandelnde("Neptun");
+  markVenus.onclick = () => markVerwandelnde("Venus");
+  markDiana.onclick = () => markVerwandelnde("Diana");
+  markMinerva.onclick = () => markVerwandelnde("Minerva");
+  markMercur.onclick = () => markVerwandelnde("Mercur");
+  markApollo.onclick = () => markVerwandelnde("Apollo");
+  markCeres.onclick = () => markVerwandelnde("Ceres");
+  markJuno.onclick = () => markVerwandelnde("Juno");
+
+
+
+
+
+
+
+
+
+
+  //--------------------------------------------//
+  //               6. Geschlecht                //
+  //--------------------------------------------//
+  
+ 
+  function markGeschlecht(wmd){
+    for (figur in leude){
+
+      insertCurrentMarkCategory(wmd, "iconmonstr-gender-4-240.png", 17);
+
+      //alle Icons wieder einblenden
+      var figurIcon = document.getElementById(figur + "Wrapper");
+      figurIcon.style.opacity = "100%";
+
+      if (leude[figur].geschlecht === wmd){
+        //var zuFaebendesIcon = document.getElementById(figur + "Btn");
+        //zuFaebendesIcon.style.animationPlayState = "running";
+      } else {
+        figurIcon.style.opacity = "10%";
+      }
+    }
+  }
+
+  
+  var markGeschlechtW = document.getElementById("markGeschlechtW"); 
+  var markGeschlechtM = document.getElementById("markGeschlechtM");
+  var markGeschlechtD = document.getElementById("markGeschlechtD"); 
+
+  
+  markGeschlechtW.onclick = () => markGeschlecht("Weiblich");
+  markGeschlechtM.onclick = () => markGeschlecht("Männlich");
+  markGeschlechtD.onclick = () => markGeschlecht("Divers");
 
 
 
@@ -2432,8 +2836,8 @@ export async function application() {
     if (event.target == infoModal) {
       infoModal.style.display = "none";
     }
-    if (event.target == quizModal){
-      quizModal.style.display = "none";
+    if (event.target == quellenModal){
+      quellenModal.style.display = "none";
     }
 
     //close all metamorphosenModals
@@ -2445,6 +2849,9 @@ export async function application() {
     for (var i = 0; i < modalNames.length; i++){
       if (event.target.id == modalNames[i]) {
         event.target.style.display = "none";
+        aktuellesModal = undefined;
+        //locationhash
+        location.hash = "#" + aktuelleKategorie;
       }
     }
     
