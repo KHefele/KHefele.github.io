@@ -21,6 +21,12 @@
         "img": "Figuren/lycaon/lycaon.jpg", 
         "source": "<a href='https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg' target='_blank'>Wikimedia</a>",
         "alt": "Jan Cossier, Lycaon, 1640",
+        "annotations": {
+            "lycaon": "",
+            "zeus": "",
+            "blitz": "",
+            "adler": ""
+        },
    
         "wikidata": "Q501667",
         "ovMet": "1,209-239",
@@ -532,14 +538,14 @@
         "id": "alpheus",
         "name": "Alpheus",
 
-        "icon": "Figuren/Alpheus_and_Arethusa/Alpheus_and_Arethusa_Icon.png",
-        "width": "70",
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "40",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
         "koordinaten": {
             "unorganisiert": {
-                "top": "30",
-                "left": "30"
+                "top": "60",
+                "left": "50"
             },
             "geographie": {
                 "top": "80",
@@ -547,10 +553,10 @@
             }
         },
 
-        "img": "Figuren/Alpheus_and_Arethusa/Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg' target='_blank'>Wikimedia</a>",
-        "alt": "Luigi Garzi (zugeschrieben), Alpheus and Arethusa, Ende 17./Anfang 18. Jh.",
-        
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "alt": "Iconmonstr, Bildsuche, 2021",
+
         "wikidata": "Q911084",
         "ovMet": "5,572-641",
         "verwandlung": "Quelle",
@@ -1049,7 +1055,7 @@
         "name": "Cadmus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "55",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1090,13 +1096,13 @@
         "name": "Harmonia",
 
         "icon": "Figuren/Cadmus/Cadmus_Icon.png",
-        "width": "60",
+        "width": "40",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
             "unorganisiert": {
-                "top": "75",
-                "left": "80"
+                "top": "60",
+                "left": "50"
             },
             "geographie": {
                 "top": "60",
