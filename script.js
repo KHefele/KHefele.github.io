@@ -10,7 +10,6 @@ export async function application() {
 
   const leude = await loadJSON('leude.json'); // für Modals & Popover
   const metamorphosen = await loadJSON('metamorphosen.json'); // für MetamorphosenText
-  const annotations = await loadJSON('annotations.json'); // für MetamorphosenText
 
 
   if (location.hash === "") {
@@ -548,7 +547,6 @@ export async function application() {
     //Nur bei kleinen Ansichten unter 1100px <-- 100px kleiner gemacht
     var imgKlein = document.createElement("img"); 
     imgKlein.className = "display-under-1200px";
-    imgKlein.id = data.id + "ModalBild";
     imgKlein.alt = data.alt;
     imgKlein.title = data.alt;
     imgKlein.src = "Figuren/" + data.id + "/image.jpg";
@@ -2151,94 +2149,60 @@ export async function application() {
 
 
 
-  var getPolygonPoints = function (xArray, yArray, imgSrc){
-    var pointsString = "";
-    for (var k = 0; k < xArray.length; k++){
 
-      //in Relation setzen: Points / Verkleinerungsfaktor (eig.Bildgröße/angezeigteBildgröße)
 
-      pointsString+= xArray[k]/6 + "," + yArray[k]/6 + " ";
-    }
 
-    
-    return pointsString;
-  }
 
-  var xArrayLycaon = annotations.lycaon.regions[0].shape_attributes.all_points_x;
-  var yArrayLycaon = annotations.lycaon.regions[0].shape_attributes.all_points_y;
-  var test = getPolygonPoints(xArrayLycaon, yArrayLycaon,"Annotationen/lycaon.jpg");
-  
-  console.log(test);
 
 
   //Bilder anlegen
   for (var i = 0; i < figuresListSorted.length; i++){
-
-
-    //svg
-    var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    metSvg.setAttribute("class", "metSvg");
-    textImg.appendChild(metSvg);
     
-    //darin image
-    var metImg = document.createElementNS("http://www.w3.org/2000/svg","image");
-    metImg.setAttribute("href", "Figuren/" + figuresListSorted[i] + "/image.jpg");
-    metImg.setAttribute("class", "metImg");
-    metSvg.appendChild(metImg);
+    //var metImgDiv = document.createElement()
+
+    var metImg = document.createElement("img");
+    metImg.src = "Figuren/" + figuresListSorted[i] + "/image.jpg";
+    metImg.id = figuresListSorted[i] + "BigPicture";
+    metImg.className = "textImages";
+    metImg.title = leude[figuresListSorted[i]].alt;
+    textImg.appendChild(metImg);
     
-
-    var bildGroesse = document.getElementById(figuresListSorted[i] + "ModalBild");
-    //console.log(bildGroesse);
-
-
-    // if (bildGroesse.naturalWidth/bildGroesse.naturalHeight < 63/77) { //wenn das Bildverhältnis
-
-    //   var calcWidth = bildGroesse.naturalHeight / 77; //wenn Höhe 77% sein muss, ausrechnen, wie viel Breite sein muss
-    //   calcWidth = bildGroesse.naturalWidth / calcWidth;
-    //   metSvg.style.width = calcWidth -33 + "%";
-
-    //   metImg.setAttribute("width", calcWidth -33 + "%");
-
-    // } else {
-      
-      metSvg.style.width = "40%"; //& max höhe = 77% (s. #textModal)
-      metImg.setAttribute("width", "100%");
-
-    // } 
+    //positioning
+    metImg.style.position = "absolute";
+    metImg.style.top = "50.5%";
+    metImg.style.left = "24%";
 
 
 
-    
-
-
-
-
+    if (metImg.naturalWidth/metImg.naturalHeight < 63/77) { //wenn das Bildverhältnis
+      console.log(figuresListSorted[i])
+      //metImg.style.display = "none";
+      metImg.style.height = "77%";
+    } else {
+      metImg.style.width = "40%"; //& max höhe = 77% (s. #textModal)
+    }
 
 
     //Bildtitel
-    var imageTitle = document.createElement("div");
+    var imageTitle = document.createElement("p");
     imageTitle.className = "imageNames";
     imageTitle.innerHTML = leude[figuresListSorted[i]].alt;
-    metSvg.appendChild(imageTitle);
+    metImg.appendChild(imageTitle);
 
 
 
-    // var metSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-    // //metSvg.className = "metSvg";
-    // metSvg.style.position = "absolute";
-    // metSvg.style.height = "100%";
-    // metSvg.style.width = "100%";
-    // document.body.appendChild(metSvg);
+    var metSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+    //metSvg.className = "metSvg";
+    metSvg.style.position = "absolute";
+    metSvg.setAttribute("height", "100%");
+    metSvg.setAttribute("width", "100%");
+    textImg.appendChild(metSvg);
     
   
-    // var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    // //metPolygons.className = "metPolygons";
-    // metPolygons.style.position = "absolute";
-    // metPolygons.style.fill = "lime";
-    // metPolygons.style.stroke = "purple";
-    // metPolygons.style.strokeWidth = "1";
-    // metPolygons.setAttribute("points", "220,10 300,210 170,250 123,234");
-    // metSvg.appendChild(metPolygons);
+    var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+    //metPolygons.className = "metPolygons";
+    metPolygons.setAttribute("points", "220,10 300,210 170,250 123,234");
+    metSvg.appendChild(metPolygons);
     
 
     
@@ -2286,8 +2250,6 @@ export async function application() {
     textRow.appendChild(textColumnLatein);
     textColumnLatein.style.width = "50%";
     textColumnLatein.style.display = "inline-block";
-    textColumnLatein.style.display = "none";
-    textColumnLatein.style.width = "0%";
     //textColumnLatein.style.position = "absolute";
     textColumnLatein.style.padding = "5px";
     textColumnLatein.innerHTML = metamorphosen[key].latein + "<br><br>";
@@ -2298,7 +2260,6 @@ export async function application() {
     textRow.appendChild(textColumnDeutsch);
     textColumnDeutsch.style.width = "50%";
     textColumnDeutsch.style.display = "inline-block";
-    textColumnDeutsch.style.width = "100%";
     //textColumnDeutsch.style.position = "absolute";
     textColumnDeutsch.style.padding = "5px";
     textColumnDeutsch.innerHTML = metamorphosen[key].text + "<br><br>";
