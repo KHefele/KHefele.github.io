@@ -56,18 +56,31 @@ export async function application() {
   }
 
 
-    // Quellen Modal
-    var quellenModal = document.getElementById("quellenModal");   // Get infoModall
-    var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
-    //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-  
-    quellenBtn.onclick = function () { // Open
-      quellenModal.style.display = "block";
-    }
-    // closeInfoBtn.onclick = function () { // Close
-    //   infoModal.style.display = "none";
-    // }
+  // Quellen Modal
+  var quellenModal = document.getElementById("quellenModal");   // Get infoModall
+  var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
+  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
 
+  quellenBtn.onclick = function () { // Open
+    quellenModal.style.display = "block";
+  }
+  // closeInfoBtn.onclick = function () { // Close
+  //   infoModal.style.display = "none";
+  // }
+
+
+
+   // Ovid Modal
+   var ovidModal = document.getElementById("ovidModal");   // Get infoModall
+   var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
+   //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+ 
+   ovidBtn.onclick = function () { // Open
+     ovidModal.style.display = "block";
+   }
+   // closeInfoBtn.onclick = function () { // Close
+   //   infoModal.style.display = "none";
+   // }
 
 
 
@@ -121,6 +134,23 @@ export async function application() {
 
   bookBtn.onmouseout = function () {
     bookHoverName.style.display = "none";
+  }
+
+  //Hover Ovid-Button
+  var ovidBtn = document.getElementById("ovidBtn");
+
+  var ovidHoverName = document.createElement("div");
+  ovidHoverName.className = "infoHoverName";
+  ovidHoverName.innerHTML = "Ovid";
+  ovidHoverName.style.left = "20%";
+  ovidBtn.appendChild(ovidHoverName);
+
+  ovidBtn.onmouseover = function () {
+    ovidHoverName.style.display = "block";
+  }
+
+  ovidBtn.onmouseout = function () {
+    ovidHoverName.style.display = "none";
   }
 
 
@@ -362,6 +392,7 @@ export async function application() {
     Grundfunktionalität
 
     0. Globale Variablen
+    0.5. Navigations-Bar
     1. Metamorphosen-Icons/-Popover
     2. Metamorphosen-Modals
     3. Modal-Aufrufe
@@ -377,6 +408,39 @@ export async function application() {
   var aktuelleModalID;
   var aktuelleKategorie = ""; 
 
+  
+
+  //--------------------------------------------//
+  //         0.5 Navigations-Bar                //
+  //--------------------------------------------//
+
+
+  var navigation2punkt0 = document.getElementById("navigation2punkt0");
+  var dropDownNavigation = document.getElementById("dropDownNavigation");
+  var dropDownUp = true;
+
+  navigation2punkt0.style.display = "none";
+  
+
+  function setArrowDropdown(dropDownUpArgument){
+
+    if (dropDownUpArgument) {
+      dropDownNavigation.setAttribute("src", "Icons/down-arrow.png");
+      placeDurchsichtigesDiv();
+      navigation2punkt0.style.display = "block";
+      dropDownUp = false;
+    } else {
+      dropDownNavigation.setAttribute("src", "Icons/upload.png");
+      navigation2punkt0.style.display = "none";
+      dropDownUp = true;
+    }
+    
+  }
+
+
+  dropDownNavigation.onclick = function(){
+    setArrowDropdown(dropDownUp);
+  }
 
 
 
@@ -1193,6 +1257,15 @@ export async function application() {
 
   // folgende Funktionen werden bei allen Kategorien aufgerufen
 
+  //setzt ein durchsichtiges Div, damit DropDown zu geht 
+  function placeDurchsichtigesDiv () {
+    let xMouse = event.clientX;
+    let yMouse = event.clientY;
+    var durchsichtigesDiv = document.getElementById("durchsichtigesDiv");
+    durchsichtigesDiv.style.left = xMouse + "px";
+    durchsichtigesDiv.style.top = yMouse + "px";
+  }
+
   //setzt den Wrapper auf die angegebene Prozentzahl
   function setWidthPercent(percent){
     for (key in leude){
@@ -1416,6 +1489,7 @@ export async function application() {
     if (booleanErsterKlick) {
     setZeitstrahl(startIconsBy, drittePentadeFromTop, iconPosition-startIconsBy, iconPosition, "III. Pentade"); //arguments: startLeft, fromTop, laenge, arrowPosition
     }
+    
   }
 
   
@@ -1431,6 +1505,11 @@ export async function application() {
     setLocationHash("erzaehlfolge");
     insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
 
+
+    chronoBtn.style.backgroundColor = "grey";
+    //chronoBtn.style.cursor = "default";
+    //chronoBtn.style.color = "#733030";
+
     var kategoryPopUp = document.getElementById("kategoryPopUp");
     //console.log(kategoryPopUp)
     //kategoryPopUp.style.display = "none";
@@ -1445,9 +1524,13 @@ export async function application() {
     for (var x = 0; x < ovMetStellen.length; x++) {
       ovMetStellen[x].style.display = "block";
     }
+
   }
 
-  chronoBtn.onclick = erzaehlfolgeFunction;
+  chronoBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    erzaehlfolgeFunction();
+  }
 
 
 
@@ -1634,7 +1717,11 @@ export async function application() {
     }
 
   }
-  taxBtn.onclick = taxonomieFunction;
+
+  taxBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    taxonomieFunction();
+  }
 
 
 
@@ -1693,7 +1780,10 @@ export async function application() {
     }
   }
 
-  geoBtn.onclick = geographieFunction;
+  geoBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    geographieFunction();
+  };
 
 
 
@@ -1839,7 +1929,10 @@ export async function application() {
     ersterKlickAlpha = false;
   }
 
-  alphaBtn.onclick = alphabetFunction;
+  alphaBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    alphabetFunction();
+  };
 
 
 
@@ -2010,7 +2103,10 @@ export async function application() {
     }
   }
 
-  grundBtn.onclick = grundFunction;
+  grundBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    grundFunction();
+  };
 
 
 
@@ -2118,7 +2214,10 @@ export async function application() {
 
   }
 
-  verwandelndeBtn.onclick = verwandelndeFunction;
+  verwandelndeBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    verwandelndeFunction();
+  };
 
 
 
@@ -2191,20 +2290,20 @@ export async function application() {
     //console.log(bildGroesse);
 
 
-    // if (bildGroesse.naturalWidth/bildGroesse.naturalHeight < 63/77) { //wenn das Bildverhältnis
+    if (bildGroesse.naturalWidth/bildGroesse.naturalHeight < 63/77) { //wenn das Bildverhältnis
 
-    //   var calcWidth = bildGroesse.naturalHeight / 77; //wenn Höhe 77% sein muss, ausrechnen, wie viel Breite sein muss
-    //   calcWidth = bildGroesse.naturalWidth / calcWidth;
-    //   metSvg.style.width = calcWidth -33 + "%";
+      var calcWidth = bildGroesse.naturalHeight / 77; //wenn Höhe 77% sein muss, ausrechnen, wie viel Breite sein muss
+      calcWidth = bildGroesse.naturalWidth / calcWidth;
+      metSvg.style.width = calcWidth -33 + "%";
 
-    //   metImg.setAttribute("width", calcWidth -33 + "%");
+      metImg.setAttribute("width", calcWidth -33 + "%");
 
-    // } else {
+    } else {
       
       metSvg.style.width = "40%"; //& max höhe = 77% (s. #textModal)
       metImg.setAttribute("width", "100%");
 
-    // } 
+    } 
 
 
 
@@ -2459,7 +2558,10 @@ export async function application() {
     }
   }
 
-  textBtn.onclick = fliesstextFunction;
+  textBtn.onclick = function() {
+    placeDurchsichtigesDiv();
+    fliesstextFunction();
+  };
 
 
   //New CSS-Class

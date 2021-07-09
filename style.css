@@ -224,6 +224,11 @@ button { /* unterscheidet sich sonst von span */
   top: 4%;
 }
 
+#ovidBtn{
+  right: 12%;
+  top: 4%;
+}
+
 
 
 
@@ -294,6 +299,12 @@ a.metamorphosenModalBtns {
   bottom: 2%;
   background-color: rgba(0, 0, 0, 0.8); 
 }
+
+#dropDownNavigation {
+  width: 19px;
+  cursor: pointer;
+}
+
 .dropbtn, .dropbtnZwei {
   background-color: #733030;
   color: white;
