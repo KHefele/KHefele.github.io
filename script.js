@@ -19,9 +19,33 @@ export async function application() {
 
 
 
+  /*--------------------------------------------//
+    
+    .----------------. 
+    | .--------------. |
+    | |     ____     | |
+    | |   .'    '.   | |
+    | |  |  .--.  |  | |
+    | |  | |    | |  | |
+    | |  |  `--'  |  | |
+    | |   '.____.'   | |
+    | |              | |
+    | '--------------' |
+    '----------------' 
+  
+
+    Interface
+
+    1. Start-/Info-Modals
+    2. Interface-Icons
+    3. Navigations-Bar
+    4. Buttons-Bar
+
+  //--------------------------------------------*/
+
 
   //--------------------------------------------//
-  //          Start-/Info-Modals                //
+  //         1. Start-/Info-Modals              //
   //--------------------------------------------//
 
 
@@ -31,6 +55,7 @@ export async function application() {
 
   if (location.hash === "") {
     startModal.style.display = "block";
+    startModal.style.animationPlayState = "running";
   }
 
 
@@ -46,9 +71,11 @@ export async function application() {
 
   infoBtn.onclick = function () { // Open
     infoModal.style.display = "block";
+    infoModal.style.animationPlayState = "running";
   }
   mehrInfoBtn.onclick = function () { // Other Open
     infoModal.style.display = "block";
+    infoModal.style.animationPlayState = "running";
     startModal.style.display = "none";
   }
   closeInfoBtn.onclick = function () { // Close
@@ -63,6 +90,7 @@ export async function application() {
 
   quellenBtn.onclick = function () { // Open
     quellenModal.style.display = "block";
+    quellenModal.style.animationPlayState = "running";
   }
   // closeInfoBtn.onclick = function () { // Close
   //   infoModal.style.display = "none";
@@ -70,29 +98,51 @@ export async function application() {
 
 
 
-   // Ovid Modal
-   var ovidModal = document.getElementById("ovidModal");   // Get infoModall
-   var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
-   //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
- 
-   ovidBtn.onclick = function () { // Open
-     ovidModal.style.display = "block";
-   }
-   // closeInfoBtn.onclick = function () { // Close
-   //   infoModal.style.display = "none";
-   // }
+  // Ovid Modal
+  var ovidModal = document.getElementById("ovidModal");   // Get infoModall
+  var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
+  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  ovidBtn.onclick = function () { // Open
+    ovidModal.style.display = "block";
+    ovidModal.style.animationPlayState = "running";
+  }
+  // closeInfoBtn.onclick = function () { // Close
+  //   infoModal.style.display = "none";
+  // }
 
 
+
+  // Erzaehlfolge-Modal
+  var erzaehlfolgeModal = document.getElementById("erzaehlfolgeModal");   // Get infoModall
+  var erzaehlfolgeInfoBtn = document.getElementById("erzaehlfolgeInfoBtn");   // Get button that opens the infoModal
+  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  erzaehlfolgeInfoBtn.onclick = function () { // Open
+    erzaehlfolgeModal.style.display = "block";
+    erzaehlfolgeModal.style.animationPlayState = "running";
+  }
+
+  // Klassifikation-Modal
+  var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
+  var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
+  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  klassifikationInfoBtn.onclick = function () { // Open
+    klassifikationModal.style.display = "block";
+    klassifikationModal.style.animationPlayState = "running";
+  }
 
 
   //--------------------------------------------//
-  //          Start-/Info-Icons                 //
+  //           2. Interface-Icons               //
   //--------------------------------------------//
 
   //Hover Info-Button
   var infoHoverName = document.createElement("div");
   infoHoverName.className = "infoHoverName";
   infoHoverName.innerHTML = "Info";
+  infoHoverName.style.left = "30%";
   infoBtn.appendChild(infoHoverName);
 
   infoBtn.onmouseover = function () {
@@ -103,21 +153,6 @@ export async function application() {
     infoHoverName.style.display = "none";
   }
 
-  // //Hover Quiz-Button
-  // var quizBtn = document.getElementById("quizBtn");
-
-  // var quizHoverName = document.createElement("div");
-  // quizHoverName.className = "infoHoverName";
-  // quizHoverName.innerHTML = "Quiz";
-  // quizBtn.appendChild(quizHoverName);
-
-  // quizBtn.onmouseover = function () {
-  //   quizHoverName.style.display = "block";
-  // }
-
-  // quizBtn.onmouseout = function () {
-  //   quizHoverName.style.display = "none";
-  // }
 
   //Hover Book-Button
   var bookBtn = document.getElementById("bookBtn");
@@ -125,7 +160,7 @@ export async function application() {
   var bookHoverName = document.createElement("div");
   bookHoverName.className = "infoHoverName";
   bookHoverName.innerHTML = "Quellen";
-  bookHoverName.style.left = "-1%";
+  bookHoverName.style.left = "10%";
   bookBtn.appendChild(bookHoverName);
 
   bookBtn.onmouseover = function () {
@@ -142,7 +177,7 @@ export async function application() {
   var ovidHoverName = document.createElement("div");
   ovidHoverName.className = "infoHoverName";
   ovidHoverName.innerHTML = "Ovid";
-  ovidHoverName.style.left = "20%";
+  ovidHoverName.style.left = "25%";
   ovidBtn.appendChild(ovidHoverName);
 
   ovidBtn.onmouseover = function () {
@@ -151,6 +186,69 @@ export async function application() {
 
   ovidBtn.onmouseout = function () {
     ovidHoverName.style.display = "none";
+  }
+
+
+  
+  //--------------------------------------------//
+  //          3. Navigations-Bar                //
+  //--------------------------------------------//
+
+
+  var navigation2punkt0 = document.getElementById("navigation2punkt0");
+  var dropDownNavigation = document.getElementById("dropDownNavigation");
+  var arrowDown = true;
+
+  function navigationDropdown(arrowDownArgument){
+
+    if (arrowDownArgument) {
+      dropDownNavigation.style.transform = "rotate(180deg)";
+      //dropDownNavigation.setAttribute("src", "Icons/upload.png");
+      placeDurchsichtigesDiv();
+      navigation2punkt0.style.display = "block";
+      arrowDown = false;
+    } else {
+      dropDownNavigation.style.transform = "rotate(0deg)";
+      //dropDownNavigation.setAttribute("src", "Icons/down-arrow.png");
+      navigation2punkt0.style.display = "none";
+      arrowDown = true;
+    }
+    
+  }
+
+
+  dropDownNavigation.onclick = function(){
+    navigationDropdown(arrowDown);
+  }
+
+
+  //--------------------------------------------//
+  //          4. Buttons-Bar                    //
+  //--------------------------------------------//
+
+  var buttons2punkt0 = document.getElementById("buttons2punkt0");
+  var dropDownButtons = document.getElementById("dropDownButtons");
+  var arrowDownButtons = true;
+
+  function buttonsDropdown(arrowDownButtonsArgument){
+
+    if (arrowDownButtonsArgument) {
+      dropDownButtons.style.transform = "rotate(180deg)";
+      //setAttribute("src", "Icons/upload.png");
+      buttons2punkt0.style.display = "block";
+      arrowDownButtons = false;
+    } else {
+      dropDownButtons.style.transform = "rotate(0deg)";
+      //dropDownButtons.setAttribute("src", "Icons/down-arrow.png");  
+      buttons2punkt0.style.display = "none";
+      arrowDownButtons = true;
+    }
+    
+  }
+
+
+  dropDownButtons.onclick = function(){
+    buttonsDropdown(arrowDownButtons);
   }
 
 
@@ -392,7 +490,6 @@ export async function application() {
     Grundfunktionalität
 
     0. Globale Variablen
-    0.5. Navigations-Bar
     1. Metamorphosen-Icons/-Popover
     2. Metamorphosen-Modals
     3. Modal-Aufrufe
@@ -408,39 +505,6 @@ export async function application() {
   var aktuelleModalID;
   var aktuelleKategorie = ""; 
 
-  
-
-  //--------------------------------------------//
-  //         0.5 Navigations-Bar                //
-  //--------------------------------------------//
-
-
-  var navigation2punkt0 = document.getElementById("navigation2punkt0");
-  var dropDownNavigation = document.getElementById("dropDownNavigation");
-  var dropDownUp = true;
-
-  navigation2punkt0.style.display = "none";
-  
-
-  function setArrowDropdown(dropDownUpArgument){
-
-    if (dropDownUpArgument) {
-      dropDownNavigation.setAttribute("src", "Icons/down-arrow.png");
-      placeDurchsichtigesDiv();
-      navigation2punkt0.style.display = "block";
-      dropDownUp = false;
-    } else {
-      dropDownNavigation.setAttribute("src", "Icons/upload.png");
-      navigation2punkt0.style.display = "none";
-      dropDownUp = true;
-    }
-    
-  }
-
-
-  dropDownNavigation.onclick = function(){
-    setArrowDropdown(dropDownUp);
-  }
 
 
 
@@ -2907,19 +2971,7 @@ export async function application() {
 
 
 
-  //parent-div
-  var parentDiv = document.getElementById("kategorienUndPopoverDiv");
-  
-  if (!parentDiv.style.height) {
-    parentDiv.style.height = window.innerHeight + "px";
-  }
 
-  document.getElementsByTagName("BODY")[0].onresize = function() {resizeToWindowSize()};
-
-  function resizeToWindowSize() {
-    //console.log("div has been resized");
-    parentDiv.style.height = window.innerHeight + "px";
-  }
 
   /*
   //--------------------------------------------//
@@ -3023,6 +3075,15 @@ export async function application() {
     }
     if (event.target == quellenModal){
       quellenModal.style.display = "none";
+    }
+    if (event.target == ovidModal){
+      ovidModal.style.display = "none";
+    }
+    if (event.target == erzaehlfolgeModal){
+      erzaehlfolgeModal.style.display = "none";
+    }
+    if (event.target == klassifikationModal){
+      klassifikationModal.style.display = "none";
     }
 
     //close all metamorphosenModals

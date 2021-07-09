@@ -27,7 +27,7 @@
 
   
   <!----------- Navigations-Kategorien/Popover ------------------->
-  <div id="kategorienUndPopoverDiv" style="position: relative;">
+  <div id="kategorienUndPopoverDiv" style="position: relative; height: 100%;">
 
     <!----------- Taxonomie ------------------->
     <div id="taxonomie" class="kategory" style="height:100%; width:100%; position:absolute">
@@ -47,12 +47,15 @@
         <p class="titleTopleft" >Anthropomorphes</p>
         <p class="percentTopright" id="countAnthropomorphes"></p>
       </div>
-      <div style="width: 10%; background-color: grey; left: 70%; top: 90%; font-size: 8px; position: relative;">
-        &#xa9; Quelle: Albrecht 2013.
-        <a href="Iconclass">
-          Iconclass
-        </a>
+
+      <!-- Hintergrundinfo-Button -->
+      <div style="width: 48%; left: 85%; top: 78.5%; position: relative;">
+        <button class="hintergrundinfoButton" id="klassifikationInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px; cursor: pointer;" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <div>Hintergrund-<br>information</div>
+        </button>
       </div>
+
     </div>
   
     
@@ -60,12 +63,15 @@
     <!----------- Chronologie ------------------->
     <div id="chronologie" style="height:50%; display:none;">
       <div style="width: 85%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 8%; animation-name:slowOpacity; animation-duration: 3s;">
-        <div style="background-color: rgba(70, 70, 70, 0.205); left: 52%; top: 105%; width: 48%; font-size: 8px; position: relative;">
-          &#xa9; Quelle: 
-          <a href="https://katalog.ub.uni-heidelberg.de/titel/68413711">
-            Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael von Albrecht (= Reclams Universal-Bibliothek 1360). 3. Aufl. Ditzingen 2019.
-          </a>
+        
+        <!-- Hintergrundinfo-Button -->
+        <div style="left: 92%; top: 83%; width: 48%; position: relative;">
+          <button class="hintergrundinfoButton" id="erzaehlfolgeInfoBtn">
+            <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+            <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+          </button>
         </div>
+
       </div>
         
       <!-- Timeline 
@@ -90,6 +96,15 @@
     <!----------- Alphabet ------------------->
     <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none;">
       <div style="width: 90%; height:168%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+      
+      <!-- Hintergrundinfo-Button -->
+      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
+        <button class="hintergrundinfoButton" id="alphabetInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+        </button>
+      </div>
+
     </div>
 
     <!----------- Fließtext  ------------------->
@@ -102,6 +117,15 @@
         <input type="checkbox" id="lateinischerOriginaltext" name="l">
         <label for="l">lateinischer Originaltext</label>
       </div>
+
+      <!-- Hintergrundinfo-Button -->
+      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
+        <button class="hintergrundinfoButton" id="fliesstextInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+        </button>
+      </div>
+
     </div>
 
     <!----------- Verwandlungsgrund  ------------------->
@@ -134,12 +158,31 @@
         <p class="titleTopleft" >Sonstiges</p>
         <p class="percentToprightGrund" id="countSonstigerGrund"></p>
       </div>
+
+      <!-- Hintergrundinfo-Button -->
+      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
+        <button class="hintergrundinfoButton" id="grundInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+        </button>
+      </div>
+
     </div>
 
 
     <!----------- Verwandelnde ------------------->
     <div id="verwandelnde" style="height:100%; width:100%; position:absolute; display:none;">
       <div style="width: 90%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+
+
+      <!-- Hintergrundinfo-Button -->
+      <div style="left: 87%; top: 68%; width: 48%; position: relative;">
+        <button class="hintergrundinfoButton" id="verwandelndeInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+        </button>
+      </div>
+
     </div>
 
   </div> <!-- Ende KategorienUndPopoverDiv-->
@@ -158,19 +201,17 @@
 
 
   <!--------------- Start Modal ----------------->
-  <div id="startModal" class="startModal">
-    <div class="modalContent">
-      <h1 class="modalHeader">VISUALIZED OVID</h1>
-      <p class="modalHeader"><em>Von Covid zu Ovid</em></p>
-      <br>
-      <hr>
+  <div id="startModal" class="metamorphosenModal">
+    <div class="metamorphosenModalContent">
+      <div class="metamorphosenModalHeader">
+        <br>
+        <br>
+        <h1 style="text-align: center;">VISUALIZED OVID</h1>
+        <p style="text-align: center;"><em>Von Covid zu Ovid</em></p>
+        <br>
+        <hr>
+      </div>
       <p style="text-align: left;">
-        Keine Lust mehr auf Covid? Komm zu Ovid! 
-        <br>
-        Wenn das Reisen derzeit leider eingeschränkt ist, warum nicht eine Reise durch die Metamorphosen der Sterblichen zu unternehmen?
-        <br>
-        <br>
-        SO GEHT'S: 
         <br>
         Jedes Icon repräsentiert die Geschichte eines:r Sterblichen, der:die in den Metamorphosen Ovids verwandelt wurde. Klicke diese an, wenn du mehr über die Verwandlungsumstände erfahren möchtest.
         <br>
@@ -180,16 +221,21 @@
         Viel Spaß mit <s>C</s>OVID!
       <br>
       </p>
-      <span class="modalBtns" id="closeStartModal">Los geht's</span>
-      <span class="modalBtns" id="mehrInfoBtn">Mehr Infos</span>
+      <div class="metamorphosenModalFooter">
+        <span class="modalBtns" id="closeStartModal">Los geht's</span>
+        <span class="modalBtns" id="mehrInfoBtn">Mehr Infos</span>
+      </div>
     </div>
   </div>
 
   <!--------------- Info Modal ----------------->
-  <div id="infoModal" class="infoModal">
-    <div class="modalContent">
-      <h1 style="text-align: center;"><em>Über das Projekt</em></h1>
-      <p class="modalContentLeft">
+  <div id="infoModal" class="infoModals">
+    <div class="infoModalsContent">
+      <div class="infoModalsHeader">
+        <br>
+        <h1>Über das Projekt</h1>
+      </div>
+      <p>
         Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der 
         <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a> 
         entstanden ist.
@@ -206,82 +252,84 @@
         <div>Some Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </p>
       <br>
-      <span class="modalBtns" id="closeInfoBtn">SCHLIESSEN</span>
-      <br>
+      <div class="infoModalsFooter">
+        <span class="modalBtns" id="closeInfoBtn">SCHLIESSEN</span>
+        <br>
+      </div>
     </div>
   </div>
 
-    <!--------------- Quellen Modal ----------------->
-    <div id="quellenModal" class="metamorphosenModal">
-      <div class="metamorphosenModalContent" id="quellenContent">
-        <div class="metamorphosenModalHeader">
-          <br>
-          <h1>Bibliographie</h1>
-        </div>
-        <ul>
-          <li>Albrecht, Michael von: Ovid. Eine Einführung. Stuttgart 2003 (Reclams Universal-Bibliothek Bd. Nr. 17641).</li>
-          <li>Albrecht, Michael von: Ovids Metamorphosen. Texte, Themen, Illustrationen. Heidelberg 2014 (Heidelberger Studienhefte zur Altertumswissenschaft.</li>
-          <li>Albrecht, Michael von u. Zinn, Ernst (Hg.): Ovid.  2., unveränd. Aufl., Darmstadt 1968 (Wege der Forschung Bd. Bd. 92).</li>
-          <li>Barolsky, Paul: Ovid and the metamorphoses of modern art from Botticelli to Picasso. 2014.</li>
-          <li>Boyd, Barbara Weiden: Brill's companion to Ovid. Leiden 2002 (Brill's Companions in Classical Studies.</li>
-          <li>Curley, Dan: Tragedy in Ovid. Theater, metatheater, and the transformation of a genre. Cambridge 2013.</li>
-          <li>Gil, Alberto u. Kirstein, Robert (Hg.): Wissenstransfer und Translation. Zur Breite und Tiefe des Übersetzungsbegriffs. St. Ingbert 2015 (Hermeneutik und Kreativität Bd. Band 3).</li>
-          <li>Hardie, Philip R. (Hg.): The Cambridge companion to Ovid.  5. print, Cambridge 2008 (Cambridge companions to literature.</li>
-          <li>Harrison, Stephen: Ovid and genre. In: Philip R. Hardie (Hg.): The Cambridge companion to Ovid. 5. print, Cambridge 2008 (Cambridge companions to literature, S. 79–94.
-          <li>Holzberg, Niklas: Ovids Metamorphosen.  Originalausgabe, 2. durchgesehene Auflage, München 2016 (C.H. Beck Wissen Bd. 2421).
-          <li>Huber-Rebenich, Gerlinde: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik : Sammeldarstellungen. Berlin 2004.</li>
-          <li>Huber-Rebenich, Gerlinde, Lütkemeyer, Sabine u. Walter, Hermann: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik. Berlin 2014.</li>
-          <li>Janka, Markus, Schmitzer, Ulrich u. Seng, Helmut (Hg.): Ovid. Werk, Kultur, Wirkung. Darmstadt 2007.</li>
-          <li>Lichtenstern, Christa: Metamorphose. Vom Mythos zum Prozessdenken : Ovid-Rezeption, surrealistische Ästhetik, Verwandlungsthematik der Nachkriegskunst. Weinheim 1992 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
-          <li>Lichtenstern, Christa: Metamorphose in der Kunst des 19. und 20. Jahrhunderts, Band 2, Metamorphose. Vom Mythos zum Prozeßdenken ; Ovid-Rezeption. Surrealistische Ästhetik. Verwandlungsthematik der Nachkriegskunst.  Reprint 2019, Berlin 1995 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
-          <li>Ludwig, Walther: Struktur und Einheit der Metamorphosen Ovids.  Reprint 2019, Berlin 1965.</li>
-          <li>Marek, Heidi u. Guthmüller, Bodo: Metamorphosen. Wandlungen und Verwandlungen in Literatur, Sprache und Kunst von der Antike bis zur Gegenwart : Festschrift für Bodo Guthmüller zum 65. Geburtstag. Wiesbaden 2002.</li>
-          <li>Nelis, Damien: Clio and the poets. Augustan poetry and the traditions of ancient historiography. Leiden 2002 (Mnemosyne, bibliotheca classica Batava. Supplementum Bd. 224).</li>
-          <li>Ohrt, Roberto: Aby Warburg: Bilderatlas MNEMOSYNE. Commentary volume. Ostfildern 2020 (Kulturgeschichte.</li>
-          <li>Otis, Brooks u. Ovid: Ovid as an epic poet. 2nd ed.  2. ed., reprinted., London 1970.</li>
-          <li>Ovid u. Albrecht, Michael von: Metamorphosen. Stuttgart 1994. Bibliographisch ergänzte Ausgabe 2019 (Universal-Bibliothek Bd. Nr. 1360).</li>
-          <li>August Friedrich von Pauly/Hans Gärtner/Albert Wünsch: Paulys Real-Encyclopädie der classischen Altertumswissenschaft. Bearb. und hg. von Georg Wissowa / Wilhelm Kroll / K. Witte / Karl Mittelhaus / Konrat Ziegler. Stuttgart 1894-1980.
-          <li>Schmitz-Emans, Monika u. Schmeling, Manfred: Fortgesetzte Metamorphosen. Ovid und die ästhetische Moderne = Continuing metamorphoses : Ovid and aesthetic modernity. Würzburg 2010 (Saarbrücker Beiträge zur vergleichenden Literatur- und Kulturwissenschaft Bd. Bd. 48).</li>
-          <li>Schmitzer, Ulrich: Ovid.  2., unveränd. Aufl., Hildesheim 2011 (Studienbücher Antike Bd. 7).</li>
-          <li>Tsitsiou-Chelidoni, Chrysanthe: Ovid, Metamorphosen, Buch VIII. Narrative Technik und literarischer Kontext. Zugl.: Heidelberg, Univ., Diss, 1999 u.d.T.: Tsitsiou-Chelidoni, Chrysanthe: In nova corpora mutatae formae. Frankfurt am Main 2003 (Studien zur klassischen Philologie Bd. Bd. 138).</li>
-          <li>Walter, Hermann u. Horn, Hans-Jürgen (Hg.): Die Rezeption der "Metamorphosen" des Ovid in der Neuzeit. Der antike Mythos in Text und Bild : internationales Symposion der Werner Reimers-Stiftung, Bad Homburg v. d. H. (22. bis 25. April 1991). Berlin op. 1995 (Ikonographische Repertorien zur Rezeption des antiken Mythos in Europa. Beihefte Bd. 1).</li>
-          <li>Wetzel, Christoph: Ovids Metamorphosen und die bildende Kunst. Stuttgart 2016 (Reclams Universal-Bibliothek Bd. Nr. 19322).</li>
-          <li>Wheeler, Stephen Michael: A discourse of wonders. Audience and performance in Ovid's Metamorphoses. Philadelphia (Pa.) 1999.</li>
-          <li>Wolf, Armin: Homers Reise. Auf den Spuren des Odysseus. Böhlau, 2009.</li>
-        </ul>
+  <!--------------- Quellen Modal ----------------->
+  <div id="quellenModal" class="infoModals">
+    <div class="infoModalsContent" id="quellenContent">
+      <div class="infoModalsHeader">
+        <br>
+        <h1>Bibliographie</h1>
+      </div>
+      <ul>
+        <li>Albrecht, Michael von: Ovid. Eine Einführung. Stuttgart 2003 (Reclams Universal-Bibliothek Bd. Nr. 17641).</li>
+        <li>Albrecht, Michael von: Ovids Metamorphosen. Texte, Themen, Illustrationen. Heidelberg 2014 (Heidelberger Studienhefte zur Altertumswissenschaft.</li>
+        <li>Albrecht, Michael von u. Zinn, Ernst (Hg.): Ovid.  2., unveränd. Aufl., Darmstadt 1968 (Wege der Forschung Bd. Bd. 92).</li>
+        <li>Barolsky, Paul: Ovid and the metamorphoses of modern art from Botticelli to Picasso. 2014.</li>
+        <li>Boyd, Barbara Weiden: Brill's companion to Ovid. Leiden 2002 (Brill's Companions in Classical Studies.</li>
+        <li>Curley, Dan: Tragedy in Ovid. Theater, metatheater, and the transformation of a genre. Cambridge 2013.</li>
+        <li>Gil, Alberto u. Kirstein, Robert (Hg.): Wissenstransfer und Translation. Zur Breite und Tiefe des Übersetzungsbegriffs. St. Ingbert 2015 (Hermeneutik und Kreativität Bd. Band 3).</li>
+        <li>Hardie, Philip R. (Hg.): The Cambridge companion to Ovid.  5. print, Cambridge 2008 (Cambridge companions to literature.</li>
+        <li>Harrison, Stephen: Ovid and genre. In: Philip R. Hardie (Hg.): The Cambridge companion to Ovid. 5. print, Cambridge 2008 (Cambridge companions to literature, S. 79–94.
+        <li>Holzberg, Niklas: Ovids Metamorphosen.  Originalausgabe, 2. durchgesehene Auflage, München 2016 (C.H. Beck Wissen Bd. 2421).
+        <li>Huber-Rebenich, Gerlinde: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik : Sammeldarstellungen. Berlin 2004.</li>
+        <li>Huber-Rebenich, Gerlinde, Lütkemeyer, Sabine u. Walter, Hermann: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik. Berlin 2014.</li>
+        <li>Janka, Markus, Schmitzer, Ulrich u. Seng, Helmut (Hg.): Ovid. Werk, Kultur, Wirkung. Darmstadt 2007.</li>
+        <li>Lichtenstern, Christa: Metamorphose. Vom Mythos zum Prozessdenken : Ovid-Rezeption, surrealistische Ästhetik, Verwandlungsthematik der Nachkriegskunst. Weinheim 1992 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
+        <li>Lichtenstern, Christa: Metamorphose in der Kunst des 19. und 20. Jahrhunderts, Band 2, Metamorphose. Vom Mythos zum Prozeßdenken ; Ovid-Rezeption. Surrealistische Ästhetik. Verwandlungsthematik der Nachkriegskunst.  Reprint 2019, Berlin 1995 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
+        <li>Ludwig, Walther: Struktur und Einheit der Metamorphosen Ovids.  Reprint 2019, Berlin 1965.</li>
+        <li>Marek, Heidi u. Guthmüller, Bodo: Metamorphosen. Wandlungen und Verwandlungen in Literatur, Sprache und Kunst von der Antike bis zur Gegenwart : Festschrift für Bodo Guthmüller zum 65. Geburtstag. Wiesbaden 2002.</li>
+        <li>Nelis, Damien: Clio and the poets. Augustan poetry and the traditions of ancient historiography. Leiden 2002 (Mnemosyne, bibliotheca classica Batava. Supplementum Bd. 224).</li>
+        <li>Ohrt, Roberto: Aby Warburg: Bilderatlas MNEMOSYNE. Commentary volume. Ostfildern 2020 (Kulturgeschichte.</li>
+        <li>Otis, Brooks u. Ovid: Ovid as an epic poet. 2nd ed.  2. ed., reprinted., London 1970.</li>
+        <li>Ovid u. Albrecht, Michael von: Metamorphosen. Stuttgart 1994. Bibliographisch ergänzte Ausgabe 2019 (Universal-Bibliothek Bd. Nr. 1360).</li>
+        <li>August Friedrich von Pauly/Hans Gärtner/Albert Wünsch: Paulys Real-Encyclopädie der classischen Altertumswissenschaft. Bearb. und hg. von Georg Wissowa / Wilhelm Kroll / K. Witte / Karl Mittelhaus / Konrat Ziegler. Stuttgart 1894-1980.
+        <li>Schmitz-Emans, Monika u. Schmeling, Manfred: Fortgesetzte Metamorphosen. Ovid und die ästhetische Moderne = Continuing metamorphoses : Ovid and aesthetic modernity. Würzburg 2010 (Saarbrücker Beiträge zur vergleichenden Literatur- und Kulturwissenschaft Bd. Bd. 48).</li>
+        <li>Schmitzer, Ulrich: Ovid.  2., unveränd. Aufl., Hildesheim 2011 (Studienbücher Antike Bd. 7).</li>
+        <li>Tsitsiou-Chelidoni, Chrysanthe: Ovid, Metamorphosen, Buch VIII. Narrative Technik und literarischer Kontext. Zugl.: Heidelberg, Univ., Diss, 1999 u.d.T.: Tsitsiou-Chelidoni, Chrysanthe: In nova corpora mutatae formae. Frankfurt am Main 2003 (Studien zur klassischen Philologie Bd. Bd. 138).</li>
+        <li>Walter, Hermann u. Horn, Hans-Jürgen (Hg.): Die Rezeption der "Metamorphosen" des Ovid in der Neuzeit. Der antike Mythos in Text und Bild : internationales Symposion der Werner Reimers-Stiftung, Bad Homburg v. d. H. (22. bis 25. April 1991). Berlin op. 1995 (Ikonographische Repertorien zur Rezeption des antiken Mythos in Europa. Beihefte Bd. 1).</li>
+        <li>Wetzel, Christoph: Ovids Metamorphosen und die bildende Kunst. Stuttgart 2016 (Reclams Universal-Bibliothek Bd. Nr. 19322).</li>
+        <li>Wheeler, Stephen Michael: A discourse of wonders. Audience and performance in Ovid's Metamorphoses. Philadelphia (Pa.) 1999.</li>
+        <li>Wolf, Armin: Homers Reise. Auf den Spuren des Odysseus. Böhlau, 2009.</li>
+      </ul>
+      <br>
+      <br>
+      <br>
+      <div class="infoModalsFooter">
         <br>
         <br>
-        <br>
-        <div class="metamorphosenModalFooter">
-          <br>
-          <br>
-        </div>
       </div>
     </div>
+  </div>
 
-        <!--------------- Quellen Modal ----------------->
-        <div id="ovidModal" class="metamorphosenModal">
-          <div class="metamorphosenModalContent" id="quellenContent">
-            <div class="metamorphosenModalHeader">
-              <br>
-              <h1>Publius Ovidius Naso</h1>
-            </div>
-            Obwohl über Ovid durch seine poetische Autobiografie mehr bekannt ist als über einige andere Schriftsteller der Antike, sind die Überlieferungen dennoch lückenhaft und Gegenstand anhaltender Diskussionen.  Die wenigen über ihn bekannten biographischen Daten sowie einige seiner Werke sollen an dieser Stelle Erwähnung finden, um im Folgenden zum besseren Verständnis sowie zur Kontextualisierung des zu visualisierenden Werkes beizutragen. 
-            <br>
-            Publius Ovidius Naso wurde am 20. März im Jahr 43 v. Chr. in der Stadt Sulmo – dem heutigen Sulmona – geboren.  Sein Elternhaus gehörte dem wohlhabenden alten Landadel an, weshalb auch er den Titel des Ritters trug. Von seinem Vater unterstützt verbringt er seine Lehrjahre gemeinsam mit seinem etwas älteren Bruder im 144 km entfernten Rom, wo er eine rhetorische Schulbildung genoss, die vor allem durch Seneca d. Ä. überliefert ist. Bereits letzterer beschrieb, wie der junge Ovid in den Schulübungen von der festen rhetorischen Argumentation absah und stattdessen von einer „Fundstätte der Erfindung“  zur nächsten überging. Es schließen sich eine Reihe von Bildungsreisen an, wie ein 
-            <br>
-            Durch den frühen Tod des älteren Bruders, setzte sich der Vater in besonderem Maße für eine Senatorenlaufbahn des jüngeren Sohnes ein. Ovid aber schlug diese Chance aus und begnügte sich mit niederen Ämtern, wie dem sog. Dreimännerkollegium , in dem er wohl die Aufgabe des Münzmeisters innehatte und dem Dichten? Die Enttäuschung des Vaters geht aus einer Stelle in der Tristia hervor:
-            <br>
-            Oft sagte mein Vater: ‚Was versuchst du dich an brotlosen Künsten? Sogar Homer hat keine Reichtümer hinterlassen.‘ Ich war von seinen Worten erschüttert, gab den Helicon völlig auf und versuchte, Worte ohne Versmaß zu schreiben. Doch da fand das Gedicht von selbst zu den passenden Rhythmen, und was ich zu sagen versuchte, war ein Vers. 
-            <br>
-            <br>
-            <br>
-            <div class="metamorphosenModalFooter">
-              <br>
-              <br>
-            </div>
-          </div>
-        </div>
+  <!--------------- Ovid Modal ----------------->
+  <div id="ovidModal" class="infoModals">
+    <div class="infoModalsContent" id="ovidContent">
+      <div class="infoModalsHeader">
+        <br>
+        <h1>Publius Ovidius Naso</h1>
+      </div>
+      Obwohl über Ovid durch seine poetische Autobiografie mehr bekannt ist als über einige andere Schriftsteller der Antike, sind die Überlieferungen dennoch lückenhaft und Gegenstand anhaltender Diskussionen.  Die wenigen über ihn bekannten biographischen Daten sowie einige seiner Werke sollen an dieser Stelle Erwähnung finden, um im Folgenden zum besseren Verständnis sowie zur Kontextualisierung des zu visualisierenden Werkes beizutragen. 
+      <br>
+      Publius Ovidius Naso wurde am 20. März im Jahr 43 v. Chr. in der Stadt Sulmo – dem heutigen Sulmona – geboren.  Sein Elternhaus gehörte dem wohlhabenden alten Landadel an, weshalb auch er den Titel des Ritters trug. Von seinem Vater unterstützt verbringt er seine Lehrjahre gemeinsam mit seinem etwas älteren Bruder im 144 km entfernten Rom, wo er eine rhetorische Schulbildung genoss, die vor allem durch Seneca d. Ä. überliefert ist. Bereits letzterer beschrieb, wie der junge Ovid in den Schulübungen von der festen rhetorischen Argumentation absah und stattdessen von einer „Fundstätte der Erfindung“  zur nächsten überging. Es schließen sich eine Reihe von Bildungsreisen an, wie ein 
+      <br>
+      Durch den frühen Tod des älteren Bruders, setzte sich der Vater in besonderem Maße für eine Senatorenlaufbahn des jüngeren Sohnes ein. Ovid aber schlug diese Chance aus und begnügte sich mit niederen Ämtern, wie dem sog. Dreimännerkollegium , in dem er wohl die Aufgabe des Münzmeisters innehatte und dem Dichten? Die Enttäuschung des Vaters geht aus einer Stelle in der Tristia hervor:
+      <br>
+      Oft sagte mein Vater: ‚Was versuchst du dich an brotlosen Künsten? Sogar Homer hat keine Reichtümer hinterlassen.‘ Ich war von seinen Worten erschüttert, gab den Helicon völlig auf und versuchte, Worte ohne Versmaß zu schreiben. Doch da fand das Gedicht von selbst zu den passenden Rhythmen, und was ich zu sagen versuchte, war ein Vers. 
+      <br>
+      <br>
+      <br>
+      <div class="infoModalsFooter">
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
 
     <!--------------- Quiz Modal ----------------->
     <!-- <div id="quizModal" class="infoModal">
@@ -298,6 +346,61 @@
           <br>
       </div>
     </div> -->
+
+
+    <!-- Kategorie Erzählfolge -->
+    <div id="erzaehlfolgeModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Erzählfolge</em></h1>
+        </div>
+        Diese Kategorie sortiert nach der Erzählfolge der Einzelgeschichten im Werk der <em>Metamorphosen</em> und spiegelt die Dreiteilung  des Werkes wider: Auf drei vertikalen Pfeil-Achsen sind die Icons aufgereiht und darunter die zugehörigen Ov.met.-Stelle angegeben, die auch in den Metamorphosen-Modals und Popover zu finden sind. 
+        <br>
+        <br>
+        &#xa9; Quelle: Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael von Albrecht (= Reclams Universal-Bibliothek 1360). 3. Aufl. Ditzingen 2019.
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategorie Klassifikation -->
+    <div id="klassifikationModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Klassifikation</em></h1>
+        </div>
+        Unter der Klassifikation sind die Geschichten nach der taxonomischen Einordnung der/-des Verwandelten angeordnet. Diese sind auf die folgenden vier großen Bereiche zusammengefasst:
+        <br>• Fauna
+        <br>•	Flora
+        <br>•	Elemente
+        <br>•	Anthropomorphes
+        <br>
+        <br>Diese Einteilung fasst das von Iconclass entwickelte Schema, das dort unter 97 Metamorphosen in der klassischen Mythologie  aufgeführt ist, sehr grob zusammen. Ein großer Unterschied ist die dort vorgenommene Differenzierung zwischen den Geschlechtern. Weiterhin werden die folgenden im Projekt verwendeten Begriffe bei Iconclass wie folgt unterteilt:
+        <br>•	Flora wird dort weiterhin in die zwei Unterkategorien Bäume sowie Pflanzen und Blumen unterteilt
+        <br>•	Fauna: Säugetiere, Vögel, (Fabel-)Tiere
+        <br>•	Elemente: Steine; Sterne und Sternbilder; Wasser, Luft oder andere Elemente; Inseln 
+        <br>•	Anthropomorphes: Geschlecht; Alter; verschiedene Formen auf eigenen Wunsch
+        <br>
+        <br>
+        &#xa9; Quelle: Iconclass.org
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -325,11 +428,10 @@
       </li>
     </ul>
 
-    &nbsp; <img src="Icons/upload.png" id="dropDownNavigation">
+    &nbsp; <img src="Icons/down-arrow.png" id="dropDownNavigation">
     
    
-    <div id="navigation2punkt0">
-      <br>
+    <div id="navigation2punkt0" style="display: none;margin-top: 3%;">
       &nbsp; in Verbindung mit &nbsp;
 
       <ul style="display: inline-block;">
@@ -402,10 +504,15 @@
 
   <h2 class="logo">VISUALIZED OVID</h2>
   
-  <div class="navigation">
-    <button id="infoBtn" class="infoBtn" ><img src="Icons/help.png" style="width: 30px;"></button>
-    <button id="bookBtn" class="infoBtn" ><img src="Icons/literature.png" style="width: 30px;"></button>
-    <button id="ovidBtn" class="infoBtn" ><img src="Icons/poet.png" style="width: 32px;"></button>
+  <div class="buttons">
+    <button id="infoBtn" class="infoBtn" ><img src="Icons/info.png" style="width: 32px;"></button>
+    
+    <img src="Icons/down-arrow.png" id="dropDownButtons" style="position:relative;width: 19px; left: 30%;padding-bottom: 10%;">
+    
+    <div id="buttons2punkt0" style="display: none;">
+      <button id="bookBtn" class="infoBtn" ><img src="Icons/library.png" style="width: 32px;"></button>
+      <button id="ovidBtn" class="infoBtn" ><img src="Icons/poet.png" style="width: 32px;"></button>
+    </div>
   </div>
   <!-- <button id="quizBtn" class="infoBtn" ><img src="Icons/iconmonstr-help-6-240.png" style="width: 30px;"></button> -->
 
