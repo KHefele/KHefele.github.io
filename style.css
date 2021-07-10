@@ -568,6 +568,7 @@ a.metamorphosenModalBtns {
   padding-right: 6%;
   padding-left: 7%; /*wg. scrollbar*/
   position: relative;
+  font-size: 12px;
 }
 
 .textModalHeader {
@@ -618,10 +619,10 @@ a.metamorphosenModalBtns {
 
 
 polygon {
-  fill:rgba(0, 217, 255);
-  stroke:rgba(0, 217, 255);
+  fill:rgba(226, 226, 226, 0);
+  stroke:white;
+  stroke-width: 4px;
   opacity: 0;
-  stroke-width:1;
 }
 .metPolygons:hover {
   display:block;
@@ -634,9 +635,6 @@ polygon:hover {
 
 
 
-td {
-  vertical-align:top;
-}
 
 .image_container {
   position: sticky;
