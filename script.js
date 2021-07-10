@@ -2318,58 +2318,53 @@ export async function application() {
 
 
 
-  //Bilder anlegen
-  for (var i = 0; i < figuresListSorted.length; i++){
+  // //Bilder anlegen
+  // for (var i = 0; i < figuresListSorted.length; i++){
     
-    //var metImgDiv = document.createElement()
+  //   //var metImgDiv = document.createElement()
 
-    var metImg = document.createElement("img");
-    metImg.src = "Figuren/" + figuresListSorted[i] + "/image.jpg";
-    metImg.id = figuresListSorted[i] + "BigPicture";
-    metImg.className = "textImages";
-    metImg.title = leude[figuresListSorted[i]].alt;
-    textImg.appendChild(metImg);
+  //   var metImg = document.createElement("img");
+  //   metImg.src = "Figuren/" + figuresListSorted[i] + "/image.jpg";
+  //   metImg.id = figuresListSorted[i] + "BigPicture";
+  //   metImg.className = "textImages";
+  //   metImg.title = leude[figuresListSorted[i]].alt;
+  //   textImg.appendChild(metImg);
     
-    //positioning
-    metImg.style.position = "absolute";
-    metImg.style.top = "14%";
-    metImg.style.left = "5%";
+  //   //positioning
+  //   metImg.style.position = "absolute";
+  //   metImg.style.top = "14%";
+  //   metImg.style.left = "5%";
 
 
 
-    if (metImg.naturalWidth/metImg.naturalHeight < 63/77) { //wenn das Bildverhältnis
-      console.log(figuresListSorted[i])
-      //metImg.style.display = "none";
-      metImg.style.height = "77%";
-    } else {
-      metImg.style.width = "40%"; //& max höhe = 77% (s. #textModal)
-    }
-
-
-    //Bildtitel
-    var imageTitle = document.createElement("p");
-    imageTitle.className = "imageNames";
-    imageTitle.innerHTML = leude[figuresListSorted[i]].alt;
-    metImg.appendChild(imageTitle);
+  //   if (metImg.naturalWidth/metImg.naturalHeight < 63/77) { //wenn das Bildverhältnis
+  //     console.log(figuresListSorted[i])
+  //     //metImg.style.display = "none";
+  //     metImg.style.height = "77%";
+  //   } else {
+  //     metImg.style.width = "40%"; //& max höhe = 77% (s. #textModal)
+  //   }
 
 
 
-    var metSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-    //metSvg.className = "metSvg";
-    metSvg.style.position = "absolute";
-    metSvg.setAttribute("height", "100%");
-    metSvg.setAttribute("width", "100%");
-    textImg.appendChild(metSvg);
+
+
+  //   var metSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+  //   //metSvg.className = "metSvg";
+  //   metSvg.style.position = "absolute";
+  //   metSvg.setAttribute("height", "100%");
+  //   metSvg.setAttribute("width", "100%");
+  //   textImg.appendChild(metSvg);
     
   
-    var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-    //metPolygons.className = "metPolygons";
-    metPolygons.setAttribute("points", "220,10 300,210 170,250 123,234");
-    metSvg.appendChild(metPolygons);
+  //   var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  //   //metPolygons.className = "metPolygons";
+  //   metPolygons.setAttribute("points", "220,10 300,210 170,250 123,234");
+  //   metSvg.appendChild(metPolygons);
     
 
     
-  }
+  // }
 
 
 
@@ -2380,8 +2375,83 @@ export async function application() {
 
 
 
-  // var metamorphosenTable = document.createElement("table");
-  // textModalDiv.appendChild(metamorphosenTable);
+  var metamorphosenTable = document.createElement("table");
+  textModalDiv.appendChild(metamorphosenTable);
+
+  for (var key in metamorphosen) {
+    if (key in leude) {
+      
+      var metamorphosenTableRow = document.createElement("tr");
+      metamorphosenTable.appendChild(metamorphosenTableRow);
+
+
+      //Bilder-Zelle
+      var metamorphosenTableCell = document.createElement("td");
+      metamorphosenTableCell.style.width = "50%";
+      metamorphosenTableRow.appendChild(metamorphosenTableCell);
+      
+      var svgDiv = document.createElement("div");
+      metamorphosenTableCell.appendChild(svgDiv);
+      svgDiv.className = "image_container";
+      
+      var metaImg = document.createElement("img");
+      svgDiv.appendChild(metaImg);
+      metaImg.setAttribute("src", "Figuren/" + key + "/image.jpg");
+
+      //Bildtitel
+      var imageTitle = document.createElement("p");
+      //imageTitle.className = "imageNames";
+      imageTitle.innerHTML = leude[key].alt;
+      metamorphosenTableCell.appendChild(imageTitle);
+
+
+
+      //Text-Zelle
+      var metamorphosenTableCell2 = document.createElement("td");
+      metamorphosenTableCell2.style.width = "50%";
+      metamorphosenTableCell2.style.backgroundColor = "rgba(227, 222, 216, 1)";
+      metamorphosenTableRow.appendChild(metamorphosenTableCell2);
+
+      var header = document.createElement("h1");
+      header.className = "textModalHeader";
+      header.id = key + "Header";
+      header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
+      metamorphosenTableCell2.appendChild(header);
+
+      var contentP = document.createElement("p");
+      metamorphosenTableCell2.appendChild(contentP);
+      metamorphosenTableCell2.className = "textModalContent";
+      contentP.innerHTML = metamorphosen[key].text;
+
+
+
+
+
+    }
+  }
+
+    //Footer Div
+    var footer = document.createElement("div");
+    footer.className = "textModalFooter";
+    textModalDiv.appendChild(footer);
+  
+    //Quellenangabe Div und Link
+    var copyrightText = document.createElement("div");
+    footer.appendChild(copyrightText);
+    copyrightText.style.fontSize = "8px";
+    copyrightText.style.position = "relative";
+    copyrightText.style.left ="55%";
+    copyrightText.style.width = "40%";
+    copyrightText.style.backgroundColor = "rgba(227, 222, 216, 1)";
+    copyrightText.style.boxShadow = "0px -17px 7px 5px rgba(227, 222, 216, 1)";
+    copyrightText.style.padding = "0% 2% 2% 2%"; //s. .textModalContent-Einstellungen
+    copyrightText.innerHTML = "&#xa9; Quelle: ";
+    var copyrightLink = document.createElement("a");
+    copyrightLink.setAttribute("href", "http://www.zeno.org/Lesesaal/N/9781482656428?page=0");
+    copyrightLink.innerHTML = "Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael Holzinger. Übers. von Reinhart Suchier. Berlin 2013."
+    copyrightText.appendChild(copyrightLink);
+
+  /*
 
   //iterate through metamorphosen.json
   for (var key in metamorphosen) {
@@ -2393,21 +2463,14 @@ export async function application() {
     //contentDiv.className = "textModalContent";
     textModalDiv.appendChild(contentDiv);
 
-    var header = document.createElement("h1");
-    header.className = "textModalHeader";
-    header.id = key + "Header";
-    header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
-    contentDiv.appendChild(header);
 
-    var contentP = document.createElement("p");
-    contentDiv.appendChild(contentP);
-    contentDiv.className = "textModalContent";
-    var textTable = document.createElement("table"); //table
-    textTable.className = "fliesstextTables";
-    contentP.appendChild(textTable);
-    var textRow = document.createElement("tr"); //tr
-    //textRow.style.position = "relative";
-    textTable.appendChild(textRow);
+      var textTable = document.createElement("table"); //table
+      textTable.className = "fliesstextTables";
+      contentP.appendChild(textTable);
+      var textRow = document.createElement("tr"); //tr
+      //textRow.style.position = "relative";
+      textTable.appendChild(textRow);
+
 
     //lateinischer MetamorphosenText
     var textColumnLatein = document.createElement("td");
@@ -2433,7 +2496,7 @@ export async function application() {
 
   }
 
-
+  */
 
   //Checkboxen latein-deutsch
   var lateinBtn = document.getElementById("lateinischerOriginaltext");
@@ -2541,22 +2604,7 @@ export async function application() {
 
 
 
-  //Footer Div
-  var footer = document.createElement("div");
-  footer.className = "textModalFooter";
-  textModalDiv.appendChild(footer);
 
-  //Quellenangabe Div und Link
-  var copyrightText = document.createElement("div");
-  footer.appendChild(copyrightText);
-  copyrightText.style.fontSize = "8px";
-  copyrightText.style.position = "relative";
-  copyrightText.style.padding = "2% 9% 4% 10%"; //s. .textModalContent-Einstellungen
-  copyrightText.innerHTML = "&#xa9; Quelle: ";
-  var copyrightLink = document.createElement("a");
-  copyrightLink.setAttribute("href", "http://www.zeno.org/Lesesaal/N/9781482656428?page=0");
-  copyrightLink.innerHTML = "Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael Holzinger. Übers. von Reinhart Suchier. Berlin 2013."
-  copyrightText.appendChild(copyrightLink);
 
   //Funktion, die Fliesstext auf Block setzt (+ Rest auf none)
   function fliesstextFunction() {
