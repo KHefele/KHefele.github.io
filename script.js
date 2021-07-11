@@ -1454,6 +1454,17 @@ export async function application() {
     }
 
 
+    //ausgrauen des Kategoriebuttons der aktiven Kategorie
+    function greyButton(button){
+      var kategorieButtons = document.getElementsByClassName("kategorieButton");
+      for (var k = 0; k < kategorieButtons.length; k++){
+        kategorieButtons[k].style.backgroundColor = null;
+        kategorieButtons[k].childNodes[0].style.cursor = null;
+      }
+      button.style.backgroundColor = "grey"; //button grey
+      var buttonChild = button.childNodes[0]; //cursor auto
+      buttonChild.style.cursor = "auto"; 
+    }
 
 
 
@@ -1598,9 +1609,9 @@ export async function application() {
     setBackOtherKategories("erzaehlfolge");
     setLocationHash("erzaehlfolge");
     insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
+    greyButton(chronoBtn);
 
-
-    chronoBtn.style.backgroundColor = "grey";
+    
     //chronoBtn.style.cursor = "default";
     //chronoBtn.style.color = "#733030";
 
@@ -1667,7 +1678,8 @@ export async function application() {
     setWidthPercent(80);
     setBackOtherKategories("taxonomie");
     setLocationHash("taxonomie");
-    insertCurrentCategory("Klassifikation", "ancient.png", 21)
+    insertCurrentCategory("Klassifikation", "ancient.png", 21);
+    greyButton(taxBtn);
 
     
     taxImg.style.display = "block";
@@ -1848,6 +1860,7 @@ export async function application() {
     setBackOtherKategories("geographie");
     setLocationHash("geographie");
     insertCurrentCategory("Geographie", "iconmonstr-globe-8-240.png", 18);
+    greyButton(geoBtn);
   
 
     geoImg.style.display = "block";
@@ -1942,6 +1955,7 @@ export async function application() {
     setBackOtherKategories("alphabet");
     setLocationHash("alphabet");
     insertCurrentCategory("Alphabet", "iconmonstr-sort-14-240.png", 20);
+    greyButton(alphaBtn);
 
 
     alphaImg.style.display = "block";
@@ -2059,6 +2073,7 @@ export async function application() {
     setBackOtherKategories("grund");
     setLocationHash("grund");
     insertCurrentCategory("Verwandlungsgrund", "question.png", 19);
+    greyButton(grundBtn);
   
 
     grundImg.style.display = "block";
@@ -2269,6 +2284,7 @@ export async function application() {
     setBackOtherKategories("verwandelnde");
     setLocationHash("verwandelnde");
     insertCurrentCategory("Verwandelnde", "iconmonstr-magic-5-240.png", 18);
+    greyButton(verwandelndeBtn);
 
     verwandelndeImg.style.display = "block";
 
@@ -2338,7 +2354,7 @@ export async function application() {
   for (var key in metamorphosen){
     // console.log("count"); 
     var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
-    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn style='background-color: rgba(115, 48, 48, 0.3)' class='tooltip $&'>$&</dfn>")
+    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn style='background-color: rgba(115, 48, 48, 0.3)' class='tooltip $& verwandlerTrigger'>$&</dfn>")
   }
 
 
@@ -2472,6 +2488,7 @@ export async function application() {
         var metPolygons2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         metPolygons2.setAttribute("points", coordinatesJupiter);
         metPolygons2.setAttribute("class", leude[key].verwandler);
+        metPolygons2.setAttribute("class", "verwandlerAnno");
         metSvg.appendChild(metPolygons2);
   
         var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
@@ -2653,6 +2670,27 @@ export async function application() {
   }
 
 
+  //Trigger aus dem Text 
+  var verwandlerTriggers = document.getElementsByClassName("verwandlerTrigger");
+  var verwandlerAnnos = document.getElementsByClassName("verwandlerAnno");
+  console.log()
+
+  for (var t = 0; t < verwandlerTriggers.length; t++){
+    
+    verwandlerTriggers[t].onmouseenter = function(){
+      for (var a = 0; a < verwandlerAnnos.length; a++){
+        verwandlerAnnos[a].style.opacity = "1";
+      }
+    }
+    verwandlerTriggers[t].onmouseleave = function(){
+      for (var a = 0; a < verwandlerAnnos.length; a++){
+        verwandlerAnnos[a].style.opacity = null; //Regel weggenommen 
+      }
+    }
+  }
+
+
+
   
 
   // 2. Popover/Tooltip setzen
@@ -2703,6 +2741,7 @@ export async function application() {
     setBackOtherKategories("fliesstext");
     setLocationHash("fliesstext");
     insertCurrentCategory("Fließtext", "iconmonstr-script-2-240.png", 20);
+    greyButton(textBtn);
     
     textImg.style.display = "block";
 
@@ -2752,7 +2791,7 @@ export async function application() {
   //--------------------------------------------//
   //             8. Unorganisiert               //
   //--------------------------------------------//
-
+  
   
   var unorgBtn = document.getElementById("unorganisiert");
 
@@ -2762,6 +2801,7 @@ export async function application() {
     setBackOtherKategories();
     setLocationHash("");
     insertCurrentCategory("Keine Auswahl", "iconmonstr-circle-5-240.png", 19);
+    greyButton(unorgBtn);
     
 
     for (var figur in leude){
@@ -2771,12 +2811,17 @@ export async function application() {
     }
   }
 
+  //bei Laden der Seite auf Unorganisiert, sonst kein ausgegrauter Button
+  if (aktuelleKategorie == ""){
+    unorgBtn.style.backgroundColor = "grey";
+  }
   
 
   //Achtung: Wenn man mit einer anderen Kategorie startet, ist aktuelle Kategorie auch ein leerer String
   var dragParent = null;
 
 
+  //verschiebbare Icons auf der Startseite unorganisiert
   document.onmousedown = function (event) {
     if (aktuelleKategorie == ""){
       dragParent = event.target.closest(".popover__wrapper");
@@ -2868,6 +2913,15 @@ export async function application() {
     insertCurrentMarkCategoryHere.innerHTML = "<img src='Icons/"+ bildnameInIconsII + "' style='width: " + widthInPxII + "px;'> "+ kategorienameII;
   }
 
+  //ausgrauen des Kategoriebuttons der aktiven Kategorie
+  function greyMarkButton(button){
+    var markKategorieButtons = document.getElementsByClassName("markKategorieButton");
+    for (var k = 0; k < markKategorieButtons.length; k++){
+      markKategorieButtons[k].style.backgroundColor = null;
+    }
+    button.style.backgroundColor = "grey";
+  }
+
 
 
 
@@ -2878,7 +2932,8 @@ export async function application() {
   var markKeineAuswahl = document.getElementById("markKeineAuswahl");
   markKeineAuswahl.onclick = function () {
     insertCurrentMarkCategory("Keine Auswahl", "iconmonstr-circle-5-240.png", "19");
-    
+    //greyMarkButton(markKeineAuswahl);
+
     for (figur in leude){
       document.getElementById(figur + "Wrapper").style.opacity = "100%";
     }
@@ -2924,7 +2979,10 @@ export async function application() {
   var markPentadeII = document.getElementById("markPentadeII");
   var markPentadeIII = document.getElementById("markPentadeIII");
 
-  markPentadeI.onclick = () => markPentade(1,5);
+  markPentadeI.onclick = function () {
+    markPentade(1,5);
+    //greyMarkButton(markPentadeI);
+  } 
   markPentadeII.onclick = () => markPentade(6,10);
   markPentadeIII.onclick = () => markPentade(11,15);
 

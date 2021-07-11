@@ -539,14 +539,14 @@
     <ul style="display: inline-block;">
       <li class="parent" id="startKategorie" style="border-radius: 4px; text-align: center;width: 200px;"><div id="insertCurrentCategoryHere"><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
       <ul class="child" id="kategoryPopUp">
-        <li class="parent" id="unorganisiert"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
-        <li class="parent" id="chrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
-        <li class="parent" id="tax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation</div></li>
-        <li class="parent" id="geo"><div>&nbsp;<img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
-        <li class="parent" id="alpha"><div>&nbsp;<img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
-        <li class="parent" id="grund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verwandlungsgrund</div></li>
-        <li class="parent" id="verwandelnder"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
-        <li class="parent" id="text"><div>&nbsp;<img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
+        <li class="parent kategorieButton" id="unorganisiert"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
+        <li class="parent kategorieButton" id="chrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
+        <li class="parent kategorieButton" id="tax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation</div></li>
+        <li class="parent kategorieButton" id="geo"><div>&nbsp;<img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
+        <li class="parent kategorieButton" id="alpha"><div>&nbsp;<img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
+        <li class="parent kategorieButton" id="grund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verwandlungsgrund</div></li>
+        <li class="parent kategorieButton" id="verwandelnder"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
+        <li class="parent kategorieButton" id="text"><div>&nbsp;<img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
       </ul>
       </li>
     </ul>
@@ -564,52 +564,52 @@
           <!-- Erzählfolge -->
           <li class="parent" id="markChrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge<span class="expand">»</span></div>
             <ul class="child">
-              <li><div id="markPentadeI">&nbsp;<img src="Icons/iconmonstr-arrow-1.png" style="width: 20px;"> I. Pentade</div></li>
-              <li><div id="markPentadeII">&nbsp;<img src="Icons/iconmonstr-arrow-2.png" style="width: 20px;"> II. Pentade</div></li>
-              <li><div id="markPentadeIII">&nbsp;<img src="Icons/iconmonstr-arrow-3.png" style="width: 20px;"> III. Pentade</div></li>
+              <li><div id="markPentadeI" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-1.png" style="width: 20px;"> I. Pentade</div></li>
+              <li><div id="markPentadeII" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-2.png" style="width: 20px;"> II. Pentade</div></li>
+              <li><div id="markPentadeIII" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-3.png" style="width: 20px;"> III. Pentade</div></li>
             </ul>
           </li>
           <!-- Taxonomie -->
           <li class="parent" id="markTax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation<span class="expand">»</span></div>
             <ul class="child">
-              <li><div id="markFauna">&nbsp;<img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Fauna</div></li>
-              <li><div id="markFlora">&nbsp;<img src="Icons/iconmonstr-flower-3-240.png" style="width: 20px;"> Flora</div></li>
-              <li><div id="markElemente">&nbsp;<img src="Icons/iconmonstr-drop-7-240.png" style="width: 19px;"> Elemente</div></li>
-              <li><div id="markAnthropomorphes">&nbsp;<img src="Icons/iconmonstr-accessibility-2-240.png" style="width: 20px;"> Anthropomorphes</div></li>
+              <li><div id="markFauna" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Fauna</div></li>
+              <li><div id="markFlora" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-flower-3-240.png" style="width: 20px;"> Flora</div></li>
+              <li><div id="markElemente" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-drop-7-240.png" style="width: 19px;"> Elemente</div></li>
+              <li><div id="markAnthropomorphes" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-accessibility-2-240.png" style="width: 20px;"> Anthropomorphes</div></li>
             </ul>
           </li>
           <!-- Verw.-Grund -->
           <li class="parent" id="markGrund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verw.-Grund<span class="expand">»</span></div>
             <ul class="child">
-              <li><div id="markBestrafung">&nbsp;<img src="Icons/gerechtigkeit.png" style="width: 17px;"> Bestrafung/Rache</div></li>
-              <li><div id="markWunsch">&nbsp;<img src="Icons/iconmonstr-speech-bubble-7-240.png" style="width: 17px;"> Bitte/Wunsch</div></li>
-              <li><div id="markSchutz">&nbsp;<img src="Icons/iconmonstr-shield-17-240.png" style="width: 17px;"> Schutz</div></li>
-              <li><div id="markTrauer">&nbsp;<img src="Icons/iconmonstr-drop-6-240.png" style="width: 17px;"> Trauer</div></li>
-              <li><div id="markPostumeEhrung">&nbsp;<img src="Icons/tombstone.png" style="width: 17px;"> postume Ehrung</div></li>
-              <li><div id="markKampfvorteil">&nbsp;<img src="Icons/iconmonstr-boxing-1-240.png" style="width: 17px;"> Kampfvorteil</div></li>
-              <li><div id="markSonstiges">&nbsp;<img src="Icons/ellipsis.png" style="width: 17px;"> Sonstiges</div></li>
+              <li><div id="markBestrafung" class="markKategorieButton">&nbsp;<img src="Icons/gerechtigkeit.png" style="width: 17px;"> Bestrafung/Rache</div></li>
+              <li><div id="markWunsch" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-speech-bubble-7-240.png" style="width: 17px;"> Bitte/Wunsch</div></li>
+              <li><div id="markSchutz" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-shield-17-240.png" style="width: 17px;"> Schutz</div></li>
+              <li><div id="markTrauer" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-drop-6-240.png" style="width: 17px;"> Trauer</div></li>
+              <li><div id="markPostumeEhrung" class="markKategorieButton">&nbsp;<img src="Icons/tombstone.png" style="width: 17px;"> postume Ehrung</div></li>
+              <li><div id="markKampfvorteil" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-boxing-1-240.png" style="width: 17px;"> Kampfvorteil</div></li>
+              <li><div id="markSonstiges" class="markKategorieButton">&nbsp;<img src="Icons/ellipsis.png" style="width: 17px;"> Sonstiges</div></li>
             </ul>
           </li>
           <!-- Verwandelnde -->
           <li class="parent" id="markVerwandelnde"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde<span class="expand">»</span></div>
             <ul class="child">
-              <li><div id="markJupiter">&nbsp;<img src="Icons/iconmonstr-connection-1-240.png" style="width: 18px;"> Jupiter</div></li>
-              <li><div id="markNeptun">&nbsp;<img src="Icons/trident.png" style="width: 18px;"> Neptun</div></li>
-              <li><div id="markVenus">&nbsp;<img src="Icons/iconmonstr-favorite-1-240.png" style="width: 16px;"> Venus</div></li>
-              <li><div id="markDiana">&nbsp;<img src="Icons/bow-and-arrow.png" style="width: 18px;"> Diana</div></li>
-              <li><div id="markMinerva">&nbsp;<img src="Icons/roman-helmet.png" style="width: 18px;"> Minerva</div></li>
-              <li><div id="markMercur">&nbsp;<img src="Icons/hermes.png" style="width: 18px;"> Mercur</div></li>
-              <li><div id="markApollo">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Apollo</div></li>
-              <li><div id="markCeres">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Ceres</div></li>
-              <li><div id="markJuno">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Juno</div></li>
+              <li><div id="markJupiter" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-connection-1-240.png" style="width: 18px;"> Jupiter</div></li>
+              <li><div id="markNeptun" class="markKategorieButton">&nbsp;<img src="Icons/trident.png" style="width: 18px;"> Neptun</div></li>
+              <li><div id="markVenus" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-favorite-1-240.png" style="width: 16px;"> Venus</div></li>
+              <li><div id="markDiana" class="markKategorieButton">&nbsp;<img src="Icons/bow-and-arrow.png" style="width: 18px;"> Diana</div></li>
+              <li><div id="markMinerva" class="markKategorieButton">&nbsp;<img src="Icons/roman-helmet.png" style="width: 18px;"> Minerva</div></li>
+              <li><div id="markMercur" class="markKategorieButton">&nbsp;<img src="Icons/hermes.png" style="width: 18px;"> Mercur</div></li>
+              <li><div id="markApollo" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Apollo</div></li>
+              <li><div id="markCeres" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Ceres</div></li>
+              <li><div id="markJuno" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Juno</div></li>
             </ul>
           </li>
           <!-- Geschlecht -->
           <li class="parent" id="markGeschlecht"><div>&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Geschlecht<span class="expand">»</span></div>
             <ul class="child">
-              <li><div id="markGeschlechtW">&nbsp;<img src="Icons/iconmonstr-gender-2-240.png" style="width: 17px;"> Weiblich</div></li>
-              <li><div id="markGeschlechtM">&nbsp;<img src="Icons/iconmonstr-gender-1-240.png" style="width: 17px;"> Männlich</div></li>
-              <li><div id="markGeschlechtD">&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Divers</div></li>
+              <li><div id="markGeschlechtW" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-2-240.png" style="width: 17px;"> Weiblich</div></li>
+              <li><div id="markGeschlechtM" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-1-240.png" style="width: 17px;"> Männlich</div></li>
+              <li><div id="markGeschlechtD" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Divers</div></li>
             </ul>
           </li>
         
