@@ -621,7 +621,7 @@ a.metamorphosenModalBtns {
 polygon {
   fill:rgba(226, 226, 226, 0);
   stroke:white;
-  stroke-width: 4px;
+  stroke-width: 1%;
   opacity: 0;
 }
 .metPolygons:hover {

@@ -45,7 +45,7 @@
       <!-- Hintergrundinfo-Button -->
       <div style="width: 48%; left: 85%; top: 78.5%; position: relative;">
         <button class="hintergrundinfoButton" id="klassifikationInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px; cursor: pointer;" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <img src="Icons/quellen_info_white.png" style="width: 35px; cursor: pointer;" >
           <div>Hintergrund-<br>information</div>
         </button>
       </div>
@@ -77,8 +77,8 @@
 
       <!-- Hintergrundinfo-Button -->
       <div style="left: 85%; top: 83%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="alphabetInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+        <button class="hintergrundinfoButton" id="geographieInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
         </button>
       </div>
@@ -95,7 +95,7 @@
       <!-- Hintergrundinfo-Button -->
       <div style="left: 85%; top: 83%; width: 48%; position: relative;">
         <button class="hintergrundinfoButton" id="alphabetInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
         </button>
       </div>
@@ -117,7 +117,7 @@
       <!-- Hintergrundinfo-Button -->
       <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
         <button class="hintergrundinfoButton" id="fliesstextInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
         </button>
       </div>
@@ -157,8 +157,8 @@
 
       <!-- Hintergrundinfo-Button -->
       <div style="left: 89%; top: 75%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="grundInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+        <button class="hintergrundinfoButton" id="verwandlungsgrundInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
         </button>
       </div>
@@ -174,7 +174,7 @@
       <!-- Hintergrundinfo-Button -->
       <div style="left: 87%; top: 68%; width: 48%; position: relative;">
         <button class="hintergrundinfoButton" id="verwandelndeInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" title="&#xa9; Grob zusammengefasste Einteilung der Klassifizierung nach<a href='Iconclass.org'>Iconclass</a>">
+          <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
         </button>
       </div>
@@ -203,7 +203,7 @@
         <br>
         <br>
         <h1 style="text-align: center;">VISUALIZED OVID</h1>
-        <p style="text-align: center;"><em>Von Covid zu Ovid</em></p>
+        <p style="text-align: center;"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
         <br>
         <hr>
       </div>
@@ -211,15 +211,16 @@
         <br>
         Jedes Icon repräsentiert die Geschichte eines:r Sterblichen, der:die in den Metamorphosen Ovids verwandelt wurde. Klicke diese an, wenn du mehr über die Verwandlungsumstände erfahren möchtest.
         <br>
-        Außerdem kannst du die Geschichten unter ausgewählten Gesichtspunkten anreihen bzw. neue Zusammenhänge bringen. Durch die Navitations-Leiste links unten, kannst du verschiedene Kategorien auswählen, und die Icons danach anordnen lassen. 
+        Außerdem kannst du die Geschichten unter ausgewählten Gesichtspunkten anreihen bzw. in neue Zusammenhänge bringen. Durch die Navitations-Leiste links unten, kannst du verschiedene Kategorien auswählen, und die Icons danach anordnen lassen. 
         <br>
         <br>
         Viel Spaß mit <s>C</s>OVID!
-      <br>
+        <br>
+        <br>
       </p>
       <div class="metamorphosenModalFooter">
-        <span class="modalBtns" id="closeStartModal">Los geht's</span>
-        <button class="modalBtns" id="mehrInfoBtn">Mehr Infos</button>
+        <button class="modalBtns" style="position: relative; float: right;" id="closeStartModal">Los geht's</button>
+        <button class="modalBtns" style="position: relative; float: left;" id="mehrInfoBtn">Mehr Infos</button>
       </div>
     </div>
   </div>
@@ -227,29 +228,42 @@
   <!--------------- Info Modal ----------------->
   <div id="infoModal" class="infoModals">
     <div class="infoModalsContent">
+
       <div class="infoModalsHeader">
+        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
         <br>
         <h1>Über das Projekt</h1>
       </div>
+      
       <p>
+        <br>
         Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der 
         <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a> 
-        entstanden ist.
+        entstanden ist: <em>Digitale Anwendung zur Vermittlung der Metamorphosen Ovids</em>. 
+        Unter der Betreuung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/peter-bell/">Prof. Dr. Peter Bell</a> 
+        und der kompetenten Beratung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/dirk-suckow/">Dirk Suckow, M.A.</a> 
+        und <a href="https://www.lgdv.tf.fau.de/person/philipp-kurth/">Philipp Kurth, M.Sc</a>.
+        <br>
+        <br>Als Inspiration dienten die Projekte:
+        <br>•	<a href="https://visualize.numid.online/#/de">NUMiD</a> der <a href="https://www.tu-braunschweig.de/">Technischen Universität Braunschweig</a>
+        <br>•	<a href="https://digi.ub.uni-heidelberg.de/wgd/">Welscher Gast Digital</a> der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>.
       </p>
       <br>
+      <img src="Bilder/FAU_Logo_trans_rgb.png" style="position:relative; width: 50%;">
       <hr>
       <p>
+        <br>
         Anmerkungen und Fehlermeldungen bitte an: 
         <br>
         <img src="Icons/iconmonstr-email-1-240.png" style="width: 18px;">
         <a href="mailto:katharina.hefele@fau.de">Katharina Hefele, katharina.hefele@fau.de</a>
-        
-        
-        <div>Some Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       </p>
       <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="infoModalsFooter">
-        <span class="modalBtns" id="closeInfoBtn">SCHLIESSEN</span>
         <br>
       </div>
     </div>
@@ -258,10 +272,13 @@
   <!--------------- Quellen Modal ----------------->
   <div id="quellenModal" class="infoModals">
     <div class="infoModalsContent" id="quellenContent">
+
       <div class="infoModalsHeader">
+        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
         <br>
         <h1>Bibliographie</h1>
       </div>
+
       <ul>
         <li>Albrecht, Michael von: Ovid. Eine Einführung. Stuttgart 2003 (Reclams Universal-Bibliothek Bd. Nr. 17641).</li>
         <li>Albrecht, Michael von: Ovids Metamorphosen. Texte, Themen, Illustrationen. Heidelberg 2014 (Heidelberger Studienhefte zur Altertumswissenschaft.</li>
@@ -296,6 +313,7 @@
       <br>
       <br>
       <br>
+      <div>Some Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
       <div class="infoModalsFooter">
         <br>
         <br>
@@ -306,10 +324,13 @@
   <!--------------- Ovid Modal ----------------->
   <div id="ovidModal" class="infoModals">
     <div class="infoModalsContent" id="ovidContent">
+      
       <div class="infoModalsHeader">
+        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
         <br>
         <h1>Publius Ovidius Naso</h1>
       </div>
+
       Obwohl über Ovid durch seine poetische Autobiografie mehr bekannt ist als über einige andere Schriftsteller der Antike, sind die Überlieferungen dennoch lückenhaft und Gegenstand anhaltender Diskussionen.  Die wenigen über ihn bekannten biographischen Daten sowie einige seiner Werke sollen an dieser Stelle Erwähnung finden, um im Folgenden zum besseren Verständnis sowie zur Kontextualisierung des zu visualisierenden Werkes beizutragen. 
       <br>
       Publius Ovidius Naso wurde am 20. März im Jahr 43 v. Chr. in der Stadt Sulmo – dem heutigen Sulmona – geboren.  Sein Elternhaus gehörte dem wohlhabenden alten Landadel an, weshalb auch er den Titel des Ritters trug. Von seinem Vater unterstützt verbringt er seine Lehrjahre gemeinsam mit seinem etwas älteren Bruder im 144 km entfernten Rom, wo er eine rhetorische Schulbildung genoss, die vor allem durch Seneca d. Ä. überliefert ist. Bereits letzterer beschrieb, wie der junge Ovid in den Schulübungen von der festen rhetorischen Argumentation absah und stattdessen von einer „Fundstätte der Erfindung“  zur nächsten überging. Es schließen sich eine Reihe von Bildungsreisen an, wie ein 
@@ -320,6 +341,7 @@
       <br>
       <br>
       <br>
+
       <div class="infoModalsFooter">
         <br>
         <br>
@@ -327,22 +349,17 @@
     </div>
   </div>
 
-    <!--------------- Quiz Modal ----------------->
-    <!-- <div id="quizModal" class="infoModal">
-      <div class="modalContent" id="quizStartContent">
-          <h1 style="text-align: center;"><em>Quiz</em></h1>
-          <p class="modalContentLeft">
-            Mit Metamorphosenbildung lässt sich in vielen Situationen punkten. 
-            <br>In welchen Themenbereichen können Sie Ihr Wissen unter Beweis stellen? 
-            <br>Zeigen Sie Ihre Stärken im Quiz.
-          </p>
-          <br>
-          <br>
-          <span class="modalBtns" id="zumQuizBtn">Zum Quiz</span>
-          <br>
-      </div>
-    </div> -->
 
+
+
+
+
+
+
+
+  <!--------------------------------------------->
+  <!--       Kategorie-Erklärungen             -->
+  <!--------------------------------------------->
 
     <!-- Kategorie Erzählfolge -->
     <div id="erzaehlfolgeModal" class="kategorieModals">
@@ -388,6 +405,116 @@
         <br>
         <br>
         &#xa9; Quelle: Iconclass.org
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Kategorie Geographie -->
+    <div id="geographieModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Geographie</em></h1>
+        </div>
+        Sofern in den Metamorphosen ein Ort angegeben wurde, werden die Icons in dieser Kategorie auf einer Karte lokalisiert. In einigen Fällen sind die Schauplätze nicht von Ovid niedergeschrieben, sind aber durch anderweitige Überlieferungen oder durch Autorenmeinungen bekannt. Dies ist in den Metamorphosen-Models der jeweiligen Geschichte kenntlich gemacht. So ist bei den Gefährten des Ulixes beispielsweise als Ort vermerkt: „Insel Aiaia (laut Armin Wolf mit der Insel Ustica gleichzusetzen, Wolf 2009, S. 52 ff.)“. Die abgekürzte Literaturangabe lässt sich in der angegebenen Bibliographie unter Quellen nachlesen.
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Kategorie Alphabet -->
+    <div id="alphabetModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Alphabet</em></h1>
+        </div>
+        Selbsterklärend sind die Protagonisten hier nach dem Alphabet geordnet gelistet. Wie unter Punkt 3.4.3 bereits erwähnt, tragen zwei der Verwandelten in Ovid keinen Namen. Da diese im späteren Verlauf jedoch einen erhielten, unter dem sie in der Kunstgeschichte bekannt sind und auf den deshalb auch die Iconclass-Verknüpfungen verweist, sind sie bei der Sortierung jedoch über Galatea, Ascalabus eingeordnet.
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategorie Verwandlungsgrund -->
+    <div id="verwandlungsgrundModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandlungsgrund</em></h1>
+        </div>
+        Gründe für die Metamorphosen wiederholen sich und lassen sich in die wenigen folgende Gruppen klassifizieren:
+        <br>•	Bestrafung (meist für Hybris gegenüber der Götter), z.B. Lycaon
+        <br>•	Trauer z.B. Cyane, meist Sehnsucht/unerfüllte Begierde, z.B. Narciss nach dem eigenen Spiegelbild, in dieser Spalte zumal meist keinen Verwandler
+        <br>•	 Tod (meist mit Ehrung verbunden)> Caesar oder Hyacinthus
+        <br>•	Schutz, z.B. Daphne
+        <br>•	auf eigenen Wunsch 
+        <br>
+        <br>(gibt Hierarchie: auf eigenen Wunsch steht über Schutz, z.B. Caenis zählt zu auf eigenen Wunsch) 
+        <br>
+        <br>Interessante Beobachtungen von sich wiederholender Motivik/Gestik innerhalb einer Kategorie:
+        <br>•	Überraschungsgeste v.a. bei Bestrafung
+        <br>•	Flucht/Raub-Motiv / Agressor und Fliehende z.B. bei Daphne, Alphalus 
+        <br>•	Trauermotiv z.B. Echo
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategorie Verwandelnde -->
+    <div id="verwandelndeModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandelnde</em></h1>
+        </div>
+        An dieser Stelle sind die eifrigsten Verwandler genannt. Da es sich hierbei vorrangig um die olympischen Götter handelt, sind diese gestaffelt nach der Anzahl der getätigten Verwandlungen aufgeführt.
+        <br>
+        <br>
+        <br>
+        <div class="kategorieModalsFooter">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kategorie Fliesstext -->
+    <div id="fliesstextModal" class="kategorieModals">
+      <div class="kategorieModalsContent">
+        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <div class="kategorieModalsHeader">
+          <br>
+          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Fließtext</em></h1>
+        </div>
+        Mit Albrecht von Michael gearbeitet aber für Projekt auf bereits digitalisierten Text zurückgegriffen.
+        <br>Bekannte Übersetzungen von Suchier und Johann Heinrich Voß wurden digitalisiert (ersteres u.a. von Zeno, zweiteres von Gutenberg) gegen Gutenberg entschieden, da hier einige Textstellen fehlen?  
         <br>
         <br>
         <br>

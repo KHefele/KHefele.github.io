@@ -10,11 +10,13 @@ export async function application() {
 
   const leude = await loadJSON('leude.json'); // für Modals & Popover
   const metamorphosen = await loadJSON('metamorphosen.json'); // für MetamorphosenText
-
+  const annotations = await loadJSON("annotations.json"); 
 
   if (location.hash === "") {
     location.hash = "#";
   }
+
+
 
 
 
@@ -66,7 +68,7 @@ export async function application() {
   var infoModal = document.getElementById("infoModal");   // Get infoModall
   var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
   var mehrInfoBtn = document.getElementById("mehrInfoBtn"); // Get other butten that opens the infoModal
-  var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+  
 
   infoBtn.onclick = function () { // Open
     infoModal.style.display = "block";
@@ -77,60 +79,92 @@ export async function application() {
     infoModal.style.animationPlayState = "running";
     startModal.style.display = "none";
   }
-  closeInfoBtn.onclick = function () { // Close
-    infoModal.style.display = "none";
-  }
+  
+
 
 
   // Quellen Modal
   var quellenModal = document.getElementById("quellenModal");   // Get infoModall
   var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
-  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
 
   quellenBtn.onclick = function () { // Open
     quellenModal.style.display = "block";
     quellenModal.style.animationPlayState = "running";
   }
-  // closeInfoBtn.onclick = function () { // Close
-  //   infoModal.style.display = "none";
-  // }
 
 
 
   // Ovid Modal
   var ovidModal = document.getElementById("ovidModal");   // Get infoModall
   var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
-  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
 
   ovidBtn.onclick = function () { // Open
     ovidModal.style.display = "block";
     ovidModal.style.animationPlayState = "running";
   }
-  // closeInfoBtn.onclick = function () { // Close
-  //   infoModal.style.display = "none";
+
+
+  //close all
+  var closeInfoBtn = document.getElementsByClassName("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  for (var c = 0; c < closeInfoBtn.length; c++) {
+    closeInfoBtn[c].onclick = function () { // Close
+      infoModal.style.display = "none";
+      quellenModal.style.display = "none";
+      ovidModal.style.display = "none";
+    }
+  }
+
+
+
+  var kategorienTabelle = ["erzaehlfolge", "klassifikation", "geographie", "alphabet", "verwandlungsgrund", "verwandelnde", "fliesstext"];
+
+  function createKategorieModal(kategorie){
+    var kategorieModal = document.getElementById(kategorie + "Modal");
+    var kategorieBtn = document.getElementById(kategorie + "InfoBtn");
+
+    kategorieBtn.onclick = function() {
+      kategorieModal.style.display = "block";
+      kategorieModal.style.animationPlayState = "running";
+    }
+  }
+
+  for (var k = 0; k < kategorienTabelle.length; k++){
+    createKategorieModal(kategorienTabelle[k]);
+  }
+
+  
+
+
+  // // Erzaehlfolge-Modal
+  // var erzaehlfolgeModal = document.getElementById("erzaehlfolgeModal");   // Get infoModall
+  // var erzaehlfolgeInfoBtn = document.getElementById("erzaehlfolgeInfoBtn");   // Get button that opens the infoModal
+  // //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  // erzaehlfolgeInfoBtn.onclick = function () { // Open
+  //   erzaehlfolgeModal.style.display = "block";
+  //   erzaehlfolgeModal.style.animationPlayState = "running";
   // }
 
+  // // Klassifikation-Modal
+  // var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
+  // var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
+  // //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
 
+  // klassifikationInfoBtn.onclick = function () { // Open
+  //   klassifikationModal.style.display = "block";
+  //   klassifikationModal.style.animationPlayState = "running";
+  // }
 
-  // Erzaehlfolge-Modal
-  var erzaehlfolgeModal = document.getElementById("erzaehlfolgeModal");   // Get infoModall
-  var erzaehlfolgeInfoBtn = document.getElementById("erzaehlfolgeInfoBtn");   // Get button that opens the infoModal
-  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  erzaehlfolgeInfoBtn.onclick = function () { // Open
-    erzaehlfolgeModal.style.display = "block";
-    erzaehlfolgeModal.style.animationPlayState = "running";
-  }
-
-  // Klassifikation-Modal
-  var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
-  var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
-  //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  klassifikationInfoBtn.onclick = function () { // Open
-    klassifikationModal.style.display = "block";
-    klassifikationModal.style.animationPlayState = "running";
-  }
+  //   // Klassifikation-Modal
+  //   var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
+  //   var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
+  //   //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
+  
+  //   klassifikationInfoBtn.onclick = function () { // Open
+  //     klassifikationModal.style.display = "block";
+  //     klassifikationModal.style.animationPlayState = "running";
+  //   }
 
 
   //--------------------------------------------//
@@ -288,7 +322,6 @@ export async function application() {
   var figuresListSorted = [];
   var ovMetListSorted = [];
 
-  console.log(figuresListSorted)
 
   //array with IDs sorted by ovMet position
   for (var key in leude) {
@@ -1413,7 +1446,6 @@ export async function application() {
   }
 
 
-
   
     //insert current categoryname in Dropdown-Menu
     function insertCurrentCategory(kategoriename, bildnameInIcons, widthInPx){
@@ -2301,12 +2333,12 @@ export async function application() {
 
 
 
-  // 1. Marker im Text setzen > später sollen diese bereits in metamorphosen.json gesetzt sein
+  // 1. Marker im Text setzen
 
   for (var key in metamorphosen){
     // console.log("count"); 
     var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
-    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn class='tooltip $&'>$&</dfn>")
+    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn style='background-color: rgba(115, 48, 48, 0.3)' class='tooltip $&'>$&</dfn>")
   }
 
 
@@ -2357,7 +2389,26 @@ export async function application() {
     
   // }
 
+  
 
+  var xs = annotations.lycaon.regions[0].shape_attributes.all_points_x;
+  var ys = annotations.lycaon.regions[0].shape_attributes.all_points_y;
+  
+  var coordinatesLycaon = "";
+
+  for (var x = 0; x < xs.length; x++){
+    coordinatesLycaon += xs[x]/2740*100 + "," + ys[x]/3051*100 + " ";
+  }
+
+  var xs2 = annotations.lycaon.regions[1].shape_attributes.all_points_x;
+  var ys2 = annotations.lycaon.regions[1].shape_attributes.all_points_y;
+  
+  var coordinatesJupiter = "";
+
+  for (var x = 0; x < xs2.length; x++){
+    coordinatesJupiter+= xs2[x]/2740*100 + "," + ys2[x]/3051*100 + " ";
+  }
+  console.log(coordinatesJupiter)
 
 
 
@@ -2374,7 +2425,6 @@ export async function application() {
   for (var key in metamorphosen){
     keyTabelle.push(key);
   }
-  console.log(keyTabelle)
 
   for (var k = 0; k < keyTabelle.length; ) {
     var key = keyTabelle[k];
@@ -2403,16 +2453,31 @@ export async function application() {
       metaImg.setAttribute("src", "Figuren/" + key + "/image.jpg");
 
       var metSvg = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      metSvg.setAttribute("viewBox", "0 0 100 100");
+      metSvg.setAttribute("preserveAspectRatio", "none");
       svgDiv.appendChild(metSvg);
   
+      //Verwandelter
       var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-      //metPolygons.className = "metPolygons";
-      metPolygons.setAttribute("points", "2.3333333333333335,505.8333333333333 43.666666666666664,497.1666666666667 48.333333333333336,450.5 59.166666666666664,387.3333333333333 63.833333333333336,356.1666666666667 79.5,336.6666666666667 105.16666666666667,328 157.5,321.8333333333333 196.33333333333334,316.3333333333333 216.66666666666666,316.3333333333333 247,294.5 238.5,272 223.66666666666666,240.83333333333334 202.66666666666666,215.83333333333334 159,166.83333333333334 120.83333333333333,148 107.5,150.33333333333334 104.5,140.33333333333334 79.5,135.66666666666666 73.33333333333333,121.5 63.833333333333336,119.16666666666667 62.333333333333336,99.66666666666667 47.5,106.83333333333333 44.5,114.5 24.166666666666668,118.5 13.166666666666666,131.66666666666666 13.166666666666666,137.16666666666666 0,145 1.5,155.83333333333334 10.833333333333334,162.83333333333334 9.333333333333334,183.83333333333334 12.5,185.5 8.5,217.5 1.5,228.33333333333334 0.8333333333333334,263.3333333333333 19.5,290.6666666666667 19.5,311 18,330.5 0.8333333333333334,331.1666666666667 ");
+      metPolygons.setAttribute("points", coordinatesLycaon);
+      metPolygons.setAttribute("class", leude[key].id);
       metSvg.appendChild(metPolygons);
 
       var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
       metPolygons.appendChild(polygonTitle);
-      polygonTitle.innerHTML = "Lycaon";
+      polygonTitle.innerHTML = leude[key].name;
+
+      //Verwandler, falls vorhanden
+      if (leude[key].verwandler != "-"){
+        var metPolygons2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        metPolygons2.setAttribute("points", coordinatesJupiter);
+        metPolygons2.setAttribute("class", leude[key].verwandler);
+        metSvg.appendChild(metPolygons2);
+  
+        var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        metPolygons2.appendChild(polygonTitle);
+        polygonTitle.innerHTML = leude[key].verwandler;
+      }
 
 
 
@@ -2706,7 +2771,56 @@ export async function application() {
     }
   }
 
+  
 
+  //Achtung: Wenn man mit einer anderen Kategorie startet, ist aktuelle Kategorie auch ein leerer String
+  var dragParent = null;
+
+
+  document.onmousedown = function (event) {
+    if (aktuelleKategorie == ""){
+      dragParent = event.target.closest(".popover__wrapper");
+      if (dragParent != null) {dragParent.style.transition = "none";}
+    }
+  }
+
+  document.onmouseup = function (event){
+    event.stopImmediatePropagation();
+    if (dragParent != null) {
+      
+      dragParent.style.transition = null;
+    }
+    dragParent = null;
+  }
+  
+
+  document.onmousemove = function (event) {
+    event.preventDefault();
+    if (dragParent != null){
+      placeDurchsichtigesDiv();
+
+      var x = event.clientX;
+      var y = event.clientY;
+
+      if (x > window.innerWidth){
+        x = window.innerWidth;
+      }else if (x < 0) {
+        x = 0;
+      }
+
+      if (y > window.innerHeight){
+        y = window.innerHeight;
+      } else if (y < 0) {
+        y = 0;
+      }
+
+      dragParent.style.left = x + "px";
+      dragParent.style.top = y + "px";
+    }
+  }
+
+  console.log(window.innerHeight)
+  console.log(window.innerWidth)
 
 
 
@@ -3120,6 +3234,21 @@ export async function application() {
     }
     if (event.target == klassifikationModal){
       klassifikationModal.style.display = "none";
+    }
+    if (event.target == geographieModal){
+      geographieModal.style.display = "none";
+    }
+    if (event.target == alphabetModal){
+      alphabetModal.style.display = "none";
+    }
+    if (event.target == verwandlungsgrundModal){
+      verwandlungsgrundModal.style.display = "none";
+    }
+    if (event.target == verwandelndeModal){
+      verwandelndeModal.style.display = "none";
+    }
+    if (event.target == fliesstextModal){
+      fliesstextModal.style.display = "none";
     }
 
     //close all metamorphosenModals
