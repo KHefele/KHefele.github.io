@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Visualized Ovid - Metamorphoses</title>
+  <title>Visualized Ovid</title>
   <!-- Import my stylesheet -->
   <link rel="stylesheet" href="style.css">
   <!--Let browser know website is optimized for mobile-->
@@ -10,646 +10,131 @@
   <!-- font-stylesheet -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700">
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="Bilder/Favicon Ovid.png">
-
-
+  <link rel="icon" type="image/svg+xml" href="Bilder/Favicon Ovid.png">
 </head>
 
 <body>
 
-  <div id="durchsichtigesDiv" style="width: 1px; height: 1px; z-index: 200; position: absolute;"></div>
 
-  
-  <!----------- Navigations-Kategorien/Popover ------------------->
-  <div id="kategorienUndPopoverDiv" style="position: relative; height: 100%;">
-
-    <!----------- Taxonomie ------------------->
-    <div id="taxonomie" class="kategory" style="height:100%; width:100%; position:absolute">
-      <div id="fauna" class="taxonomieKategorie">
-        <p class="titleTopleft">Fauna</p>
-        <p class="percentTopright" id="countFauna"></p>
-      </div>
-      <div id="flora" class="taxonomieKategorie">
-        <p class="titleTopleft">Flora</p>
-        <p class="percentTopright" id="countFlora"></p>
-      </div>
-      <div id="elemente" class="taxonomieKategorie">
-        <p class="titleTopleft">Elemente</p>
-        <p class="percentTopright" id="countElemente"></p>
-      </div>
-      <div id="anthropomorphes" class="taxonomieKategorie">
-        <p class="titleTopleft" >Anthropomorphes</p>
-        <p class="percentTopright" id="countAnthropomorphes"></p>
-      </div>
-
-      <!-- Hintergrundinfo-Button -->
-      <div style="width: 48%; left: 85%; top: 78.5%; position: relative;">
-        <button class="hintergrundinfoButton" id="klassifikationInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px; cursor: pointer;" >
-          <div>Hintergrund-<br>information</div>
-        </button>
-      </div>
-
+  <div class="menue">
+    <div style="height: 55px;">
+      <b style="font-size: 50px" class="animated-text">VISUALIZED OVID</b>
     </div>
-  
-    
-    
-    <!----------- Chronologie ------------------->
-    <div id="chronologie" style="height:50%; display:none;">
-      <div style="width: 85%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 8%; animation-name:slowOpacity; animation-duration: 3s;">
-        
-        <!-- Hintergrundinfo-Button -->
-        <div style="left: 92%; top: 83%; width: 48%; position: relative;">
-          <button class="hintergrundinfoButton" id="erzaehlfolgeInfoBtn">
-            <img src="Icons/quellen_info_white.png" style="width: 35px">
-            <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-          </button>
-        </div>
+    <br>
+    <em>Eine Reise durch die Metamorphosen Ovids</em>
+    <br>
+    <br>
+    <br>
 
-      </div>
-    </div>
-  
-    <!----------- Geographie ------------------->
-    <div id="geographie" style="position: relative; display: none;"> 
-      <div id="bilddiv" style="left:10%; top: 20%; height:100%; position:absolute;animation-name:slowOpacity; animation-duration: 3s;">
-        <img src="Kategorien/greece.svg" style="width:100%"> 
-      </div>
-
-      <!-- Hintergrundinfo-Button -->
-      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="geographieInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" >
-          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-        </button>
-      </div>
-
-    </div>
-    
-
-
-
-    <!----------- Alphabet ------------------->
-    <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
-      <div style="width: 90%; height:168%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
-      
-      <!-- Hintergrundinfo-Button -->
-      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="alphabetInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" >
-          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-        </button>
-      </div>
-
-    </div>
-
-    <!----------- Fließtext  ------------------->
-    <div id="fliesstext" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
-      <div id="textModal">
-      </div>
-      <div style="position: absolute; top:92%; left:75%;z-index: 20;">
-        <input type="checkbox" id="deutscheUebersetzung" name="d" checked>
-        <label for="d">deutsche Übersetzung</label>
-        <br>
-        <input type="checkbox" id="lateinischerOriginaltext" name="l">
-        <label for="l">lateinischer Originaltext</label>
-      </div>
-
-      <!-- Hintergrundinfo-Button -->
-      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
-        <button class="hintergrundinfoButton" id="fliesstextInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" >
-          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-        </button>
-      </div>
-
-    </div>
-
-    <!----------- Verwandlungsgrund  ------------------->
-    <div id="verwandlungsgrund" style="position: absolute; display: none; height:10%; height:100%; width:100%; position:absolute; animation-name:slowOpacity; animation-duration: 3s;">
-      <div id="bestrafung" class="taxonomieKategorie">
-        <p class="titleTopleft">Bestrafung /<br>Rache</p>
-        <p class="percentToprightGrund" id="countBestrafung"></p>
-      </div>
-      <div id="wunsch" class="taxonomieKategorie">
-        <p class="titleTopleft">Bitte /<br>Wunsch</p>
-        <p class="percentToprightGrund" id="countWunsch"></p>
-      </div>
-      <div id="schutz" class="verwandlungsKategorie">
-        <p class="titleTopleft">Schutz</p>
-        <p class="percentToprightGrund" id="countSchutz"></p>
-      </div>
-      <div id="begierde" class="taxonomieKategorie">
-        <p class="titleTopleft">Trauer</p>
-        <p class="percentToprightGrund" id="countTrauer"></p>
-      </div>
-      <div id="ehrung" class="taxonomieKategorie">
-        <p class="titleTopleft" >Postume<br>Ehrung</p>
-        <p class="percentToprightGrund" id="countEhrung"></p>
-      </div>
-      <div id="kampf" class="taxonomieKategorie">
-        <p class="titleTopleft" >Kampf-<br>vorteil</p>
-        <p class="percentToprightGrund" id="countKampf"></p>
-      </div>
-      <div id="sonstigerGrund" class="taxonomieKategorie">
-        <p class="titleTopleft" >Sonstiges</p>
-        <p class="percentToprightGrund" id="countSonstigerGrund"></p>
-      </div>
-
-      <!-- Hintergrundinfo-Button -->
-      <div style="left: 89%; top: 75%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="verwandlungsgrundInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" >
-          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-        </button>
-      </div>
-
-    </div>
-
-
-    <!----------- Verwandelnde ------------------->
-    <div id="verwandelnde" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
-      <div style="width: 90%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
-
-
-      <!-- Hintergrundinfo-Button -->
-      <div style="left: 87%; top: 68%; width: 48%; position: relative;">
-        <button class="hintergrundinfoButton" id="verwandelndeInfoBtn">
-          <img src="Icons/quellen_info_white.png" style="width: 35px" >
-          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-        </button>
-      </div>
-
-    </div>
-
-  </div> <!-- Ende KategorienUndPopoverDiv-->
-
-
-
-
-
-
-
-
-  
-  <!--------------------------------------------->
-  <!--              Modal-Section              -->
-  <!--------------------------------------------->
-
-
-  <!--------------- Start Modal ----------------->
-  <div id="startModal" class="metamorphosenModal">
-    <div class="metamorphosenModalContent">
-      <div class="metamorphosenModalHeader">
-        <br>
-        <br>
-        <h1 style="text-align: center;">VISUALIZED OVID</h1>
-        <p style="text-align: center;"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
-        <br>
-        <hr>
-      </div>
-      <p style="text-align: left;">
-        <br>
-        Jedes Icon repräsentiert die Geschichte eines:r Sterblichen, der:die in den Metamorphosen Ovids verwandelt wurde. Klicke diese an, wenn du mehr über die Verwandlungsumstände erfahren möchtest.
-        <br>
-        Außerdem kannst du die Geschichten unter ausgewählten Gesichtspunkten anreihen bzw. in neue Zusammenhänge bringen. Durch die Navitations-Leiste links unten, kannst du verschiedene Kategorien auswählen, und die Icons danach anordnen lassen. 
-        <br>
-        <br>
-        Viel Spaß mit <s>C</s>OVID!
-        <br>
-        <br>
-      </p>
-      <div class="metamorphosenModalFooter">
-        <button class="modalBtns" style="position: relative; float: right;" id="closeStartModal">Los geht's</button>
-        <button class="modalBtns" style="position: relative; float: left;" id="mehrInfoBtn">Mehr Infos</button>
-      </div>
-    </div>
+    <button id="buttonProjekt">Über das Projekt</button>
+    &nbsp;
+    <button id="buttonFliesstext">Zur Textedition</button>
+    &nbsp;
+    <button id="buttonVisualisierung">Zur Visualisierung</button>
   </div>
 
-  <!--------------- Info Modal ----------------->
-  <div id="infoModal" class="infoModals">
-    <div class="infoModalsContent">
 
-      <div class="infoModalsHeader">
-        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
-        <br>
-        <h1>Über das Projekt</h1>
-      </div>
-      
+  <div id="projekt">
+    <div class="projektText">
+      <h1>Das Projekt</h1>
       <p>
         <br>
-        Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der 
-        <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a> 
-        entstanden ist: <em>Digitale Anwendung zur Vermittlung der Metamorphosen Ovids</em>. 
-        Unter der Betreuung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/peter-bell/">Prof. Dr. Peter Bell</a> 
-        und der kompetenten Beratung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/dirk-suckow/">Dirk Suckow, M.A.</a> 
+        <img src="Icons/quotation-marks.png" style="position:relative; width: 7%; left:20%;">
+      <table style="position: relative; width: 100%;">
+        <tr>
+          <td style=" position:relative; width:100%;padding: 0% 15% 0% 25%">
+            <blockquote>
+              <p>
+                Nun habe ich ein Werk vollendet, das nicht Iuppiters Zorn, nicht Feuer, <br>
+                nicht Eisen, nicht das nagende Alter wird vernichten können. […] <br>
+                [M]ein Name wird unzerstörbar sein, <br>
+                und so […] werde ich vom Mund des Volkes gelesen werden und, <br>
+                sofern an den Vorahnungen der Dichter auch nur etwas Wahres ist,<br>
+                durch alle Jahrhunderte im Ruhm fortleben.<br>
+              <p style="text-align: right;"><cite>Ov. met. 15,871-879.</cite></p>
+              </p>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <br>So lautet es im selbstbewussten Nachwort im antiken Gedicht der Metamorphosen. Damit sollte der Schöpfer
+      Publius
+      Ovidius Naso recht behalten. So hat sein monumentales Schaffenswerk hat auch heute noch einen kanonischen
+      Stellenwert und eine enorme Bedeutung für die Kunst. Mein Masterarbeitsprojekt soll daran anknüpfen, und neue
+      Zugänge zu diesem Werk und den in Relation gesetzten Bildwerken schaffen, die sich durch die technischen
+      Möglichkeiten ergeben.
+      <br>Sie soll dazu dienen, das seit Jahrhunderten vorhandene Wissen in eine neue Form zu bringen, die durch ein
+      iteratives Vorgehen erfahrbar ist und dazu inspiriert neue Fragen an einen alten Bestand zu stellen. Also ein
+      Tool,
+      dass durch neue Ansätze dabei hilft, die Mengen an Text zu strukturieren und Zusammenhänge zu erkennen, die beim
+      linearen Lesen schwer wahrnehmbar sind. Und dadurch dazu anregt, sich näher damit sowie den dazugehörigen
+      Kunstwerken auseinanderzusetzen. So soll es durch die Visualisierung beispielsweise möglich sein, eine Auswahl an
+      Metamorphosen nach verschiedenen Wissenskategorien anzuordnen. Dadurch Fragen nach dem örtlichen Rahmen der
+      Geschichten, der taxonomischen Zugehörigkeit der Verwandelten oder an den kausalen Hintergrund zu stellen. Bzw.
+      diese Kategorien sogar miteinander zu verknüpfen.
+      <br>Da alle Verwandlungen der Metamorphosen den Rahmen dieser Arbeit übersteigen würde, sind hierbei exemplarisch
+      nur die 60 Verwandlungen der sterblichen Protagonisten innerhalb des Werkes herausgegriffen.
+      <br>
+      <br>
+      <hr>
+      <p style="text-align: center;padding: 5% 10%;">
+        Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der
+        <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a>
+        entstanden ist: <em>Digitale Anwendung zur Vermittlung der Metamorphosen Ovids</em>.
+        Unter der Betreuung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/peter-bell/">Prof. Dr.
+          Peter
+          Bell</a>
+        und der kompetenten Beratung von <a
+          href="https://www.kunstgeschichte.phil.fau.de/institut/team/dirk-suckow/">Dirk
+          Suckow, M.A.</a>
         und <a href="https://www.lgdv.tf.fau.de/person/philipp-kurth/">Philipp Kurth, M.Sc</a>.
         <br>
         <br>Als Inspiration dienten die Projekte:
-        <br>•	<a href="https://visualize.numid.online/#/de">NUMiD</a> der <a href="https://www.tu-braunschweig.de/">Technischen Universität Braunschweig</a>
-        <br>•	<a href="https://digi.ub.uni-heidelberg.de/wgd/">Welscher Gast Digital</a> der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>.
-      </p>
-      <br>
-      <img src="Bilder/FAU_Logo_trans_rgb.png" style="position:relative; width: 50%;">
-      <hr>
-      <p>
+        <br>• <a href="https://visualize.numid.online/#/de">NUMiD</a> der <a
+          href="https://www.tu-braunschweig.de/">Technischen Universität Braunschweig</a>
+        <br>• <a href="https://digi.ub.uni-heidelberg.de/wgd/">Welscher Gast Digital</a> der <a
+          href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>.
         <br>
-        Anmerkungen und Fehlermeldungen bitte an: 
+        <br>
+        <img src="Bilder/FAU_Logo_trans_rgb.png" style="position:relative; width: 50%;">
+      </p>
+      <hr>
+      <p style="text-align: center; padding: 5% 0%">
+        <br>
+        Anmerkungen und Fehlermeldungen bitte an:
         <br>
         <img src="Icons/iconmonstr-email-1-240.png" style="width: 18px;">
         <a href="mailto:katharina.hefele@fau.de">Katharina Hefele, katharina.hefele@fau.de</a>
       </p>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="infoModalsFooter">
-        <br>
-      </div>
     </div>
   </div>
 
-  <!--------------- Quellen Modal ----------------->
-  <div id="quellenModal" class="infoModals">
-    <div class="infoModalsContent" id="quellenContent">
-
-      <div class="infoModalsHeader">
-        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
-        <br>
-        <h1>Bibliographie</h1>
-      </div>
-
-      <ul>
-        <li>Albrecht, Michael von: Ovid. Eine Einführung. Stuttgart 2003 (Reclams Universal-Bibliothek Bd. Nr. 17641).</li>
-        <li>Albrecht, Michael von: Ovids Metamorphosen. Texte, Themen, Illustrationen. Heidelberg 2014 (Heidelberger Studienhefte zur Altertumswissenschaft.</li>
-        <li>Albrecht, Michael von u. Zinn, Ernst (Hg.): Ovid.  2., unveränd. Aufl., Darmstadt 1968 (Wege der Forschung Bd. Bd. 92).</li>
-        <li>Barolsky, Paul: Ovid and the metamorphoses of modern art from Botticelli to Picasso. 2014.</li>
-        <li>Boyd, Barbara Weiden: Brill's companion to Ovid. Leiden 2002 (Brill's Companions in Classical Studies.</li>
-        <li>Curley, Dan: Tragedy in Ovid. Theater, metatheater, and the transformation of a genre. Cambridge 2013.</li>
-        <li>Gil, Alberto u. Kirstein, Robert (Hg.): Wissenstransfer und Translation. Zur Breite und Tiefe des Übersetzungsbegriffs. St. Ingbert 2015 (Hermeneutik und Kreativität Bd. Band 3).</li>
-        <li>Hardie, Philip R. (Hg.): The Cambridge companion to Ovid.  5. print, Cambridge 2008 (Cambridge companions to literature.</li>
-        <li>Harrison, Stephen: Ovid and genre. In: Philip R. Hardie (Hg.): The Cambridge companion to Ovid. 5. print, Cambridge 2008 (Cambridge companions to literature, S. 79–94.
-        <li>Holzberg, Niklas: Ovids Metamorphosen.  Originalausgabe, 2. durchgesehene Auflage, München 2016 (C.H. Beck Wissen Bd. 2421).
-        <li>Huber-Rebenich, Gerlinde: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik : Sammeldarstellungen. Berlin 2004.</li>
-        <li>Huber-Rebenich, Gerlinde, Lütkemeyer, Sabine u. Walter, Hermann: Ikonographisches Repertorium zu den Metamorphosen des Ovid. Die textbegleitende Druckgraphik. Berlin 2014.</li>
-        <li>Janka, Markus, Schmitzer, Ulrich u. Seng, Helmut (Hg.): Ovid. Werk, Kultur, Wirkung. Darmstadt 2007.</li>
-        <li>Lichtenstern, Christa: Metamorphose. Vom Mythos zum Prozessdenken : Ovid-Rezeption, surrealistische Ästhetik, Verwandlungsthematik der Nachkriegskunst. Weinheim 1992 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
-        <li>Lichtenstern, Christa: Metamorphose in der Kunst des 19. und 20. Jahrhunderts, Band 2, Metamorphose. Vom Mythos zum Prozeßdenken ; Ovid-Rezeption. Surrealistische Ästhetik. Verwandlungsthematik der Nachkriegskunst.  Reprint 2019, Berlin 1995 (Metamorphose in der Kunst des 19. und 20. Jahrhunderts Bd. Band 2).</li>
-        <li>Ludwig, Walther: Struktur und Einheit der Metamorphosen Ovids.  Reprint 2019, Berlin 1965.</li>
-        <li>Marek, Heidi u. Guthmüller, Bodo: Metamorphosen. Wandlungen und Verwandlungen in Literatur, Sprache und Kunst von der Antike bis zur Gegenwart : Festschrift für Bodo Guthmüller zum 65. Geburtstag. Wiesbaden 2002.</li>
-        <li>Nelis, Damien: Clio and the poets. Augustan poetry and the traditions of ancient historiography. Leiden 2002 (Mnemosyne, bibliotheca classica Batava. Supplementum Bd. 224).</li>
-        <li>Ohrt, Roberto: Aby Warburg: Bilderatlas MNEMOSYNE. Commentary volume. Ostfildern 2020 (Kulturgeschichte.</li>
-        <li>Otis, Brooks u. Ovid: Ovid as an epic poet. 2nd ed.  2. ed., reprinted., London 1970.</li>
-        <li>Ovid u. Albrecht, Michael von: Metamorphosen. Stuttgart 1994. Bibliographisch ergänzte Ausgabe 2019 (Universal-Bibliothek Bd. Nr. 1360).</li>
-        <li>August Friedrich von Pauly/Hans Gärtner/Albert Wünsch: Paulys Real-Encyclopädie der classischen Altertumswissenschaft. Bearb. und hg. von Georg Wissowa / Wilhelm Kroll / K. Witte / Karl Mittelhaus / Konrat Ziegler. Stuttgart 1894-1980.
-        <li>Schmitz-Emans, Monika u. Schmeling, Manfred: Fortgesetzte Metamorphosen. Ovid und die ästhetische Moderne = Continuing metamorphoses : Ovid and aesthetic modernity. Würzburg 2010 (Saarbrücker Beiträge zur vergleichenden Literatur- und Kulturwissenschaft Bd. Bd. 48).</li>
-        <li>Schmitzer, Ulrich: Ovid.  2., unveränd. Aufl., Hildesheim 2011 (Studienbücher Antike Bd. 7).</li>
-        <li>Tsitsiou-Chelidoni, Chrysanthe: Ovid, Metamorphosen, Buch VIII. Narrative Technik und literarischer Kontext. Zugl.: Heidelberg, Univ., Diss, 1999 u.d.T.: Tsitsiou-Chelidoni, Chrysanthe: In nova corpora mutatae formae. Frankfurt am Main 2003 (Studien zur klassischen Philologie Bd. Bd. 138).</li>
-        <li>Walter, Hermann u. Horn, Hans-Jürgen (Hg.): Die Rezeption der "Metamorphosen" des Ovid in der Neuzeit. Der antike Mythos in Text und Bild : internationales Symposion der Werner Reimers-Stiftung, Bad Homburg v. d. H. (22. bis 25. April 1991). Berlin op. 1995 (Ikonographische Repertorien zur Rezeption des antiken Mythos in Europa. Beihefte Bd. 1).</li>
-        <li>Wetzel, Christoph: Ovids Metamorphosen und die bildende Kunst. Stuttgart 2016 (Reclams Universal-Bibliothek Bd. Nr. 19322).</li>
-        <li>Wheeler, Stephen Michael: A discourse of wonders. Audience and performance in Ovid's Metamorphoses. Philadelphia (Pa.) 1999.</li>
-        <li>Wolf, Armin: Homers Reise. Auf den Spuren des Odysseus. Böhlau, 2009.</li>
-      </ul>
-      <br>
-      <br>
-      <br>
-      <div>Some Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      <div class="infoModalsFooter">
-        <br>
-        <br>
-      </div>
-    </div>
-  </div>
-
-  <!--------------- Ovid Modal ----------------->
-  <div id="ovidModal" class="infoModals">
-    <div class="infoModalsContent" id="ovidContent">
-      
-      <div class="infoModalsHeader">
-        <span style="position: fixed; right: 23.5%; top:20%; cursor: pointer;" class="closeInfoBtn" ><img src="Icons/iconmonstr-x-mark-1-240 (2).png" width="20px"></span>
-        <br>
-        <h1>Publius Ovidius Naso</h1>
-      </div>
-
-      Obwohl über Ovid durch seine poetische Autobiografie mehr bekannt ist als über einige andere Schriftsteller der Antike, sind die Überlieferungen dennoch lückenhaft und Gegenstand anhaltender Diskussionen.  Die wenigen über ihn bekannten biographischen Daten sowie einige seiner Werke sollen an dieser Stelle Erwähnung finden, um im Folgenden zum besseren Verständnis sowie zur Kontextualisierung des zu visualisierenden Werkes beizutragen. 
-      <br>
-      Publius Ovidius Naso wurde am 20. März im Jahr 43 v. Chr. in der Stadt Sulmo – dem heutigen Sulmona – geboren.  Sein Elternhaus gehörte dem wohlhabenden alten Landadel an, weshalb auch er den Titel des Ritters trug. Von seinem Vater unterstützt verbringt er seine Lehrjahre gemeinsam mit seinem etwas älteren Bruder im 144 km entfernten Rom, wo er eine rhetorische Schulbildung genoss, die vor allem durch Seneca d. Ä. überliefert ist. Bereits letzterer beschrieb, wie der junge Ovid in den Schulübungen von der festen rhetorischen Argumentation absah und stattdessen von einer „Fundstätte der Erfindung“  zur nächsten überging. Es schließen sich eine Reihe von Bildungsreisen an, wie ein 
-      <br>
-      Durch den frühen Tod des älteren Bruders, setzte sich der Vater in besonderem Maße für eine Senatorenlaufbahn des jüngeren Sohnes ein. Ovid aber schlug diese Chance aus und begnügte sich mit niederen Ämtern, wie dem sog. Dreimännerkollegium , in dem er wohl die Aufgabe des Münzmeisters innehatte und dem Dichten? Die Enttäuschung des Vaters geht aus einer Stelle in der Tristia hervor:
-      <br>
-      Oft sagte mein Vater: ‚Was versuchst du dich an brotlosen Künsten? Sogar Homer hat keine Reichtümer hinterlassen.‘ Ich war von seinen Worten erschüttert, gab den Helicon völlig auf und versuchte, Worte ohne Versmaß zu schreiben. Doch da fand das Gedicht von selbst zu den passenden Rhythmen, und was ich zu sagen versuchte, war ein Vers. 
-      <br>
-      <br>
-      <br>
-
-      <div class="infoModalsFooter">
-        <br>
-        <br>
-      </div>
-    </div>
+  <div>
+    <br>
   </div>
 
 
 
 
+  <!-- Import my script -->
+  <script type="text/javascript">
+
+    document.getElementById("buttonProjekt").onclick = function () {
+      location.href = "#projekt";
+    };
 
 
+    document.getElementById("buttonFliesstext").onclick = function () {
+      location.href = "/visualisierung.html#fliesstext";
+    };
+
+    document.getElementById("buttonVisualisierung").onclick = function () {
+      location.href = "/visualisierung.html";
+    };
 
 
-
-  <!--------------------------------------------->
-  <!--       Kategorie-Erklärungen             -->
-  <!--------------------------------------------->
-
-    <!-- Kategorie Erzählfolge -->
-    <div id="erzaehlfolgeModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Erzählfolge</em></h1>
-        </div>
-        Diese Kategorie sortiert nach der Erzählfolge der Einzelgeschichten im Werk der <em>Metamorphosen</em> und spiegelt die Dreiteilung  des Werkes wider: Auf drei vertikalen Pfeil-Achsen sind die Icons aufgereiht und darunter die zugehörigen Ov.met.-Stelle angegeben, die auch in den Metamorphosen-Modals und Popover zu finden sind. 
-        <br>
-        <br>
-        &#xa9; Quelle: Ovidius Naso, Publius: Metamorphosen. Hrsg. von Michael von Albrecht (= Reclams Universal-Bibliothek 1360). 3. Aufl. Ditzingen 2019.
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kategorie Klassifikation -->
-    <div id="klassifikationModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Klassifikation</em></h1>
-        </div>
-        Unter der Klassifikation sind die Geschichten nach der taxonomischen Einordnung der/-des Verwandelten angeordnet. Diese sind auf die folgenden vier großen Bereiche zusammengefasst:
-        <br>• Fauna
-        <br>•	Flora
-        <br>•	Elemente
-        <br>•	Anthropomorphes
-        <br>
-        <br>Diese Einteilung fasst das von Iconclass entwickelte Schema, das dort unter 97 Metamorphosen in der klassischen Mythologie  aufgeführt ist, sehr grob zusammen. Ein großer Unterschied ist die dort vorgenommene Differenzierung zwischen den Geschlechtern. Weiterhin werden die folgenden im Projekt verwendeten Begriffe bei Iconclass wie folgt unterteilt:
-        <br>•	Flora wird dort weiterhin in die zwei Unterkategorien Bäume sowie Pflanzen und Blumen unterteilt
-        <br>•	Fauna: Säugetiere, Vögel, (Fabel-)Tiere
-        <br>•	Elemente: Steine; Sterne und Sternbilder; Wasser, Luft oder andere Elemente; Inseln 
-        <br>•	Anthropomorphes: Geschlecht; Alter; verschiedene Formen auf eigenen Wunsch
-        <br>
-        <br>
-        &#xa9; Quelle: Iconclass.org
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Kategorie Geographie -->
-    <div id="geographieModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Geographie</em></h1>
-        </div>
-        Sofern in den Metamorphosen ein Ort angegeben wurde, werden die Icons in dieser Kategorie auf einer Karte lokalisiert. In einigen Fällen sind die Schauplätze nicht von Ovid niedergeschrieben, sind aber durch anderweitige Überlieferungen oder durch Autorenmeinungen bekannt. Dies ist in den Metamorphosen-Models der jeweiligen Geschichte kenntlich gemacht. So ist bei den Gefährten des Ulixes beispielsweise als Ort vermerkt: „Insel Aiaia (laut Armin Wolf mit der Insel Ustica gleichzusetzen, Wolf 2009, S. 52 ff.)“. Die abgekürzte Literaturangabe lässt sich in der angegebenen Bibliographie unter Quellen nachlesen.
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Kategorie Alphabet -->
-    <div id="alphabetModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Alphabet</em></h1>
-        </div>
-        Selbsterklärend sind die Protagonisten hier nach dem Alphabet geordnet gelistet. Wie unter Punkt 3.4.3 bereits erwähnt, tragen zwei der Verwandelten in Ovid keinen Namen. Da diese im späteren Verlauf jedoch einen erhielten, unter dem sie in der Kunstgeschichte bekannt sind und auf den deshalb auch die Iconclass-Verknüpfungen verweist, sind sie bei der Sortierung jedoch über Galatea, Ascalabus eingeordnet.
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kategorie Verwandlungsgrund -->
-    <div id="verwandlungsgrundModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandlungsgrund</em></h1>
-        </div>
-        Gründe für die Metamorphosen wiederholen sich und lassen sich in die wenigen folgende Gruppen klassifizieren:
-        <br>•	Bestrafung (meist für Hybris gegenüber der Götter), z.B. Lycaon
-        <br>•	Trauer z.B. Cyane, meist Sehnsucht/unerfüllte Begierde, z.B. Narciss nach dem eigenen Spiegelbild, in dieser Spalte zumal meist keinen Verwandler
-        <br>•	 Tod (meist mit Ehrung verbunden)> Caesar oder Hyacinthus
-        <br>•	Schutz, z.B. Daphne
-        <br>•	auf eigenen Wunsch 
-        <br>
-        <br>(gibt Hierarchie: auf eigenen Wunsch steht über Schutz, z.B. Caenis zählt zu auf eigenen Wunsch) 
-        <br>
-        <br>Interessante Beobachtungen von sich wiederholender Motivik/Gestik innerhalb einer Kategorie:
-        <br>•	Überraschungsgeste v.a. bei Bestrafung
-        <br>•	Flucht/Raub-Motiv / Agressor und Fliehende z.B. bei Daphne, Alphalus 
-        <br>•	Trauermotiv z.B. Echo
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kategorie Verwandelnde -->
-    <div id="verwandelndeModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandelnde</em></h1>
-        </div>
-        An dieser Stelle sind die eifrigsten Verwandler genannt. Da es sich hierbei vorrangig um die olympischen Götter handelt, sind diese gestaffelt nach der Anzahl der getätigten Verwandlungen aufgeführt.
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-    <!-- Kategorie Fliesstext -->
-    <div id="fliesstextModal" class="kategorieModals">
-      <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
-        <div class="kategorieModalsHeader">
-          <br>
-          <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Fließtext</em></h1>
-        </div>
-        Mit Albrecht von Michael gearbeitet aber für Projekt auf bereits digitalisierten Text zurückgegriffen.
-        <br>Bekannte Übersetzungen von Suchier und Johann Heinrich Voß wurden digitalisiert (ersteres u.a. von Zeno, zweiteres von Gutenberg) gegen Gutenberg entschieden, da hier einige Textstellen fehlen?  
-        <br>
-        <br>
-        <br>
-        <div class="kategorieModalsFooter">
-          <br>
-          <br>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
-  <!--------------------------------------------->
-  <!--          Navigation-Bar                 -->
-  <!--------------------------------------------->
-
-  <div class="navigation">
-    &nbsp; Ordnen nach &nbsp;
-    <ul style="display: inline-block;">
-      <li class="parent" id="startKategorie" style="border-radius: 4px; text-align: center;width: 200px;"><div id="insertCurrentCategoryHere"><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
-      <ul class="child" id="kategoryPopUp">
-        <li class="parent kategorieButton" id="unorganisiert"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div></li>
-        <li class="parent kategorieButton" id="chrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge</div></li>
-        <li class="parent kategorieButton" id="tax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation</div></li>
-        <li class="parent kategorieButton" id="geo"><div>&nbsp;<img src="Icons/iconmonstr-globe-8-240.png" style="width: 18px;"> Geographie</div></li>
-        <li class="parent kategorieButton" id="alpha"><div>&nbsp;<img src="Icons/iconmonstr-sort-14-240.png" style="width: 20px;"> Alphabet</div></li>
-        <li class="parent kategorieButton" id="grund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verwandlungsgrund</div></li>
-        <li class="parent kategorieButton" id="verwandelnder"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde</div></li>
-        <li class="parent kategorieButton" id="text"><div>&nbsp;<img src="Icons/iconmonstr-script-2-240.png" style="width: 20px;"> Fließtext</div></li>
-      </ul>
-      </li>
-    </ul>
-
-    &nbsp; <img src="Icons/down-arrow.png" id="dropDownNavigation">
-    
-   
-    <div id="navigation2punkt0" style="display: none;margin-top: 3%;">
-      &nbsp; in Verbindung mit &nbsp;
-
-      <ul style="display: inline-block;">
-        <li class="parent" id="startMarkKategorie" style="border-radius: 4px; text-align: center;width: 200px;"><div id="insertCurrentMarkCategoryHere"><img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
-        <ul class="child" id="markKategoryPopUp">
-          <li class="parent" id="markKeineAuswahl"><div>&nbsp;<img src="Icons/iconmonstr-circle-5-240.png" style="width: 19px;"> Keine Auswahl</div>
-          <!-- Erzählfolge -->
-          <li class="parent" id="markChrono"><div>&nbsp;<img src="Icons/iconmonstr-arrow-32-240.png" style="width: 20px;"> Erzählfolge<span class="expand">»</span></div>
-            <ul class="child">
-              <li><div id="markPentadeI" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-1.png" style="width: 20px;"> I. Pentade</div></li>
-              <li><div id="markPentadeII" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-2.png" style="width: 20px;"> II. Pentade</div></li>
-              <li><div id="markPentadeIII" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-arrow-3.png" style="width: 20px;"> III. Pentade</div></li>
-            </ul>
-          </li>
-          <!-- Taxonomie -->
-          <li class="parent" id="markTax"><div>&nbsp;<img src="Icons/ancient.png" style="width: 21px;"> Klassifikation<span class="expand">»</span></div>
-            <ul class="child">
-              <li><div id="markFauna" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-fish-1-240.png" style="width: 20px;"> Fauna</div></li>
-              <li><div id="markFlora" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-flower-3-240.png" style="width: 20px;"> Flora</div></li>
-              <li><div id="markElemente" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-drop-7-240.png" style="width: 19px;"> Elemente</div></li>
-              <li><div id="markAnthropomorphes" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-accessibility-2-240.png" style="width: 20px;"> Anthropomorphes</div></li>
-            </ul>
-          </li>
-          <!-- Verw.-Grund -->
-          <li class="parent" id="markGrund"><div>&nbsp;<img src="Icons/question.png" style="width: 19px;"> Verw.-Grund<span class="expand">»</span></div>
-            <ul class="child">
-              <li><div id="markBestrafung" class="markKategorieButton">&nbsp;<img src="Icons/gerechtigkeit.png" style="width: 17px;"> Bestrafung/Rache</div></li>
-              <li><div id="markWunsch" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-speech-bubble-7-240.png" style="width: 17px;"> Bitte/Wunsch</div></li>
-              <li><div id="markSchutz" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-shield-17-240.png" style="width: 17px;"> Schutz</div></li>
-              <li><div id="markTrauer" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-drop-6-240.png" style="width: 17px;"> Trauer</div></li>
-              <li><div id="markPostumeEhrung" class="markKategorieButton">&nbsp;<img src="Icons/tombstone.png" style="width: 17px;"> postume Ehrung</div></li>
-              <li><div id="markKampfvorteil" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-boxing-1-240.png" style="width: 17px;"> Kampfvorteil</div></li>
-              <li><div id="markSonstiges" class="markKategorieButton">&nbsp;<img src="Icons/ellipsis.png" style="width: 17px;"> Sonstiges</div></li>
-            </ul>
-          </li>
-          <!-- Verwandelnde -->
-          <li class="parent" id="markVerwandelnde"><div>&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Verwandelnde<span class="expand">»</span></div>
-            <ul class="child">
-              <li><div id="markJupiter" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-connection-1-240.png" style="width: 18px;"> Jupiter</div></li>
-              <li><div id="markNeptun" class="markKategorieButton">&nbsp;<img src="Icons/trident.png" style="width: 18px;"> Neptun</div></li>
-              <li><div id="markVenus" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-favorite-1-240.png" style="width: 16px;"> Venus</div></li>
-              <li><div id="markDiana" class="markKategorieButton">&nbsp;<img src="Icons/bow-and-arrow.png" style="width: 18px;"> Diana</div></li>
-              <li><div id="markMinerva" class="markKategorieButton">&nbsp;<img src="Icons/roman-helmet.png" style="width: 18px;"> Minerva</div></li>
-              <li><div id="markMercur" class="markKategorieButton">&nbsp;<img src="Icons/hermes.png" style="width: 18px;"> Mercur</div></li>
-              <li><div id="markApollo" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Apollo</div></li>
-              <li><div id="markCeres" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Ceres</div></li>
-              <li><div id="markJuno" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-magic-5-240.png" style="width: 18px;"> Juno</div></li>
-            </ul>
-          </li>
-          <!-- Geschlecht -->
-          <li class="parent" id="markGeschlecht"><div>&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Geschlecht<span class="expand">»</span></div>
-            <ul class="child">
-              <li><div id="markGeschlechtW" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-2-240.png" style="width: 17px;"> Weiblich</div></li>
-              <li><div id="markGeschlechtM" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-1-240.png" style="width: 17px;"> Männlich</div></li>
-              <li><div id="markGeschlechtD" class="markKategorieButton">&nbsp;<img src="Icons/iconmonstr-gender-4-240.png" style="width: 17px;"> Divers</div></li>
-            </ul>
-          </li>
-        
-        </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-
-
-
-
-
-
-  <h2 class="logo">VISUALIZED OVID</h2>
-  
-  <div class="buttons">
-    <button id="infoBtn" class="infoBtn" ><img src="Icons/info.png" style="width: 32px;"></button>
-    
-    <img src="Icons/down-arrow.png" id="dropDownButtons" style="position:relative;width: 19px; left: 30%;padding-bottom: 10%;">
-    
-    <div id="buttons2punkt0" style="display: none;">
-      <button id="bookBtn" class="infoBtn" ><img src="Icons/library.png" style="width: 32px;"></button>
-      <button id="ovidBtn" class="infoBtn" ><img src="Icons/poet.png" style="width: 32px;"></button>
-    </div>
-  </div>
-  <!-- <button id="quizBtn" class="infoBtn" ><img src="Icons/iconmonstr-help-6-240.png" style="width: 30px;"></button> -->
-
-
-  <!--------------------------------------------->
-  <!--               Skripte                   -->
-  <!--------------------------------------------->
-
-  <script type="module">
-    import { application } from './script.js'
-    application();
   </script>
-
-
 
 </body>
 

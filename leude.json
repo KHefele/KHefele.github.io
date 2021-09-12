@@ -19,7 +19,8 @@
         },
         
         "img": "Figuren/lycaon/lycaon.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Jan Cossier, Lycaon, 1640",
         "annotations": {
             "lycaon": "",
@@ -66,7 +67,8 @@
         },
 
         "img": "Figuren/Io/Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io (c 1672)(aus Wikimedia).jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Gerbrand_van_den_Eeckhout_-_Juno,_Jupiter_and_Io.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Gerbrand van den Eeckhout, Io, 1672",
 
         "wikidata": "Q179014",
@@ -107,7 +109,8 @@
         },
 
         "img": "Figuren/Actaeon/Actaeon.jpg", 
-        "source": "<a href='https://de.wikipedia.org/wiki/Datei:Lucas_Cranach_d._%C3%84._012.jpg' target='_blank'>Wikipedia</a>",
+        "source": "https://de.wikipedia.org/wiki/Datei:Lucas_Cranach_d._%C3%84._012.jpg",
+        "sourcename": "Wikipedia",
         "alt": "Lucas Cranach d. Ä., Aktaeon, ca. 1540",
 
         "wikidata": "Q208531",
@@ -149,7 +152,8 @@
         },
 
         "img": "Figuren/Daphne/Piero_del_Pollaiolo_(attr.)_Apollo_and_Daphne_1470-1480_Wikimedia_Thumbnail.jpg", 
-        "source": "<a href='https://de.wikipedia.org/wiki/Datei:Piero_del_Pollaiolo_(attr.)_Apollo_and_Daphne.jpg' target='_blank'>Wikipedia</a>",
+        "source": "https://de.wikipedia.org/wiki/Datei:Piero_del_Pollaiolo_(attr.)_Apollo_and_Daphne.jpg",
+        "sourcename": "Wikipedia",
         "alt": "Piero del Pollaiolo, Apollo und Daphne, 1470-1480",
         
         "wikidata": "Q194015",
@@ -191,7 +195,8 @@
         },
 
         "img": "Figuren/Narcissus/Echo_and_Narcissus_-_John_William_Waterhouse_1903_Wikipedia.jpg", 
-        "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/1/11/Echo_and_Narcissus_-_John_William_Waterhouse.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/Echo_and_Narcissus_-_John_William_Waterhouse.jpg",
+        "sourcename": "Wikimedia",
         "alt": "John William Waterhouse, Echo and Narcissus, 1903",
         
         "wikidata": "Q179256",
@@ -233,12 +238,13 @@
         },
 
         "img": "Figuren/Kallisto/Sebastiano Ricci, Arcas and Callisto, ca. 1725-30_Sothebys.jpg", 
-        "source": "<a href='https://www.sothebys.com/en/articles/written-in-the-stars-sebastiano-riccis-arcas-and-callisto' target='_blank'>Sothebys</a>",
+        "source": "https://www.sothebys.com/en/articles/written-in-the-stars-sebastiano-riccis-arcas-and-callisto",
+        "sourcename": "Sothebys",
         "alt": "Sebastiano Ricci, Arcas and Callisto, ca. 1725-30",
         
         "wikidata": "Q203673",
         "ovMet": "2,401-531",
-        "verwandlung": "Bär",
+        "verwandlung": "Bärin",
         "grund": "Bestrafung", 
         "verwandler": "Juno",
         "ort": "in einem Wald Arcadiens",
@@ -276,7 +282,8 @@
         },
 
         "img": "Figuren/Syrinx/Syrinx.jpg", 
-        "source": "<a href='https://www.clevelandart.org/art/1973.212' target='_blank'>Clevelandart</a>",
+        "source": "https://www.clevelandart.org/art/1973.212",
+        "sourcename": "Clevelandart",
         "alt": "Jean François de Troy, Pan and Syrinx, 1720",
         
         "wikidata": "Q846129",
@@ -315,7 +322,8 @@
         },
 
         "img": "Figuren/Lykische Bauern/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Frösche_Thumbnail.jpg", 
-        "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/d/d6/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Fr%C3%B6sche.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Johann_Georg_Platzer_-_Latona_verwandelt_die_lykischen_Bauern_in_Fr%C3%B6sche.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Johann Georg Platzer, Latona verwandelt die lykischen Bauern in Froesche, ca. 1730",
         
         "wikidata": "Q1878677",
@@ -355,7 +363,8 @@
         },
 
         "img": "Figuren/Echo/Alexandre_Cabanel_-_Echo.jpg", 
-        "source": "<a href='https://de.wikipedia.org/wiki/Echo_(Mythologie)#/media/Datei:Alexandre_Cabanel_-_Echo.jpg' target='_blank'>Wikipedia</a>",
+        "source": "https://de.wikipedia.org/wiki/Echo_(Mythologie)#/media/Datei:Alexandre_Cabanel_-_Echo.jpg",
+        "sourcename": "Wikipedia",
         "alt": "Alexandre Cabanel, Echo, 1887",
         
         "wikidata": "Q207368",
@@ -393,8 +402,9 @@
         },
 
         "img": "Figuren/Hyacinthus/Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project_Thumbnail.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project.jpg' target='_blank'>Wikimedia</a>",
-        "alt": "Giambattista Tiepolo, The Death of Hyacinthus, ca. 1752/1753",
+        "source": "https://commons.wikimedia.org/wiki/File:Giambattista_Tiepolo_-_The_Death_of_Hyacinthus_-_Google_Art_Project.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Giambattista Tiepolo, Der Tod des Hyacinthus, ca. 1752/1753",
         
         "wikidata": "Q207273",
         "ovMet": "10,162-216",
@@ -432,8 +442,9 @@
             }
         },
 
-        "img": "Figuren/Galatea/0_Pygmalion_et_Galatée_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.jpg", 
-        "source": "<a href='https://de.m.wikipedia.org/wiki/Datei:0_Pygmalion_et_Galat%C3%A9e_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.JPG' target='_blank'>Wikipedia</a>",
+        "img": "Figuren/Galatea/0_Pygmalion_et_Galatée_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.jpg",
+        "source": "https://de.m.wikipedia.org/wiki/Datei:0_Pygmalion_et_Galat%C3%A9e_-_A-L._Girodet_-_RF_2002-4_-_Louvre_2.JPG",
+        "sourcename": "Wikipedia",
         "alt": "Anne Louis Girodet-Trioson, Pygmalion et Galatée, 1819",
         
         "wikidata": "Q3757460",
@@ -473,7 +484,8 @@
         },
 
         "img": "Figuren/Iphigenie/Collection_Motais_de_Narbonne_-_Le_sacrifice_d'Iphigénie_-_Gabriel-François_Doyen_Thumbnail.jpg", 
-        "source": "<a href='https://de.m.wikipedia.org/wiki/Datei:Collection_Motais_de_Narbonne_-_Le_sacrifice_d%27Iphig%C3%A9nie_-_Gabriel-Fran%C3%A7ois_Doyen.jpg' target='_blank'>Wikipedia</a>",
+        "source": "https://de.m.wikipedia.org/wiki/Datei:Collection_Motais_de_Narbonne_-_Le_sacrifice_d%27Iphig%C3%A9nie_-_Gabriel-Fran%C3%A7ois_Doyen.jpg",
+        "sourcename": "Wikipedia",
         "alt": "Gabriel François Doyen, The sacrifice of Iphigenia, 1749",
         
         "wikidata": "Q192673",
@@ -513,7 +525,8 @@
         },
 
         "img": "Figuren/Alpheus_and_Arethusa/Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Luigi Garzi (zugeschrieben), Alpheus and Arethusa, Ende 17./Anfang 18. Jh.",
         
         "wikidata": "Q643456",
@@ -554,7 +567,8 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "source": "https://iconmonstr.com/file-37-png/",
+        "sourcename": "Iconmonstr",
         "alt": "Iconmonstr, Bildsuche, 2021",
 
         "wikidata": "Q911084",
@@ -593,7 +607,8 @@
         },
 
         "img": "Figuren/Caesar/Caesar.png", 
-        "source": "<a href='https://www.the-artinspector.de/kopie-von-questions/was-ist-eine-%E2%80%9Eapotheose%E2%80%9C%3F' target='_blank'>The Artinspector</a>",
+        "source": "https://www.the-artinspector.de/kopie-von-questions/was-ist-eine-%E2%80%9Eapotheose%E2%80%9C%3F",
+        "sourcename": "The Artinspector",
         "alt": "Louis Laguerre, Apotheose Caesars, 1692-1694",
         
         "wikidata": "Q1048",
@@ -631,7 +646,8 @@
         },
 
         "img": "Figuren/Cygnus/zi_muc-1bd1908a7af91bddc6115ab9cdf9fc81e7cb67ef (zugeschnitten).jpg", 
-        "source": "Prometheus",
+        "source": "https://prometheus.uni-koeln.de/de/image/zi_muc-1bd1908a7af91bddc6115ab9cdf9fc81e7cb67ef",
+        "sourcename": "Prometheus",
         "alt": "Unbekannte:r Künstler:in, Verwandlung der Heliaden in Bäume und des Cygnus in einen Schwan am Grabmal des Phaeton, vor 1750",
         
         "wikidata": "Q604672",
@@ -670,8 +686,9 @@
         },
 
         "img": "Figuren/Gefaehrtendesulixes/Jacob_Jordaens_(I)_-_Ulysses_threatening_Circe,_1630-35_Thumbnail.jpg", 
-        "source": "<a href='https://upload.wikimedia.org/wikipedia/commons/6/63/Jacob_Jordaens_%28I%29_-_Ulysses_threatening_Circe%2C_1630-35.jpg' target='_blank'>Wikimedia</a>",
-        "alt": "Jacob Jordaens, Ulysses threatening Circe, 1630",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/6/63/Jacob_Jordaens_%28I%29_-_Ulysses_threatening_Circe%2C_1630-35.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Jacob Jordaens, Ulysses bedroht Circe, 1630",
         
         "wikidata": "-",
         "ovMet": "14,223-308",
@@ -695,7 +712,7 @@
         "name": "Glaucus",
 
         "icon": "Figuren/Glaucus/Glaucus.png",
-        "width": "60",
+        "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -710,7 +727,8 @@
         },
 
         "img": "Figuren/Glaucus/Glaucus-et-scylla-jacques-dumont-romain-musee-troyes_Thumbnail.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Glaucus-et-scylla-jacques-dumont-romain-musee-troyes.JPG' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Glaucus-et-scylla-jacques-dumont-romain-musee-troyes.JPG",
+        "sourcename": "Wikimedia",
         "alt": "Jacques Dumont le Romain, Glaucus and Scylla, ?",
         
         "wikidata": "Q385397",
@@ -736,7 +754,7 @@
         "name": "Aeneas",
 
         "icon": "Figuren/Aeneas/Aeneas.png",
-        "width": "60",
+        "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -751,7 +769,8 @@
         },
 
         "img": "Figuren/Aeneas/ABRAHAM-JANSSENS_APOTHEOSE-DES-AENEAS_CC-BY-SA_BSTGS_1974.jpg", 
-        "source": "<a href='https://www.sammlung.pinakothek.de/de/artwork/o5xrdwAG7X' target='_blank'>Pinakothek München</a>",
+        "source": "https://www.sammlung.pinakothek.de/de/artwork/o5xrdwAG7X",
+        "sourcename": "Pinakothek München",
         "alt": "Abraham Janssens, Apotheose des Aeneas, um 1620 - 1630",
         
         "wikidata": "Q82732",
@@ -792,7 +811,8 @@
         },
 
         "img": "Figuren/Egeria/La_ninfa_Egeria_dictando_a_Numa.jpg", 
-        "source": "CC 3.0! <a href='https://commons.wikimedia.org/wiki/File:La_ninfa_Egeria_dictando_a_Numa.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:La_ninfa_Egeria_dictando_a_Numa.jpg",
+        "sourcename": "CC 3.0! Wikimedia",
         "alt": "Ulpiano Checa, La ninfa Egeria dictando a Numa Pompilio las leyes de Roma, ?",
         
         "wikidata": "Q582268",
@@ -831,7 +851,8 @@
         },
 
         "img": "Figuren/Byblis/Armand_Point_Biblis_changee_en_source.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Armand_Point_Biblis_changee_en_source.jpg' target='_blank'>Wikipedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Armand_Point_Biblis_changee_en_source.jpg",
+        "sourcename": "Wikipedia",
         "alt": "Armand Point, Biblis, ?",
         
         "wikidata": "Q855426",
@@ -871,7 +892,8 @@
         },
 
         "img": "Figuren/Achelous2/Achelous2.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:%27Hercules_and_Achelous%27_by_Cornelis_Cornelisz._van_Haarlem,_1590.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:%27Hercules_and_Achelous%27_by_Cornelis_Cornelisz._van_Haarlem,_1590.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Cornelis Cornelisz. van Haarlem, Hercules und Achelous, 1590",
         
         "wikidata": "Q391379",
@@ -911,7 +933,8 @@
         },
 
         "img": "Figuren/Scylla/Peter_Paul_Rubens_-_Scylla_et_Glaucus.png", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Scylla_et_Glaucus.JPG' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_Scylla_et_Glaucus.JPG",
+        "sourcename": "Wikimedia",
         "alt": "Peter Paul Rubens, Scylla und Glaucus, ca. 1636",
         
         "wikidata": "Q193115",
@@ -951,7 +974,8 @@
         },
 
         "img": "Figuren/Atlas/Gillis_Coignet_-_Perseus_turning_Atlas_to_stone.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Gillis_Coignet_-_Perseus_turning_Atlas_to_stone.jpg?uselang=de' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Gillis_Coignet_-_Perseus_turning_Atlas_to_stone.jpg?uselang=de",
+        "sourcename": "Wikimedia",
         "alt": "Gillis Coignet, Perseus verwandelt Atlas in Stein, zwischen 1561 und 1599",
         
         "wikidata": "Q193115",
@@ -991,7 +1015,8 @@
         },
 
         "img": "Figuren/Battus/1676-art_des_adam_elsheimer-merkur_und_battus-1605.jpg", 
-        "source": "<a href='https://creativecommons.org/licenses/by-sa/4.0/deed.de target='_blank'>CC BY-SA 4.0</a> <a href='https://sammlung.staedelmuseum.de/de/werk/merkur-und-battus' target='_blank'> Städel Museum, Frankfurt am Main</a><br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
+        "source": "https://sammlung.staedelmuseum.de/de/werk/merkur-und-battus",
+        "sourcename": "CC BY-SA 4.0 Städel Museum, Frankfurt am Main<br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
         "alt": "Art des Adam Elsheimer, Merkur und Battus, 1605-1610",
         
         "wikidata": "Q791446",
@@ -1029,7 +1054,8 @@
         },
 
         "img": "Figuren/Arachne/e4ef8feb-2b2f-471b-9341-f5b3665703d0_1.184da24a9ad236bab1a8035fe0d42856.jpeg", 
-        "source": "<a href='https://www.granger.com/results.asp?image=0041933' target='_blank'>Granger</a><br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
+        "source": "https://www.granger.com/results.asp?image=0041933",
+        "sourcename": "Granger<br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
         "alt": "?, Arachne und Athena, 18.Jh.",
         
         "wikidata": "Q190082",
@@ -1055,7 +1081,7 @@
         "name": "Cadmus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "55",
+        "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1070,8 +1096,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:CadmusHarmoniaEvelynMorgan.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Evelyn De Morgan, Cadmus und Harmonia, 1877",
         
         "wikidata": "Q27613",
         "ovMet": "4,563-603",
@@ -1096,7 +1123,7 @@
         "name": "Harmonia",
 
         "icon": "Figuren/Cadmus/Cadmus_Icon.png",
-        "width": "40",
+        "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1111,7 +1138,8 @@
         },
 
         "img": "Figuren/Cadmus/CadmusHarmoniaEvelynMorgan.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:CadmusHarmoniaEvelynMorgan.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:CadmusHarmoniaEvelynMorgan.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Evelyn De Morgan, Cadmus und Harmonia, 1877",
         
         "wikidata": "Q978079",
@@ -1152,7 +1180,8 @@
         },
 
         "img": "Figuren/Phineus/Perseus_and_Phineas_-_Annibale_Carracci_and_Domenichino_-_1597_-_Farnese_Gallery,_Rome.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Perseus_and_Phineas_-_Annibale_Carracci_and_Domenichino_-_1597_-_Farnese_Gallery,_Rome.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Perseus_and_Phineas_-_Annibale_Carracci_and_Domenichino_-_1597_-_Farnese_Gallery,_Rome.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Annibale Carracci and Domenichino, Perseus und Phineas, 1604-1606",
         
         "wikidata": "Q1471454",
@@ -1193,7 +1222,8 @@
         },
 
         "img": "Figuren/Pieriden/Norblin_Pierides_changed_into_magpies.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Norblin_Pierides_changed_into_magpies.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Norblin_Pierides_changed_into_magpies.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Jean-Pierre Norblin de La Gourdaine, Die Pieriden verwandeln sich in Elstern, zwischen 1774 und 1783",
         
         "wikidata": "Q2092778",
@@ -1218,7 +1248,7 @@
         "name": "Aglauros",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1233,7 +1263,8 @@
         },
 
         "img": "Figuren/Aglauros/1280px-Mercury,_Herse,_and_Aglaurus,1767,_by_Louis-Jean-François_Lagrenée._Nationalmuseum,_Stockholm,_Sweden.jpg", 
-        "source": "CC BY-SA 4.0<a href='https://commons.wikimedia.org/wiki/File:Mercury,_Herse,_and_Aglaurus,1767,_by_Louis-Jean-Fran%C3%A7ois_Lagren%C3%A9e._Nationalmuseum,_Stockholm,_Sweden.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Mercury,_Herse,_and_Aglaurus,1767,_by_Louis-Jean-Fran%C3%A7ois_Lagren%C3%A9e._Nationalmuseum,_Stockholm,_Sweden.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Louis Jean François, Mercury, Herse und Aglaurus, 1767",
         
         "wikidata": "Q368994",
@@ -1246,7 +1277,7 @@
         "vergleichswerke": {
             "warburg": "-",
             "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Aglauros", 
-            "wiki": "https://commons.wikimedia.org/wiki/Category:Aglaulus_(daughter_of_Cecrops)"
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Mercury_and_Aglaurus"
         }
     },
 
@@ -1273,7 +1304,8 @@
         },
 
         "img": "Figuren/Cyane/Rape_of_Proserpine_by_C.Schwarz_(c._1573,_Fitzwilliam).jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Rape_of_Proserpine_by_C.Schwarz_(c._1573,_Fitzwilliam).jpg?uselang=de' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Rape_of_Proserpine_by_C.Schwarz_(c._1573,_Fitzwilliam).jpg?uselang=de",
+        "sourcename": "Wikimedia",
         "alt": "Christoph Schwarz, Der Raum der Proserpina, ca. 1573",
         
         "wikidata": "Q1423058",
@@ -1313,7 +1345,8 @@
         },
 
         "img": "Figuren/Ascalabus/Ceres_verandert_Ascalabus_in_een_hagedis,_RP-P-BI-37_klein.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Ceres_verandert_Ascalabus_in_een_hagedis,_RP-P-BI-37.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Ceres_verandert_Ascalabus_in_een_hagedis,_RP-P-BI-37.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Willem Outgertsz. Akersloo (nach Jan van de Velde (II)), Ceres verwandelt Ascalabus in eine Eidechse, 1610-1651",
         
         "wikidata": "Q2655419",
@@ -1354,7 +1387,8 @@
         },
 
         "img": "Figuren/Ascalaphus/Proserpina_en_Ascalaphus_als_uil,_RP-P-H-C-69.jpg", 
-        "source": "<a href='https://commons.wikimedia.org/wiki/File:Proserpina_en_Ascalaphus_als_uil,_RP-P-H-C-69.jpg' target='_blank'>Wikimedia</a>",
+        "source": "https://commons.wikimedia.org/wiki/File:Proserpina_en_Ascalaphus_als_uil,_RP-P-H-C-69.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Enea Vico (?) (after Parmigianino), Proserpina und Ascalaphus als Eule, 1548",
         
         "wikidata": "Q1294888",
@@ -1394,7 +1428,8 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "source": "https://iconmonstr.com/file-37-png/",
+        "sourcename": "Iconmonstr",
         "alt": "Iconmonstr, Bildsuche, 2021",
         
         "wikidata": "Q213621",
@@ -1418,7 +1453,7 @@
         "name": "Tereus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1433,7 +1468,8 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "source": "https://iconmonstr.com/file-37-png/",
+        "sourcename": "Iconmonstr",
         "alt": "Iconmonstr, Bildsuche, 2021",
         
         "wikidata": "Q1138506",
@@ -1457,7 +1493,7 @@
         "name": "Procne",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1472,12 +1508,13 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Philomela_and_Procne#/media/File:Philomela,_Procne_e_Tereus_-_Sebastiano_Del_Piombo,_Villa_Farnesina.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Sebastiano Del Piombo, Philomela, Procne und Tereus, 1511",
         
         "wikidata": "Q1231743",
         "ovMet": "6,412-674",
-        "verwandlung": "Rotkehlchen (?)",
+        "verwandlung": "Vogel",
         "grund": "Bestrafung", 
         "verwandler": "-",
         "ort": "? (nachschauen)",
@@ -1497,7 +1534,7 @@
         "name": "Philomela",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1512,12 +1549,13 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Philomela_and_Procne#/media/File:Philomela,_Procne_e_Tereus_-_Sebastiano_Del_Piombo,_Villa_Farnesina.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Sebastiano Del Piombo, Philomela, Procne und Tereus, 1511",
         
         "wikidata": "Q115449",
         "ovMet": "6,412-674",
-        "verwandlung": "Rotkehlchen (?)",
+        "verwandlung": "Vogel",
         "grund": "Bestrafung", 
         "verwandler": "-",
         "ort": "? (nachschauen)",
@@ -1537,7 +1575,7 @@
         "name": "Aeson",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1552,8 +1590,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Giuseppe_Asioli_-_Medea_(after_Tibaldi).jpg#/media/File:Giuseppe_Asioli_-_Medea_(after_Tibaldi).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Giuseppe Asioli (nach Tibaldi), Medea verjüngt Aeson, 1811",
         
         "wikidata": "Q410082",
         "ovMet": "7,159-296",
@@ -1578,7 +1617,7 @@
         "name": "Perdix",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1593,8 +1632,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Minerva_verandert_Perdix_in_een_vogel.jpeg#/media/File:Minerva_verandert_Perdix_in_een_vogel.jpeg",
+        "sourcename": "Wikimedia",
+        "alt": "Crispijn van de Passe (I), Minerva verwandelt Perdix in einen Vogel, 1602-1607",
         
         "wikidata": "Q608951",
         "ovMet": "8,236-25",
@@ -1619,7 +1659,7 @@
         "name": "Perimele",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1634,8 +1674,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/record.php?record=94239",
+        "sourcename": "Warburg Institute Iconographic Database",
+        "alt": "Unbekannte:r Künstler:in, Perdix, 1493",
         
         "wikidata": "Q17996472",
         "ovMet": "8,236-25",
@@ -1659,7 +1700,7 @@
         "name": "Philemon",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "flora",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1674,8 +1715,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Philemon_and_Baucis#/media/File:Janus_Genelli_-_Philemon_und_Baucis'_Verwandlung_(1801).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Janus Genelli, Philemon und Baucis' Verwandlung, 1801",
         
         "wikidata": "Q637209",
         "ovMet": "8,611-724",
@@ -1699,7 +1741,7 @@
         "name": "Baucis",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1714,8 +1756,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Philemon_and_Baucis#/media/File:Janus_Genelli_-_Philemon_und_Baucis'_Verwandlung_(1801).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Janus Genelli, Philemon und Baucis' Verwandlung, 1801",
         
         "wikidata": "Q637209",
         "ovMet": "8,611-724",
@@ -1740,7 +1783,7 @@
         "name": "Achelous",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1755,8 +1798,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76",
         
         "wikidata": "Q391379",
         "ovMet": "9,1-97",
@@ -1779,7 +1823,7 @@
         "name": "Lichas",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "65",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1794,8 +1838,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Lichas#/media/File:SorokinPS_Gerkules&Lihas.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "P. S. Sorokin, Hercules and Lichas, 1849",
         
         "wikidata": "Q922330",
         "ovMet": "9,134-272",
@@ -1822,7 +1867,7 @@
         "name": "Galanthis",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "100",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1837,8 +1882,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Alcmene#/media/File:Curiosit%C3%A9s_m%C3%A9dico-artistiques_(1907)_(14773037892).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Unbekannte:r Künstler:in, Geburt des Hercules, 1606",
         
         "wikidata": "Q1386394",
         "ovMet": "9,273-323",
@@ -1865,7 +1911,7 @@
         "name": "Iphis",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "65",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
         "koordinaten": {
@@ -1880,8 +1926,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Telethusa_en_Iphis_bidden_tot_Isis_Metamorfosen_van_Ovidius_(serietitel),_RP-P-2014-34-55.jpg#/media/File:Telethusa_en_Iphis_bidden_tot_Isis_Metamorfosen_van_Ovidius_(serietitel),_RP-P-2014-34-55.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Crispijn van de Passe (II), Telethusa und Iphis beten zu Isis, ca. 1636-1670",
         
         "wikidata": "Q1889919",
         "ovMet": "9,666-797",
@@ -1906,7 +1953,7 @@
         "name": "Myrrha",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "70",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -1921,8 +1968,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Ovide_-_Metamorphoses_-_III_-_Myrrha_accouche_d%27Adonis.jpg#/media/File:Ovide_-_Metamorphoses_-_III_-_Myrrha_accouche_d'Adonis.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Nicolas de Launay (nach Charles Dominique Joseph Eisen), Myrrha gebiert Adonis, vor 1769",
         
         "wikidata": "Q771366",
         "ovMet": "10,298-502",
@@ -1947,7 +1995,7 @@
         "name": "Hippomenes",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "65",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -1962,8 +2010,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://artvee.com/dl/atalanta-and-hippomenes-turned-into-lions/",
+        "sourcename": "Artvee",
+        "alt": "Jean-Baptiste Oudry, Atalanta und Hippomenes in Löwen verwandelt, 1732",
         
         "wikidata": "Q1455747",
         "ovMet": "10,560-707",
@@ -1989,12 +2038,12 @@
         "name": "Atalanta",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "55",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
             "unorganisiert": {
-                "top": "60",
+                "top": "65",
                 "left": "50"
             },
             "geographie": {
@@ -2004,12 +2053,13 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://artvee.com/dl/atalanta-and-hippomenes-turned-into-lions/",
+        "sourcename": "Artvee",
+        "alt": "Jean-Baptiste Oudry, Atalanta und Hippomenes in Löwen verwandelt, 1732",
         
         "wikidata": "Q190323",
         "ovMet": "10,560-707",
-        "verwandlung": "Löwe",
+        "verwandlung": "Löwin",
         "grund": "Bestrafung für Undankbarkeit gegenüber Venus' und Entweihung eines Tempels", 
         "verwandler": "Venus",
         "ort": "? (nachschauen)",
@@ -2028,10 +2078,10 @@
 
     "ceyx": {
         "id": "ceyx",
-        "name": "Atalanta",
+        "name": "Ceyx",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -2046,13 +2096,14 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Herbert_James_Draper_-_Halcyone_(1915).jpg#/media/File:Herbert_James_Draper_-_Halcyone_(1915).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Herbert James Draper, Halcyone, 1915",
         
         "wikidata": "Q578888",
         "ovMet": "11,410-748",
         "verwandlung": "[Eis]Vogel",
-        "grund": "postume Ehrung", 
+        "grund": "Schutz", 
         "verwandler": "'[Die] Götter'",
         "ort": "? (nachschauen)",
         "iconclass": "97DD13 als Alcyone den Leichnam ihres Mannes Ceyx findet, der an das Ufer gespült worden ist, werden die beiden Eheleute in Eisvögel verwandelt (Ovid, Metamorphosen XI 741)",
@@ -2072,7 +2123,7 @@
         "name": "Alcyone",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -2087,8 +2138,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Herbert_James_Draper_-_Halcyone_(1915).jpg#/media/File:Herbert_James_Draper_-_Halcyone_(1915).jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Herbert James Draper, Halcyone, 1915",
         
         "wikidata": "Q578888",
         "ovMet": "11,410-748",
@@ -2113,7 +2165,7 @@
         "name": "Aesacus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2128,12 +2180,13 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/record.php?record=16109",
+        "sourcename": "CC 3.0 Warburg Institute Iconographic Database",
+        "alt": "Melchior Küsel (I) (nach Johann Wilhelm Baur), Hesperia and Aesacus, 1681",
         
         "wikidata": "Q409520",
         "ovMet": "11,749-795",
-        "verwandlung": "[Eis]Vogel",
+        "verwandlung": "Tauchvogel",
         "grund": "Schutz", 
         "verwandler": "Tethys",
         "ort": "? (nachschauen)",
@@ -2156,7 +2209,7 @@
         "name": "Caenis",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "60",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
         "koordinaten": {
@@ -2171,8 +2224,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Neptune_and_Caenis_MET_DP864221.jpg#/media/File:Neptune_and_Caenis_MET_DP864221.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Bartholomeus Spranger, Neptune and Caenis, 1580",
         
         "wikidata": "Q1132772",
         "ovMet": "12,169-209",
@@ -2184,7 +2238,7 @@
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=386&cat_3=3261",
             "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Cenaeus", 
-            "wiki": "https://commons.wikimedia.org/wiki/Category:Caeneus"
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Rape_of_Caeneus"
         }
     },
 
@@ -2196,7 +2250,7 @@
         "name": "Caenus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Divers",
         "koordinaten": {
@@ -2211,8 +2265,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://iconmonstr.com/file-37-png/",
+        "sourcename": "Iconmonstr",
+        "alt": "Michiel Van der Gucht, Ceneus verwandelt sich in einen Vogel, 1733",
         
         "wikidata": "Q1132772",
         "ovMet": "12,210-535",
@@ -2235,7 +2290,7 @@
         "name": "Periclymenus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2250,7 +2305,8 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
+        "source": "https://iconmonstr.com/file-37-png/",
+        "sourcename": "Iconmonstr",
         "alt": "Iconmonstr, Bildsuche, 2021",
         
         "wikidata": "Q3899862",
@@ -2275,7 +2331,7 @@
         "name": "Acis",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2290,8 +2346,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Acis#/media/File:Acis_LACMA_M.88.91.382m.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Philip Galle, Acis, 1586",
         
         "wikidata": "Q419156",
         "ovMet": "13,750-897",
@@ -2317,7 +2374,7 @@
         "name": "Vertumnus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
         "koordinaten": {
@@ -2332,8 +2389,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Vertumnus_and_Pomona_1630_Paulus_Moreelse.jpg#/media/File:Vertumnus_and_Pomona_1630_Paulus_Moreelse.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Paulus Moreelse, Vertumnus and Pomona, ca. 1630",
         
         "wikidata": "Q2119919",
         "ovMet": "14,622-697",
@@ -2358,7 +2416,7 @@
         "name": "Romulus",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2373,8 +2431,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:De_hemelvaart_van_Romulus_Metamorfosen_van_Ovidius_(serietitel),_RP-P-OB-15.994.jpg#/media/File:De_hemelvaart_van_Romulus_Metamorfosen_van_Ovidius_(serietitel),_RP-P-OB-15.994.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Crispijn van de Passe (I), Die Apotheose von Romulus, 1602-1607",
         
         "wikidata": "Q2197",
         "ovMet": "14,805-828",
@@ -2399,7 +2458,7 @@
         "name": "Midas",
 
         "icon": "Figuren/iconmonstr-file-37-240.png",
-        "width": "40",
+        "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2414,8 +2473,9 @@
         },
 
         "img": "Figuren/iconmonstr-file-37-240.png", 
-        "source": "<a href='https://iconmonstr.com/file-37-png/' target='_blank'>Iconmonstr</a>",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/File:Michelangelo_Cerquozzi_-_King_Midas.jpg#/media/File:Michelangelo_Cerquozzi_-_King_Midas.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Michelangelo Cerquozzi, König Midas, 1620-1660",
         
         "wikidata": "Q308398",
         "ovMet": "11,85-193",
@@ -2428,6 +2488,44 @@
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=99&cat_3=792&cat_4=9993",
             "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Midas", 
             "wiki": "https://commons.wikimedia.org/wiki/Category:King_Midas_in_art"
+        }
+    },
+
+    "hersilia": {
+        "id": "hersilia",
+        "name": "Hersilia",
+
+        "icon": "Figuren/iconmonstr-file-37-240.png",
+        "width": "80",
+        "taxonomie": "anthropomorphes",
+        "geschlecht": "Weiblich",
+        "koordinaten": {
+            "unorganisiert": {
+                "top": "60",
+                "left": "50"
+            },
+            "geographie": {
+                "top": "60",
+                "left": "5"
+            }
+        },
+
+        "img": "Figuren/iconmonstr-file-37-240.png", 
+        "source": "https://commons.wikimedia.org/wiki/File:Plate_145-_Hersilia_Taken_to_the_Heavens_(Hersilia_Romuli_coniunx_in_Oram_deam_a_Iunone_constituitur),_from_Ovid%27s_%27Metamorphoses%27_MET_DP864236.jpg#/media/File:Plate_145-_Hersilia_Taken_to_the_Heavens_(Hersilia_Romuli_coniunx_in_Oram_deam_a_Iunone_constituitur),_from_Ovid's_'Metamorphoses'_MET_DP864236.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Antonio Tempesta, Hersilias Apotheose, 1606",
+        
+        "wikidata": "Q1402198",
+        "ovMet": "14,829-851",
+        "verwandlung": "Göttin Hora",
+        "grund": "Trauer", 
+        "verwandler": "Juno",
+        "ort": "? (nachschauen)",
+        "iconclass": "96D(HERSILIA)69 Apotheose der Hersilia: die Frau des Romulus wird von Juno und Isis zum Himmel emporgehoben und zur Hora Quirina vergöttlicht",
+        "vergleichswerke": {
+            "warburg": "",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Hersilia", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Hersilia"
         }
     }
 
