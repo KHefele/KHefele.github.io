@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Visualized Ovid</title>
+  <!-- Import my stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- font-stylesheet -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="Bilder/Favicon Ovid.png">
+</head>
+
+<body>
+
+
+  <div class="menue">
+    <div style="height: 55px;">
+      <b style="font-size: 50px" class="animated-text">VISUALIZED OVID</b>
+    </div>
+    <br>
+    <em>Eine Reise durch die Metamorphosen Ovids</em>
+    <br>
+    <br>
+    <br>
+
+    <button id="buttonProjekt">Über das Projekt</button>
+    &nbsp;
+    <button id="buttonFliesstext">Zur Textedition</button>
+    &nbsp;
+    <button id="buttonVisualisierung">Zur Visualisierung</button>
+  </div>
+
+
+  <div id="projekt">
+    <div class="projektText">
+      <h1>Das Projekt</h1>
+      <p>
+        <br>
+        <img src="Icons/quotation-marks.png" style="position:relative; width: 7%; left:20%;">
+      <table style="position: relative; width: 100%;">
+        <tr>
+          <td style=" position:relative; width:100%;padding: 0% 15% 0% 25%">
+            <blockquote>
+              <p>
+                Nun habe ich ein Werk vollendet, das nicht Iuppiters Zorn, nicht Feuer, <br>
+                nicht Eisen, nicht das nagende Alter wird vernichten können. […] <br>
+                [M]ein Name wird unzerstörbar sein, <br>
+                und so […] werde ich vom Mund des Volkes gelesen werden und, <br>
+                sofern an den Vorahnungen der Dichter auch nur etwas Wahres ist,<br>
+                durch alle Jahrhunderte im Ruhm fortleben.<br>
+              <p style="text-align: right;"><cite>Ov. met. 15,871-879.</cite></p>
+              </p>
+            </blockquote>
+          </td>
+        </tr>
+      </table>
+      <br>
+      <br>So lautet es im selbstbewussten Nachwort im antiken Gedicht der Metamorphosen. Damit sollte der Schöpfer
+      Publius
+      Ovidius Naso recht behalten. So hat sein monumentales Schaffenswerk hat auch heute noch einen kanonischen
+      Stellenwert und eine enorme Bedeutung für die Kunst. Mein Masterarbeitsprojekt soll daran anknüpfen, und neue
+      Zugänge zu diesem Werk und den in Relation gesetzten Bildwerken schaffen, die sich durch die technischen
+      Möglichkeiten ergeben.
+      <br>Sie soll dazu dienen, das seit Jahrhunderten vorhandene Wissen in eine neue Form zu bringen, die durch ein
+      iteratives Vorgehen erfahrbar ist und dazu inspiriert neue Fragen an einen alten Bestand zu stellen. Also ein
+      Tool,
+      dass durch neue Ansätze dabei hilft, die Mengen an Text zu strukturieren und Zusammenhänge zu erkennen, die beim
+      linearen Lesen schwer wahrnehmbar sind. Und dadurch dazu anregt, sich näher damit sowie den dazugehörigen
+      Kunstwerken auseinanderzusetzen. So soll es durch die Visualisierung beispielsweise möglich sein, eine Auswahl an
+      Metamorphosen nach verschiedenen Wissenskategorien anzuordnen. Dadurch Fragen nach dem örtlichen Rahmen der
+      Geschichten, der taxonomischen Zugehörigkeit der Verwandelten oder an den kausalen Hintergrund zu stellen. Bzw.
+      diese Kategorien sogar miteinander zu verknüpfen.
+      <br>Da alle Verwandlungen der Metamorphosen den Rahmen dieser Arbeit übersteigen würde, sind hierbei exemplarisch
+      nur die 60 Verwandlungen der sterblichen Protagonisten innerhalb des Werkes herausgegriffen.
+      <br>
+      <br>
+      <hr>
+      <p style="text-align: center;padding: 5% 10%;">
+        Diese Visualisierung basiert auf einem Projekt, das im Rahmen einer Masterarbeit an der
+        <a href="https://www.fau.de/">Friedrich-Alexander-Universität Erlangen-Nürnberg</a>
+        entstanden ist: <em>Digitale Anwendung zur Vermittlung der Metamorphosen Ovids</em>.
+        Unter der Betreuung von <a href="https://www.kunstgeschichte.phil.fau.de/institut/team/peter-bell/">Prof. Dr.
+          Peter
+          Bell</a>
+        und der kompetenten Beratung von <a
+          href="https://www.kunstgeschichte.phil.fau.de/institut/team/dirk-suckow/">Dirk
+          Suckow, M.A.</a>
+        und <a href="https://www.lgdv.tf.fau.de/person/philipp-kurth/">Philipp Kurth, M.Sc</a>.
+        <br>
+        <br>Als Inspiration dienten die Projekte:
+        <br>• <a href="https://visualize.numid.online/#/de">NUMiD</a> der <a
+          href="https://www.tu-braunschweig.de/">Technischen Universität Braunschweig</a>
+        <br>• <a href="https://digi.ub.uni-heidelberg.de/wgd/">Welscher Gast Digital</a> der <a
+          href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>.
+        <br>
+        <br>
+        <img src="Bilder/FAU_Logo_trans_rgb.png" style="position:relative; width: 50%;">
+      </p>
+      <hr>
+      <p style="text-align: center; padding: 5% 0%">
+        <br>
+        Anmerkungen und Fehlermeldungen bitte an:
+        <br>
+        <img src="Icons/iconmonstr-email-1-240.png" style="width: 18px;">
+        <a href="mailto:katharina.hefele@fau.de">Katharina Hefele, katharina.hefele@fau.de</a>
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <br>
+  </div>
+
+
+
+
+  <!-- Import my script -->
+  <script type="text/javascript">
+
+    document.getElementById("buttonProjekt").onclick = function () {
+      location.href = "#projekt";
+    };
+
+
+    document.getElementById("buttonFliesstext").onclick = function () {
+      location.href = "/visualisierung.html#fliesstext";
+    };
+
+    document.getElementById("buttonVisualisierung").onclick = function () {
+      location.href = "/visualisierung.html";
+    };
+
+
+  </script>
+
+</body>
+
+</html>
