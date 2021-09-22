@@ -44,6 +44,7 @@ export async function application() {
   //--------------------------------------------*/
 
 
+
   //--------------------------------------------//
   //         1. Start-/Info-Modals              //
   //--------------------------------------------//
@@ -112,14 +113,23 @@ export async function application() {
 
   var kategorienTabelle = ["erzaehlfolge", "klassifikation", "geographie", "alphabet", "verwandlungsgrund", "verwandelnde", "fliesstext"];
 
+
+  var closeKategorieModals = document.getElementsByClassName("closeKategorieModals");
+  console.log(closeKategorieModals)
+
   function createKategorieModal(kategorie) {
     var kategorieModal = document.getElementById(kategorie + "Modal");
     var kategorieBtn = document.getElementById(kategorie + "InfoBtn");
+    var closeKategorie = document.getElementById(kategorie + "ModalX")
 
     kategorieBtn.onclick = function () {
       kategorieModal.style.display = "block";
       kategorieModal.style.animationPlayState = "running";
     }
+    closeKategorie.onclick = function () {
+      kategorieModal.style.display = "none";
+    }
+
   }
 
   for (var k = 0; k < kategorienTabelle.length; k++) {
@@ -472,7 +482,7 @@ export async function application() {
     } else {
 
       //NOCH UMBAUEN > in TABELLE UND ABRUFEN 
-      var verwandeltenLink = "<a href='http://127.0.0.1:5500/#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
+      var verwandeltenLink = "<a href='/visualisierung.html#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
 
       //insert, if key isn't already in dict
       if (!(currentVerwandler in verwandlerDict)) {
@@ -743,7 +753,7 @@ export async function application() {
     //<a href="bild.jpg" target="_blank"><img height="200px" width="200px" src="bild.jpg"/></a>
     imgLink.setAttribute("href", "Figuren/" + data.id + "/" + data.id + ".jpg");
     imgLink.setAttribute("target", "_blank");
-    console.log(imgLink);
+    //console.log(imgLink);
     tableCol.appendChild(imgLink);
     var img = document.createElement("img");
     imgLink.appendChild(img);
@@ -976,6 +986,7 @@ export async function application() {
 
     var buttonSpan = document.createElement("span");
     buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
+    buttonSpan.className = "closeModal"
     buttonSpan.onclick = function () {
       modalDiv.style.display = "none";
       aktuellesModal = undefined;
@@ -1398,14 +1409,32 @@ export async function application() {
     }
   }
 
+  // //keine Auswahl, wenn Kategorie zum zweiten Mal angetippt wird
+  // function keineAuswahl(aktuelleKategorieAngabe){
+  //   if (aktKat === aktuelleKategorieAngabe){
+
+  //   }
+  // }
+
+
 
   //setzt alle Einstellungen der nicht aufgerufenen Kategorien zurück
   function setBackOtherKategories(aktKat) {
 
     //funktioniert noch nicht, dass Popup nach verwendung ausgeblendet wird
     var kategoryPopUp = document.getElementById("kategoryPopUp");
-    //console.log(kategoryPopUp)
-    //kategoryPopUp.style.display = "none";
+
+    //mark-Kategorien zurücksetzen
+    insertCurrentMarkCategory("Keine Auswahl", "iconmonstr-circle-5-240.png", "19");
+
+    // 0. Kategorie zurücksetzen: Unorganisiert
+    if (aktKat != "") {
+
+      //Protagonisten-Namen ausblenden
+      for (var x = 0; x < namesOfFigure.length; x++) {
+        namesOfFigure[x].style.display = "none";
+      }
+    }
 
     // 1. Kategorie zurücksetzen: Erzählfolge
     if (aktKat != "erzaehlfolge") {
@@ -1468,11 +1497,16 @@ export async function application() {
       textImg.style.display = "none";
       for (var figur in leude) { //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
         var figurIcon = document.getElementById(figur + "Wrapper");
+        
+        //Notfall-Lösung, damit beim Fliestext-Öffnen (über URL) keine Icons angezeigt werden s. auch setBackOtherKategories
+        //figurIcon.style.display = "block"; 
+        
         figurIcon.style.opacity = 1;
         figurIcon.style.visibility = "visible";
       }
     }
   }
+
 
 
 
@@ -1902,9 +1936,9 @@ export async function application() {
 
 
       if (leude[figur].ort.startsWith("?")) {
-
-        figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
-        figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+        
+        figurIcon.style.top = rand(-10, 110) + "%";
+        figurIcon.style.left = rand(-10, 110) + "%";
         figurIcon.style.opacity = 0;
         figurIcon.style.visibility = "hidden";
 
@@ -2089,9 +2123,10 @@ export async function application() {
     for (key in leude) {
       var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
 
-      //an einen zufälligen Ort innerhalb des Divs setzen (unsichtbar)
-      iconWrapper.style.top = (Math.floor(Math.random() * (80 - 30 + 1)) + 30) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
-      iconWrapper.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+      //an einen zufälligen Ort außerhalb Bildschirms setzen (unsichtbar)
+      iconWrapper.style.top = rand(-10, 110) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
+      iconWrapper.style.left = rand(-10, 110) + "%";
+      
       iconWrapper.style.opacity = 0;
       iconWrapper.style.visibility = "hidden";
 
@@ -2385,8 +2420,8 @@ export async function application() {
 
       if (!(leude[key].verwandler.startsWith("Jupiter")) && !(leude[key].verwandler.startsWith("Neptun")) && !(leude[key].verwandler.startsWith("Venus")) && !(leude[key].verwandler.startsWith("Diana")) && !(leude[key].verwandler.startsWith("Minerva")) && !(leude[key].verwandler.startsWith("Mercur")) && !(leude[key].verwandler.startsWith("Apollo")) && !(leude[key].verwandler.startsWith("Ceres")) && !(leude[key].verwandler.startsWith("Juno"))) {
 
-        iconWrapper.style.top = (Math.floor(Math.random() * (80 - 30 + 1)) + 30) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
-        iconWrapper.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+        iconWrapper.style.top = rand(-10, 110) + "%"; //begrenzt, damit die Icons innerhalb des divs bleiben / verschwinden(max-min+1)+min
+        iconWrapper.style.left = rand(-10, 110) + "%";
         iconWrapper.style.opacity = 0;
         iconWrapper.style.visibility = "hidden";
 
@@ -2453,7 +2488,7 @@ export async function application() {
   for (var x = 0; x < xs2.length; x++) {
     coordinatesJupiter += xs2[x] / 2740 * 100 + "," + ys2[x] / 3051 * 100 + " ";
   }
-  console.log(coordinatesJupiter)
+  //console.log(coordinatesJupiter)
 
 
 
@@ -2778,16 +2813,20 @@ export async function application() {
     textImg.style.display = "block";
 
 
-    //Icons aktuell ausgeblendet, damit sie nicht stören
+    //Icons ausblenden, damit sie nicht stören
     for (var figur in leude) {
 
       var figurIcon = document.getElementById(figur + "Wrapper");
-      //var figurImg = document.getElementById(figur + "Btn");
 
-      figurIcon.style.top = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
-      figurIcon.style.left = (Math.floor(Math.random() * (90 - 10 + 1)) + 10) + "%";
+      figurIcon.style.top = rand(-10, 110) + "%";
+      figurIcon.style.left = rand(-10, 110) + "%";
+     
+      //Notfall-Lösung, damit beim Fliestext-Öffnen (über URL) keine Icons angezeigt werden (unter)
+      //figurIcon.style.display = "none";
+
       figurIcon.style.opacity = 0;
       figurIcon.style.visibility = "hidden";
+
 
       //figurIcon.style.visibility = "hidden"; > mit window.setTimeout(..., 1000);
       //figurImg.style.width = "0px";
@@ -2827,9 +2866,29 @@ export async function application() {
 
   var unorgBtn = document.getElementById("unorganisiert");
 
+  //Protagonistennamen unter Icons anlegen
+  for (key in leude) {
+
+    var iconWrapper = document.getElementById(key + "Wrapper");
+    console.log()
+    var nameOfFigure = document.createElement("div");
+    nameOfFigure.className = "nameOfFigure";
+    nameOfFigure.style.textAlign = "center";
+    nameOfFigure.innerHTML = leude[key].name;
+    nameOfFigure.style.fontFamily = "'Crimson Text', serif";
+    nameOfFigure.style.width = iconWrapper.offsetWidth + "px";
+    nameOfFigure.style.fontSize = "10px";
+    nameOfFigure.style.display = "none";
+    iconWrapper.appendChild(nameOfFigure);
+
+  }
+  var namesOfFigure = document.getElementsByClassName("nameOfFigure");
+  for (var x = 0; x < namesOfFigure.length; x++) {
+    namesOfFigure[x].style.display = "block";
+  }
 
 
-  unorgBtn.onclick = function () {
+  function keineAuswahl() {
 
     setWidthPercent(100);
     setBackOtherKategories();
@@ -2854,6 +2913,16 @@ export async function application() {
         fromLeft = 14;
       }
     }
+
+    var namesOfFigure = document.getElementsByClassName("nameOfFigure");
+    for (var x = 0; x < namesOfFigure.length; x++) {
+      namesOfFigure[x].style.display = "block";
+    }
+
+  }
+
+  unorgBtn.onclick = function() {
+    keineAuswahl();
   }
 
   
@@ -2911,8 +2980,8 @@ export async function application() {
     }
   }
 
-  console.log(window.innerHeight)
-  console.log(window.innerWidth)
+  //console.log(window.innerHeight)
+  //console.log(window.innerWidth)
 
 
 
@@ -3220,103 +3289,6 @@ export async function application() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-  /*
-  //--------------------------------------------//
-  //                   Quiz                     //
-  //--------------------------------------------//
-
-
-  //QuizModal
-  var quizModal = document.getElementById("quizModal");
-  //var quizBtn = document.getElementById("quizBtn"); // bereits oben deklariert!
-
-  quizBtn.onclick = function(){
-    quizModal.style.display = "block";
-  }
-
-  var zumQuizBtn = document.getElementById("zumQuizBtn");
-  var quizStartContent = document.getElementById("quizStartContent");
-
-  zumQuizBtn.onclick = function(){
-    quizStartContent.style.display = "none";
-  }
-
-  
-  var punktestand = 0;
-  var bisherigeLeistungen = new Array(10);
-
-  function createQuiz(number) {
-  
-    var bigQuizDiv = document.createElement("div"); //allumfassendes Div
-    bigQuizDiv.className = "modalContent";
-    bigQuizDiv.id = "Frage" + number;
-    quizModal.appendChild(bigQuizDiv);
-
-    var anzahlDiv = document.createElement("div"); //Frage 1/10
-    anzahlDiv.style.textAlign = "right";
-    anzahlDiv.innerHTML = "Frage " + number + "/10";
-    bigQuizDiv.appendChild(anzahlDiv);
-
-    var antwortDiv = document.createElement("div"); //Multiple Choice
-    bigQuizDiv.appendChild(antwortDiv);
-
-    var 
-    className = "multipleChoise";
-    
-
-
-
-
-    //var fragenuebersichtDiv = document.createElement("div"); //Übersicht Leistung
-
-
-    var 
-
-    
-    
-    
-    if ( == ) {
-      innerHTML = "Richtig!";
-      punktestand += 1;
-      return true;
-    } else {
-      innerHTML = "Falsch!";
-      return false;
-    }
-      
-  }
-
-
-
-  for (var c = 1; c < 11; c++){
-    createQuiz(c);
-    bisherigeLeistungen.push()
-  }
-
-  //ErgebnisDiv
-  if (punktestand == ) {
-    
-  }
-
-  //by close, reset arrays!
-
-  */
-
-
-
-
-
-
   //--------------------------------------------//
   //      close modals (windows.onclick)        //
   //--------------------------------------------//
@@ -3376,104 +3348,6 @@ export async function application() {
   }
 
 
-
-
-
-
-
-
-
-
-  /*
-    //--------------------------------------------//
-    //           Personen/Checkboxen              //
-    //--------------------------------------------//
-  
-    function blendGodInOrOut(button, classArray) {
-      button.onclick = function () {
-  
-        if (classArray[0].style.display === "none") {
-          for (var i = 0; i < classArray.length; i++) {
-            classArray[i].style.display = "block";
-          }
-        } else {
-          for (var i = 0; i < classArray.length; i++) {
-            classArray[i].style.display = "none";
-          }
-        }
-        console.log("Die Götterfunktion funktioniert");
-      }
-    }
-  
-    //Zeus
-    var zeusButton = document.getElementById("zeusButton");
-    var allZeus = document.getElementsByClassName("zeus");
-    var checkboxZeus = document.getElementById("checkboxZeus");
-  
-    checkboxZeus.checked = !checkboxZeus.checked;
-    blendGodInOrOut(zeusButton, allZeus);
-    /*if zeusButton.onclick = function() => {checkboxZeus.checked = false;}; 
-    --> mit in obrige Datei */
-
-  /*
-  //Hera
-  var heraButton = document.getElementById("heraButton");
-  var allHera = document.getElementsByClassName("hera");
-
-  blendGodInOrOut(heraButton, allHera);
-  */
-
-
-  //Artemis 
-
-
-
-
-  /*
-
-  //--------------------------------------------//
-  //                  Lightbox                  //
-  //--------------------------------------------//
-
-  var openLightbox = document.getElementsByClassName("openLightbox");
-
-  openLightbox.onclick = function () {
-    document.getElementById("lightboxModal").style.display = "block";
-  }
-
-  function closeModal() {
-    document.getElementById("lightboxModal").style.display = "none";
-  }
-
-  var slideIndex = 1;
-  showSlides(slideIndex);
-
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("demo");
-    var captionText = document.getElementById("caption");
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-    captionText.innerHTML = dots[slideIndex - 1].alt;
-  }
-  */
 
 
 } //End of application-function 

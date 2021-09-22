@@ -294,6 +294,23 @@ button { /* Hintergrund-Info-Buttons */
 
 
 
+.closeKategorieModals:hover {
+  transform: scale(1.3);
+  transition: transform 0.3s;
+}
+
+.closeModal:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s;
+}
+
+.closeInfoBtn:hover{
+  transform: scale(1.3);
+  transition: transform 0.3s;
+}
+
+
+
 
 
 
@@ -1041,7 +1058,7 @@ polygon:hover {
 #wunsch {
   top:25%;
   left:7.5%;
-  width: 55%;
+  width: 51%;
   height: 9%;
   background-color: rgba(194, 189, 184, 0.8)
 }

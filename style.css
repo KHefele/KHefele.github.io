@@ -16,6 +16,27 @@ html {
     scroll-behavior: smooth;
 }
 
+
+a:link {
+    color: #733030;
+    text-decoration: none;
+  }
+  a:visited {
+    color: #733030;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #994040;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:active {
+    color: #733030;
+    text-decoration: none;
+  }
+
+
+
 .menue{
     position: absolute;
     text-align: center;

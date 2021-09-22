@@ -43,7 +43,7 @@
       </div>
 
       <!-- Hintergrundinfo-Button -->
-      <div style="width: 48%; left: 85%; top: 78.5%; position: relative;">
+      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
         <button class="hintergrundinfoButton" id="klassifikationInfoBtn">
           <img src="Icons/quellen_info_white.png" style="width: 35px; cursor: pointer;" >
           <div>Hintergrund-<br>information</div>
@@ -57,15 +57,13 @@
     <!----------- Chronologie ------------------->
     <div id="chronologie" style="height:50%; display:none;">
       <div style="width: 85%; height:70%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 8%; animation-name:slowOpacity; animation-duration: 3s;">
-        
-        <!-- Hintergrundinfo-Button -->
-        <div style="left: 92%; top: 83%; width: 48%; position: relative;">
-          <button class="hintergrundinfoButton" id="erzaehlfolgeInfoBtn">
-            <img src="Icons/quellen_info_white.png" style="width: 35px">
-            <div style="padding-top: 10%;">Hintergrund-<br>information</div>
-          </button>
-        </div>
-
+      </div>
+      <!-- Hintergrundinfo-Button -->
+      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
+        <button class="hintergrundinfoButton" id="erzaehlfolgeInfoBtn">
+          <img src="Icons/quellen_info_white.png" style="width: 35px">
+          <div style="padding-top: 10%;">Hintergrund-<br>information</div>
+        </button>
       </div>
     </div>
   
@@ -76,7 +74,7 @@
       </div>
 
       <!-- Hintergrundinfo-Button -->
-      <div style="left: 85%; top: 83%; width: 48%; position: relative;">
+      <div style="left: 85%; top: 2%; width: 48%; position: relative;">
         <button class="hintergrundinfoButton" id="geographieInfoBtn">
           <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
@@ -93,7 +91,7 @@
       <div style="width: 90%; height:80%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
       
       <!-- Hintergrundinfo-Button -->
-      <div style="left: 85%; top: 70%; width: 48%; position: relative;">
+      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
         <button class="hintergrundinfoButton" id="alphabetInfoBtn">
           <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
@@ -156,7 +154,7 @@
       </div>
 
       <!-- Hintergrundinfo-Button -->
-      <div style="left: 89%; top: 75%; width: 48%; position: relative;">
+      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
         <button class="hintergrundinfoButton" id="verwandlungsgrundInfoBtn">
           <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
@@ -172,7 +170,7 @@
 
 
       <!-- Hintergrundinfo-Button -->
-      <div style="left: 87%; top: 68%; width: 48%; position: relative;">
+      <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
         <button class="hintergrundinfoButton" id="verwandelndeInfoBtn">
           <img src="Icons/quellen_info_white.png" style="width: 35px" >
           <div style="padding-top: 10%;">Hintergrund-<br>information</div>
@@ -383,7 +381,7 @@
     <!-- Kategorie Erzählfolge -->
     <div id="erzaehlfolgeModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="erzaehlfolgeModalX"  class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Erzählfolge</em></h1>
@@ -405,7 +403,7 @@
     <!-- Kategorie Klassifikation -->
     <div id="klassifikationModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="klassifikationModalX" class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Klassifikation</em></h1>
@@ -438,7 +436,7 @@
     <!-- Kategorie Geographie -->
     <div id="geographieModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="geographieModalX" class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Geografie</em></h1>
@@ -458,7 +456,7 @@
     <!-- Kategorie Alphabet -->
     <div id="alphabetModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="alphabetModalX" class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Alphabet</em></h1>
@@ -477,7 +475,7 @@
     <!-- Kategorie Verwandlungsgrund -->
     <div id="verwandlungsgrundModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id = "verwandlungsgrundModalX" class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandlungsgrund</em></h1>
@@ -508,7 +506,7 @@
     <!-- Kategorie Verwandelnde -->
     <div id="verwandelndeModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="verwandelndeModalX" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Verwandelnde</em></h1>
@@ -527,7 +525,7 @@
     <!-- Kategorie Fliesstext -->
     <div id="fliesstextModal" class="kategorieModals">
       <div class="kategorieModalsContent">
-        <img src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
+        <img id="fliesstextModalX" class="closeKategorieModals" src="Icons/cancel_white.png" style="z-index: 50; position:fixed; cursor: pointer; left: 66.5%; top: 28%; width: 15px;">
         <div class="kategorieModalsHeader">
           <br>
           <h1><img src="Icons/quellen_info_white.png" style="width:35px">&nbsp; Kategorie <em>Fließtext</em></h1>
