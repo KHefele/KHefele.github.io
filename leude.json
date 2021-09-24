@@ -426,7 +426,7 @@
 
         "source": "https://de.m.wikipedia.org/wiki/Datei:Collection_Motais_de_Narbonne_-_Le_sacrifice_d%27Iphig%C3%A9nie_-_Gabriel-Fran%C3%A7ois_Doyen.jpg",
         "sourcename": "Wikipedia",
-        "alt": "Gabriel François Doyen, The sacrifice of Iphigenia, 1749",
+        "alt": "Gabriel François Doyen, Das Opfer der Iphigenie, 1749",
         
         "wikidata": "Q192673",
         "ovMet": "12,24-38",
@@ -1020,7 +1020,7 @@
 
     "phineus": {
         "id": "phineus",
-        "name": "Phineus und seine Anhänger",
+        "name": "Phineus",
 
         "icon": "Figuren/Phineus/Phineus_Icon.png",
         "width": "60",

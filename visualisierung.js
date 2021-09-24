@@ -115,7 +115,7 @@ export async function application() {
 
 
   var closeKategorieModals = document.getElementsByClassName("closeKategorieModals");
-  console.log(closeKategorieModals)
+  //console.log(closeKategorieModals)
 
   function createKategorieModal(kategorie) {
     var kategorieModal = document.getElementById(kategorie + "Modal");
@@ -409,7 +409,7 @@ export async function application() {
 
 
   //--------------------------------------------//
-  //          2. Verwandlerlisten               //
+  //     2. Verwandler-/Verwandeltelisten       //
   //--------------------------------------------//
 
   //Beispiel:
@@ -423,83 +423,50 @@ export async function application() {
   };
   //console.log(verwandler.jupiter.namenDerVerwandelten);
 
-  var verwandlerArray = [];
   var verwandlerDict = {};
+  var verwandelteDict = {};
+
   for (key in leude) {
     var currentVerwandler = leude[key].verwandler;
     if (currentVerwandler === "-") { continue };
     //console.log(currentVerwandler)
 
     //Bereinigung
-    for (var buchstabe = 0; buchstabe < currentVerwandler.length; buchstabe++) {
-
-      //unnötige Info in Klammern rausschmeißen
-      if (currentVerwandler[buchstabe] === "(") {
-        var indexOfLeftBracket = buchstabe;
-        var indexOfRightBracket = currentVerwandler.indexOf(")");
-        currentVerwandler = currentVerwandler.substring(0, indexOfLeftBracket - 1).concat(currentVerwandler.substr(indexOfRightBracket + 1));
-        currentVerwandler.trim();
-      }
-
+    var indexOfLeftParenth = currentVerwandler.indexOf("(");
+    if (indexOfLeftParenth != -1) {
+      //console.log(currentVerwandler);
+      var indexOfRightParenth = currentVerwandler.indexOf(")");
+      currentVerwandler = 
+        currentVerwandler.substring(0, indexOfLeftParenth - 1)
+        .concat(currentVerwandler.substr(indexOfRightParenth + 1))
+        .trim();
+        
+      //console.log(currentVerwandler);
     }
 
-    //falls mehrere Protagonisten genannt
-    if (currentVerwandler.includes(",")) {
 
-      //Schleife durch Buchstaben des Verwandler-Strings, um Komma-Index herauszufinden
-      for (var b = 0; b < currentVerwandler.length; b++) {
-
-        //Hilfs-Array soll Protagonisten speichern
-        var moreThanOneVerwandler = [];
-
-        //durch Komma-Index Protagonisten separieren und zu Hilfs-Array hinzufügen
-        if (currentVerwandler[b] === ",") {
-          var indexOfKomma = b;
-
-          moreThanOneVerwandler.push(currentVerwandler.substring(0, indexOfKomma));
-          moreThanOneVerwandler.push(currentVerwandler.substring(indexOfKomma + 2));
-        }
-
-        //Schleife über Hilfs-Array
-        for (var t = 0; t < moreThanOneVerwandler.length; t++) {
-
-          //Protagonisten-Array durchlaufen und einfügen, wenn keys noch nicht im dict existieren
-          if (!(moreThanOneVerwandler[t] in verwandlerDict)) {
-
-            verwandlerDict[moreThanOneVerwandler[t]] = {
-              "nameDerVerwandelten": [leude[key].name]
-            };
-
-            //falls schon existiert, nur noch den/die Verwandelte:n hinzufügen 
-          } else {
-            verwandlerDict[moreThanOneVerwandler[i]].nameDerVerwandelten.push(leude[key].name);
-          }
-        }
-      }
-
-
-      //falls nur ein Protagonist genannt:
-    } else {
-
-      //NOCH UMBAUEN > in TABELLE UND ABRUFEN 
-      var verwandeltenLink = "<a href='/visualisierung.html#fliesstext#" + leude[key].id + "'>" + leude[key].name + "</a>";
-
-      //insert, if key isn't already in dict
-      if (!(currentVerwandler in verwandlerDict)) {
-
-        verwandlerDict[currentVerwandler] = {
-          "nameDerVerwandelten": [verwandeltenLink]
+    //falls es mehrere Verwandler gibt, wird am Komma getrennt in Tabelle gegeben
+    var verwandlerList = currentVerwandler.split(",");
+    verwandlerList.forEach(verwandler => {
+      verwandler = verwandler.trim();
+      if (!(verwandler in verwandlerDict)) {
+        verwandlerDict[verwandler] = {
+          "idDerVerwandelten": [leude[key].id],
+          "nameDerVerwandelten": [leude[key].name]
         };
-
-        //falls schon existiert, nur noch den/die Verwandelte:n hinzufügen 
       } else {
-        verwandlerDict[currentVerwandler].nameDerVerwandelten.push(verwandeltenLink);
+        verwandlerDict[verwandler].idDerVerwandelten.push(leude[key].id);
+        verwandlerDict[verwandler].nameDerVerwandelten.push(leude[key].name);
       }
-    }
+    });
 
+
+    //Verwandelte in Tabelle fügen
+    verwandelteDict[leude[key].id] = leude[key].name;
 
   }
   //console.log(verwandlerDict);
+  //console.log(verwandelteDict);
 
 
 
@@ -772,6 +739,8 @@ export async function application() {
     var copyrightP = document.createElement("p");
     copyrightP.className = "copyrightP";
     tableCol.appendChild(copyrightP);
+    copyrightP.style.fontSize = "10px";
+    copyrightP.innerHTML = data.alt + "<br>";
 
     //cc-Icon
     var ccImage = document.createElement("img");
@@ -1987,22 +1956,6 @@ export async function application() {
   //               4. Alphabet                  //
   //--------------------------------------------//
 
-  //Alphabet-Names unter Icons anzeigen
-  // for (key in leude){
-
-  //   var iconWrapper = document.getElementById(key + "Wrapper");
-  //   var figurName = document.createElement("div");
-  //   figurName.className = "alphabetNames";
-  //   figurName.innerHTML = leude[key].name;
-  //   figurName.style.position = "relative";
-  //   figurName.style.fontFamily = "'Crimson Text', serif";
-  //   figurName.style.fontSize = "10px";
-  //   figurName.style.display = "none";
-  //   figurName.style.top = "10%";
-  //   iconWrapper.appendChild(figurName);
-
-  // }
-
 
   var unsortedIds = [];
   for (var figur in leude) {
@@ -2052,16 +2005,12 @@ export async function application() {
     for (key in leude) {
 
       if (!(namenstabelle.includes(leude[key].name))) { //if wegen doppeltem acheloos
-        if (leude[key].name === "Phineus und seine Anhänger") {
-          namenstabelle.push("Phineus");
-        } else {
-          namenstabelle.push(leude[key].name);
-        }
+        namenstabelle.push(leude[key].name);
       }
     }
 
     namenstabelle.sort();
-    console.log(namenstabelle);
+    //console.log(namenstabelle);
 
 
 
@@ -2093,6 +2042,7 @@ export async function application() {
         var nameOfTheProtagonist = document.createElement("div");
         nameOfTheProtagonist.innerHTML = namenstabelle[id];
         nameOfTheProtagonist.className = "nameOfTheProtagonist"
+        nameOfTheProtagonist.id = namenstabelle[id] + "Alphabet";
         nameOfTheProtagonist.style.position = "absolute";
         nameOfTheProtagonist.style.top = topPosition + "%";
         nameOfTheProtagonist.style.left = startFromLeft + "%";
@@ -2106,13 +2056,22 @@ export async function application() {
           startFromLeft += 14;
         }
 
+        // verwandelteDict[leude[key].id] = leude[key].name;
+        
+        // console.log(zugehoerigesModal);
+        // var zugehoerigesModal = Object.keys(verwandelteDict).find(key => verwandelteDict[key] === namenstabelle[id]);
+        
+        //console.log(namenstabelle[id])
+        //console.log(zugehoerigesModal);
 
-        var zugehoerigesModal = document.getElementById(namenstabelle[id].toLowerCase() + "Modal");
-        console.log(zugehoerigesModal);
+        nameOfTheProtagonist.onclick = (event) => {
+          var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 8);
+          var zugehoerigesModal = document.getElementById(id.toLowerCase() + "Modal");
 
-        nameOfTheProtagonist.onclick = function () {
           zugehoerigesModal.style.display = "block";
+          zugehoerigesModal.style.animationPlayState = "running";
         };
+
       }
     }
 
@@ -2456,61 +2415,48 @@ export async function application() {
 
 
 
-
   // 1. Marker im Text setzen
 
+  //alle Verwandler und Verwandelten in metamorphosen.json durchsuchen
   for (var key in metamorphosen) {
-    // console.log("count"); 
-    var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
-    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regex, "<dfn style='background-color: rgba(115, 48, 48, 0.3)' class='tooltip $& verwandlerTrigger'>$&</dfn>")
+
+    //alle Verwandler- und Verwandeltennamen zusammen in eine Suchanfrage, durch Argument "g" werden alle entsprechenden Begriffe, nicht nur der erste gesucht
+    var regexVerwandler = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
+    var regexVerwandelte = new RegExp(Object.values(verwandelteDict).join("|"), "g");
+
+    //alle angegebenen Begriffe ersetzen durch 
+    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, "<dfn class='tooltip $& verwandlerTrigger triggerAusText'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
+    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandelte, "<dfn style='background-color: rgba(82, 82, 82, 0.3)' class='tooltip $& verwandelteTrigger'>$&</dfn>")
   }
 
 
-
-
-
-
-
-  var xs = annotations.lycaon.regions[0].shape_attributes.all_points_x;
-  var ys = annotations.lycaon.regions[0].shape_attributes.all_points_y;
-
-  var coordinatesLycaon = "";
-
-  for (var x = 0; x < xs.length; x++) {
-    coordinatesLycaon += xs[x] / 2740 * 100 + "," + ys[x] / 3051 * 100 + " ";
+  //vom VGG-Annotator vergebene keys bereinigen, damit keys wieder den Einträgen unter leude entspricht
+  var annotationsCleanedUp = {}
+  for (var key in annotations) {
+    var indexOfDot = key.indexOf(".");
+    var newKey = key.substr(0, indexOfDot);
+    annotationsCleanedUp[newKey] = annotations[key];
   }
-
-  var xs2 = annotations.lycaon.regions[1].shape_attributes.all_points_x;
-  var ys2 = annotations.lycaon.regions[1].shape_attributes.all_points_y;
-
-  var coordinatesJupiter = "";
-
-  for (var x = 0; x < xs2.length; x++) {
-    coordinatesJupiter += xs2[x] / 2740 * 100 + "," + ys2[x] / 3051 * 100 + " ";
-  }
-  //console.log(coordinatesJupiter)
 
 
 
   let textModalDiv = document.getElementById("textModal");
 
-
-
-
   var metamorphosenTable = document.createElement("table");
   textModalDiv.appendChild(metamorphosenTable);
 
-
+  //Tabelle mit allen keys aus dem metamorphosen.json anlegen
   var keyTabelle = [];
   for (var key in metamorphosen) {
     keyTabelle.push(key);
   }
 
+  //Schleife durch alle keys (aus metamorphosen.json)
   for (var k = 0; k < keyTabelle.length;) {
     var key = keyTabelle[k];
 
 
-
+    //Anlegen der TableRow
     var metamorphosenTableRow = document.createElement("tr");
     metamorphosenTable.appendChild(metamorphosenTableRow);
 
@@ -2527,38 +2473,96 @@ export async function application() {
     var metaImg = document.createElement("img");
     svgDiv.appendChild(metaImg);
 
-    //var bildTitel = "";
-
+    //wenn es sich um eine Figurengeschichte handelt, wird diese hier eingefügt (ansonsten Platzhalter-Bild)
     if (key in leude) {
+
+      svgDiv.id = leude[key].id + "SvgDiv";
+
       metaImg.setAttribute("src", "Figuren/" + key + "/" + key + ".jpg");
       metaImg.setAttribute("title", leude[key].alt);
+      metaImg.id = leude[key].id + "Bild";
 
-      var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      metSvg.setAttribute("viewBox", "0 0 100 100");
-      metSvg.setAttribute("preserveAspectRatio", "none");
-      svgDiv.appendChild(metSvg);
+      metaImg.onload = (event) => { 
 
-      //Verwandelter
-      var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-      metPolygons.setAttribute("points", coordinatesLycaon);
-      metPolygons.setAttribute("class", leude[key].id);
-      metSvg.appendChild(metPolygons);
+        var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
+        
+        var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        metSvg.setAttribute("viewBox", "0 0 100 100");
+        metSvg.setAttribute("preserveAspectRatio", "none");
 
-      var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-      metPolygons.appendChild(polygonTitle);
-      polygonTitle.innerHTML = leude[key].name;
+        //console.log(id);
+        var div = document.getElementById(id + "SvgDiv");
+        div.appendChild(metSvg);
 
-      //Verwandler, falls vorhanden
-      if (leude[key].verwandler != "-") {
-        var metPolygons2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-        metPolygons2.setAttribute("points", coordinatesJupiter);
-        metPolygons2.setAttribute("class", leude[key].verwandler);
-        metPolygons2.setAttribute("class", "verwandlerAnno");
-        metSvg.appendChild(metPolygons2);
 
-        var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-        metPolygons2.appendChild(polygonTitle);
-        polygonTitle.innerHTML = leude[key].verwandler;
+
+        var height = event.currentTarget.naturalHeight;
+        var width = event.currentTarget.naturalWidth;
+
+        var regions = annotationsCleanedUp[id].regions;
+        var verwandelter = undefined;
+        var verwandelnder = undefined;
+
+        regions.forEach(region => {
+          var figur = region.region_attributes.figur;
+          if (figur == "verwandelter") {
+            verwandelter = region;
+          } else {
+            verwandelnder = region;
+          }
+        });
+
+        if (verwandelter != undefined) {
+          var xs = verwandelter.shape_attributes.all_points_x;
+          var ys = verwandelter.shape_attributes.all_points_y;
+          
+          var coordinates = "";
+  
+          for (var x = 0; x < xs.length; x++) {
+            coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+          }
+
+          
+          //Verwandelter
+          var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          metPolygons.setAttribute("points", coordinates);
+          metPolygons.setAttribute("class", leude[key].id);
+          metPolygons.setAttribute("class", "verwandelterAnno");
+          metSvg.appendChild(metPolygons);
+          
+          var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+          metPolygons.appendChild(polygonTitle);
+          polygonTitle.innerHTML = leude[id].name;
+
+        }
+
+        if (verwandelnder != undefined) {
+          var xs2 = verwandelnder.shape_attributes.all_points_x;
+          var ys2 = verwandelnder.shape_attributes.all_points_y;
+  
+          var coordinates = "";
+  
+          for (var x = 0; x < xs2.length; x++) {
+            coordinates += xs2[x] / width * 100 + "," + ys2[x] / height * 100 + " ";
+          }
+
+          var metPolygons2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          metPolygons2.setAttribute("points", coordinates);
+          metPolygons2.setAttribute("class", leude[key].verwandler);
+          metPolygons2.setAttribute("class", "verwandlerAnno");
+          metSvg.appendChild(metPolygons2);
+
+          var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+          metPolygons2.appendChild(polygonTitle);
+          polygonTitle.innerHTML = leude[id].verwandler;
+        }
+        
+
+
+        
+        //console.log(coordinatesJupiter)
+
+
       }
 
 
@@ -2602,39 +2606,88 @@ export async function application() {
       header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
       metaDiv.appendChild(header);
 
-      var contentP = document.createElement("p");
-      metaDiv.appendChild(contentP);
+      //var contentP = document.createElement("p");
+      //metaDiv.appendChild(contentP);
 
 
+      //Tabelle für einzelne Metamorphosengeschichte
       var textTable = document.createElement("table"); //table
       textTable.className = "fliesstextTables";
-      contentP.appendChild(textTable);
-      var textRow = document.createElement("tr"); //tr
-      //textRow.style.position = "relative";
-      textTable.appendChild(textRow);
+      textTable.style.width = "100%"
+      
+      metaDiv.appendChild(textTable);
 
 
-      //lateinischer MetamorphosenText
-      var textColumnLatein = document.createElement("td");
-      textColumnLatein.className = "lateinisch";
-      textRow.appendChild(textColumnLatein);
-      textColumnLatein.style.width = "0%";
-      textColumnLatein.style.display = "none";
-      //textColumnLatein.style.position = "absolute";
-      textColumnLatein.style.padding = "5px";
-      textColumnLatein.innerHTML = "<br>" + metamorphosen[key].latein + "<br><br>";
+      var verszeilen = metamorphosen[key].text.split("<br>");
+      var verszeilenLatein = metamorphosen[key].latein.split("<br>");
+      
 
-      //deutscher MetamorphosenText
-      var textColumnDeutsch = document.createElement("td");
-      textColumnDeutsch.className = "deutsch";
-      textRow.appendChild(textColumnDeutsch);
-      textColumnDeutsch.style.display = "inline-block";
-      textColumnDeutsch.style.width = "100%";
-      //textColumnDeutsch.style.position = "absolute";
-      textColumnDeutsch.style.padding = "5px";
-      textColumnDeutsch.innerHTML = "<br>" + metamorphosen[key].text + "<br><br>";
+      //aktuelle Zeile herausfinden (für jede Metamorphosen-Geschichte neu setzen, damit kein Folgefehler)
+      var indexOfKomma = metamorphosen[key].stelle.indexOf(",");
+      var indexOfBindestrich = metamorphosen[key].stelle.indexOf("-")
+      var aktuelleZeile = parseInt(metamorphosen[key].stelle.substr(indexOfKomma +1, indexOfBindestrich-indexOfKomma-1))-1;
+      
+      var aktuelleZeileLokal = 0;
+
+
+
+      var erstesMal = true; 
+
+      while (aktuelleZeileLokal < verszeilen.length) {
+        
+        //alle 5 Zeilen neue Row mit Columns anlegen und Verszahl hinzufügen
+        if (erstesMal || (aktuelleZeile+1) % 5 === 0) {
+          
+          //Tabel-Row anlegen
+          var textRow = document.createElement("tr");
+          textTable.appendChild(textRow);
+          
+
+          //drei Columns anlegen:
+          ////Versnummer in erste Column schreiben
+          var textColumnVersnummer = document.createElement("td");
+          textRow.appendChild(textColumnVersnummer);
+          textColumnVersnummer.style.width = "6%";
+          textColumnVersnummer.style.paddingTop = "5px";
+          textColumnVersnummer.style.display = "inline-block";
+          textColumnVersnummer.style.color = "#733030";
+
+          //für den Fall, dass die erste Zeile keine Versnummer erhalten soll, da sie 
+          if ((aktuelleZeile+1) == 1 || (aktuelleZeile+1) % 5 == 0) {
+            textColumnVersnummer.innerHTML = aktuelleZeile+1;
+          }
+          
+
+          //lateinischer MetamorphosenText in zweite Column
+          var textColumnLatein = document.createElement("td");
+          textColumnLatein.className = "lateinisch";
+          textRow.appendChild(textColumnLatein);
+          textColumnLatein.style.width = "0%";
+          textColumnLatein.style.display = "none";
+          textColumnLatein.style.padding = "5px";
+          
+
+          //deutscher MetamorphosenText in dritte Column
+          var textColumnDeutsch = document.createElement("td");
+          textColumnDeutsch.className = "deutsch";
+          textRow.appendChild(textColumnDeutsch);
+          textColumnDeutsch.style.display = "inline-block";
+          textColumnDeutsch.style.width = "94%";
+          textColumnDeutsch.style.padding = "5px";
+          
+          erstesMal = false;
+
+        }
+
+        textColumnLatein.innerHTML += verszeilenLatein[aktuelleZeileLokal] + "<br>";
+        textColumnDeutsch.innerHTML += verszeilen[aktuelleZeileLokal] + "<br>";
+
+        aktuelleZeile++;
+        aktuelleZeileLokal++;
+
+      }
+
     }
-
 
     if (!(keyTabelle[k] in leude)) {
       while (!(keyTabelle[k] in leude) && k < keyTabelle.length) {
@@ -2647,6 +2700,7 @@ export async function application() {
     }
 
   }
+
 
   //Footer Div
   var footer = document.createElement("div");
@@ -2671,7 +2725,6 @@ export async function application() {
 
 
 
-
   //Checkboxen latein-deutsch
   var lateinBtn = document.getElementById("lateinischerOriginaltext");
   var lateinTexte = document.getElementsByClassName("lateinisch");
@@ -2681,29 +2734,40 @@ export async function application() {
 
 
   var getTextTables = document.getElementsByClassName("fliesstextTables");
+  
   //console.log(getTextTables[0].clientWidth);
+
+  
+  //Vorkehrungen, damit nicht der Fall eintritt, dass gar kein Text erscheint:
+  var lockLatein = document.getElementById("lockLatein");
+  var lockDeutsch = document.getElementById("lockDeutsch");
+
+  deutschBtn.setAttribute('disabled', 'disabled');
 
   lateinBtn.onclick = function () {
 
     //Fall: lateinBtn raus machen, deutschBtn gecheckt
     if (lateinBtn.checked === false) {
 
+      lockDeutsch.style.display = "inline-block";
       deutschBtn.setAttribute('disabled', 'disabled');
 
       for (var l = 0; l < lateinTexte.length; l++) {
         lateinTexte[l].style.display = "none";
         lateinTexte[l].style.width = "0%";
-        deutschTexte[l].style.width = "100%";
+        deutschTexte[l].style.width = "94%";
       }
 
       //Fall: lateinBtn rein machen, deutschBtn gecheckt
     } else {
+
+      lockDeutsch.style.display = "none";
       deutschBtn.removeAttribute('disabled');
 
       for (var l = 0; l < lateinTexte.length; l++) {
         lateinTexte[l].style.display = "inline-block";
-        deutschTexte[l].style.width = "50%";
-        lateinTexte[l].style.width = "50%";
+        deutschTexte[l].style.width = "47%";
+        lateinTexte[l].style.width = "47%";
       }
     }
   }
@@ -2714,24 +2778,27 @@ export async function application() {
     //Fall: deutschBtn raus nehmen, lateinBtn gecheckt
     if (deutschBtn.checked === false) {
 
-      //Latein-Btn disablen, damit Fall nicht eintritt, dass gar kein Text
+      //Latein-Btn disabeln, damit dieser nicht mehr ausgewählt werden kann
+      //& mit Schloss versehen, damit das Benutzer klar ist (sonst wäre nichts da)
       lateinBtn.setAttribute('disabled', 'disabled');
+      lockLatein.style.display = "inline-block";
 
       for (var l = 0; l < deutschTexte.length; l++) {
         deutschTexte[l].style.display = "none";
         deutschTexte[l].style.width = "0%";
-        lateinTexte[l].style.width = "100%";
+        lateinTexte[l].style.width = "94%";
       }
 
       //Fall: deutschBtn rein nehmen, lateinBtn gecheckt
     } else {
-
+      
       lateinBtn.removeAttribute('disabled');
+      lockLatein.style.display = "none";
 
       for (var l = 0; l < deutschTexte.length; l++) {
         deutschTexte[l].style.display = "inline-block";
-        deutschTexte[l].style.width = "50%";
-        lateinTexte[l].style.width = "50%";
+        deutschTexte[l].style.width = "47%";
+        lateinTexte[l].style.width = "47%";
       }
     }
   }
@@ -2754,39 +2821,92 @@ export async function application() {
       }
     }
   }
+  //Trigger aus dem Text 
+  var verwandelteTriggers = document.getElementsByClassName("verwandelteTrigger");
+  var verwandlterAnnos = document.getElementsByClassName("verwandelterAnno");
+
+  for (var t = 0; t < verwandelteTriggers.length; t++) {
+
+    verwandelteTriggers[t].onmouseenter = function () {
+      for (var a = 0; a < verwandlterAnnos.length; a++) {
+        verwandlterAnnos[a].style.opacity = "1";
+      }
+    }
+    verwandelteTriggers[t].onmouseleave = function () {
+      for (var a = 0; a < verwandlterAnnos.length; a++) {
+        verwandlterAnnos[a].style.opacity = null; //Regel weggenommen 
+      }
+    }
+  }
 
 
 
 
 
   // 2. Popover/Tooltip setzen
-
+  //Funktion, um für jede Gottheit im Text das Popover zu setzen
   function setTooltipForVerwandelnde(godName) {
+
+    //jedes Element, das mit einem Göttername z.B. Jupiter betitelt ist, in eine Tabelle setzen
     var tooltipArray = document.getElementsByClassName(godName);
 
+    //Tabelle mit Verwandelten-Namen durchgehen und tooltip setzen
     for (var j = 0; j < tooltipArray.length; j++) {
 
       var tooltipSpan = document.createElement("span");
+      tooltipArray[j].appendChild(tooltipSpan);
       tooltipSpan.setAttribute("role", "tooltip");
 
-      var verwandelteString = "";
-      for (var v = 0; v < verwandlerDict[godName].nameDerVerwandelten.length; v++) {
-        verwandelteString += verwandlerDict[godName].nameDerVerwandelten[v] + "&nbsp; <img src='Icons/iconmonstr-share-11-240.png' style='width: 13.5px;'><br>";
-      }
-
-      //Aposthroph statt Genitiv-S, wenn Gottheit mit "s" endet oder nichts falls Plural
+      //Verwandler: Aposthroph statt Genitiv-S, wenn Gottheit mit "s" endet oder nichts falls Plural
+      var genitivbildung;
       if (godName.endsWith("s")) {
-        tooltipSpan.innerHTML = godName + "'<br>Verwandlungen:<br><br> " + verwandelteString;
-      } else if (godName.endsWith("en")){
-        tooltipSpan.innerHTML = godName + "-Verwandlungen:<br><br> " + verwandelteString;
+        genitivbildung = "' Verwandlungen:<br>";
+      } else if (godName.endsWith("en")) {
+        genitivbildung = "-Verwandlungen:";
       } else {
-        tooltipSpan.innerHTML = godName + "s<br>Verwandlungen:<br><br> " + verwandelteString;
+        genitivbildung = "s Verwandlungen:<br>";
       }
 
-      tooltipArray[j].appendChild(tooltipSpan);
+      tooltipSpan.innerHTML = godName + genitivbildung + "<br>";
+
+      
+      //Verwandelte: in p-Element setzen und onclick darauf vergeben
+      for (var v = 0; v < verwandlerDict[godName].nameDerVerwandelten.length; v++) {
+
+        var spanVerwandelte = document.createElement("span");
+        spanVerwandelte.className = "modalTrigger";
+        tooltipSpan.appendChild(spanVerwandelte);
+
+        spanVerwandelte.innerHTML = verwandlerDict[godName].nameDerVerwandelten[v] + " ";
+
+        var linksymbol = document.createElement("img");
+        linksymbol.setAttribute("src", "Icons/iconmonstr-share-11-240.png")
+        linksymbol.setAttribute("width", "12px");
+        spanVerwandelte.appendChild(linksymbol);
+
+        tooltipSpan.appendChild(document.createElement("br"));
+
+
+        // spanVerwandelte.onclick = function () {
+        //   console.log(id)
+        // }
+        function createOnClickFunction(godName, v) {
+          return function() {
+            var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
+            console.log(modalName)
+            var zugehoerigesModal = document.getElementById(modalName);
+            zugehoerigesModal.style.display = "block";
+            zugehoerigesModal.style.animationPlayState = "running";
+          };
+        }
+        spanVerwandelte.onclick = createOnClickFunction(godName, v);
+
+      } 
+      
 
     }
   }
+
 
   //Schleife durch alle Verwandler und 
   for (key in verwandlerDict) {
@@ -2812,6 +2932,9 @@ export async function application() {
 
     textImg.style.display = "block";
 
+    //WÜRDE FUNKTIONIEREN, WENN PLATZ UNTER DEM BILDSCHIRM ENDLICH WEG WÄRE (Scrollen deshalb ausgestellt)
+    // var prooemiumHeader = document.getElementById("prooemiumHeader");
+    // prooemiumHeader.scrollIntoView();
 
     //Icons ausblenden, damit sie nicht stören
     for (var figur in leude) {

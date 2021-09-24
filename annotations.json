@@ -1,315 +1,531 @@
 {
-    "lycaon": {
-        "filename": "lycaon.jpg",
-        "size": 4506352,
-        "regions": [
-            {
-                "shape_attributes": {
-                    "name": "polygon",
-                    "all_points_x": [
-                        14,
-                        262,
-                        290,
-                        355,
-                        383,
-                        477,
-                        631,
-                        945,
-                        1178,
-                        1300,
-                        1482,
-                        1431,
-                        1342,
-                        1216,
-                        954,
-                        725,
-                        645,
-                        627,
-                        477,
-                        440,
-                        383,
-                        374,
-                        285,
-                        267,
-                        145,
-                        79,
-                        79,
-                        0,
-                        9,
-                        65,
-                        56,
-                        75,
-                        51,
-                        9,
-                        5,
-                        117,
-                        117,
-                        108,
-                        5
-                    ],
-                    "all_points_y": [
-                        3035,
-                        2983,
-                        2703,
-                        2324,
-                        2137,
-                        2020,
-                        1968,
-                        1931,
-                        1898,
-                        1898,
-                        1767,
-                        1632,
-                        1445,
-                        1295,
-                        1001,
-                        888,
-                        902,
-                        842,
-                        814,
-                        729,
-                        715,
-                        598,
-                        641,
-                        687,
-                        711,
-                        790,
-                        823,
-                        870,
-                        935,
-                        977,
-                        1103,
-                        1113,
-                        1305,
-                        1370,
-                        1580,
-                        1744,
-                        1866,
-                        1983,
-                        1987
-                    ]
-                },
-                "region_attributes": {
-                    "figure": "protagonist"
-                }
-            },
-            {
-                "shape_attributes": {
-                    "name": "polygon",
-                    "all_points_x": [
-                        1393,
-                        1973,
-                        2081,
-                        1987,
-                        1987,
-                        2029,
-                        2142,
-                        2366,
-                        2431,
-                        2731,
-                        2740,
-                        2576,
-                        2511,
-                        2558,
-                        2464,
-                        2315,
-                        2160,
-                        1978,
-                        1781,
-                        1637,
-                        1552,
-                        1552,
-                        1594,
-                        1323,
-                        1286,
-                        1136,
-                        1094,
-                        1029,
-                        1225,
-                        1538,
-                        1557,
-                        1655,
-                        1795,
-                        1898,
-                        1959,
-                        1959,
-                        2034,
-                        2001,
-                        2001,
-                        1824,
-                        1515
-                    ],
-                    "all_points_y": [
-                        3035,
-                        3044,
-                        2810,
-                        2707,
-                        2618,
-                        2567,
-                        2544,
-                        2544,
-                        2450,
-                        2450,
-                        1576,
-                        1169,
-                        1160,
-                        987,
-                        781,
-                        617,
-                        552,
-                        496,
-                        482,
-                        552,
-                        776,
-                        1001,
-                        1080,
-                        1118,
-                        996,
-                        860,
-                        888,
-                        1071,
-                        1314,
-                        1435,
-                        1711,
-                        1674,
-                        1908,
-                        1912,
-                        1833,
-                        1646,
-                        1852,
-                        1954,
-                        2067,
-                        2221,
-                        2427
-                    ]
-                },
-                "region_attributes": {
-                    "figure": "verwandelnder"
-                }
-            },
-            {
-                "shape_attributes": {
-                    "name": "polygon",
-                    "all_points_x": [
-                        1038,
-                        1169,
-                        1305,
-                        1188,
-                        1337,
-                        1487,
-                        1622,
-                        1693,
-                        1842,
-                        1889,
-                        1749,
-                        1697,
-                        1632,
-                        1613,
-                        1637,
-                        1543,
-                        1506,
-                        1510,
-                        1085,
-                        954,
-                        1052,
-                        1431,
-                        1225
-                    ],
-                    "all_points_y": [
-                        701,
-                        715,
-                        683,
-                        860,
-                        851,
-                        757,
-                        655,
-                        496,
-                        472,
-                        323,
-                        327,
-                        468,
-                        519,
-                        519,
-                        411,
-                        477,
-                        440,
-                        393,
-                        351,
-                        421,
-                        486,
-                        472,
-                        556
-                    ]
-                },
-                "region_attributes": {
-                    "verwandelnderAttributes": "vAttributes1"
-                }
-            },
-            {
-                "shape_attributes": {
-                    "name": "polygon",
-                    "all_points_x": [
-                        954,
-                        1024,
-                        1319,
-                        1510,
-                        1487,
-                        1543,
-                        1637,
-                        1618,
-                        1707,
-                        1753,
-                        1838,
-                        1861,
-                        1898,
-                        2006,
-                        2151,
-                        2170,
-                        2417,
-                        2614,
-                        2614,
-                        2258,
-                        2263,
-                        2202,
-                        1997,
-                        1772,
-                        1637,
-                        954
-                    ],
-                    "all_points_y": [
-                        28,
-                        108,
-                        178,
-                        346,
-                        435,
-                        468,
-                        411,
-                        514,
-                        463,
-                        365,
-                        365,
-                        425,
-                        514,
-                        589,
-                        584,
-                        645,
-                        683,
-                        664,
-                        9,
-                        5,
-                        61,
-                        145,
-                        168,
-                        140,
-                        5,
-                        9
-                    ]
-                },
-                "region_attributes": {
-                    "verwandelnderAttributes": "vAttributes2"
-                }
-            }
-        ],
-        "file_attributes": {}
+    "C:\\Users\\katha\\OneDrive\\1_Uni\\2_MA\\14_SoSe_2021\\Masterarbeit\\1_VisualizedOvid\\Annotationen-1": {
+      "filename": "C:\\Users\\katha\\OneDrive\\1_Uni\\2_MA\\14_SoSe_2021\\Masterarbeit\\1_VisualizedOvid\\Annotationen",
+      "size": -1,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "achelous1.jpg283451": {
+      "filename": "achelous1.jpg",
+      "size": 283451,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 719, 691, 670, 679, 730, 718, 755, 774, 786, 842, 889, 918, 915, 896, 878, 866, 912, 895, 875, 864, 829, 813, 789, 777, 710, 622, 576, 530, 481, 454, 460, 478, 448, 442, 398, 356, 357, 326, 254, 171, 255, 235, 330, 339, 374, 396, 426, 479, 502, 548, 655, 714, 750 ],
+            "all_points_y": [ 348, 276, 246, 175, 155, 193, 254, 283, 216, 203, 231, 298, 391, 464, 448, 488, 537, 547, 544, 580, 559, 523, 538, 597, 605, 597, 559, 595, 582, 559, 515, 444, 426, 489, 518, 486, 417, 420, 435, 360, 346, 279, 335, 383, 373, 391, 372, 375, 401, 356, 361, 382, 375 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "achelous2.jpg568548": {
+      "filename": "achelous2.jpg",
+      "size": 568548,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 7, 269, 254, 98, 134, 287, 454, 523, 672, 1017, 1330, 1508, 1679, 1708, 1879, 1933, 1817, 1810, 1922, 1788, 1595, 1522, 1395, 1050, 956, 625, 302, 47, 51, 94, 7 ],
+            "all_points_y": [ 1457, 1435, 1337, 1232, 1101, 1046, 1101, 1101, 1377, 1537, 1653, 1853, 1846, 1693, 1711, 1581, 1326, 1159, 977, 912, 687, 545, 610, 483, 331, 214, 258, 443, 716, 850, 930 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "acis.jpg180873": {
+      "filename": "acis.jpg",
+      "size": 180873,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 283, 285, 236, 203, 144, 121, 104, 63, 12, 8, 49, 8, 71, 135, 193, 163, 245, 372, 392, 393, 324, 341, 291, 315, 315, 271, 332, 359, 289 ],
+            "all_points_y": [ 635, 611, 569, 487, 448, 425, 461, 423, 361, 315, 212, 103, 48, 45, 107, 191, 211, 175, 209, 264, 265, 293, 433, 457, 491, 489, 600, 660, 660 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 320, 381, 399, 359, 309 ],
+            "all_points_y": [ 453, 457, 383, 315, 373 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "actaeon.jpg509567": {
+      "filename": "actaeon.jpg",
+      "size": 509567,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 238, 397, 544, 626, 641, 899, 1043, 966, 867, 757, 750, 588, 551, 554, 176, 17, 2, 219, 246, 206 ],
+            "all_points_y": [ 1381, 1547, 1547, 1430, 1592, 1644, 1520, 1463, 1438, 1239, 1065, 1013, 872, 747, 546, 683, 832, 909, 983, 1289 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 849, 929, 924, 961, 1189, 1227, 1217, 1110, 1070, 1058, 886, 852, 926, 916, 819, 829 ],
+            "all_points_y": [ 1239, 1174, 1279, 1366, 1373, 1279, 1120, 874, 847, 735, 723, 812, 934, 1030, 1145, 1209 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "aeneas.jpg149533": {
+      "filename": "aeneas.jpg",
+      "size": 149533,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 44, 255, 412, 539, 501, 376, 370, 408, 554, 588, 503, 448, 489, 426, 301, 293, 230, 188, 73, 46, 115, 8 ],
+            "all_points_y": [ 945, 828, 834, 636, 590, 586, 507, 412, 434, 398, 315, 315, 244, 154, 200, 281, 319, 451, 521, 667, 749, 861 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 925, 671, 491, 501, 537, 501, 432, 457, 602, 594, 475, 402, 303, 285, 448, 467, 521, 541, 523, 636, 752, 762, 788, 820, 1014, 1038, 1113, 1071, 952, 911, 941 ],
+            "all_points_y": [ 636, 733, 693, 558, 497, 416, 416, 329, 279, 253, 277, 152, 123, 44, 22, 97, 152, 154, 93, 14, 73, 135, 174, 103, 111, 176, 331, 446, 479, 531, 566 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "aesacus.jpg7787066": {
+      "filename": "aesacus.jpg",
+      "size": 7787066,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 662, 666, 712, 725, 699, 655, 669, 571, 564, 647, 731, 721, 669, 653 ],
+            "all_points_y": [ 489, 505, 513, 480, 444, 466, 412, 338, 275, 286, 354, 407, 415, 469 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 756, 807, 801, 814, 768, 734, 754 ],
+            "all_points_y": [ 625, 630, 602, 554, 524, 549, 589 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "aeson.jpg113627": {
+      "filename": "aeson.jpg",
+      "size": 113627,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 247, 229, 170, 159, 179, 153, 181, 216, 231, 255, 285, 346, 379, 409, 430, 431, 463, 497, 518, 511, 488, 474, 447, 360, 280 ],
+            "all_points_y": [ 288, 288, 279, 191, 160, 130, 106, 115, 152, 159, 189, 198, 215, 221, 241, 251, 272, 279, 292, 315, 319, 303, 309, 300, 287 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 242, 259, 308, 332, 329, 357, 410, 440, 475, 471, 439, 350, 349, 294, 255, 235, 221 ],
+            "all_points_y": [ 80, 77, 114, 114, 71, 59, 61, 108, 167, 201, 271, 222, 195, 167, 149, 134, 99 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "aglauros.jpg53977": {
+      "filename": "aglauros.jpg",
+      "size": 53977,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "alcyone.jpg243285": {
+      "filename": "alcyone.jpg",
+      "size": 243285,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "alpheus.jpg179916": {
+      "filename": "alpheus.jpg",
+      "size": 179916,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "arachne.jpg149906": {
+      "filename": "arachne.jpg",
+      "size": 149906,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "arethusa.jpg179916": {
+      "filename": "arethusa.jpg",
+      "size": 179916,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "ascalabus.jpg573557": {
+      "filename": "ascalabus.jpg",
+      "size": 573557,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "ascalaphus.jpg1248312": {
+      "filename": "ascalaphus.jpg",
+      "size": 1248312,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "atalanta.jpg2356579": {
+      "filename": "atalanta.jpg",
+      "size": 2356579,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "atlas.jpg54557": {
+      "filename": "atlas.jpg",
+      "size": 54557,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "battus.jpg328717": {
+      "filename": "battus.jpg",
+      "size": 328717,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "baucis.jpg97707": {
+      "filename": "baucis.jpg",
+      "size": 97707,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "byblis.jpg38661": {
+      "filename": "byblis.jpg",
+      "size": 38661,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "cadmus.jpg60073": {
+      "filename": "cadmus.jpg",
+      "size": 60073,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "caenis.jpg444028": {
+      "filename": "caenis.jpg",
+      "size": 444028,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "caenus.jpg370318": {
+      "filename": "caenus.jpg",
+      "size": 370318,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "caesar.jpg446760": {
+      "filename": "caesar.jpg",
+      "size": 446760,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "callisto.jpg131551": {
+      "filename": "callisto.jpg",
+      "size": 131551,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "ceyx.jpg243285": {
+      "filename": "ceyx.jpg",
+      "size": 243285,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "cyane.jpg177126": {
+      "filename": "cyane.jpg",
+      "size": 177126,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "cygnus.jpg115765": {
+      "filename": "cygnus.jpg",
+      "size": 115765,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "daphne.jpg696998": {
+      "filename": "daphne.jpg",
+      "size": 696998,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 355, 356, 453, 605, 668, 678, 689, 671, 745, 839, 958, 982, 991, 979, 986, 966, 928, 942, 881, 826, 756, 694, 698, 535, 490, 444, 439, 395, 329, 356, 294, 200, 153, 75, 78, 24, 6, 19, 33, 80, 118, 191, 239, 417, 439, 457, 485, 436, 399, 342, 352, 328 ],
+            "all_points_y": [ 1352, 1357, 1448, 1440, 1176, 1015, 958, 883, 792, 788, 802, 649, 582, 538, 395, 239, 207, 127, 127, 199, 76, 86, 169, 245, 194, 207, 286, 207, 229, 134, 111, 188, 94, 130, 185, 239, 356, 471, 628, 756, 804, 791, 851, 826, 845, 877, 909, 1033, 1179, 1206, 1260, 1313 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "echo.jpg3136030": {
+      "filename": "echo.jpg",
+      "size": 3136030,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "egeria.jpg718393": {
+      "filename": "egeria.jpg",
+      "size": 718393,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "galanthis.jpg336960": {
+      "filename": "galanthis.jpg",
+      "size": 336960,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "galatea.jpg3582178": {
+      "filename": "galatea.jpg",
+      "size": 3582178,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "gefaehrtendesulixes.jpg367994": {
+      "filename": "gefaehrtendesulixes.jpg",
+      "size": 367994,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "glaucus.jpg300712": {
+      "filename": "glaucus.jpg",
+      "size": 300712,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "harmonia.jpg60073": {
+      "filename": "harmonia.jpg",
+      "size": 60073,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "hersilia.jpg354721": {
+      "filename": "hersilia.jpg",
+      "size": 354721,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "hippomenes.jpg2356579": {
+      "filename": "hippomenes.jpg",
+      "size": 2356579,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "hyacinthus.jpg1541825": {
+      "filename": "hyacinthus.jpg",
+      "size": 1541825,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "io.jpg442282": {
+      "filename": "io.jpg",
+      "size": 442282,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 1088, 1175, 1259, 1350, 1489, 1450, 1498, 1560, 1560, 1421, 1056, 1007, 1053, 1066 ],
+            "all_points_y": [ 1802, 1870, 1802, 1882, 1908, 1750, 1459, 1330, 965, 804, 810, 1011, 1443, 1708 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 100, 468, 701, 881, 994, 956, 846, 768, 539, 597, 523, 475, 365, 229, 216, 132, 68, 55 ],
+            "all_points_y": [ 1779, 1873, 1824, 1905, 1863, 1731, 1708, 1353, 1337, 1259, 1062, 1043, 859, 904, 1082, 1211, 1427, 1624 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "iphigenie.jpg280255": {
+      "filename": "iphigenie.jpg",
+      "size": 280255,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "iphis.jpg211570": {
+      "filename": "iphis.jpg",
+      "size": 211570,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "lichas.jpg150689": {
+      "filename": "lichas.jpg",
+      "size": 150689,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "lycaon.jpg4506352": {
+      "filename": "lycaon.jpg",
+      "size": 4506352,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 1229, 1385, 1424, 1493, 1321, 1020, 557, 414, 360, 330, 0, 5, 99, 0, 5, 74, 108, 5, 5, 49, 84, 10, 10, 26, 217, 335, 399, 651, 675, 940 ],
+            "all_points_y": [ 1354, 1533, 1666, 1764, 1942, 1947, 2001, 2119, 2730, 3050, 3046, 2390, 2208, 2173, 1976, 1981, 1735, 1567, 1355, 1247, 1055, 931, 862, 782, 670, 591, 710, 833, 887, 979 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 1360, 1518, 1932, 1919, 1570, 1498, 1156, 992, 1110, 1380, 1636, 1676, 1827, 2057, 2254, 2490, 2497, 2674, 2727, 2707, 2057, 1991, 2076, 2057 ],
+            "all_points_y": [ 3036, 2385, 2037, 1998, 1741, 1485, 1281, 1091, 861, 1051, 1051, 749, 591, 618, 762, 986, 1156, 1360, 1518, 2471, 2589, 2674, 2793, 3029 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "lykischebauern.jpg220600": {
+      "filename": "lykischebauern.jpg",
+      "size": 220600,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "midas.jpg42650": {
+      "filename": "midas.jpg",
+      "size": 42650,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "myrrha.jpg753244": {
+      "filename": "myrrha.jpg",
+      "size": 753244,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "narcissus.jpg149263": {
+      "filename": "narcissus.jpg",
+      "size": 149263,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "niobe.jpg1923631": {
+      "filename": "niobe.jpg",
+      "size": 1923631,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "perdix.jpg685664": {
+      "filename": "perdix.jpg",
+      "size": 685664,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "periclymenus.jpg370318": {
+      "filename": "periclymenus.jpg",
+      "size": 370318,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "philemon.jpg97707": {
+      "filename": "philemon.jpg",
+      "size": 97707,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "philomela.jpg93270": {
+      "filename": "philomela.jpg",
+      "size": 93270,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "phineus.jpg3055987": {
+      "filename": "phineus.jpg",
+      "size": 3055987,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "pieriden.jpg1892301": {
+      "filename": "pieriden.jpg",
+      "size": 1892301,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "procne.jpg93270": {
+      "filename": "procne.jpg",
+      "size": 93270,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "romulus.jpg355784": {
+      "filename": "romulus.jpg",
+      "size": 355784,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "scylla.jpg500266": {
+      "filename": "scylla.jpg",
+      "size": 500266,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "syrinx.jpg264545": {
+      "filename": "syrinx.jpg",
+      "size": 264545,
+      "regions": [
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 427, 481, 498, 501, 544, 574, 543, 558, 556, 619, 688, 728, 704, 668, 606, 610, 573, 544, 540, 473, 433, 409, 385, 384, 414, 479, 457, 433, 427 ],
+            "all_points_y": [ 600, 573, 594, 639, 669, 657, 628, 531, 501, 419, 426, 395, 377, 390, 325, 282, 256, 272, 302, 317, 316, 280, 296, 330, 344, 361, 401, 448, 513 ]
+          },
+          "region_attributes": { "figur": "verwandelter" }
+        },
+        {
+          "shape_attributes": {
+            "name": "polygon",
+            "all_points_x": [ 680, 649, 612, 564, 499, 432, 450, 489, 521, 547, 543, 576, 610, 646, 673, 714, 727, 754, 795, 820, 856, 864, 912, 942, 961, 976, 986, 958, 971, 922, 918, 875, 834, 787, 777, 686 ],
+            "all_points_y": [ 688, 574, 533, 508, 499, 421, 389, 390, 453, 457, 403, 372, 390, 416, 463, 431, 387, 360, 379, 373, 346, 302, 298, 340, 370, 423, 524, 584, 621, 639, 673, 662, 636, 636, 688, 705 ]
+          },
+          "region_attributes": { "figur": "verwandler" }
+        }
+      ],
+      "file_attributes": {}
+    },
+    "tereus.jpg93270": {
+      "filename": "tereus.jpg",
+      "size": 93270,
+      "regions": [],
+      "file_attributes": {}
+    },
+    "vertumnus.jpg184952": {
+      "filename": "vertumnus.jpg",
+      "size": 184952,
+      "regions": [],
+      "file_attributes": {}
     }
-}
+  }
