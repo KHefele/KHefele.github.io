@@ -2559,18 +2559,41 @@ export async function application() {
           metPolygons2.appendChild(polygonTitle);
           polygonTitle.innerHTML = leude[id].verwandler;
         }
+
+
         
 
 
 
-        //Link-Img zur Motivübersicht
-        var zurMotivuebersicht = document.createElement("img");
-        zurMotivuebersicht.setAttribute("src","")
-        //metSvg.appendChild()
 
 
       }
 
+      //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
+      if (leude[key].id === "lycaon"){
+        
+        //Link-Img zur Motivübersicht
+        var zurMotivuebersicht = document.createElement("img");
+        zurMotivuebersicht.setAttribute("src", "Icons/four-squares-button-of-view-options.png");
+        zurMotivuebersicht.style.width = "8%";
+        zurMotivuebersicht.title = "Zur Motivübersicht";
+        zurMotivuebersicht.className = "zurMotivuebersicht";
+        svgDiv.appendChild(zurMotivuebersicht);
+
+        //
+        var slidePrevDiv = document.createElement("div");
+        slidePrevDiv.innerHTML = "&#10094;";
+        slidePrevDiv.className = "prevImage";
+        slidePrevDiv.title = "vorheriges Bild";
+        svgDiv.appendChild(slidePrevDiv);
+    
+        var slideNextDiv = document.createElement("div");
+        slideNextDiv.innerHTML = "&#10095";
+        slideNextDiv.className = "nextImage";
+        slideNextDiv.title = "nächstes Bild";
+        svgDiv.appendChild(slideNextDiv);
+
+      }
 
 
       //bildTitel = leude[key].alt;
@@ -2795,12 +2818,10 @@ export async function application() {
       var iconclassInhalt = leude[key].iconclass;
       var indexOfAnfang = iconclassInhalt.indexOf("Ovid, Metamorphosen") + 20;
       var indexOfEnde = iconclassInhalt.length;
-      //console.log(indexOfEnde)
       var verwandlungsstelle = iconclassInhalt.substr(indexOfAnfang, indexOfEnde);
-      //console.log(verwandlungsstelle);
       var buchangabe = verwandlungsstelle.substr(0, verwandlungsstelle.indexOf(" "));
       var zeilenangabe = verwandlungsstelle.substr(verwandlungsstelle.indexOf(" ") + 1, verwandlungsstelle.indexOf(")")-verwandlungsstelle.indexOf(" ")-1);
-      console.log(verwandlungsstelle + " davon roemischeZiffern: " + buchangabe + " arabischeZiffern: " + zeilenangabe);
+      //console.log(verwandlungsstelle + " davon roemischeZiffern: " + buchangabe + " arabischeZiffern: " + zeilenangabe);
       
       
       if (buchangabe.includes(",")){
@@ -2808,7 +2829,7 @@ export async function application() {
       }
 
       var genaueStelle = roman_to_Int(buchangabe) + "," + zeilenangabe;
-      console.log(genaueStelle)
+      //console.log(genaueStelle)
 
       //entsprechende Zeile im Fliesstext markieren
       if (document.getElementById("Ov.met." + genaueStelle) != undefined){
