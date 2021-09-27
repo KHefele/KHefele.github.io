@@ -1091,14 +1091,14 @@ export async function application() {
   for (var nextBtnNb = 0; nextBtnNb < nextArray.length; nextBtnNb++) {
     nextArray[nextBtnNb].onclick = function () {
 
+      //gerade angezeigtes Modal herausfinden
       var modalNow = document.getElementById(aktuellesModal + "Modal");
 
+      //
       aktuelleModalID = slide(+1);
       aktuellesModal = currentListSorted[aktuelleModalID];
 
       var modalWanted = document.getElementById(aktuellesModal + "Modal");
-      //console.log("nextBtn geklickt");
-      //console.log(modalNow);
 
       //modalNow.style.animationFillMode = "backwards";
       //modalNow.style.animationPlayState = "running";
@@ -2066,6 +2066,7 @@ export async function application() {
 
         nameOfTheProtagonist.onclick = (event) => {
           var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 8);
+          
           var zugehoerigesModal = document.getElementById(id.toLowerCase() + "Modal");
 
           zugehoerigesModal.style.display = "block";
@@ -2479,7 +2480,10 @@ export async function application() {
       svgDiv.id = leude[key].id + "SvgDiv";
 
       metaImg.setAttribute("src", "Figuren/" + key + "/" + key + ".jpg");
-      metaImg.setAttribute("title", leude[key].alt);
+      // metaImg.setAttribute("title", leude[key].alt);
+      // metaImg.style.width = "auto";
+      // metaImg.style.maxHeight = "70vh";
+      // metaImg.style.maxWidth = "70vh"
       metaImg.id = leude[key].id + "Bild";
 
       metaImg.onload = (event) => { 
@@ -2493,7 +2497,6 @@ export async function application() {
         //console.log(id);
         var div = document.getElementById(id + "SvgDiv");
         div.appendChild(metSvg);
-
 
 
         var height = event.currentTarget.naturalHeight;
@@ -2559,8 +2562,11 @@ export async function application() {
         
 
 
-        
-        //console.log(coordinatesJupiter)
+
+        //Link-Img zur Motivübersicht
+        var zurMotivuebersicht = document.createElement("img");
+        zurMotivuebersicht.setAttribute("src","")
+        //metSvg.appendChild()
 
 
       }
@@ -2604,6 +2610,37 @@ export async function application() {
       header.className = "textModalHeader";
       header.id = key + "Header";
       header.innerHTML = "<br>" + metamorphosen[key].name + " (" + metamorphosen[key].stelle + ")";
+
+      if (key in leude) {
+        //innerHeaderHTML += "HELLO";
+        var modalOpener = document.createElement("img");
+        header.appendChild(modalOpener);
+        modalOpener.setAttribute("src", "Icons/iconmonstr-share-11-240.png")
+        modalOpener.id = key + "Opener";
+        modalOpener.className = "modalOpener";
+        modalOpener.style.padding = "4px"
+        modalOpener.style.marginBottom = "4px";
+        modalOpener.style.marginLeft = "8px";
+        modalOpener.style.width = "20px";
+
+        modalOpener.onclick = (event) => {
+          var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 6);
+          console.log(id)
+          
+          var zugehoerigesModal = document.getElementById(id + "Modal");
+
+          zugehoerigesModal.style.display = "block";
+          zugehoerigesModal.style.animationPlayState = "running";
+
+          aktuellesModal = id;
+          setLocationHash("fliesstext");
+        }
+
+      }
+      // = innerHeaderHTML;
+      
+
+
       metaDiv.appendChild(header);
 
       //var contentP = document.createElement("p");
@@ -2612,8 +2649,10 @@ export async function application() {
 
       //Tabelle für einzelne Metamorphosengeschichte
       var textTable = document.createElement("table"); //table
+      textTable.style.borderSpacing = "0px";
+      textTable.style.borderCollapse = "collapse";
       textTable.className = "fliesstextTables";
-      textTable.style.width = "100%"
+      textTable.style.width = "100%";
       
       metaDiv.appendChild(textTable);
 
@@ -2631,62 +2670,79 @@ export async function application() {
 
 
 
-      var erstesMal = true; 
+      var erstesMal = true;
 
       while (aktuelleZeileLokal < verszeilen.length) {
-        
-        //alle 5 Zeilen neue Row mit Columns anlegen und Verszahl hinzufügen
-        if (erstesMal || (aktuelleZeile+1) % 5 === 0) {
-          
-          //Tabel-Row anlegen
-          var textRow = document.createElement("tr");
-          textTable.appendChild(textRow);
-          
 
-          //drei Columns anlegen:
-          ////Versnummer in erste Column schreiben
-          var textColumnVersnummer = document.createElement("td");
-          textRow.appendChild(textColumnVersnummer);
-          textColumnVersnummer.style.width = "6%";
-          textColumnVersnummer.style.paddingTop = "5px";
-          textColumnVersnummer.style.display = "inline-block";
-          textColumnVersnummer.style.color = "#733030";
+        //Tabel-Row anlegen
+        var textRow = document.createElement("tr");
+        textRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
+        //console.log(textRow.className)
+        textTable.appendChild(textRow);
+
+        //drei Columns anlegen:
+        //Versnummern-Column
+        var textColumnVersnummer = document.createElement("td");
+        textRow.appendChild(textColumnVersnummer);
+        textColumnVersnummer.className = "textColumnVersnummer";
+
+        //Latein-Column
+        var textColumnLatein = document.createElement("td");
+        textRow.appendChild(textColumnLatein);
+        textColumnLatein.className = "lateinisch";
+        textColumnLatein.style.padding = "0px"
+        textColumnLatein.style.paddingRight = "10px"
+        textColumnLatein.style.width = "0%";
+        textColumnLatein.style.display = "none";
+
+        //Deutsch-Column
+        var textColumnDeutsch = document.createElement("td");
+        textRow.appendChild(textColumnDeutsch);
+        textColumnDeutsch.className = "deutsch";
+        textColumnDeutsch.style.padding = "0px";
+        textColumnDeutsch.style.display = "inline-block";
+        textColumnDeutsch.style.width = "94%";
+
+        //befüllen
+        textColumnLatein.innerHTML += verszeilenLatein[aktuelleZeileLokal] + "<br>";
+        textColumnDeutsch.innerHTML += verszeilen[aktuelleZeileLokal] + "<br>";
+
+
+        //alle 5 Zeilen neue Row mit Columns anlegen und Verszahl hinzufügen
+        if (erstesMal || (aktuelleZeile + 1) % 5 === 0) {
+
+          
+          ////Abstand zur vorherigen Row
+          textColumnVersnummer.style.paddingTop = "10px";
+          textColumnLatein.style.paddingTop = "10px";
+          textColumnDeutsch.style.paddingTop = "10px";
+
+          //anklickbare Versnummern erklären
+          textColumnVersnummer.title = "Klick, um Stelle in verlinkbare URL zu setzen";
+          textColumnVersnummer.style.cursor = "pointer";
 
           //für den Fall, dass die erste Zeile keine Versnummer erhalten soll, da sie 
           if ((aktuelleZeile+1) == 1 || (aktuelleZeile+1) % 5 == 0) {
             textColumnVersnummer.innerHTML = aktuelleZeile+1;
           }
-          
-
-          //lateinischer MetamorphosenText in zweite Column
-          var textColumnLatein = document.createElement("td");
-          textColumnLatein.className = "lateinisch";
-          textRow.appendChild(textColumnLatein);
-          textColumnLatein.style.width = "0%";
-          textColumnLatein.style.display = "none";
-          textColumnLatein.style.padding = "5px";
-          
-
-          //deutscher MetamorphosenText in dritte Column
-          var textColumnDeutsch = document.createElement("td");
-          textColumnDeutsch.className = "deutsch";
-          textRow.appendChild(textColumnDeutsch);
-          textColumnDeutsch.style.display = "inline-block";
-          textColumnDeutsch.style.width = "94%";
-          textColumnDeutsch.style.padding = "5px";
-          
+        
           erstesMal = false;
 
         }
 
-        textColumnLatein.innerHTML += verszeilenLatein[aktuelleZeileLokal] + "<br>";
-        textColumnDeutsch.innerHTML += verszeilen[aktuelleZeileLokal] + "<br>";
+
 
         aktuelleZeile++;
         aktuelleZeileLokal++;
 
       }
 
+      //Leere Tabellenzeile, damit es unten nicht so gequetscht ist
+      var textRowEnde = document.createElement("tr");
+      textTable.appendChild(textRowEnde);
+      var textColumnEnde = document.createElement("td");
+      textRowEnde.appendChild(textColumnEnde);
+      textColumnEnde.appendChild(document.createElement("br"));
     }
 
     if (!(keyTabelle[k] in leude)) {
@@ -2700,6 +2756,90 @@ export async function application() {
     }
 
   }
+
+  //Verwandlungsmomente unterstreichen mithilfe von Iconclass
+  //Funktion roemische Ziffern in arabische umwandeln
+  function roman_to_Int(str1) {
+    if (str1 == null) return -1;
+    var num = char_to_int(str1.charAt(0));
+    var pre, curr;
+
+    for (var i = 1; i < str1.length; i++) {
+      curr = char_to_int(str1.charAt(i));
+      pre = char_to_int(str1.charAt(i - 1));
+      if (curr <= pre) {
+        num += curr;
+      } else {
+        num = num - pre * 2 + curr;
+      }
+    }
+
+    return num;
+  }
+
+  function char_to_int(c) {
+    switch (c) {
+      case 'I': return 1;
+      case 'V': return 5;
+      case 'X': return 10;
+      case 'L': return 50;
+      case 'C': return 100;
+      case 'D': return 500;
+      case 'M': return 1000;
+      default: return -1;
+    }
+  }
+
+  for (key in leude){
+    if (leude[key].iconclass.includes("Ovid, Metamorphosen")) {
+      var iconclassInhalt = leude[key].iconclass;
+      var indexOfAnfang = iconclassInhalt.indexOf("Ovid, Metamorphosen") + 20;
+      var indexOfEnde = iconclassInhalt.length;
+      //console.log(indexOfEnde)
+      var verwandlungsstelle = iconclassInhalt.substr(indexOfAnfang, indexOfEnde);
+      //console.log(verwandlungsstelle);
+      var buchangabe = verwandlungsstelle.substr(0, verwandlungsstelle.indexOf(" "));
+      var zeilenangabe = verwandlungsstelle.substr(verwandlungsstelle.indexOf(" ") + 1, verwandlungsstelle.indexOf(")")-verwandlungsstelle.indexOf(" ")-1);
+      console.log(verwandlungsstelle + " davon roemischeZiffern: " + buchangabe + " arabischeZiffern: " + zeilenangabe);
+      
+      
+      if (buchangabe.includes(",")){
+        buchangabe = buchangabe.substr(0, buchangabe.indexOf(",")-1);
+      }
+
+      var genaueStelle = roman_to_Int(buchangabe) + "," + zeilenangabe;
+      console.log(genaueStelle)
+
+      //entsprechende Zeile im Fliesstext markieren
+      if (document.getElementById("Ov.met." + genaueStelle) != undefined){
+        var verwandlungsZeile = document.getElementById("Ov.met." + genaueStelle).children;
+        for (var x = 1; x < verwandlungsZeile.length; x++) {
+          verwandlungsZeile[x].style.fontWeight = "bold";
+          verwandlungsZeile[x].style.color = "#733030c0";
+          verwandlungsZeile[x].style.fontSize = "20px";
+          //verwandlungsZeile[x].style.fontFamily = "'Work Sans', fantasy";
+          verwandlungsZeile[x].title = "Verwandlungsakt (nach Iconclass)";
+          verwandlungsZeile[x].style.textDecoration = "underline";
+          verwandlungsZeile[x].style.textDecorationStyle = "dotted";
+        }
+      }
+
+
+      //console.log(roemischeZiffern + " " + roman_to_Int(roemischeZiffern));
+    }
+
+
+
+    // verwandlungsZeile.forEach (column => {
+    //   console.log(column)
+    //   //column.style.textdecoration = "underline";
+    // });
+    
+    //verwandlungsZeile.style.textDecoration = "underline";
+    
+  }
+
+
 
 
   //Footer Div
@@ -2897,6 +3037,10 @@ export async function application() {
             var zugehoerigesModal = document.getElementById(modalName);
             zugehoerigesModal.style.display = "block";
             zugehoerigesModal.style.animationPlayState = "running";
+
+            aktuellesModal = verwandlerDict[godName].idDerVerwandelten[v];
+            setLocationHash("fliesstext");
+
           };
         }
         spanVerwandelte.onclick = createOnClickFunction(godName, v);
@@ -3299,7 +3443,7 @@ export async function application() {
   var markTrauer = document.getElementById("markTrauer");
   var markPostumeEhrung = document.getElementById("markPostumeEhrung");
   var markKampfvorteil = document.getElementById("markKampfvorteil");
-  var markSonstiges = document.getElementById("markSonstiges");
+  //var markSonstiges = document.getElementById("markSonstiges");
 
   markBestrafung.onclick = () => markVerwandlungsgrund("Bestrafung");
   markWunsch.onclick = () => markVerwandlungsgrund("Wunsch");

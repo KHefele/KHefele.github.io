@@ -13,10 +13,29 @@
                 "left": "33"
             }
         },
-        
-        "source": "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg",
-        "sourcename": "Wikimedia",
-        "alt": "Jan Cossier, Lycaon, 1640",
+
+        "imgInfo": {
+            "lycaon": {
+                "source": "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg",
+                "sourcename": "Wikimedia",
+                "alt": "Jan Cossier, Lycaon, 1640"
+            },
+            "lycaon2": {
+                "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
+                "sourcename": "Wikimedia",
+                "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76"
+            },
+            "lycaon3": {
+                "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
+                "sourcename": "Wikimedia",
+                "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76"
+            },
+            "lycaon4": {
+                "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
+                "sourcename": "Wikimedia",
+                "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76"
+            }
+        },
         "annotations": {
             "lycaon": "",
             "zeus": "",
@@ -132,10 +151,11 @@
             }
         },
 
+
         "source": "https://de.wikipedia.org/wiki/Datei:Piero_del_Pollaiolo_(attr.)_Apollo_and_Daphne.jpg",
         "sourcename": "Wikipedia",
         "alt": "Piero del Pollaiolo, Apollo und Daphne, 1470-1480",
-        
+
         "wikidata": "Q194015",
         "ovMet": "1,452-451",
         "verwandlung": "Lorbeer",
@@ -1539,9 +1559,14 @@
             }
         },
 
-        "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
-        "sourcename": "Wikimedia",
-        "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76",
+        "img": {
+            "1": {
+                "source": "https://commons.wikimedia.org/wiki/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg?uselang=de#/media/File:Hercules_fight_adragon_in_the_centre,_Achelous_carrying_off_Deianeira_upper_left_MET_DP812784.jpg",
+                "sourcename": "Wikimedia",
+                "alt": "Giulio Antonio Bonasone, Hercules und Achelous, 1531-76"
+            }
+        },
+
         
         "wikidata": "Q391379",
         "ovMet": "9,1-97",

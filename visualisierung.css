@@ -662,6 +662,16 @@ a.metamorphosenModalBtns {
   /* box-shadow: 0px -17px 7px 5px rgba(227, 222, 216, 1);  */
 }
 
+.textColumnVersnummer {
+  width: 6%;
+  display: inline-block;
+  color: #733030;
+}
+
+.textColumnVersnummer:hover {
+  text-decoration: underline;
+}
+
 .textSvg {
   transform: translate(-50%, -50%); /* centered images! */
   transition: opacity 1s ease-in;
@@ -804,6 +814,11 @@ polygon:hover {
   color: #994040;
 }
 
+.modalOpener:hover {
+  cursor:pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
 
 .triggerAusText {
   font-weight: bold;
@@ -813,10 +828,10 @@ polygon:hover {
 
 .tooltip {
   position: relative;
-  color: #a84646;
+  color: #733030;
 }
 .tooltip:hover {
-  color:#733030;
+  color:#a84646;
   cursor: pointer;
 }
 
