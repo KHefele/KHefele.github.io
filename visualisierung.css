@@ -755,6 +755,9 @@ polygon:hover {
   transition: transform 0.3s;
 
 }
+.imagecontainerMotivuebersicht {
+  position: absolute;
+}
 .prevImage, .nextImage {
   position: absolute;
   display: none;
@@ -836,6 +839,7 @@ polygon:hover {
   color: #aaaaaa;
   background-color: rgba(0,0,0,1);
   margin: auto;
+  border-radius: 3px;
   top: 15%;
   left: 20%;
   height: 70%;

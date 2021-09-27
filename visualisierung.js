@@ -498,6 +498,7 @@ export async function application() {
     0. Globale Variablen
     1. Metamorphosen-Icons/-Popover
     2. Metamorphosen-Modals
+    2.5. Motivübersicht-Modals
     3. Modal-Aufrufe
     4. Alles aufrufen
     5. Slider-Functions
@@ -797,28 +798,8 @@ export async function application() {
       if (i === 3) { //Verwandler-Helptext 
         var regex = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
         dataCol.innerHTML = dataArray[i].replaceAll(regex, "<dfn class='tooltip $&'>$&</dfn>"); //verwandlerText anlegen
-        //if (dataArray[i] === "-"){continue};
-        //dataArray[i] = dataArray[i].replaceAll(/(Jupiter|Diana)/g, "<dfn class='tooltip $&'>$&</dfn>")
 
-        // var verwandlerSup = document.createElement("sup"); //sup anlegen
-        // dataCol.appendChild(verwandlerSup);
-        // var verwandlerLink = document.createElement("div"); //link anlegen
-        // verwandlerLink.className = "verwandlerLink"; //hier Farbe, hover, inline-block eingestellt
-        // verwandlerLink.innerHTML = "&nbsp; &#x2139;";
-        // // var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
-        // // verwandlerLink.setAttribute("href", verwandlerLinkInput);
-        // // verwandlerLink.setAttribute("target", "_blank");
-        // verwandlerSup.appendChild(verwandlerLink);
-        //alternativ mit Link auf Text:
-        // var verwandlerLink = document.createElement("a"); //link anlegen
-        // var verwandlerLinkInput = "https://de.wikipedia.org/wiki/" + dataArray[i];
-        // verwandlerLink.setAttribute("href", verwandlerLinkInput);
-        // verwandlerLink.setAttribute("target", "_blank");
-        // verwandlerLink.innerHTML = dataArray[i];
-        // dataCol.appendChild(verwandlerLink);
-
-
-        //Iconclasstext + Infolink
+      //Iconclasstext + Infolink
       } else if (i === 5) {
         //dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
         var iconclassLink = document.createElement("a"); //link auf Zahlenkombination anlegen
@@ -875,38 +856,6 @@ export async function application() {
 
     }
     tableCol2.appendChild(innerTable);
-
-    // modalContentDiv.appendChild(document.createElement("hr"));
-
-
-    // // Details - Übersetzung
-    // var detailsDiv = document.createElement("div");
-    // detailsDiv.className = "modalContentLeft";
-    // modalContentDiv.appendChild(detailsDiv);
-
-    // var uebersetzungsDetails = document.createElement("details");
-    // detailsDiv.appendChild(uebersetzungsDetails);
-
-    // var uebersetzungsSummary = document.createElement("summary");
-    // uebersetzungsSummary.innerHTML = "Übersetzung (M. von Albrecht)"
-    // uebersetzungsDetails.appendChild(uebersetzungsSummary);
-
-    // var uebersetzungsP = document.createElement("p");
-    // uebersetzungsP.innerHTML = data.uebersetzung;
-    // uebersetzungsDetails.appendChild(uebersetzungsP);
-
-    // // Details - Originaltext
-    // var originaltextDetails = document.createElement("details");
-    // detailsDiv.appendChild(originaltextDetails);
-
-    // var originaltextSummary = document.createElement("summary");
-    // originaltextSummary.innerHTML = "Originaltext";
-    // originaltextDetails.appendChild(originaltextSummary);
-
-    // var originaltextP = document.createElement("p");
-    // originaltextP.innerHTML = data.originaltext;
-    // originaltextDetails.appendChild(originaltextP);
-
 
     modalContentDiv.appendChild(document.createElement("br")); //sonst ist Details schon im Halbdunkel
 
@@ -972,7 +921,105 @@ export async function application() {
   }
 
 
+  //--------------------------------------------//
+  //      3. Motivübersicht-Modal               //
+  //--------------------------------------------//
 
+
+  function createMotivuebersichtModal(data) {
+    var modalDiv = document.createElement("div");
+    modalDiv.style.display = "block"
+    modalDiv.style.animationPlayState = "running"
+    modalDiv.id = data.id + "MotivuebersichtModal";
+    modalDiv.className = "metamorphosenModal";
+    document.body.appendChild(modalDiv);
+
+    var modalContentDiv = document.createElement("div");
+    modalContentDiv.className = "metamorphosenModalContent";
+    modalContentDiv.style.backgroundColor = "#5c5c5c";
+    modalDiv.appendChild(modalContentDiv);
+
+    //header
+    var divHeader = document.createElement("div"); //div anlegen
+    modalContentDiv.appendChild(divHeader);
+    divHeader.style.backgroundColor = "#5c5c5c";
+    divHeader.style.boxShadow = "0 5px 25px 5px #5c5c5c";
+    divHeader.className = "metamorphosenModalHeader";
+    divHeader.appendChild(document.createElement("br"));
+    divHeader.appendChild(document.createElement("br"));
+    divHeader.appendChild(document.createElement("br"));
+    var ueberschrift = document.createElement("h1"); //h1 in div anlegen
+    ueberschrift.setAttribute("style", "display:inline");
+    ueberschrift.innerHTML = "Motivübersicht " + data.name;
+    divHeader.appendChild(ueberschrift);
+
+    modalContentDiv.appendChild(document.createElement("br"));
+    modalContentDiv.appendChild(document.createElement("br"));
+
+    //Bildersammlung
+    var imgDiv = document.createElement("div");
+    modalContentDiv.appendChild(imgDiv);
+
+    var fromLeft = 10;
+    var fromTop = 20;
+
+    for (key in data.imgInfo){
+
+      var imagecontainer = document.createElement("div");
+      imagecontainer.className = "imagecontainerMotivuebersicht";
+      imagecontainer.style.left = fromLeft + "%";
+      imagecontainer.style.top = fromTop + "%";
+      imagecontainer.style.width = "30%";
+      imagecontainer.style.height = "30%";
+      imgDiv.appendChild(imagecontainer);
+
+      var bild = document.createElement("img");
+      imagecontainer.appendChild(bild);
+      //bild.style.width = "20%";
+      bild.style.height = "100%";
+      
+      bild.setAttribute("src", "Figuren/" + data.id + "/" + key + ".jpg");
+
+      var bildtitel = document.createElement("div");
+      bildtitel.innerHTML = data.imgInfo[key].alt;
+      bildtitel.style.fontFamily = "'Crimson Text', serif";
+      bildtitel.style.fontSize = "10px";
+      bildtitel.style.position = "relative";
+      bildtitel.style.width = "100%";
+      imagecontainer.appendChild(bildtitel);
+
+      
+      if (fromLeft > 40){
+        
+        fromTop += 40;
+        fromLeft = 10;
+        
+      } else {
+        fromLeft += 30;
+      }   
+      
+
+    }
+    
+
+
+    var buttonSpan = document.createElement("span");
+    buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
+    buttonSpan.className = "closeModal"
+    buttonSpan.onclick = function () {
+      modalDiv.style.display = "none";
+      aktuellesModal = undefined;
+      //location hash
+      location.hash = "#" + aktuelleKategorie;
+    };
+    buttonSpan.style.position = "fixed";
+    buttonSpan.style.left = "76%";
+    buttonSpan.style.top = "19%";
+    buttonSpan.style.cursor = "pointer";
+    modalContentDiv.appendChild(buttonSpan);
+  }
+
+  createMotivuebersichtModal(leude.lycaon);
 
   //--------------------------------------------//
   //           3. Modal-Aufrufe                 //
@@ -2579,14 +2626,20 @@ export async function application() {
         zurMotivuebersicht.title = "Zur Motivübersicht";
         zurMotivuebersicht.className = "zurMotivuebersicht";
         svgDiv.appendChild(zurMotivuebersicht);
+        zurMotivuebersicht.onclick = function () {
+          var lycaonMotivuebersichtModal = document.getElementById("lycaonMotivuebersichtModal");
+          lycaonMotivuebersichtModal.style.display = "block";
+          lycaonMotivuebersichtModal.style.animationPlayState = "running";
+        }
 
-        //
+        //PrevImage
         var slidePrevDiv = document.createElement("div");
         slidePrevDiv.innerHTML = "&#10094;";
         slidePrevDiv.className = "prevImage";
         slidePrevDiv.title = "vorheriges Bild";
         svgDiv.appendChild(slidePrevDiv);
     
+        //NextImage
         var slideNextDiv = document.createElement("div");
         slideNextDiv.innerHTML = "&#10095";
         slideNextDiv.className = "nextImage";
@@ -2837,7 +2890,7 @@ export async function application() {
         for (var x = 1; x < verwandlungsZeile.length; x++) {
           verwandlungsZeile[x].style.fontWeight = "bold";
           verwandlungsZeile[x].style.color = "#733030c0";
-          verwandlungsZeile[x].style.fontSize = "20px";
+          verwandlungsZeile[x].style.fontSize = "16px";
           //verwandlungsZeile[x].style.fontFamily = "'Work Sans', fantasy";
           verwandlungsZeile[x].title = "Verwandlungsakt (nach Iconclass)";
           verwandlungsZeile[x].style.textDecoration = "underline";
