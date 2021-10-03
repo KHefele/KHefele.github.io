@@ -928,7 +928,7 @@ export async function application() {
 
   function createMotivuebersichtModal(data) {
     var modalDiv = document.createElement("div");
-    modalDiv.style.display = "block"
+    modalDiv.style.display = "none";
     modalDiv.style.animationPlayState = "running"
     modalDiv.id = data.id + "MotivuebersichtModal";
     modalDiv.className = "metamorphosenModal";
@@ -936,14 +936,11 @@ export async function application() {
 
     var modalContentDiv = document.createElement("div");
     modalContentDiv.className = "metamorphosenModalContent";
-    modalContentDiv.style.backgroundColor = "#5c5c5c";
     modalDiv.appendChild(modalContentDiv);
 
     //header
     var divHeader = document.createElement("div"); //div anlegen
     modalContentDiv.appendChild(divHeader);
-    divHeader.style.backgroundColor = "#5c5c5c";
-    divHeader.style.boxShadow = "0 5px 25px 5px #5c5c5c";
     divHeader.className = "metamorphosenModalHeader";
     divHeader.appendChild(document.createElement("br"));
     divHeader.appendChild(document.createElement("br"));
@@ -1088,95 +1085,55 @@ export async function application() {
   //--------------------------------------------//
 
 
-  //slider-function 
+  //slider-function für Metamorphosen-Modals
   function slide(number) {
-    console.log(aktuellesModal)
-    //for (var idNumber = 0; idNumber < figuresListSorted.length; idNumber++){
+
     var neueID = aktuelleModalID + number;
-    //if (currentListSorted[idNumber] == aktuellesModal) {
+
     if (neueID >= currentListSorted.length) { //falls größer als length, wieder bei 0 anfangen
       neueID -= currentListSorted.length;
     } else if (neueID < 0) { //falls kleiner als 0, wieder bei length anfangen
       neueID += currentListSorted.length;
     }
     return neueID;
-    //}
-    //}
   }
 
 
-  //onclick-function 
+
+  function showPrevOrNextModal(vorOderZurueck){ //argumente -1 oder +1, zeigt wie viel vorwärts oder zurück es gehen soll
+    
+    var modalNow = document.getElementById(aktuellesModal + "Modal");
+  
+    aktuelleModalID = slide(vorOderZurueck);
+    aktuellesModal = currentListSorted[aktuelleModalID];
+  
+    var modalWanted = document.getElementById(aktuellesModal + "Modal");
+  
+    modalNow.style.display = "none";
+    modalWanted.style.display = "block";
+    modalWanted.style.animationPlayState = "running";
+
+    setLocationHash();
+  }
+
+
+
+
   var prevArray = document.getElementsByClassName("prevMet");
   var nextArray = document.getElementsByClassName("nextMet");
-
 
   for (var s = 0; s < prevArray.length; s++) {
 
     prevArray[s].onclick = function () {
-      //console.log("prevBtn geklickt");
-
-      var modalNow = document.getElementById(aktuellesModal + "Modal");
-      console.log(aktuellesModal)
-
-      aktuelleModalID = slide(-1);
-      aktuellesModal = currentListSorted[aktuelleModalID];
-
-
-      var modalWanted = document.getElementById(aktuellesModal + "Modal");
-
-      modalNow.style.display = "none";
-      modalWanted.style.display = "block";
-      modalWanted.style.animationPlayState = "running";
-
-      //location hash
-      setLocationHash();
-
-
+      showPrevOrNextModal(-1);
     }
   }
 
   for (var nextBtnNb = 0; nextBtnNb < nextArray.length; nextBtnNb++) {
     nextArray[nextBtnNb].onclick = function () {
-
-      //gerade angezeigtes Modal herausfinden
-      var modalNow = document.getElementById(aktuellesModal + "Modal");
-
-      //
-      aktuelleModalID = slide(+1);
-      aktuellesModal = currentListSorted[aktuelleModalID];
-
-      var modalWanted = document.getElementById(aktuellesModal + "Modal");
-
-      //modalNow.style.animationFillMode = "backwards";
-      //modalNow.style.animationPlayState = "running";
-      modalNow.style.display = "none";
-
-      modalWanted.style.display = "block";
-      modalWanted.style.animationFillMode = "forwards";
-      modalWanted.style.animationPlayState = "running";
-
-
-      //location hash
-      setLocationHash();
-
-
+      showPrevOrNextModal(+1);
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2636,6 +2593,7 @@ export async function application() {
         var slidePrevDiv = document.createElement("div");
         slidePrevDiv.innerHTML = "&#10094;";
         slidePrevDiv.className = "prevImage";
+        slidePrevDiv.id = leude[key].id + "prev";
         slidePrevDiv.title = "vorheriges Bild";
         svgDiv.appendChild(slidePrevDiv);
     
@@ -2646,7 +2604,10 @@ export async function application() {
         slideNextDiv.title = "nächstes Bild";
         svgDiv.appendChild(slideNextDiv);
 
+
       }
+
+
 
 
       //bildTitel = leude[key].alt;
@@ -2874,7 +2835,6 @@ export async function application() {
       var verwandlungsstelle = iconclassInhalt.substr(indexOfAnfang, indexOfEnde);
       var buchangabe = verwandlungsstelle.substr(0, verwandlungsstelle.indexOf(" "));
       var zeilenangabe = verwandlungsstelle.substr(verwandlungsstelle.indexOf(" ") + 1, verwandlungsstelle.indexOf(")")-verwandlungsstelle.indexOf(" ")-1);
-      //console.log(verwandlungsstelle + " davon roemischeZiffern: " + buchangabe + " arabischeZiffern: " + zeilenangabe);
       
       
       if (buchangabe.includes(",")){
@@ -2882,7 +2842,6 @@ export async function application() {
       }
 
       var genaueStelle = roman_to_Int(buchangabe) + "," + zeilenangabe;
-      //console.log(genaueStelle)
 
       //entsprechende Zeile im Fliesstext markieren
       if (document.getElementById("Ov.met." + genaueStelle) != undefined){
@@ -2898,22 +2857,21 @@ export async function application() {
         }
       }
 
-
-      //console.log(roemischeZiffern + " " + roman_to_Int(roemischeZiffern));
     }
 
-
-
-    // verwandlungsZeile.forEach (column => {
-    //   console.log(column)
-    //   //column.style.textdecoration = "underline";
-    // });
-    
-    //verwandlungsZeile.style.textDecoration = "underline";
-    
   }
 
 
+
+  var prevButtons = document.getElementsByClassName("prevImage");
+  for (var button in prevButtons){
+    if (prevButtons[button].id != undefined){ //wieso sind überhaupt welche undefined?
+      prevButtons[button].onclick = function (){
+        //var id = prevButtons[button].id.substr(0,prevButtons[button].id.length-4);
+        console.log(prevButtons[button].id)
+      }
+    }
+  }
 
 
   //Footer Div
@@ -3159,7 +3117,7 @@ export async function application() {
 
       var figurIcon = document.getElementById(figur + "Wrapper");
 
-      figurIcon.style.top = rand(-10, 110) + "%";
+      figurIcon.style.top = "-10%"//rand(-10, 110) + "%";
       figurIcon.style.left = rand(-10, 110) + "%";
      
       //Notfall-Lösung, damit beim Fliestext-Öffnen (über URL) keine Icons angezeigt werden (unter)
@@ -3188,6 +3146,78 @@ export async function application() {
   );
 
   observer.observe(el);
+
+
+
+  //Navigationsleite für Text:
+  var buecherLaenge = [5.224, 6.2711, 5.4439, 5.9595, 5.1684, 5.9023, 6.918, 6.684, 6.2089, 5.6034, 6.1531, 4.4985, 7.1462, 6.2341, 6.2341];
+  var buecherLink = ["prooemiumHeader", "phaetonIIHeader", "", "", "", "", "", "", "", "", "", "", "", "", ""];
+  var gesamtlaenge = function () {
+    for (var b in buecherLaenge){ 
+      var gesamtlaengeVerse = 0.0;
+      gesamtlaengeVerse += parseFloat(buecherLaenge[b]);
+      return gesamtlaengeVerse;
+    }
+  }
+  var gesamtLaengeBuecher = gesamtlaenge();
+
+  var navbarWrapper = document.createElement("div");
+  var fliesstextDiv = document.getElementById("fliesstext");
+  fliesstextDiv.appendChild(navbarWrapper);
+  navbarWrapper.className = "navbarWrapper";
+
+  var navbarBuecher = document.createElement("div");
+  navbarBuecher.className = "navbar1";
+  navbarWrapper.appendChild(navbarBuecher);
+
+  var headerBuch = document.createElement("div");
+  headerBuch.innerHTML = "Buch";
+  headerBuch.style.position = "absolute";
+  headerBuch.style.left = "2%";
+  headerBuch.style.top = "10%";
+  navbarWrapper.appendChild(headerBuch);
+
+  var headerKapitel = document.createElement("div");
+  headerKapitel.innerHTML = "Kapitel";
+  headerKapitel.style.position = "absolute";
+  headerKapitel.style.left = "2%";
+  headerKapitel.style.top = "50%";
+  navbarWrapper.appendChild(headerKapitel);
+
+
+
+  for (var b in buecherLaenge){
+    
+    var aNavbar = document.createElement("a");
+    aNavbar.setAttribute("href", "/visualisierung.html#" + buecherLink[b]);
+    aNavbar.className = "buecherLinks";
+    aNavbar.id = "buch" + b;
+    aNavbar.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + (parseInt(b)+1) + ". Buch";
+    aNavbar.style.width = buecherLaenge[b] + "%";
+    aNavbar.title = "Klick, um zu Buch " + (parseInt(b)+1) + " zu gelangen"
+    navbarBuecher.appendChild(aNavbar);
+
+    aNavbar.onmouseover = (event) => {
+      var id = event.currentTarget.id;
+      document.getElementById(id).style.width = document.getElementById(id).clientWidth+20 + "px";
+
+      var neueGesamtlaenge = gesamtLaengeBuecher + 20.0;
+      for (var b in buecherLaenge){
+        
+        console.log(neueGesamtlaenge)
+      }
+
+    }
+    aNavbar.onmouseout = (event) => {
+      var id = event.currentTarget.id;
+      document.getElementById(id).style.width = buecherLaenge[parseInt(id.substr(4))] + "%";
+      //document.getElementById(id).childNodes[0].style.display = "none";
+    }
+
+  }
+
+  //erstes schon rot:
+  document.getElementById("buch0").style.backgroundColor = "#733030a8";
 
 
 
@@ -3635,42 +3665,21 @@ export async function application() {
   //--------------------------------------------//
 
 
+  
+  
+
   // When the user clicks anywhere outside of the Modals, close it
   window.onclick = function (event) {
-    if (event.target == startModal) {
-      startModal.style.display = "none";
-    }
-    if (event.target == infoModal) {
-      infoModal.style.display = "none";
-    }
-    if (event.target == quellenModal) {
-      quellenModal.style.display = "none";
-    }
-    if (event.target == ovidModal) {
-      ovidModal.style.display = "none";
-    }
-    if (event.target == erzaehlfolgeModal) {
-      erzaehlfolgeModal.style.display = "none";
-    }
-    if (event.target == klassifikationModal) {
-      klassifikationModal.style.display = "none";
-    }
-    if (event.target == geographieModal) {
-      geographieModal.style.display = "none";
-    }
-    if (event.target == alphabetModal) {
-      alphabetModal.style.display = "none";
-    }
-    if (event.target == verwandlungsgrundModal) {
-      verwandlungsgrundModal.style.display = "none";
-    }
-    if (event.target == verwandelndeModal) {
-      verwandelndeModal.style.display = "none";
-    }
-    if (event.target == fliesstextModal) {
-      fliesstextModal.style.display = "none";
-    }
 
+    //Liste von Modals, die durch Klick neben das Element geschlossen werden sollen
+    var closeTheseElements = [startModal, infoModal, quellenModal, ovidModal, erzaehlfolgeModal, klassifikationModal, geographieModal, alphabetModal, verwandlungsgrundModal, verwandelndeModal, fliesstextModal]
+
+    for (var i = 0; i < closeTheseElements.length; i++) {
+      if (event.target == closeTheseElements[i]) {
+        event.target.style.display = "none";
+      }
+    }
+    
     //close all metamorphosenModals
     var modalNames = [];
     for (key in leude) {
@@ -3683,6 +3692,18 @@ export async function application() {
         aktuellesModal = undefined;
         //locationhash
         location.hash = "#" + aktuelleKategorie;
+      }
+    }
+
+    //close all motivuebersichtModals
+    var motivuebersichtModalNames = [];
+    for (key in leude) {
+      var modalName = key + "MotivuebersichtModal";
+      motivuebersichtModalNames.push(modalName);
+    }
+    for (var i = 0; i < motivuebersichtModalNames.length; i++) {
+      if (event.target.id == motivuebersichtModalNames[i]) {
+        event.target.style.display = "none";
       }
     }
 
