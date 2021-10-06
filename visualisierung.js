@@ -1339,6 +1339,7 @@ export async function application() {
     let xMouse = event.clientX;
     let yMouse = event.clientY;
     var durchsichtigesDiv = document.getElementById("durchsichtigesDiv");
+    durchsichtigesDiv.style.zIndex = "10000";
     durchsichtigesDiv.style.left = xMouse + "px";
     durchsichtigesDiv.style.top = yMouse + "px";
   }
@@ -3369,7 +3370,7 @@ export async function application() {
   var dragParent = null;
 
 
-  //verschiebbare Icons auf der Startseite unorganisiert
+  //verschiebbare Icons auf der Startseite 
   document.onmousedown = function (event) {
     if (aktuelleKategorie == "") {
       dragParent = event.target.closest(".popover__wrapper");
@@ -3411,18 +3412,6 @@ export async function application() {
       dragParent.style.top = y + "px";
     }
   }
-
-  //console.log(window.innerHeight)
-  //console.log(window.innerWidth)
-
-
-
-
-
-
-
-
-
 
 
 
