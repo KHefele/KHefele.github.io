@@ -98,6 +98,14 @@
         "text": "Leinwand tragende Schaar ehrt jetzt die gefeierte Göttin.<br>Ihr wird endlich geglaubt, dass Epaphus sei von des großen<br>Jupiter Samen gezeugt, und rings in den Städten besitzt er<br>Tempel der Mutter gesellt. An Stolz war ihm wie an Jahren<br>Phaethon gleich, Sol's Sohn. Als der einst prahlte mit Hochmut<br>Und vor ihm nicht wich und sich rühmte des Phöbus als Zeugers,<br>Trug's nicht Inachus' Spross: »Du glaubst auch – sprach er – der Mutter<br>Alles, o Thor! Dich blähet das Bild des erlogenen Vaters.«<br>Phaethon glüht im Gesicht, und die Scham nur hemmte den Jähzorn,<br>Und vor Clymene bracht' er des Epaphus Schmähung und sagte:<br>»Dass du, Mutter, es recht auch fühlst, ich habe geschwiegen,<br>Ich so trotzig und keck. O Schmach, dass jener den Vorwurf<br>Uns zu sagen vermocht, und wir ihn nicht zu entkräften!<br>Aber wenn anders ich bin aus himmlischem Samen entsprossen,<br>Gib mir Beweis von dem hohen Geschlecht mir den Himmel zu sichern.«<br>Phaethon sprach's und umfing der Zeugerin Hals, und bei Merops<br>Und bei dem eigenen Haupt und den Hochzeitfackeln der Schwestern<br>Bat er sie kund zu tun durch ein Zeichen den wirklichen Vater.<br>Clymene, mochte sie nun mehr folgen den Bitten des Sohnes<br>Oder dem Zorn, den gab die Beschuldigung, streckte die Arme<br>Beide zum Himmel empor, und schauend zum Glanze des Phöbus<br>Sagte sie: »Dort bei dem Licht in der Pracht hellblitzender Strahlen<br>Schwör' ich dir, Sohn, bei dem Licht, das uns anhöret und anblickt:<br>Er, den droben du siehst, ja Sol, der Erquicker des Weltalls, <br>Hat dich gezeugt. Ist Lüge mein Wort, dann geb' er sich nimmer<br>Mir zu schaun, dann scheine der Tag mir heute zum letzten.<br>Leicht ist die Mühe für dich, die Penaten des Vaters zu finden:<br>Nah angrenzet das Haus, wo er aufsteigt, unserem Lande.<br>Bist du gewillt, geh hin, und er wird dich selber belehren.«<br>Phaethon springt sogleich, als solches die Mutter geredet,<br>Auf in freudiger Hast, und im Geist umfasst er den Äther.<br>Sein Äthiopengeschlecht durcheilet er rasch und die Inder<br>Unter dem heißen Gestirn und erreicht Sol's östliche Wohnung.",
         "latein": ""
     },
+
+
+
+
+
+
+
+
     "phaetonII": {
         "name":"Phaethon",
         "stelle": "2,1-400",
@@ -152,6 +160,15 @@
         "text": "",
         "latein": ""
     },
+
+
+
+
+
+
+
+
+
     "cadmus": {
         "name":"Cadmus",
         "stelle": "3,1-137",
@@ -200,9 +217,32 @@
         "text": "",
         "latein": ""
     },
+
+
+
+
+
+
+
+
     "minayastoechterI": {
         "name":"Die Minayastöchter (I)",
         "stelle": "4,1-36",
+        "text": "",
+        "latein": ""
+    },
+
+
+
+
+
+
+
+
+
+    "perseusUndPhineus": {
+        "name":"Perseus und Phineus",
+        "stelle": "5,1-235",
         "text": "",
         "latein": ""
     },
@@ -214,6 +254,20 @@
         "latein": ""
     },
 
+
+
+
+
+
+
+
+
+    "arachne": {
+        "name":"Arachne",
+        "stelle": "6,1-143",
+        "text": "",
+        "latein": ""
+    },
     "lykischebauern": {
         "name":"Lykische Bauern",
         "stelle": "?",
@@ -221,13 +275,51 @@
         "latein": ""
     },
 
-    "achelous": {
-        "name":"Achelous",
-        "stelle": "?",
+
+
+
+
+
+
+
+    "iasonUndMedea": {
+        "name":"Iason und Medea",
+        "stelle": "7,1-158",
         "text": "",
         "latein": ""
     },
 
+
+
+
+
+
+
+
+
+    "nisusUndScylla": {
+        "name":"Nisus und Scylla",
+        "stelle": "8,1-151",
+        "text": "",
+        "latein": ""
+    },
+
+
+
+
+
+
+
+
+
+
+
+    "achelous1": {
+        "name":"Achelous und Herkules",
+        "stelle": "9,1-97",
+        "text": "",
+        "latein": ""
+    },
     "byblis": {
         "name":"Byblis",
         "stelle": "?",
@@ -235,27 +327,61 @@
         "latein": ""
     },
 
+
+
+
+
+
+    "orpheusUndEurydice": {
+        "name":"Orpheus und Eurydice",
+        "stelle": "10,1-105",
+        "text": "",
+        "latein": ""
+    },
     "hyacinthus": {
         "name":"Hyacinthus",
         "stelle": "?",
         "text": "",
         "latein": ""
     },
-
     "galatea": {
-        "name":"Galatea",
+        "name":"Pygmalion",
         "stelle": "?",
         "text": "",
         "latein": ""
     }, 
 
+
+
+
+
+
+    "todDesOrpheus": {
+        "name":"Tod des Orpheus",
+        "stelle": "11,1-66",
+        "text": "",
+        "latein": ""
+    },
+
+
+
+
+
+
+
+
+    "schlangeInAulis": {
+        "name":"Die Schlange in Aulis",
+        "stelle": "12,1-23",
+        "text": "",
+        "latein": ""
+    },
     "iphigenie": {
         "name":"Iphigenie",
         "stelle": "?",
         "text": "",
         "latein": ""
     },
-
     "cygnus": {
         "name":"Cygnus",
         "stelle": "?",
@@ -263,21 +389,47 @@
         "latein": ""
     },
 
-    "glaucus": {
-        "name":"Glaucus",
-        "stelle": "?",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    "hoplonkrisisI": {
+        "name":"Hoplonkrisis: Rede des Aias",
+        "stelle": "13,1-122",
         "text": "",
         "latein": ""
     },
 
-    
+
+
+
+
+
+
+
+
+    "glaucus": {
+        "name":"Glaucus und Circe",
+        "stelle": "14,1-74",
+        "text": "",
+        "latein": ""
+    },
     "gefaehrtendesulixes": {
         "name":"Gefaehrten des Ulixes",
         "stelle": "?",
         "text": "",
         "latein": ""
     },
-
     "aeneas": {
         "name":"Aeneas",
         "stelle": "?",
@@ -285,13 +437,27 @@
         "latein": ""
     },
 
+
+
+
+
+
+
+
+
+
+    "numa": {
+        "name":"Numa",
+        "stelle": "15,1-487",
+        "text": "",
+        "latein": ""
+    },
     "egeria": {
         "name":"Egeria",
         "stelle": "?",
         "text": "",
         "latein": ""
     },
-
     "caesar": {
         "name":"Caesar",
         "stelle": "?",

@@ -24,6 +24,13 @@ h1, h2, h3, h4, h5, h6 {
  font-family: 'Crimson Text', serif;
 }
 
+hr {
+  height:2px;
+  border-width:0;
+  color:gray;
+  background-color:gray;
+}
+
 
 input[type="checkbox"][readonly] {
   pointer-events: none;
@@ -54,6 +61,10 @@ td {
   border-width: 2px;
   padding: 0.2%;
   background-color: rgba(227, 222, 216, 0.5);
+}
+.logo:hover{
+  transform: scale(1.05);
+  transition: transform 0.5s;
 }
 
 image {
@@ -114,7 +125,7 @@ image {
 
 
 #display-under-500px {
-  width: 100%;
+  width: 1000%;
   height: 1000%;
   position: absolute;
   z-index: 4000;
@@ -655,7 +666,7 @@ a.metamorphosenModalBtns {
 }
 
 .navbar1 {
-  position: relative;
+  position: absolute;
   left: 10%;
   width: 90%;
   height: 20%;
@@ -682,6 +693,33 @@ a.buecherLinks {
   font-size: 10px;
 }
 
+
+.navbar2 {
+  position: absolute;
+  left: 10%;
+  width: 90%;
+  height: 20%;
+  top: 60%;
+}
+.kapitelLinks {
+  position: relative;
+  height: 100%;
+  background-color: #747474a6;
+  float: left;
+  margin: 1px;
+  font-size: 0px;
+  color: white;
+  transition: width 0.2s ease-out, color 0.3s ease-out;
+  border-radius: 2px;
+}
+a.kapitelLinks {
+  color: rgba(0, 0, 0, 0);
+}
+.kapitelLinks:hover {
+  color:white;
+  background-color:#733030;
+  font-size: 10px;
+}
 
 /* .buecherNamen {
   position:absolute;
@@ -929,6 +967,7 @@ polygon:hover {
 .metamorphosenModalFooter {
   position: sticky;
   bottom: 0%;
+  padding-bottom: 2%;
   background-color: rgba(0, 0, 0, 1);
   box-shadow: 0 -5px 25px 15px rgb(0, 0, 0);
 }

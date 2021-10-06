@@ -67,9 +67,8 @@ export async function application() {
   // InfoModal
   var infoModal = document.getElementById("infoModal");   // Get infoModal
   var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
-  var mehrInfoBtn = document.getElementById("mehrInfoBtn"); // Get other butten that opens the infoModal
 
-
+  //infoBtn.title = "Information zur aktuell ausgewählten Kategorie (s. links unten)";
   infoBtn.onclick = function () { // Open
     location.href = "/#projekt";
   }
@@ -138,36 +137,6 @@ export async function application() {
 
 
 
-
-  // // Erzaehlfolge-Modal
-  // var erzaehlfolgeModal = document.getElementById("erzaehlfolgeModal");   // Get infoModall
-  // var erzaehlfolgeInfoBtn = document.getElementById("erzaehlfolgeInfoBtn");   // Get button that opens the infoModal
-  // //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  // erzaehlfolgeInfoBtn.onclick = function () { // Open
-  //   erzaehlfolgeModal.style.display = "block";
-  //   erzaehlfolgeModal.style.animationPlayState = "running";
-  // }
-
-  // // Klassifikation-Modal
-  // var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
-  // var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
-  // //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  // klassifikationInfoBtn.onclick = function () { // Open
-  //   klassifikationModal.style.display = "block";
-  //   klassifikationModal.style.animationPlayState = "running";
-  // }
-
-  //   // Klassifikation-Modal
-  //   var klassifikationModal = document.getElementById("klassifikationModal");   // Get infoModall
-  //   var klassifikationInfoBtn = document.getElementById("klassifikationInfoBtn");   // Get button that opens the infoModal
-  //   //var closeInfoBtn = document.getElementById("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  //   klassifikationInfoBtn.onclick = function () { // Open
-  //     klassifikationModal.style.display = "block";
-  //     klassifikationModal.style.animationPlayState = "running";
-  //   }
 
 
   //--------------------------------------------//
@@ -1445,6 +1414,10 @@ export async function application() {
     if (aktKat != "alphabet") {
       alphaImg.style.display = "none";
       var alphabetNames = document.getElementsByClassName("alphabetNames");
+      
+      //Dropdown bei Steuerungselement wieder einschalten
+      document.getElementById("dropDownNavigation").style.display = "inline-block";
+
       for (var x = 0; x < alphabetNames.length; x++) {
         alphabetNames[x].style.display = "none";
       }
@@ -1468,6 +1441,10 @@ export async function application() {
     // 7. Kategorie zurücksetzen: Fließtext
     if (aktKat != "fliesstext") {
       textImg.style.display = "none";
+      
+      //Dropdown bei Steuerungselement wieder einschalten
+      document.getElementById("dropDownNavigation").style.display = "inline-block";  
+
       for (var figur in leude) { //damit Icons, die nicht verortet werden können, nach Geo-Funktion wieder auftauchen
         var figurIcon = document.getElementById(figur + "Wrapper");
         
@@ -1977,6 +1954,10 @@ export async function application() {
     insertCurrentCategory("Alphabet", "iconmonstr-sort-14-240.png", 20);
     greyButton(alphaBtn);
 
+    //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
+    navigationDropdown(false);
+    document.getElementById("dropDownNavigation").style.display = "none";
+
 
     alphaImg.style.display = "block";
     var alphaNames = document.getElementsByClassName("alphabetNames");
@@ -2456,6 +2437,11 @@ export async function application() {
     keyTabelle.push(key);
   }
 
+
+  //Tabelle für NavBar-Anzeige
+  var zeilenzaehler = [];
+
+
   //Schleife durch alle keys (aus metamorphosen.json)
   for (var k = 0; k < keyTabelle.length;) {
     var key = keyTabelle[k];
@@ -2639,6 +2625,7 @@ export async function application() {
 
 
 
+
     function createTextDiv(key) {
       var metaDiv = document.createElement("div");
       metamorphosenTableCell2.appendChild(metaDiv);
@@ -2693,10 +2680,14 @@ export async function application() {
       
       metaDiv.appendChild(textTable);
 
+      
 
       var verszeilen = metamorphosen[key].text.split("<br>");
       var verszeilenLatein = metamorphosen[key].latein.split("<br>");
-      
+
+      //Tabelle für NavBar-Anzeige
+      zeilenzaehler.push(verszeilen.length);
+
 
       //aktuelle Zeile herausfinden (für jede Metamorphosen-Geschichte neu setzen, damit kein Folgefehler)
       var indexOfKomma = metamorphosen[key].stelle.indexOf(",");
@@ -2706,7 +2697,6 @@ export async function application() {
       var aktuelleZeileLokal = 0;
 
 
-
       var erstesMal = true;
 
       while (aktuelleZeileLokal < verszeilen.length) {
@@ -2714,7 +2704,6 @@ export async function application() {
         //Tabel-Row anlegen
         var textRow = document.createElement("tr");
         textRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
-        //console.log(textRow.className)
         textTable.appendChild(textRow);
 
         //drei Columns anlegen:
@@ -2749,7 +2738,7 @@ export async function application() {
         if (erstesMal || (aktuelleZeile + 1) % 5 === 0) {
 
           
-          ////Abstand zur vorherigen Row
+          //Abstand zur vorherigen Row
           textColumnVersnummer.style.paddingTop = "10px";
           textColumnLatein.style.paddingTop = "10px";
           textColumnDeutsch.style.paddingTop = "10px";
@@ -2772,6 +2761,7 @@ export async function application() {
         aktuelleZeile++;
         aktuelleZeileLokal++;
 
+
       }
 
       //Leere Tabellenzeile, damit es unten nicht so gequetscht ist
@@ -2793,6 +2783,8 @@ export async function application() {
     }
 
   }
+
+  console.log(zeilenzaehler);
 
   //Verwandlungsmomente unterstreichen mithilfe von Iconclass
   //Funktion roemische Ziffern in arabische umwandeln
@@ -3108,9 +3100,14 @@ export async function application() {
 
     textImg.style.display = "block";
 
-    //WÜRDE FUNKTIONIEREN, WENN PLATZ UNTER DEM BILDSCHIRM ENDLICH WEG WÄRE (Scrollen deshalb ausgestellt)
+    //Platz ist weg, anpassen! (WÜRDE FUNKTIONIEREN, WENN PLATZ UNTER DEM BILDSCHIRM ENDLICH WEG WÄRE (Scrollen deshalb ausgestellt)
     // var prooemiumHeader = document.getElementById("prooemiumHeader");
     // prooemiumHeader.scrollIntoView();
+
+
+    //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
+    navigationDropdown(false);
+    document.getElementById("dropDownNavigation").style.display = "none";
 
     //Icons ausblenden, damit sie nicht stören
     for (var figur in leude) {
@@ -3151,15 +3148,20 @@ export async function application() {
 
   //Navigationsleite für Text:
   var buecherLaenge = [5.224, 6.2711, 5.4439, 5.9595, 5.1684, 5.9023, 6.918, 6.684, 6.2089, 5.6034, 6.1531, 4.4985, 7.1462, 6.2341, 6.2341];
-  var buecherLink = ["prooemiumHeader", "phaetonIIHeader", "", "", "", "", "", "", "", "", "", "", "", "", ""];
-  var gesamtlaenge = function () {
-    for (var b in buecherLaenge){ 
-      var gesamtlaengeVerse = 0.0;
-      gesamtlaengeVerse += parseFloat(buecherLaenge[b]);
-      return gesamtlaengeVerse;
+  var buecherLink = ["prooemium", "phaetonII", "cadmus", "minayastoechterI", "perseusUndPhineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "schlangeInAulis", "hoplonkrisisI", "glaucus", "numa"];
+  
+  var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
+  var kapitelLinksBuch1 = ["prooemium", "weltentstehung", "weltzeitalter", "giganten", "lycaon", "sintflut", "deucalionUndPyrrha", "tierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
+  var gesamtlaenge = function (tabelle) {
+    var gesamtlaengeVerse = 0.0;
+    for (var b in tabelle){ 
+      gesamtlaengeVerse += parseFloat(tabelle[b]);
     }
+    return gesamtlaengeVerse;
   }
-  var gesamtLaengeBuecher = gesamtlaenge();
+  var gesamtLaengeBuecher = gesamtlaenge(buecherLaenge);
+  var gesamtLaengeKapitel1 = gesamtlaenge(kapitelLaenge1);
+  //console.log(gesamtLaengeBuecher)
 
   var navbarWrapper = document.createElement("div");
   var fliesstextDiv = document.getElementById("fliesstext");
@@ -3169,6 +3171,10 @@ export async function application() {
   var navbarBuecher = document.createElement("div");
   navbarBuecher.className = "navbar1";
   navbarWrapper.appendChild(navbarBuecher);
+
+  var navbarKapitel = document.createElement("div");
+  navbarKapitel.className = "navbar2";
+  navbarWrapper.appendChild(navbarKapitel);
 
   var headerBuch = document.createElement("div");
   headerBuch.innerHTML = "Buch";
@@ -3185,11 +3191,11 @@ export async function application() {
   navbarWrapper.appendChild(headerKapitel);
 
 
-
+  //navBar 1: Bücher
   for (var b in buecherLaenge){
     
     var aNavbar = document.createElement("a");
-    aNavbar.setAttribute("href", "/visualisierung.html#" + buecherLink[b]);
+    aNavbar.setAttribute("href", "/visualisierung.html#" + buecherLink[b] + "Header");
     aNavbar.className = "buecherLinks";
     aNavbar.id = "buch" + b;
     aNavbar.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + (parseInt(b)+1) + ". Buch";
@@ -3202,9 +3208,10 @@ export async function application() {
       document.getElementById(id).style.width = document.getElementById(id).clientWidth+20 + "px";
 
       var neueGesamtlaenge = gesamtLaengeBuecher + 20.0;
+
       for (var b in buecherLaenge){
         
-        console.log(neueGesamtlaenge)
+        //console.log(neueGesamtlaenge)
       }
 
     }
@@ -3214,13 +3221,67 @@ export async function application() {
       //document.getElementById(id).childNodes[0].style.display = "none";
     }
 
+    aNavbar.onmousedown = (event) => {
+      for (var b in kapitelLaenge1){
+        document.getElementById("buch" + b).style.backgroundColor = "#747474a6";
+      }
+      
+      var id = event.currentTarget.id;
+      document.getElementById(id).style.backgroundColor = "#733030a8";
+      
+    }
+
   }
 
   //erstes schon rot:
   document.getElementById("buch0").style.backgroundColor = "#733030a8";
 
 
+  //navBar2: Kapitel
+  for (var b in kapitelLaenge1){
 
+    var aNavbarII = document.createElement("a");
+    aNavbarII.setAttribute("href", "/visualisierung.html#" + kapitelLinksBuch1[b] + "Header");
+    aNavbarII.className = "kapitelLinks";
+    aNavbarII.id = "buch0kapitel" + b;
+    var hilfs = kapitelLinksBuch1[b];
+    //console.log(metamorphosen.kapitelLinksBuch1[b])
+    //console.log(metamorphosen[hilfs].name)
+    aNavbarII.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + metamorphosen[kapitelLinksBuch1[b]].name;
+    aNavbarII.style.width = (kapitelLaenge1[b]/gesamtLaengeKapitel1*100) + "%";
+    aNavbarII.title = "Klick, um zu Kapitel " + (parseInt(b)+1) + " zu gelangen"
+    navbarKapitel.appendChild(aNavbarII);
+
+    aNavbarII.onmouseover = (event) => {
+      var id = event.currentTarget.id;
+      var gesElement = document.getElementById(id);
+
+      if (gesElement.clientWidth < 90){
+        gesElement.style.width = "120px";
+      } else {
+        gesElement.style.width = gesElement.clientWidth+20 + "px";
+      }
+      
+
+      // var neueGesamtlaenge = gesamtLaengeBuecher + 20.0;
+
+      // for (var b in buecherLaenge){
+        
+      //   console.log(neueGesamtlaenge)
+      // }
+
+    }
+    aNavbarII.onmouseout = (event) => {
+      var id = event.currentTarget.id;
+      document.getElementById(id).style.width = (kapitelLaenge1[parseInt(id.substr(12))]/gesamtLaengeKapitel1*100) + "%";
+      //document.getElementById(id).childNodes[0].style.display = "none";
+    }
+
+
+  }
+
+  //erstes schon rot:
+    document.getElementById("buch0kapitel0").style.backgroundColor = "#733030a8";
 
 
 
