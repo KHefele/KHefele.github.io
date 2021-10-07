@@ -748,7 +748,7 @@ a.kapitelLinks {
   padding-right: 6%;
   padding-left: 7%; /*wg. scrollbar*/
   position: relative;
-  font-size: 12px;
+  font-size: 0.85em;
 }
 
 .textModalHeader {

@@ -1508,7 +1508,7 @@ export async function application() {
     ovMetStelle.innerHTML = leude[key].ovMet;
     //ovMetStelle.style.position = "absolute";
     ovMetStelle.style.fontFamily = "'Crimson Text', serif";
-    ovMetStelle.style.fontSize = "8px";
+    ovMetStelle.style.fontSize = "0.60em";
     ovMetStelle.style.display = "none";
     iconWrapper.appendChild(ovMetStelle);
 
@@ -1952,8 +1952,8 @@ export async function application() {
     setWidthPercent(90);
     setBackOtherKategories("alphabet");
     setLocationHash("alphabet");
-    insertCurrentCategory("Alphabet", "iconmonstr-sort-14-240.png", 20);
-    greyButton(alphaBtn);
+    insertCurrentCategory("Keine ausgewählt", "iconmonstr-sort-14-240.png", 20);
+    //greyButton(alphaBtn);
 
     //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
     navigationDropdown(false);
@@ -3096,8 +3096,8 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories("fliesstext");
     setLocationHash("fliesstext");
-    insertCurrentCategory("Fließtext", "iconmonstr-script-2-240.png", 20);
-    greyButton(textBtn);
+    insertCurrentCategory("Keine ausgewählt", "iconmonstr-script-2-240.png", 20);
+    //greyButton(textBtn);
 
     textImg.style.display = "block";
 
@@ -3310,7 +3310,7 @@ export async function application() {
     nameOfFigure.innerHTML = leude[key].name;
     nameOfFigure.style.fontFamily = "'Crimson Text', serif";
     nameOfFigure.style.width = iconWrapper.offsetWidth + "px";
-    nameOfFigure.style.fontSize = "10px";
+    nameOfFigure.style.fontSize = "0.7em";
     nameOfFigure.style.display = "none";
     iconWrapper.appendChild(nameOfFigure);
 
