@@ -624,13 +624,26 @@ a.metamorphosenModalBtns {
   left: 5%;
   z-index: 20000;
   padding: 1.5%;
-  width: 20%;
+  width: 200px;
   font-size: 10px;
-  display: block;
+  display: none;
   color: white;
   border-radius: 3%;
   background-color: rgb(97, 56, 56);
-  transform: translate(-50%, -110%);
+  transform: translate(-50%, -130%);
+}
+.hoverInfo:before {
+  content:"\A";
+  border-style: solid;
+  border-width: 10px 8px 0 8px ;
+  border-color: rgb(97, 56, 56) transparent transparent transparent ;
+  position: absolute;
+  transform: translateX(calc(100px - 25px)); /* calc(100% - 10px) */
+  bottom: -9px;
+}
+
+.hoverInfoTrigger{
+  cursor: help;
 }
 
 

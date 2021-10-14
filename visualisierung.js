@@ -97,10 +97,10 @@ export async function application() {
     }
   }
 
-  function closeOrOpenSidebar(isSidebarOpen) { 
+  function closeOrOpenSidebar(event) { 
     console.log(event.target.id)
     if (event.target.id != "infoAktKat"){
-      if (isSidebarOpen){
+      if (sidebarOpen){
         sidebar.style.left = "97.5%";
         rotierendeUberschrift.style.transform = "rotate(-90deg)";
         rotierendeUberschrift.style.left = "4.3%";
@@ -116,7 +116,7 @@ export async function application() {
     }
 
   }
-  sidebar.onclick = () => closeOrOpenSidebar(sidebarOpen);
+  sidebar.onclick = closeOrOpenSidebar;
 
 
   // var infoAktKat = document.getElementById("infoAktKat");
@@ -3782,16 +3782,35 @@ export async function application() {
   //--------------------------------------------//
 
 
-  var infoFilter = document.getElementById("infoFilter");
-  var infoModalFilter = document.getElementById("infoModalFilter");
-  infoFilter.onmouseenter = function (event){
-    infoModalFilter.style.left = event.clientX + "px";
-    infoModalFilter.style.top = event.clientY + "px";
-    infoModalFilter.style.display = "block";
+  var hoverInfoBtns = document.getElementsByClassName("hoverInfoTrigger");
+  console.log(hoverInfoBtns[0].id)
+
+  for (var h = 0; h < hoverInfoBtns.length; h++){
+    hoverInfoBtns[h].onmouseenter = (event) => {
+      var modalDazu = document.getElementById(event.target.id + "Modal");
+      var rect = event.target.getBoundingClientRect();
+      var x = (rect.left + rect.right) * 0.5;
+      var y = (rect.top + rect.bottom) * 0.5;
+      modalDazu.style.left = x + "px";
+      modalDazu.style.top = y + "px";
+      modalDazu.style.display = "block";
+    }
+    hoverInfoBtns[h].onmouseleave = (event) => {
+      var modalDazu = document.getElementById(event.target.id + "Modal");
+      modalDazu.style.display = "none";
+    }
   }
-  infoFilter.onmouseleave = function (event){
-    infoModalFilter.style.display = "none";
-  }
+
+  // var hoverInfoFilter = document.getElementById("hoverInfoFilter");
+  // var infoModalFilter = document.getElementById("infoModalFilter");
+  // hoverInfoFilter.onmouseenter = function (event){
+  //   infoModalFilter.style.left = event.clientX + "px";
+  //   infoModalFilter.style.top = event.clientY + "px";
+  //   infoModalFilter.style.display = "block";
+  // }
+  // hoverInfoFilter.onmouseleave = function (event){
+  //   infoModalFilter.style.display = "none";
+  // }
 
 
 
@@ -3846,6 +3865,12 @@ export async function application() {
       if (event.target.id == motivuebersichtModalNames[i]) {
         event.target.style.display = "none";
       }
+    }
+
+    if (!(sidebar.contains(event.target)) && sidebarOpen){
+      
+      closeOrOpenSidebar(event);
+
     }
 
   }
