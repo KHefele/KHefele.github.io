@@ -313,6 +313,105 @@ button { /* Hintergrund-Info-Buttons */
 
 /* --------------- Info-, Quiz- & Book-Button -------------- */
 
+#sidebar {
+  text-align: left;
+  display: block; /* Hidden by default <<<<<<<<<<<<< */
+  position: fixed; /* Stay in place */
+  z-index: 35; /* Sit on top */
+  /* padding-top: 100px; /* Location of the box
+  padding-bottom: 100px; */
+  left: 97.5%;
+  top: 0;
+  width: 30%;
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0); 
+  font-size: 14px;
+  cursor: pointer;
+  transition: left 0.5s, opacity 0.5s;
+  opacity: 0.85;
+}
+#sidebarHeader {
+  font-size: 90%;
+  position: absolute;
+  color: #aaaaaa;
+  background-color: rgb(114, 66, 66);
+  margin: auto;
+  top: 0%;
+  left: 0%;
+  height: 20%;
+  padding-right: 50px;
+  padding-left: 61.2px; /* + 0.7em (= 11.2px) scrollbar */
+  width: 100%;
+}
+#sidebarContent {
+  font-size: 90%;
+  position: absolute;
+  color: #aaaaaa;
+  background-color: rgb(97, 56, 56);
+  margin: auto;
+  top: 20%;
+  left: 0%;
+  height: 80%;
+  padding-right: 50px;
+  padding-left: 61.2px; /* + 0.7em (= 11.2px) scrollbar */
+  width: 100%;
+  overflow-x: auto;
+}
+
+#rotierendeUberschrift{
+  position: absolute;
+  top: 60%;
+  left: 4.3%;
+  transform-origin: center left;
+  transform: rotate(-90deg);
+  transition: transform 0.5s, left 0.5s, opacity 2s;
+}
+#zurueck{
+  position: absolute;
+  top: 60%;
+  left: 61.2px;
+  opacity: 0;
+  transition: opacity 2s;
+}
+/* #sidebarContent:hover {
+  left: 97%;
+} */
+
+/* #openSidebar{
+  cursor: pointer;
+}
+#openSidebar:hover ~ #sidebarContent{
+  left:99%;
+}
+#closeSidebar{
+  position: absolute;
+  left:0%;
+  top:0%;
+  height: 100%;
+  width: 7%;
+}
+
+#closeSidebar:hover{
+  background-color: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+} */
+
+.sidebarBtn{
+  text-align: left;
+  background-color: rgba(100, 100, 100, 0);
+  color:white;
+  border: none;
+  border-radius: 3%;
+  cursor: pointer;
+  padding-top: 2%;
+}
+.sidebarBtn:hover{
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+
 .buttons {
   color: white;
   padding: 0%;
@@ -519,6 +618,20 @@ a.metamorphosenModalBtns {
 }
 
 
+.hoverInfo{
+  position: fixed;
+  top:400px;
+  left: 5%;
+  z-index: 20000;
+  padding: 1.5%;
+  width: 20%;
+  font-size: 10px;
+  display: block;
+  color: white;
+  border-radius: 3%;
+  background-color: rgb(97, 56, 56);
+  transform: translate(-50%, -110%);
+}
 
 
 

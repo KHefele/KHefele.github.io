@@ -64,76 +64,149 @@ export async function application() {
     startModal.style.display = "none";
   }
 
-  // InfoModal
-  var infoModal = document.getElementById("infoModal");   // Get infoModal
-  var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
+  // // InfoModal
+  // var infoModal = document.getElementById("infoModal");   // Get infoModal
+  // var infoBtn = document.getElementById("infoBtn");   // Get button that opens the infoModal
 
-  //infoBtn.title = "Information zur aktuell ausgewählten Kategorie (s. links unten)";
-  infoBtn.onclick = function () { // Open
-    location.href = "/#projekt";
+  // //infoBtn.title = "Information zur aktuell ausgewählten Kategorie (s. links unten)";
+  // infoBtn.onclick = function () { // Open
+  //   location.href = "/#projekt";
+  // }
+
+
+  //Sidebar 
+  var sidebar = document.getElementById("sidebar");
+  var rotierendeUberschrift = document.getElementById("rotierendeUberschrift");
+
+
+
+  
+  var sidebarOpen = false;
+
+
+  sidebar.onmouseover = function () {
+    if (sidebarOpen == false){
+      sidebar.style.opacity = "0.98";
+      // sidebar.style.left = "97%";
+      // setTimeout(function(){ sidebar.style.left = "97.5%"; }, 300);
+    }
   }
-
-
-
-
-  // Quellen Modal
-  var quellenModal = document.getElementById("quellenModal");   // Get infoModall
-  var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
-
-  quellenBtn.onclick = function () { // Open
-    quellenModal.style.display = "block";
-    quellenModal.style.animationPlayState = "running";
-  }
-
-
-
-  // Ovid Modal
-  var ovidModal = document.getElementById("ovidModal");   // Get infoModall
-  var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
-
-  ovidBtn.onclick = function () { // Open
-    ovidModal.style.display = "block";
-    ovidModal.style.animationPlayState = "running";
-  }
-
-
-  //close all
-  var closeInfoBtn = document.getElementsByClassName("closeInfoBtn"); // Get the <span> element that closes the infoModal
-
-  for (var c = 0; c < closeInfoBtn.length; c++) {
-    closeInfoBtn[c].onclick = function () { // Close
-      infoModal.style.display = "none";
-      quellenModal.style.display = "none";
-      ovidModal.style.display = "none";
+  sidebar.onmouseout = function () {
+    if (sidebarOpen == false){
+      sidebar.style.opacity = "0.85";
     }
   }
 
-
-
-  var kategorienTabelle = ["erzaehlfolge", "klassifikation", "geographie", "alphabet", "verwandlungsgrund", "verwandelnde", "fliesstext"];
-
-
-  var closeKategorieModals = document.getElementsByClassName("closeKategorieModals");
-  //console.log(closeKategorieModals)
-
-  function createKategorieModal(kategorie) {
-    var kategorieModal = document.getElementById(kategorie + "Modal");
-    var kategorieBtn = document.getElementById(kategorie + "InfoBtn");
-    var closeKategorie = document.getElementById(kategorie + "ModalX")
-
-    kategorieBtn.onclick = function () {
-      kategorieModal.style.display = "block";
-      kategorieModal.style.animationPlayState = "running";
-    }
-    closeKategorie.onclick = function () {
-      kategorieModal.style.display = "none";
+  function closeOrOpenSidebar(isSidebarOpen) { 
+    console.log(event.target.id)
+    if (event.target.id != "infoAktKat"){
+      if (isSidebarOpen){
+        sidebar.style.left = "97.5%";
+        rotierendeUberschrift.style.transform = "rotate(-90deg)";
+        rotierendeUberschrift.style.left = "4.3%";
+        sidebar.style.opacity = "0.85";
+        sidebarOpen = false;
+      } else {
+        sidebar.style.left = "70%";
+        rotierendeUberschrift.style.transform = "rotate(0deg)";
+        rotierendeUberschrift.style.left = "61.2px";
+        sidebar.style.opacity = "0.98";
+        sidebarOpen = true;
+      }
     }
 
   }
+  sidebar.onclick = () => closeOrOpenSidebar(sidebarOpen);
 
-  for (var k = 0; k < kategorienTabelle.length; k++) {
-    createKategorieModal(kategorienTabelle[k]);
-  }
+
+  // var infoAktKat = document.getElementById("infoAktKat");
+  // infoAktKat.onclick = function (){
+  //   console.log(aktuelleKategorie)
+  //   setTimeout(() => {
+  //     closeOrOpenSidebar(sidebarOpen)
+  //   }, 0.0001); 
+  //   document.getElementById("zurueck").style.opacity = "1"; 
+  //   rotierendeUberschrift.style.display = "none";
+  //   var sidebarChildren = sidebarContent.childNodes;
+  //   console.log(sidebarChildren)
+  //   // for (var i; i < sidebarContent.childNodes.length; i++){
+  //   //   sidebarContent.childNodes[i].style.display = "none";
+  //   // }
+
+  //   document.getElementById(aktuelleKategorie + "Modal").style.display = "block";
+  // }
+
+  
+
+
+  // var openSidebar = document.getElementById("openSidebar");
+  // openSidebar.onclick = function(){
+  //   sidebarContent.style.left = "70%";
+  //   openSidebar.style.display ="none";
+  // }
+  // var closeSidebar = document.getElementById("closeSidebar");
+  // closeSidebar.onclick = closeSidebarNow;
+
+
+
+  // // Quellen Modal
+  // var quellenModal = document.getElementById("quellenModal");   // Get infoModall
+  // var quellenBtn = document.getElementById("bookBtn");   // Get button that opens the infoModal
+
+  // quellenBtn.onclick = function () { // Open
+  //   quellenModal.style.display = "block";
+  //   quellenModal.style.animationPlayState = "running";
+  // }
+
+
+
+  // // Ovid Modal
+  // var ovidModal = document.getElementById("ovidModal");   // Get infoModall
+  // var ovidBtn = document.getElementById("ovidBtn");   // Get button that opens the infoModal
+
+  // ovidBtn.onclick = function () { // Open
+  //   ovidModal.style.display = "block";
+  //   ovidModal.style.animationPlayState = "running";
+  // // }
+
+
+  // //close all
+  // var closeInfoBtn = document.getElementsByClassName("closeInfoBtn"); // Get the <span> element that closes the infoModal
+
+  // for (var c = 0; c < closeInfoBtn.length; c++) {
+  //   closeInfoBtn[c].onclick = function () { // Close
+  //     infoModal.style.display = "none";
+  //     quellenModal.style.display = "none";
+  //     ovidModal.style.display = "none";
+  //   }
+  // }
+
+
+
+  // var kategorienTabelle = ["erzaehlfolge", "klassifikation", "geographie", "alphabet", "verwandlungsgrund", "verwandelnde", "fliesstext"];
+
+
+  // var closeKategorieModals = document.getElementsByClassName("closeKategorieModals");
+  // //console.log(closeKategorieModals)
+
+  // function createKategorieModal(kategorie) {
+  //   var kategorieModal = document.getElementById(kategorie + "Modal");
+  //   var kategorieBtn = document.getElementById(kategorie + "InfoBtn");
+  //   var closeKategorie = document.getElementById(kategorie + "ModalX")
+
+  //   kategorieBtn.onclick = function () {
+  //     kategorieModal.style.display = "block";
+  //     kategorieModal.style.animationPlayState = "running";
+  //   }
+  //   closeKategorie.onclick = function () {
+  //     kategorieModal.style.display = "none";
+  //   }
+
+  // }
+
+  // for (var k = 0; k < kategorienTabelle.length; k++) {
+  //   createKategorieModal(kategorienTabelle[k]);
+  // }
 
 
 
@@ -143,55 +216,55 @@ export async function application() {
   //           2. Interface-Icons               //
   //--------------------------------------------//
 
-  //Hover Info-Button
-  var infoHoverName = document.createElement("div");
-  infoHoverName.className = "infoHoverName";
-  infoHoverName.innerHTML = "Info";
-  infoHoverName.style.left = "30%";
-  infoBtn.appendChild(infoHoverName);
+  // //Hover Info-Button
+  // var infoHoverName = document.createElement("div");
+  // infoHoverName.className = "infoHoverName";
+  // infoHoverName.innerHTML = "Info";
+  // infoHoverName.style.left = "30%";
+  // infoBtn.appendChild(infoHoverName);
 
-  infoBtn.onmouseover = function () {
-    infoHoverName.style.display = "block";
-  }
+  // infoBtn.onmouseover = function () {
+  //   infoHoverName.style.display = "block";
+  // }
 
-  infoBtn.onmouseout = function () {
-    infoHoverName.style.display = "none";
-  }
+  // infoBtn.onmouseout = function () {
+  //   infoHoverName.style.display = "none";
+  // }
 
 
-  //Hover Book-Button
-  var bookBtn = document.getElementById("bookBtn");
+  // //Hover Book-Button
+  // var bookBtn = document.getElementById("bookBtn");
 
-  var bookHoverName = document.createElement("div");
-  bookHoverName.className = "infoHoverName";
-  bookHoverName.innerHTML = "Quellen";
-  bookHoverName.style.left = "10%";
-  bookBtn.appendChild(bookHoverName);
+  // var bookHoverName = document.createElement("div");
+  // bookHoverName.className = "infoHoverName";
+  // bookHoverName.innerHTML = "Quellen";
+  // bookHoverName.style.left = "10%";
+  // bookBtn.appendChild(bookHoverName);
 
-  bookBtn.onmouseover = function () {
-    bookHoverName.style.display = "block";
-  }
+  // bookBtn.onmouseover = function () {
+  //   bookHoverName.style.display = "block";
+  // }
 
-  bookBtn.onmouseout = function () {
-    bookHoverName.style.display = "none";
-  }
+  // bookBtn.onmouseout = function () {
+  //   bookHoverName.style.display = "none";
+  // }
 
-  //Hover Ovid-Button
-  var ovidBtn = document.getElementById("ovidBtn");
+  // //Hover Ovid-Button
+  // var ovidBtn = document.getElementById("ovidBtn");
 
-  var ovidHoverName = document.createElement("div");
-  ovidHoverName.className = "infoHoverName";
-  ovidHoverName.innerHTML = "Ovid";
-  ovidHoverName.style.left = "25%";
-  ovidBtn.appendChild(ovidHoverName);
+  // var ovidHoverName = document.createElement("div");
+  // ovidHoverName.className = "infoHoverName";
+  // ovidHoverName.innerHTML = "Ovid";
+  // ovidHoverName.style.left = "25%";
+  // ovidBtn.appendChild(ovidHoverName);
 
-  ovidBtn.onmouseover = function () {
-    ovidHoverName.style.display = "block";
-  }
+  // ovidBtn.onmouseover = function () {
+  //   ovidHoverName.style.display = "block";
+  // }
 
-  ovidBtn.onmouseout = function () {
-    ovidHoverName.style.display = "none";
-  }
+  // ovidBtn.onmouseout = function () {
+  //   ovidHoverName.style.display = "none";
+  // }
 
 
 
@@ -231,30 +304,30 @@ export async function application() {
   //          4. Buttons-Bar                    //
   //--------------------------------------------//
 
-  var buttons2punkt0 = document.getElementById("buttons2punkt0");
-  var dropDownButtons = document.getElementById("dropDownButtons");
-  var arrowDownButtons = true;
+  // var buttons2punkt0 = document.getElementById("buttons2punkt0");
+  // var dropDownButtons = document.getElementById("dropDownButtons");
+  // var arrowDownButtons = true;
 
-  function buttonsDropdown(arrowDownButtonsArgument) {
+  // function buttonsDropdown(arrowDownButtonsArgument) {
 
-    if (arrowDownButtonsArgument) {
-      dropDownButtons.style.transform = "rotate(180deg)";
-      //setAttribute("src", "Icons/upload.png");
-      buttons2punkt0.style.display = "block";
-      arrowDownButtons = false;
-    } else {
-      dropDownButtons.style.transform = "rotate(0deg)";
-      //dropDownButtons.setAttribute("src", "Icons/down-arrow.png");  
-      buttons2punkt0.style.display = "none";
-      arrowDownButtons = true;
-    }
+  //   if (arrowDownButtonsArgument) {
+  //     dropDownButtons.style.transform = "rotate(180deg)";
+  //     //setAttribute("src", "Icons/upload.png");
+  //     buttons2punkt0.style.display = "block";
+  //     arrowDownButtons = false;
+  //   } else {
+  //     dropDownButtons.style.transform = "rotate(0deg)";
+  //     //dropDownButtons.setAttribute("src", "Icons/down-arrow.png");  
+  //     buttons2punkt0.style.display = "none";
+  //     arrowDownButtons = true;
+  //   }
 
-  }
+  // }
 
 
-  dropDownButtons.onclick = function () {
-    buttonsDropdown(arrowDownButtons);
-  }
+  // dropDownButtons.onclick = function () {
+  //   buttonsDropdown(arrowDownButtons);
+  // }
 
 
 
@@ -1952,7 +2025,7 @@ export async function application() {
     setWidthPercent(90);
     setBackOtherKategories("alphabet");
     setLocationHash("alphabet");
-    insertCurrentCategory("Keine ausgewählt", "iconmonstr-sort-14-240.png", 20);
+    insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
     //greyButton(alphaBtn);
 
     //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
@@ -3096,7 +3169,7 @@ export async function application() {
     setWidthPercent(100);
     setBackOtherKategories("fliesstext");
     setLocationHash("fliesstext");
-    insertCurrentCategory("Keine ausgewählt", "iconmonstr-script-2-240.png", 20);
+    insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
     //greyButton(textBtn);
 
     textImg.style.display = "block";
@@ -3701,6 +3774,24 @@ export async function application() {
 
 
 
+
+
+
+  //--------------------------------------------//
+  //                hover-Info                  //
+  //--------------------------------------------//
+
+
+  var infoFilter = document.getElementById("infoFilter");
+  var infoModalFilter = document.getElementById("infoModalFilter");
+  infoFilter.onmouseenter = function (event){
+    infoModalFilter.style.left = event.clientX + "px";
+    infoModalFilter.style.top = event.clientY + "px";
+    infoModalFilter.style.display = "block";
+  }
+  infoFilter.onmouseleave = function (event){
+    infoModalFilter.style.display = "none";
+  }
 
 
 
