@@ -3794,13 +3794,13 @@ export async function application() {
 
     if (!event.target.classList.contains("dontClose")){
       if (sidebarOpen){
-        sidebar.style.left = "97.5%";
+        sidebar.style.transform = "translateX(90%)";
         rotierendeUberschrift.style.transform = "rotate(-90deg)";
         rotierendeUberschrift.style.left = "4.3%";
         sidebar.style.opacity = "0.85";
         sidebarOpen = false;
       } else {
-        sidebar.style.left = "70%";
+        sidebar.style.transform = "translateX(0%)";
         rotierendeUberschrift.style.transform = "rotate(0deg)";
         rotierendeUberschrift.style.left = "61.2px";
         sidebar.style.opacity = "0.98";

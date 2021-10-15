@@ -322,7 +322,7 @@ button { /* Hintergrund-Info-Buttons */
   z-index: 35; /* Sit on top */
   /* padding-top: 100px; /* Location of the box
   padding-bottom: 100px; */
-  left: 97.5%;
+  right: 0%;
   top: 0;
   width: 30%;
   min-width: 500px;
@@ -332,7 +332,8 @@ button { /* Hintergrund-Info-Buttons */
   background-color: rgba(0, 0, 0, 0); 
   font-size: 14px;
   cursor: pointer;
-  transition: left 0.5s, opacity 0.5s;
+  transform: translateX(90%);
+  transition: transform 0.5s, opacity 0.5s;
   opacity: 0.85;
 }
 #sidebarHeader {
