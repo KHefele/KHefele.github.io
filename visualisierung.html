@@ -88,7 +88,7 @@
 
     <!----------- Alphabet ------------------->
     <div id="alphabet" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
-      <div style="width: 90%; height:80%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 11.5%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
+      <div style="width: 90%; height:80%; background-color: rgba(227, 222, 216, 0.7); position: absolute; top: 15%; left: 5%; animation-name:slowOpacity; animation-duration: 3s;"></div>
       
       <!-- Hintergrundinfo-Button -->
       <!-- <div style="left: 85%; top: 2%; width: 48%; position: absolute;">
@@ -104,7 +104,7 @@
     <div id="fliesstext" style="height:100%; width:100%; position:absolute; display:none; animation-name:slowOpacity; animation-duration: 2s;">
       <div id="textModal">
       </div>
-      <div style="font-family: 'Crimson Text', serif; position: absolute; top:19%; left:85%;z-index: 20; font-size: 12px;">
+      <div style="font-family: 'Crimson Text', serif; position: absolute; top:22%; left:83%;z-index: 20; font-size: 12px;">
         <input type="checkbox" id="deutscheUebersetzung" checked>
         <label for="deutscheUebersetzung">deutsch<img src="Icons/padlock.png" title="mind. eine Fassung muss ausgewählt sein" id="lockDeutsch" style="display:inline-block; width:15px; padding-left: 5px; padding-bottom: 4px;"></label> &nbsp; &nbsp;
         <br>
@@ -384,7 +384,7 @@
   <!--          Navigation-Bar                 -->
   <!--------------------------------------------->
 
-  <div class="navigation">
+  <div id="navigation">
     &nbsp; 
     Sortierkategorie
     <img id="hoverInfoSortier" class="hoverInfoTrigger" src="Icons/information-button.png" style="width: 12px; padding-bottom: 3%;">
@@ -514,42 +514,42 @@
     <div id="sidebarContent">
       <div id="menueInfos">
         <br>
-        <p>Wenn du mehr Infos über die aktuell ausgewählte Sortierkategorie brauchst, zur Text-Bild-Ausgabe wechseln
+        <p>Wenn du mehr Infos über die aktuell ausgewählte Sortierkategorie brauchst, zwischen Text-Bild-Ausgabe und Visualisierung wechseln
           willst
           oder für eine Suche nach einer bestimmten Geschichte eine alphabetische Liste benötigst, bist du hier genau
           richtig. Außerdem findest du hierüber projektübergreifende Informationen wie eine Einführung in Ovid und die
           Kunst
           sowie das Literaturverzeichnis.</p>
         <br>
-        <button id="infoAktKat" class="sidebarBtn">
-          <img src="Icons/info.png" style="width: 8%;">
-          <p style="display:inline-block;padding-left: 3%;">Aktuelle Kategorie</p>
+        <button id="infoAktKat" class="sidebarBtn dontClose">
+          <img class="dontClose" src="Icons/info.png" style="width: 8%;">
+          <p class="dontClose" style="display:inline-block;padding-left: 3%;">Aktuelle Kategorie</p>
         </button>
         <br>
-        <br>
         <hr>
-        <br>
         <br>
         <button class="sidebarBtn" id="text">
           <img src="Icons/iconmonstr-script-2-240.png" style="width: 8%;">
           <p style="display:inline-block;padding-left: 3%;">Text-Bild-Ausgabe</p>
+        </button>
+        <button class="sidebarBtn" id="visualisierung">
+          <img src="Icons/visual.png" style="width: 8%;">
+          <p style="display:inline-block;padding-left: 3%;">Visualisierung</p>
         </button>
         <button class="sidebarBtn" id="alpha">
           <img src="Icons/iconmonstr-sort-14-240.png" style="width: 8%;">
           <p style="display: inline-block;padding-left: 3%;">Alphabetische Liste</p>
         </button>
         <br>
-        <br>
-        <br>
         <hr>
         <br>
-        <button id="ovidi" class="sidebarBtn">
-          <img src="Icons/poet.png" style="width: 8%;">
-          <p style="display: inline-block;padding-left: 3%;">Ovid und die Kunst</p>
+        <button id="ovidi" class="sidebarBtn dontClose">
+          <img class="dontClose" src="Icons/poet.png" style="width: 8%;">
+          <p class="dontClose" style="display: inline-block;padding-left: 3%;">Ovid und die Kunst</p>
         </button>
-        <button id="booki" class="sidebarBtn">
-          <img src="Icons/library.png" style="width: 8%;">
-          <p style="display: inline-block;padding-left: 3%;">Literaturverzeichnis</p>
+        <button id="booki" class="sidebarBtn dontClose">
+          <img class="dontClose"src="Icons/library.png" style="width: 8%;">
+          <p class="dontClose" style="display: inline-block;padding-left: 3%;">Literaturverzeichnis</p>
         </button>
       </div>
       <!--------------------------------------------->

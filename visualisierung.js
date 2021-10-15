@@ -80,44 +80,7 @@ export async function application() {
 
 
 
-  
-  var sidebarOpen = false;
-
-
-  sidebar.onmouseover = function () {
-    if (sidebarOpen == false){
-      sidebar.style.opacity = "0.98";
-      // sidebar.style.left = "97%";
-      // setTimeout(function(){ sidebar.style.left = "97.5%"; }, 300);
-    }
-  }
-  sidebar.onmouseout = function () {
-    if (sidebarOpen == false){
-      sidebar.style.opacity = "0.85";
-    }
-  }
-
-  function closeOrOpenSidebar(event) { 
-    console.log(event.target.id)
-    if (event.target.id != "infoAktKat"){
-      if (sidebarOpen){
-        sidebar.style.left = "97.5%";
-        rotierendeUberschrift.style.transform = "rotate(-90deg)";
-        rotierendeUberschrift.style.left = "4.3%";
-        sidebar.style.opacity = "0.85";
-        sidebarOpen = false;
-      } else {
-        sidebar.style.left = "70%";
-        rotierendeUberschrift.style.transform = "rotate(0deg)";
-        rotierendeUberschrift.style.left = "61.2px";
-        sidebar.style.opacity = "0.98";
-        sidebarOpen = true;
-      }
-    }
-
-  }
-  sidebar.onclick = closeOrOpenSidebar;
-
+ 
 
   // var infoAktKat = document.getElementById("infoAktKat");
   // infoAktKat.onclick = function (){
@@ -582,6 +545,7 @@ export async function application() {
 
   function createIconAndPopover(data) { //startposition anywhere (animation)
 
+
     //Icon
     var iconDiv = document.createElement("div");
     iconDiv.id = data.id + "Wrapper";
@@ -925,7 +889,7 @@ export async function application() {
       aktuellesModal = undefined;
 
       //Fließtextfunction ausführen
-      fliesstextFunction();
+      fliesstextFunction(true);
 
       //passenden Header ins Sichtfeld scrollen 
       var scrollToFliesstextHeader = document.getElementById(scrollToFliesstextHeader);
@@ -1265,45 +1229,21 @@ export async function application() {
       window.setTimeout(grundFunction, 300);
 
     } else if (location.hash.startsWith("#fliesstext")) {
-      window.setTimeout(fliesstextFunction, 300);
+      window.setTimeout(() => fliesstextFunction(false), 0);
 
     } else if (location.hash.startsWith("#verwandelnde")) {
       window.setTimeout(verwandelndeFunction, 300);
 
-      // var fliesstextID = locHash.substring(12);
-
-      // //document.onreadystatechange = function () {
-      //   //if (document.readyState === 'complete') {
-      //     var myElement = document.getElementById(fliesstextID);
-      //     var topPos = myElement.offsetTop; //getBoundingClientRect();
-      //     console.log(topPos);
-      //   //}
-      // // }
-
-
-
-
-      //document.getElementById("textModal").scrollTop = topPos;
-
-
-      // console.log(document.getElementById(fliesstextID));
-      // document.getElementById(fliesstextID).style.color = "#733030";
-      // window.scrollTo(0, 1000);
-      // document.getElementById(fliesstextID).scrollIntoView();
-
-      // for (key in metamorphosen) {
-      //   if (fliesstextID === metamorphosen[key].id){
-      //     var currentText = document.getElementById(key);
-      //     currentText.style.top = "-1";
-
-      //     var currentHeader = document.getElementById(key + "Header");
-      //     currentHeader.style.color = "#733030";
-
-      //   }
-      // }
-
-    } else if (location.hash != "") {
+    } else if (location.hash == "") {
+      
+      //Navigationsbar einblenden
+      var navigation = document.getElementById("navigation");
+      navigation.style.display = "block";
+      setTimeout(function () { navigation.style.opacity = "1"; }, 300);
+    
+    } else {
       //locHash = "";
+      //keineAuswahl();
       //alert('Die URL mit der Endung "' + location.hash + '" existiert nicht. Du wurdest auf die Startseite weitergeleitet.');
     }
 
@@ -2025,12 +1965,11 @@ export async function application() {
     setWidthPercent(90);
     setBackOtherKategories("alphabet");
     setLocationHash("alphabet");
-    insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
+    //insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
     //greyButton(alphaBtn);
 
-    //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
-    navigationDropdown(false);
-    document.getElementById("dropDownNavigation").style.display = "none";
+    // navigationDropdown(false);
+    // document.getElementById("dropDownNavigation").style.display = "none";
 
 
     alphaImg.style.display = "block";
@@ -2049,7 +1988,7 @@ export async function application() {
 
 
     var alphaDiv = document.getElementById("alphabet");
-    var startFromTop = 15;
+    var startFromTop = 20;
     var startFromLeft = 9;
     var spaceBetweenIconsHorizontally = 5;
     //var spaceBetweenLetterBlocksVertically = 15;
@@ -2111,7 +2050,7 @@ export async function application() {
         topPosition += spaceBetweenIconsVertically / 3;
 
         if (topPosition > 80) {
-          topPosition = 15;
+          topPosition = startFromTop;
           startFromLeft += 14;
         }
 
@@ -2167,6 +2106,10 @@ export async function application() {
   alphaBtn.onclick = function () {
     placeDurchsichtigesDiv();
     alphabetFunction();
+    //Navigationsbar verstecken
+    var navigation = document.getElementById("navigation");
+    navigation.style.opacity = "0";
+    setTimeout(function () { navigation.style.display = "none"; }, 1000);
   };
 
 
@@ -3164,24 +3107,33 @@ export async function application() {
 
 
   //Funktion, die Fliesstext auf Block setzt (+ Rest auf none)
-  function fliesstextFunction() {
+  function fliesstextFunction(navigationLangsamAusblenden) {
 
     setWidthPercent(100);
     setBackOtherKategories("fliesstext");
     setLocationHash("fliesstext");
-    insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
+    //insertCurrentCategory("Keine ausgewählt", "no-stopping.png", 18);
     //greyButton(textBtn);
 
     textImg.style.display = "block";
+
+    if (navigationLangsamAusblenden) {
+      //Navigationsbar verstecken
+      var navigation = document.getElementById("navigation");
+      navigation.style.opacity = "0";
+      setTimeout(function () { navigation.style.display = "none"; }, 1000);
+    } else {
+      document.getElementById("navigation").style.display = "none";
+    }
+    
 
     //Platz ist weg, anpassen! (WÜRDE FUNKTIONIEREN, WENN PLATZ UNTER DEM BILDSCHIRM ENDLICH WEG WÄRE (Scrollen deshalb ausgestellt)
     // var prooemiumHeader = document.getElementById("prooemiumHeader");
     // prooemiumHeader.scrollIntoView();
 
 
-    //Ausklappen der Navigationsbar links unten verhindern, da hier nicht sinnvoll
-    navigationDropdown(false);
-    document.getElementById("dropDownNavigation").style.display = "none";
+    // navigationDropdown(false);
+    // document.getElementById("dropDownNavigation").style.display = "none";
 
     //Icons ausblenden, damit sie nicht stören
     for (var figur in leude) {
@@ -3204,8 +3156,7 @@ export async function application() {
   }
 
   textBtn.onclick = function () {
-    placeDurchsichtigesDiv();
-    fliesstextFunction();
+    fliesstextFunction(true);
   };
 
 
@@ -3402,6 +3353,7 @@ export async function application() {
     insertCurrentCategory("Drag & Drop", "iconmonstr-circle-5-240.png", 19);
     greyButton(unorgBtn);
 
+
     //für das Raster
     var fromLeft = 14; //in %
     var fromTop = 15; //in %
@@ -3429,6 +3381,15 @@ export async function application() {
 
   unorgBtn.onclick = function() {
     keineAuswahl();
+  }
+  var visualisierungBtn = document.getElementById("visualisierung");
+  visualisierungBtn.onclick = function () {
+    keineAuswahl();
+
+    //Navigationsbar wieder einblenden
+    var navigation = document.getElementById("navigation");
+    navigation.style.display = "block";
+    setTimeout(function(){ navigation.style.opacity = "1";}, 300);
   }
 
   
@@ -3811,6 +3772,67 @@ export async function application() {
   // hoverInfoFilter.onmouseleave = function (event){
   //   infoModalFilter.style.display = "none";
   // }
+
+
+
+
+
+   
+  var sidebarOpen = false;
+
+
+  sidebar.onmouseover = function () {
+    if (sidebarOpen == false){
+      sidebar.style.opacity = "0.98";
+      // sidebar.style.left = "97%";
+      // setTimeout(function(){ sidebar.style.left = "97.5%"; }, 300);
+    }
+  }
+  sidebar.onmouseout = function () {
+    if (sidebarOpen == false){
+      sidebar.style.opacity = "0.85";
+    }
+  }
+
+  function closeOrOpenSidebar(event) { 
+
+    if (!event.target.classList.contains("dontClose")){
+      if (sidebarOpen){
+        sidebar.style.left = "97.5%";
+        rotierendeUberschrift.style.transform = "rotate(-90deg)";
+        rotierendeUberschrift.style.left = "4.3%";
+        sidebar.style.opacity = "0.85";
+        sidebarOpen = false;
+      } else {
+        sidebar.style.left = "70%";
+        rotierendeUberschrift.style.transform = "rotate(0deg)";
+        rotierendeUberschrift.style.left = "61.2px";
+        sidebar.style.opacity = "0.98";
+        sidebarOpen = true;
+
+        if (aktuelleKategorie == "alphabet"){
+          document.getElementById("text").style.backgroundColor = null;
+          document.getElementById("visualisierung").style.backgroundColor = null;
+          document.getElementById("alpha").style.backgroundColor = "grey";
+          
+        } else if (aktuelleKategorie == "fliesstext"){
+          document.getElementById("alpha").style.backgroundColor = null;
+          document.getElementById("visualisierung").style.backgroundColor = null;
+          document.getElementById("text").style.backgroundColor = "grey";
+        } else {
+          document.getElementById("alpha").style.backgroundColor = null;
+          document.getElementById("text").style.backgroundColor = null;
+          document.getElementById("visualisierung").style.backgroundColor = "grey";
+          
+        }
+
+
+      }
+    }
+
+  }
+  sidebar.onclick = closeOrOpenSidebar;
+
 
 
 
