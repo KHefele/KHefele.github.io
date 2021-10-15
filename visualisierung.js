@@ -917,10 +917,6 @@ export async function application() {
       //location hash
       location.hash = "#" + aktuelleKategorie;
     };
-    buttonSpan.style.position = "fixed";
-    buttonSpan.style.left = "76%";
-    buttonSpan.style.top = "19%";
-    buttonSpan.style.cursor = "pointer";
     modalContentDiv.appendChild(buttonSpan);
 
     return modalDiv;

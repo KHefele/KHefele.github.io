@@ -471,6 +471,12 @@ button { /* Hintergrund-Info-Buttons */
   transition: transform 0.3s;
 }
 
+.closeModal{
+  position : absolute;
+  right: 40px;
+  top: 40px;
+  cursor: pointer;
+}
 .closeModal:hover {
   transform: scale(1.5);
   transition: transform 0.3s;
@@ -1079,8 +1085,9 @@ polygon:hover {
   background-color: rgba(0,0,0,1);
   margin: auto;
   border-radius: 3px;
-  top: 15%;
+  top: 50%;
   left: 20%;
+  transform: translateY(-50%);
   /* height: 70%; */
   padding-right: 50px;
   padding-left: 61.2px; /* + 0.7em (= 11.2px) scrollbar */
