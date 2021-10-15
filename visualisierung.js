@@ -3802,7 +3802,7 @@ export async function application() {
       } else {
         sidebar.style.transform = "translateX(0%)";
         rotierendeUberschrift.style.transform = "rotate(0deg)";
-        rotierendeUberschrift.style.left = "61.2px";
+        rotierendeUberschrift.style.left = "10%";
         sidebar.style.opacity = "0.98";
         sidebarOpen = true;
 
