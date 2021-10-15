@@ -1081,7 +1081,7 @@ polygon:hover {
   border-radius: 3px;
   top: 15%;
   left: 20%;
-  height: 70%;
+  /* height: 70%; */
   padding-right: 50px;
   padding-left: 61.2px; /* + 0.7em (= 11.2px) scrollbar */
   width: 60%;
