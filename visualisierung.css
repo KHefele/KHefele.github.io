@@ -319,7 +319,7 @@ button { /* Hintergrund-Info-Buttons */
   text-align: left;
   display: block; /* Hidden by default <<<<<<<<<<<<< */
   position: fixed; /* Stay in place */
-  z-index: 35; /* Sit on top */
+  z-index: 39; /* Sit on top */
   /* padding-top: 100px; /* Location of the box
   padding-bottom: 100px; */
   right: 0%;
@@ -334,7 +334,7 @@ button { /* Hintergrund-Info-Buttons */
   font-size: 14px;
   cursor: pointer;
   transform: translateX(90%);
-  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, width 0.5s;
   opacity: 0.85;
 }
 #sidebarHeader {
@@ -350,7 +350,8 @@ button { /* Hintergrund-Info-Buttons */
   padding-left: 61.2px; /* + 0.7em (= 11.2px) scrollbar */
   width: 100%;
 }
-#sidebarContent {
+.sidebarContent {
+  display: block;
   font-size: 90%;
   position: absolute;
   color: #aaaaaa;
@@ -364,36 +365,64 @@ button { /* Hintergrund-Info-Buttons */
   width: 100%;
   overflow-x: auto;
 }
+.sidebarText{
+  text-align: justify;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  padding-top: 20px;
+}
 
 #rotierendeUberschrift{
   position: absolute;
+  color: white;
   bottom: 10%;
   left: 4.3%;
   transform-origin: center left;
   transform: rotate(-90deg);
-  transition: transform 0.5s, left 0.5s, opacity 2s;
+  transition: transform 0.5s, left 0.5s, opacity 0.5s;
 }
-#zurueck{
+.sidebarTitle{
+  display: none;
+  font-family: 'Crimson Text', serif;
+  color: white;
   position: absolute;
-  top: 60%;
+  bottom: 10%;
   left: 10%;
   opacity: 0;
-  transition: opacity 2s;
+  transition: opacity 0.5s;
 }
-#sidebarContent::-webkit-scrollbar {
+#zurueckPfeil {
+  display: none;
+  position: absolute;
+  z-index: 40;
+  bottom: 20%;
+  right: 10%;
+  width: 40px;
+  padding: 5px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+#zurueckPfeil:hover{
+  border-radius: 5%;
+  background-color: rgba(255, 255, 255, 0.178);
+}
+
+
+.sidebarContent::-webkit-scrollbar {
   width: 0.7em;
   height: 0.7em;
 }
  
-#sidebarContent::-webkit-scrollbar-track {
+.sidebarContent::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
 }
  
-#sidebarContent::-webkit-scrollbar-thumb {
+.sidebarContent::-webkit-scrollbar-thumb {
   background-color: rgba(150, 145, 140, 0.7);
   border-radius: 4px;
 }
-#sidebarContent::-webkit-scrollbar-thumb:hover {
+.sidebarContent::-webkit-scrollbar-thumb:hover {
   background-color:rgba(150, 145, 140, 1);
 }
 
@@ -1066,7 +1095,7 @@ polygon:hover {
   text-align: left;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 39; /* Sit on top */
+  z-index: 40; /* Sit on top */
   /* padding-top: 100px; /* Location of the box
   padding-bottom: 100px; */
   left: 0;

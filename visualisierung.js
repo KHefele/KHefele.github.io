@@ -82,35 +82,6 @@ export async function application() {
 
  
 
-  // var infoAktKat = document.getElementById("infoAktKat");
-  // infoAktKat.onclick = function (){
-  //   console.log(aktuelleKategorie)
-  //   setTimeout(() => {
-  //     closeOrOpenSidebar(sidebarOpen)
-  //   }, 0.0001); 
-  //   document.getElementById("zurueck").style.opacity = "1"; 
-  //   rotierendeUberschrift.style.display = "none";
-  //   var sidebarChildren = sidebarContent.childNodes;
-  //   console.log(sidebarChildren)
-  //   // for (var i; i < sidebarContent.childNodes.length; i++){
-  //   //   sidebarContent.childNodes[i].style.display = "none";
-  //   // }
-
-  //   document.getElementById(aktuelleKategorie + "Modal").style.display = "block";
-  // }
-
-  
-
-
-  // var openSidebar = document.getElementById("openSidebar");
-  // openSidebar.onclick = function(){
-  //   sidebarContent.style.left = "70%";
-  //   openSidebar.style.display ="none";
-  // }
-  // var closeSidebar = document.getElementById("closeSidebar");
-  // closeSidebar.onclick = closeSidebarNow;
-
-
 
   // // Quellen Modal
   // var quellenModal = document.getElementById("quellenModal");   // Get infoModall
@@ -1480,12 +1451,15 @@ export async function application() {
   //ausgrauen des Kategoriebuttons der aktiven Kategorie
   function greyButton(button) {
     var kategorieButtons = document.getElementsByClassName("kategorieButton");
+    //console.log(kategorieButtons)
     for (var k = 0; k < kategorieButtons.length; k++) {
+      console.log(kategorieButtons[k])
+      console.log(kategorieButtons[k].childNodes)
       kategorieButtons[k].style.backgroundColor = null;
-      kategorieButtons[k].childNodes[0].style.cursor = null;
+      kategorieButtons[k].childNodes[1].style.cursor = null;
     }
     button.style.backgroundColor = "grey"; //button grey
-    var buttonChild = button.childNodes[0]; //cursor auto
+    var buttonChild = button.childNodes[1]; //cursor auto
     buttonChild.style.cursor = "auto";
   }
 
@@ -1632,6 +1606,7 @@ export async function application() {
     setBackOtherKategories("erzaehlfolge");
     setLocationHash("erzaehlfolge");
     insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
+    console.log(chronoBtn);
     greyButton(chronoBtn);
 
 
@@ -2797,7 +2772,7 @@ export async function application() {
 
   }
 
-  console.log(zeilenzaehler);
+  //console.log(zeilenzaehler);
 
   //Verwandlungsmomente unterstreichen mithilfe von Iconclass
   //Funktion roemische Ziffern in arabische umwandeln
@@ -3740,7 +3715,7 @@ export async function application() {
 
 
   var hoverInfoBtns = document.getElementsByClassName("hoverInfoTrigger");
-  console.log(hoverInfoBtns[0].id)
+  //console.log(hoverInfoBtns[0].id)
 
   for (var h = 0; h < hoverInfoBtns.length; h++){
     hoverInfoBtns[h].onmouseenter = (event) => {
@@ -3772,6 +3747,10 @@ export async function application() {
 
 
 
+  //--------------------------------------------//
+  //                 Sidebar                    //
+  //--------------------------------------------//
+
 
    
   var sidebarOpen = false;
@@ -3799,6 +3778,34 @@ export async function application() {
         rotierendeUberschrift.style.left = "4.3%";
         sidebar.style.opacity = "0.85";
         sidebarOpen = false;
+
+
+        //Standard wiederherstellen
+        sidebar.style.maxWidth = null;
+        sidebar.style.width = null;
+        var alleSidebarTexts = document.getElementsByClassName("sidebarText");
+        for (var a = 0; a < alleSidebarTexts.length; a++) {
+          alleSidebarTexts[a].style.display = null;
+          alleSidebarTexts[a].style.opacity = null;
+        }
+        var alleSidebarTitle = document.getElementsByClassName("sidebarTitle");
+        for (var a = 0; a < alleSidebarTitle.length; a++){
+          alleSidebarTitle[a].style.display = null;
+          alleSidebarTitle[a].style.opacity = null;
+        }
+        rotierendeUberschrift.style.display = "block";
+        setTimeout(function () { rotierendeUberschrift.style.opacity= "1"; }, 500);
+        var zurueckPfeil = document.getElementById("zurueckPfeil");
+        zurueckPfeil.style.opacity = null;
+        setTimeout(function () { zurueckPfeil.style.display = null; }, 500);
+
+        //betreffendes einblenden
+        var content = document.getElementById("menueInfos");
+        content.style.display = "block";
+        setTimeout(function () { content.style.opacity = "1"; }, 500);
+        
+        
+
       } else {
         sidebar.style.transform = "translateX(0%)";
         rotierendeUberschrift.style.transform = "rotate(0deg)";
@@ -3830,9 +3837,138 @@ export async function application() {
   sidebar.onclick = closeOrOpenSidebar;
 
 
+  
+  
+
+
+  var contentWechsler = function (contentId) {
+    
+    if (contentId == "literatur" || contentId == "ovidUndKunst"){
+      sidebar.style.maxWidth = "10000px";
+      sidebar.style.width = "75%";
+  
+    }
 
 
 
+    //alle ausblenden
+    var alleSidebarTexts = document.getElementsByClassName("sidebarText");
+    for (var a = 0; a < alleSidebarTexts.length; a++){
+      alleSidebarTexts[a].style.display = null;
+    }
+    var alleSidebarTitle = document.getElementsByClassName("sidebarTitle");
+    for (var a = 0; a < alleSidebarTitle.length; a++){
+      alleSidebarTitle[a].style.display = null;
+    }
+    var rotierendeUberschrift = document.getElementById("rotierendeUberschrift");
+    rotierendeUberschrift.style.display = "none";
+    rotierendeUberschrift.style.opacity = "0";
+    //betreffendes einblenden
+    var content = document.getElementById(contentId);
+    content.style.display = "block";
+    setTimeout(function () { content.style.opacity = "1"; }, 500);
+    var title = document.getElementById(contentId + "Title");
+    title.style.display = "block";
+    setTimeout(function () { title.style.opacity = "1"; }, 500);
+
+    //Zurück-Pfeil
+    var zurueckPfeil = document.getElementById("zurueckPfeil");
+    zurueckPfeil.style.display = "block";
+    setTimeout(function () { zurueckPfeil.style.opacity = "1"; }, 500);
+    
+  }
+  var ovidUndKunstBtn = document.getElementById("ovidUndKunstBtn");
+  ovidUndKunstBtn.onclick = () => contentWechsler("ovidUndKunst");
+
+  var literaturBtn = document.getElementById("literaturBtn");
+  literaturBtn.onclick = () => contentWechsler("literatur");
+
+
+
+  var infoAktKat = document.getElementById("infoAktKat");
+  infoAktKat.onclick = function () {
+
+    var hilfsvariable;
+    if (aktuelleKategorie == "") {
+      hilfsvariable = "drag&drop";
+    } else if (aktuelleKategorie == "taxonomie") {
+      hilfsvariable = "klassifikation";
+    } else if (aktuelleKategorie == "grund") {
+      hilfsvariable = "verwandlungsgrund";
+    } else if (aktuelleKategorie == "geographie") {
+      hilfsvariable = "geografie";
+    } else {
+      hilfsvariable = aktuelleKategorie;
+    }
+
+
+    //Standard wiederherstellen
+    sidebar.style.width = null;
+    setTimeout(function () { sidebar.style.maxWidth = null; }, 1000);
+
+    var alleSidebarTexts = document.getElementsByClassName("sidebarText");
+    for (var a = 0; a < alleSidebarTexts.length; a++) {
+      alleSidebarTexts[a].style.display = null;
+      alleSidebarTexts[a].style.opacity = null;
+    }
+    var alleSidebarTitle = document.getElementsByClassName("sidebarTitle");
+    for (var a = 0; a < alleSidebarTitle.length; a++) {
+      alleSidebarTitle[a].style.display = null;
+      alleSidebarTitle[a].style.opacity = null;
+    }
+    rotierendeUberschrift.style.opacity = "0";
+    setTimeout(function () { rotierendeUberschrift.style.display = "none"; }, 500);
+    var zurueckPfeil = document.getElementById("zurueckPfeil");
+    zurueckPfeil.style.display = "block";
+    setTimeout(function () { zurueckPfeil.style.opacity = "1"; }, 500);
+
+    console.log(hilfsvariable + "ErklaerungTitle")
+    //betreffendes einblenden
+    var content = document.getElementById(hilfsvariable + "Erklaerung");
+    content.style.display = "block";
+    setTimeout(function () { content.style.opacity = "1"; }, 500);
+    var title = document.getElementById(hilfsvariable + "ErklaerungTitle");
+    title.style.display = "block";
+    setTimeout(function () { title.style.opacity = "1"; }, 500);
+
+
+
+  }
+
+
+
+  var zurueckPfeil = document.getElementById("zurueckPfeil");
+  zurueckPfeil.onclick = function () {
+
+    //Standard wiederherstellen
+    
+    sidebar.style.width = null;
+    setTimeout(function () { sidebar.style.maxWidth = null; }, 1000);
+    
+    var alleSidebarTexts = document.getElementsByClassName("sidebarText");
+    for (var a = 0; a < alleSidebarTexts.length; a++) {
+      alleSidebarTexts[a].style.display = null;
+      alleSidebarTexts[a].style.opacity = null;
+    }
+    var alleSidebarTitle = document.getElementsByClassName("sidebarTitle");
+    for (var a = 0; a < alleSidebarTitle.length; a++) {
+      alleSidebarTitle[a].style.display = null;
+      alleSidebarTitle[a].style.opacity = null;
+    }
+    rotierendeUberschrift.style.display = "block";
+    setTimeout(function () { rotierendeUberschrift.style.opacity = "1"; }, 500);
+    var zurueckPfeil = document.getElementById("zurueckPfeil");
+    zurueckPfeil.style.opacity = null;
+    setTimeout(function () { zurueckPfeil.style.display = null; }, 500);
+
+    //betreffendes einblenden
+    var content = document.getElementById("menueInfos");
+    content.style.display = "block";
+    setTimeout(function () { content.style.opacity = "1"; }, 500);
+
+  }
+
+  
 
 
 
@@ -3850,7 +3986,7 @@ export async function application() {
   window.onclick = function (event) {
 
     //Liste von Modals, die durch Klick neben das Element geschlossen werden sollen
-    var closeTheseElements = [startModal, infoModal, quellenModal, ovidModal, erzaehlfolgeModal, klassifikationModal, geographieModal, alphabetModal, verwandlungsgrundModal, verwandelndeModal, fliesstextModal]
+    var closeTheseElements = [startModal, infoModal] //quellenModal, ovidModal, erzaehlfolgeModal, klassifikationModal, geographieModal, alphabetModal, verwandlungsgrundModal, verwandelndeModal, fliesstextModal
 
     for (var i = 0; i < closeTheseElements.length; i++) {
       if (event.target == closeTheseElements[i]) {
