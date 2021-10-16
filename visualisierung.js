@@ -1150,7 +1150,7 @@ export async function application() {
     //console.log(locationHashElements);
 
     //kategorie herausfinden und aus Tabelle entfernen
-    if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "verwandelnde" || locationHashElements[e] === "fliesstext") {
+    if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "verwandelnde" || locationHashElements[e] === "fliesstext" || locationHashElements[e] === "geschlecht") {
       var startKategorieHash = locationHashElements[e];
       locationHashElements.shift();
     }
@@ -1194,6 +1194,9 @@ export async function application() {
 
     } else if (location.hash.startsWith("#grund")) {
       window.setTimeout(grundFunction, 300);
+
+    } else if (location.hash.startsWith("#geschlecht")) {
+      window.setTimeout(geschlechtFunction, 300);
 
     } else if (location.hash.startsWith("#fliesstext")) {
       window.setTimeout(() => fliesstextFunction(false), 0);
@@ -1308,6 +1311,9 @@ export async function application() {
   var verwandelndeBtn = document.getElementById("verwandelnder");
   var verwandelndeImg = document.getElementById("verwandelnde");
 
+  var geschlechtBtn = document.getElementById("geschlecht");
+  var geschlechtImg = document.getElementById("geschlechtImg");
+
 
 
 
@@ -1417,6 +1423,11 @@ export async function application() {
         figurIcon.style.opacity = 1;
         figurIcon.style.visibility = "visible";
       }
+    }
+
+    // 6.5. Kategorie zurücksetzen: Geschlecht
+    if (aktKat != "geschlecht") {
+      geschlechtImg.style.display = "none";
     }
 
     // 7. Kategorie zurücksetzen: Fließtext
@@ -1542,8 +1553,8 @@ export async function application() {
 
 
 
-  var startIconsBy = 12; //from left
-  var abstaendeZwischenIcons = 3.5;
+  var startIconsBy = 6.5; //from left
+  var abstaendeZwischenIcons = 4.1;
   var erstePentadeFromTop = 30;
   var zweitePentadeFromTop = 52.5;
   var drittePentadeFromTop = 75;
@@ -1602,7 +1613,7 @@ export async function application() {
 
   function erzaehlfolgeFunction() {
 
-    setWidthPercent(60);
+    setWidthPercent(70);
     setBackOtherKategories("erzaehlfolge");
     setLocationHash("erzaehlfolge");
     insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
@@ -2371,6 +2382,61 @@ export async function application() {
   };
 
 
+
+
+
+
+  //6.5 Geschlecht 
+
+
+  
+  function geschlechtFunction() {
+
+    setWidthPercent(100);
+    setBackOtherKategories("geschlecht");
+    setLocationHash("geschlecht");
+    insertCurrentCategory("Geschlecht", "iconmonstr-gender-4-240.png", 18);
+    greyButton(geschlechtBtn);
+
+    geschlechtImg.style.display = "block";
+
+
+
+    var anzahlWeiblich = 0;
+    var anzahlMaennlich = 0;
+    var anzahlDivers = 0;
+
+    //alle anderen
+    for (key in leude) {
+
+      var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
+
+
+      if (leude[key].geschlecht == "Weiblich"){
+        var aktuellerWinkel = 13.85*anzahlWeiblich;
+        var top = Math.sin(aktuellerWinkel*3.1415/180) * 200 + "px";
+        iconWrapper.style.top = `calc(50% + ${top})`;
+        var left = Math.cos(aktuellerWinkel*3.1415/180) * 200 + "px"; //Ursprung + Cosinus * Radius
+        iconWrapper.style.left = `calc(50% + ${left})`;
+        anzahlWeiblich++;
+      } else if (leude[key].geschlecht == "Männlich"){
+        var aktuellerWinkel = 12*anzahlMaennlich;
+        var top = Math.sin(aktuellerWinkel*3.1415/180) * 300 + "px";
+        iconWrapper.style.top = `calc(50% + ${top})`;
+        var left = Math.cos(aktuellerWinkel*3.1415/180) * 300 + "px"; //Ursprung + Cosinus * Radius
+        iconWrapper.style.left = `calc(50% + ${left})`;
+        anzahlMaennlich++;
+      } else {
+        var aktuellerWinkel = 90*anzahlDivers;
+        var top = Math.sin(aktuellerWinkel*3.1415/180) * 50 + "px";
+        iconWrapper.style.top = `calc(50% + ${top})`;
+        var left = Math.cos(aktuellerWinkel*3.1415/180) * 50 + "px"; //Ursprung + Cosinus * Radius
+        iconWrapper.style.left = `calc(50% + ${left})`;
+        anzahlDivers++;
+      }
+    }
+  }
+  geschlechtBtn.onclick = geschlechtFunction;
 
 
 

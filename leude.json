@@ -3,7 +3,6 @@
         "id": "lycaon",
         "name": "Lycaon",
 
-        "icon": "Figuren/Lycaon/Lycaon_Icon.png",
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -59,8 +58,7 @@
     "io": {
         "id": "io",
         "name": "Io",
-        
-        "icon": "Figuren/Io/Io_450x450.png",
+
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -98,7 +96,6 @@
         "id": "actaeon",
         "name": "Actaeon",
 
-        "icon": "Figuren/Actaeon/Actaeon_Icon.png",
         "width": "90",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -137,7 +134,6 @@
         "id": "daphne",
         "name": "Daphne",
 
-        "icon": "Figuren/Daphne/DaphneIcon.png",
         "width": "60",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
@@ -158,7 +154,7 @@
         "verwandlung": "Lorbeer",
         "grund": "Schutz", 
         "verwandler": "Peneus (Daphnes Vater)",
-        "ort": "? (nachsehen)",
+        "ort": "? ",
         "iconclass": "97AA1 auf der Flucht vor Apollo wird Daphne von ihrem Vater Peneus in einen Lorbeerbaum verwandelt (Ovid, Metamorphosen I 548)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=739&cat_3=2332",
@@ -177,7 +173,6 @@
         "id": "narcissus",
         "name": "Narcissus",
 
-        "icon": "Figuren/Narcissus/Narcissus_ausgeschnitten.png",
         "width": "80",
         "taxonomie": "flora",
         "geschlecht": "Männlich",
@@ -216,7 +211,6 @@
         "id": "callisto",
         "name": "Callisto",
 
-        "icon": "Figuren/Kallisto/Kallisto.png",
         "width": "65",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -256,7 +250,6 @@
         "id": "syrinx",
         "name": "Syrinx",
 
-        "icon": "Figuren/Syrinx/Syrinx_Icon.png",
         "width": "70",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
@@ -276,7 +269,7 @@
         "verwandlung": "Schilfrohr",
         "grund": "Schutz", 
         "verwandler": "Naiaden (Syrinx' Schwestern)",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97BB5 auf der Flucht vor Pan wird die Nymphe Syrinx von ihren Schwestern, den Naiaden, in ein Schilfrohr verwandelt (Ovid, Metamorphosen I 705)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=214&cat_3=964&cat_4=1336",
@@ -292,7 +285,6 @@
         "id": "lykischebauern",
         "name": "Lykische Bauern",
 
-        "icon": "Figuren/Lykische Bauern/LykischeBauern_Icon.png",
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -312,7 +304,7 @@
         "verwandlung": "Frösche",
         "grund": "Bestrafung", 
         "verwandler": "Latona",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97E4 als Latona und ihre Kinder ihren Durst stillen wollen, wird ihnen das von den lykischen Bauern verwehrt, die gerade ein Feld jäten; daraufhin verwandelt Latona die lykischen Bauern in Frösche (Ovid, Metamorphosen VI 369)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=122&cat_3=2354&cat_4=4030",
@@ -329,7 +321,6 @@
         "id": "echo",
         "name": "Echo",
 
-        "icon": "Figuren/Echo/Echo_Icon.png",
         "width": "50",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
@@ -349,7 +340,7 @@
         "verwandlung": "Felsen",
         "grund": "Trauer", 
         "verwandler": "-",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97HH5 als sie um den toten Narcissus trauert, wird die Nymphe Echo in eine Stimme transformiert, ihre Knochen werden dagegen in Steine verwandelt (Ovid, Metamorphosen III 398)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=324",
@@ -364,7 +355,6 @@
         "id": "hyacinthus",
         "name": "Hyacinthus",
 
-        "icon": "Figuren/Hyacinthus/Hyacinthus_Icon.png",
         "width": "65",
         "taxonomie": "flora",
         "geschlecht": "Männlich",
@@ -384,7 +374,7 @@
         "verwandlung": "Hyacinthe",
         "grund": "postume Ehrung", 
         "verwandler": "Apollo",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97B5 als Hyacinthus bei einem Unfall von Apollo mit einem Diskuswurf getötet worden ist, verwandelt der Gott sein Blut in eine Hyazinthe",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=870",
@@ -401,7 +391,6 @@
         "id": "galatea",
         "name": "Pygmalions Statue",
 
-        "icon": "Figuren/Galatea/Galatea_Icon.png",
         "width": "65",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Weiblich",
@@ -421,7 +410,7 @@
         "verwandlung": "Frau",
         "grund": "auf Wunsch Pygmalions", 
         "verwandler": "Venus",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97O5 das Gebet des Pygmalion wird von Venus erhört: eine Statue (später Galatea genannt) erwacht zum Leben (Ovid, Metamorphosen X 280)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=316&cat_3=4033&cat_4=12538",
@@ -438,7 +427,6 @@
         "id": "iphigenie",
         "name": "Iphigenie",
 
-        "icon": "Figuren/Iphigenie/Iphigenie_Icon.png",
         "width": "50",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -458,7 +446,7 @@
         "verwandlung": "Hirschkuh",
         "grund": "Schutz", 
         "verwandler": "Diana",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "94D1321 Iphigenie wird von Diana gerettet, ein Hirsch (eine Hirschkuh) erscheint an ihrer Stelle",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=394",
@@ -475,7 +463,6 @@
         "id": "arethusa",
         "name": "Arethusa",
 
-        "icon": "Figuren/Alpheus_and_Arethusa/Alpheus_and_Arethusa_Icon.png",
         "width": "70",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
@@ -495,7 +482,7 @@
         "verwandlung": "Quelle",
         "grund": "Schutz", 
         "verwandler": "Diana",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97HH1 Diana verwandelt ihre Begleiterin Arethusa in eine Quelle, nachdem sie ihr zunächst die Gestalt einer Wolke verliehen hatte, damit sie dem Flußgott [sic] Alpheus entkommen konnte (Ovid, Metamorphosen V 621)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=117&cat_3=5641",
@@ -513,7 +500,6 @@
         "id": "alpheus",
         "name": "Alpheus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "70",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -533,7 +519,7 @@
         "verwandlung": "Quelle",
         "grund": "Trauer", 
         "verwandler": "-",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97H2 als er sich in Liebe nach Arethusa verzehrt, wird der Jäger Alpheus in einen Flußgott [sic] verwandelt (Pausanias V 7, 2)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=658",
@@ -549,7 +535,6 @@
         "id": "caesar", 
         "name": "Caesar",
 
-        "icon": "Figuren/Caesar/Caesar_Icon.png",
         "width": "60",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -569,7 +554,7 @@
         "verwandlung": "Stern",
         "grund": "postume Ehrung", 
         "verwandler": "Venus",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "98B(CAESAR)69 die Apotheose Caesars; seine Seele wird von Venus in einen Kometen verwandelt",
         "vergleichswerke": {
             "warburg": "-",
@@ -584,7 +569,6 @@
         "id": "cygnus",
         "name": "Cygnus",
 
-        "icon": "Figuren/Cygnus/Cygnus_Icon.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -604,7 +588,7 @@
         "verwandlung": "Schwan",
         "grund": "Schutz", 
         "verwandler": "Neptun",
-        "ort": "? (nachsehen)",
+        "ort": "?",
         "iconclass": "97D16 weil Philius sich weigert, seinem Freund Cycnus (dem Sohn Apollos) den Stier zu geben, den er mit der Hilfe des Herkules eingefangen hat, stürzt sich Cycnus von einer Klippe und wird in einen Schwan verwandelt (Ovid, Metamorphosen VII 371)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=847&cat_3=3304",
@@ -620,7 +604,6 @@
         "id": "gefaehrtendesulixes",
         "name": "Gefährten des Ulixes",
 
-        "icon": "Figuren/Gefaehrtendesulixes/Gefaehrten_Icon.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -657,7 +640,6 @@
         "id": "glaucus",
         "name": "Glaucus",
 
-        "icon": "Figuren/Glaucus/Glaucus.png",
         "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
@@ -695,7 +677,6 @@
         "id": "aeneas",
         "name": "Aeneas",
 
-        "icon": "Figuren/Aeneas/Aeneas.png",
         "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
@@ -804,7 +785,6 @@
         "id": "achelous2",
         "name": "Achelous",
 
-        "icon": "Figuren/Achelous2/Achelous2_Icon.png",
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -841,7 +821,6 @@
         "id": "scylla",
         "name": "Scylla",
 
-        "icon": "Figuren/Scylla/Scylla_Icon.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -878,7 +857,6 @@
         "id": "atlas",
         "name": "Atlas",
 
-        "icon": "Figuren/Atlas/Atlas_Icon.png",
         "width": "45",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -915,7 +893,6 @@
         "id": "battus",
         "name": "Battus",
 
-        "icon": "Figuren/Battus/Battus_Icon.png",
         "width": "60",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -950,7 +927,6 @@
         "id": "arachne",
         "name": "Arachne",
 
-        "icon": "Figuren/Arachne/Arachne_Icon2.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -988,7 +964,6 @@
         "id": "cadmus",
         "name": "Cadmus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1026,7 +1001,6 @@
         "id": "harmonia",
         "name": "Harmonia",
 
-        "icon": "Figuren/Cadmus/Cadmus_Icon.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1064,7 +1038,6 @@
         "id": "phineus",
         "name": "Phineus",
 
-        "icon": "Figuren/Phineus/Phineus_Icon.png",
         "width": "60",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -1102,7 +1075,6 @@
         "id": "pieriden",
         "name": "Pieriden",
 
-        "icon": "Figuren/Pieriden/Pieriden_Icon.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1139,7 +1111,6 @@
         "id": "aglauros",
         "name": "Aglauros",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
@@ -1176,7 +1147,6 @@
         "id": "cyane",
         "name": "Cyane",
 
-        "icon": "Figuren/Cyane/Cyane_Icon.png",
         "width": "60",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
@@ -1213,7 +1183,6 @@
         "id": "ascalabus",
         "name": "unbenannter Junge",
 
-        "icon": "Figuren/Ascalabus/Ascalabus_Icon.png",
         "width": "90",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1251,7 +1220,6 @@
         "id": "ascalaphus",
         "name": "Ascalaphus",
 
-        "icon": "Figuren/Ascalaphus/Ascalaphus_Icon.png",
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1288,7 +1256,6 @@
         "id": "niobe",
         "name": "Niobe",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "70",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
@@ -1324,7 +1291,6 @@
         "id": "tereus",
         "name": "Tereus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1360,7 +1326,6 @@
         "id": "procne",
         "name": "Procne",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1397,7 +1362,6 @@
         "id": "philomela",
         "name": "Philomela",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1434,7 +1398,6 @@
         "id": "aeson",
         "name": "Aeson",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
@@ -1472,7 +1435,6 @@
         "id": "perdix",
         "name": "Perdix",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1509,7 +1471,6 @@
         "id": "philemon",
         "name": "Philemon",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "flora",
         "geschlecht": "Männlich",
@@ -1546,7 +1507,6 @@
         "id": "baucis",
         "name": "Baucis",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
@@ -1584,7 +1544,6 @@
         "id": "achelous",
         "name": "Achelous",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "60",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1622,7 +1581,6 @@
         "id": "lichas",
         "name": "Lichas",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "65",
         "taxonomie": "elemente",
         "geschlecht": "Männlich",
@@ -1662,7 +1620,6 @@
         "id": "galanthis",
         "name": "Galanthis",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "100",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1702,7 +1659,6 @@
         "id": "iphis",
         "name": "Iphis",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "65",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
@@ -1740,7 +1696,6 @@
         "id": "myrrha",
         "name": "Myrrha",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "70",
         "taxonomie": "flora",
         "geschlecht": "Weiblich",
@@ -1778,7 +1733,6 @@
         "id": "hippomenes",
         "name": "Hippomenes",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "65",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1817,7 +1771,6 @@
         "id": "atalanta",
         "name": "Atalanta",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "55",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1856,7 +1809,6 @@
         "id": "ceyx",
         "name": "Ceyx",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1894,7 +1846,6 @@
         "id": "alcyone",
         "name": "Alcyone",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Weiblich",
@@ -1932,7 +1883,6 @@
         "id": "aesacus",
         "name": "Aesacus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "75",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -1972,7 +1922,6 @@
         "id": "caenis",
         "name": "Caenis",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "60",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
@@ -2009,7 +1958,6 @@
         "id": "caenus",
         "name": "Caenus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "85",
         "taxonomie": "fauna",
         "geschlecht": "Divers",
@@ -2045,7 +1993,6 @@
         "id": "periclymenus",
         "name": "Periclymenus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -2082,7 +2029,6 @@
         "id": "acis",
         "name": "Acis",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
@@ -2121,7 +2067,6 @@
         "id": "vertumnus",
         "name": "Vertumnus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "70",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Divers",
@@ -2159,7 +2104,6 @@
         "id": "romulus",
         "name": "Romulus",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Männlich",
@@ -2197,7 +2141,6 @@
         "id": "midas",
         "name": "Midas",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "70",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
@@ -2231,7 +2174,6 @@
         "id": "hersilia",
         "name": "Hersilia",
 
-        "icon": "Figuren/iconmonstr-file-37-240.png",
         "width": "80",
         "taxonomie": "anthropomorphes",
         "geschlecht": "Weiblich",
