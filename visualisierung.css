@@ -948,9 +948,9 @@ a.kapitelLinks {
   color: #733030;
 }
 
-.textColumnVersnummer:hover {
+/* .textColumnVersnummer:hover {
   text-decoration: underline;
-}
+} */
 
 .textSvg {
   transform: translate(-50%, -50%); /* centered images! */

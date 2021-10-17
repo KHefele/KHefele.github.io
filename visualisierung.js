@@ -1139,7 +1139,6 @@ export async function application() {
   //--------------------------------------------*/
 
   var locationHashElements = location.hash.split("#");
-  //console.log(locationHashElements);
 
   for (var e = 0; e < locationHashElements.length; e++) {
 
@@ -1147,7 +1146,6 @@ export async function application() {
     if (locationHashElements[e] === "") {
       locationHashElements.shift();
     }
-    //console.log(locationHashElements);
 
     //kategorie herausfinden und aus Tabelle entfernen
     if (locationHashElements[e] === "erzaehlfolge" || locationHashElements[e] === "taxonomie" || locationHashElements[e] === "geographie" || locationHashElements[e] === "alphabet" || locationHashElements[e] === "grund" || locationHashElements[e] === "verwandelnde" || locationHashElements[e] === "fliesstext" || locationHashElements[e] === "geschlecht") {
@@ -1156,7 +1154,7 @@ export async function application() {
     }
 
     //uebrig bleibt ModalID, falls vorhanden
-    if (locationHashElements.length > 0) {
+    if (locationHashElements.length > 0 && !(locationHashElements[e].includes("Ov.met"))) {
       var startModalHash = locationHashElements[e];
     }
   }
@@ -1215,6 +1213,20 @@ export async function application() {
       //locHash = "";
       //keineAuswahl();
       //alert('Die URL mit der Endung "' + location.hash + '" existiert nicht. Du wurdest auf die Startseite weitergeleitet.');
+    }
+
+    if (location.hash.includes("Ov.met.") && !(location.hash.includes("NaN"))){
+      var getID = location.hash.substr(location.hash.indexOf("Ov.met."));
+      console.log(getID)
+      //passenden Header ins Sichtfeld scrollen 
+      setTimeout(function () { 
+        var wantedTextstelle = document.getElementById(getID);
+        console.log(wantedTextstelle);
+        wantedTextstelle.scrollIntoView();
+      }, 500);
+      
+      
+
     }
 
   }
@@ -2817,8 +2829,8 @@ export async function application() {
           textColumnDeutsch.style.paddingTop = "10px";
 
           //anklickbare Versnummern erklären
-          textColumnVersnummer.title = "Klick, um Stelle in verlinkbare URL zu setzen";
-          textColumnVersnummer.style.cursor = "pointer";
+          //textColumnVersnummer.title = "Klick, um Stelle in verlinkbare URL zu setzen";
+          // textColumnVersnummer.style.cursor = "pointer";
 
           //für den Fall, dass die erste Zeile keine Versnummer erhalten soll, da sie 
           if ((aktuelleZeile+1) == 1 || (aktuelleZeile+1) % 5 == 0) {
@@ -3273,6 +3285,16 @@ export async function application() {
   navbarWrapper.appendChild(headerKapitel);
 
 
+  function markierBalken(target) {
+    for (var b in buecherLaenge){
+      document.getElementById("buch" + b).style.backgroundColor = null;
+    }
+    
+    var id = target.id;
+    document.getElementById(id).style.backgroundColor = "#733030a8";
+    
+  }
+
   //navBar 1: Bücher
   for (var b in buecherLaenge){
     var header = document.getElementById(buecherLink[b] + "Header");
@@ -3309,15 +3331,10 @@ export async function application() {
     }
 
     //ONMOUSEDOWN
-    aNavbar.onmousedown = (event) => {
-      for (var b in buecherLaenge){
-        document.getElementById("buch" + b).style.backgroundColor = null;
-      }
-      
-      var id = event.currentTarget.id;
-      document.getElementById(id).style.backgroundColor = "#733030a8";
-      
-    }
+    aNavbar.onmousedown = (event) => markierBalken(event.currentTarget);
+    
+    
+
 
   }
 
@@ -3390,7 +3407,9 @@ export async function application() {
     for (var e = 0; e < entries.length; e++){
       if (entries[e].isIntersecting){
         console.log(entries[e].target.id);
-        setLocationHash(entries[e].target.id);
+        setLocationHash("fliesstext#" + entries[e].target.id);
+        var buchindex = entries[e].target.id.substr(7,entries[e].target.id.indexOf(",")-7)-1;
+        markierBalken(document.getElementById("buch"+ buchindex));
       }
     }
     // if (entries[0].boundingClientRect.y < 0) {
