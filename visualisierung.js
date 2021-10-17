@@ -590,7 +590,7 @@ export async function application() {
     if ((popoverContentDiv.style.top + popoverContentDiv.height) > 100) {
 
 
-      console.log("zu groß");
+      //console.log("zu groß");
     }
   }
 
@@ -863,7 +863,7 @@ export async function application() {
       fliesstextFunction(true);
 
       //passenden Header ins Sichtfeld scrollen 
-      var scrollToFliesstextHeader = document.getElementById(scrollToFliesstextHeader);
+      var scrollToFliesstextHeader = document.getElementById("Ov.met." + metamorphosen[data.id].stelle.substr(0, metamorphosen[data.id].stelle.indexOf("-")));
       scrollToFliesstextHeader.scrollIntoView();
 
       // //location hash setzen
@@ -900,6 +900,8 @@ export async function application() {
 
 
   function createMotivuebersichtModal(data) {
+
+    //Modal erstellen
     var modalDiv = document.createElement("div");
     modalDiv.style.display = "none";
     modalDiv.style.animationPlayState = "running"
@@ -907,11 +909,12 @@ export async function application() {
     modalDiv.className = "metamorphosenModal";
     document.body.appendChild(modalDiv);
 
+    //Content darin erstellen
     var modalContentDiv = document.createElement("div");
     modalContentDiv.className = "metamorphosenModalContent";
     modalDiv.appendChild(modalContentDiv);
 
-    //header
+    //Header erstellen
     var divHeader = document.createElement("div"); //div anlegen
     modalContentDiv.appendChild(divHeader);
     divHeader.className = "metamorphosenModalHeader";
@@ -926,7 +929,7 @@ export async function application() {
     modalContentDiv.appendChild(document.createElement("br"));
     modalContentDiv.appendChild(document.createElement("br"));
 
-    //Bildersammlung
+    //Bildersammlung erstellen
     var imgDiv = document.createElement("div");
     modalContentDiv.appendChild(imgDiv);
 
@@ -939,8 +942,8 @@ export async function application() {
       imagecontainer.className = "imagecontainerMotivuebersicht";
       imagecontainer.style.left = fromLeft + "%";
       imagecontainer.style.top = fromTop + "%";
-      imagecontainer.style.width = "30%";
-      imagecontainer.style.height = "30%";
+      imagecontainer.style.width = "100px";
+      imagecontainer.style.height = "100px";
       imgDiv.appendChild(imagecontainer);
 
       var bild = document.createElement("img");
@@ -973,6 +976,7 @@ export async function application() {
     
 
 
+    //closeModal
     var buttonSpan = document.createElement("span");
     buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
     buttonSpan.className = "closeModal"
@@ -982,11 +986,11 @@ export async function application() {
       //location hash
       location.hash = "#" + aktuelleKategorie;
     };
-    buttonSpan.style.position = "fixed";
-    buttonSpan.style.left = "76%";
-    buttonSpan.style.top = "19%";
-    buttonSpan.style.cursor = "pointer";
-    modalContentDiv.appendChild(buttonSpan);
+    // buttonSpan.style.position = "fixed";
+    // buttonSpan.style.left = "76%";
+    // buttonSpan.style.top = "19%";
+    // buttonSpan.style.cursor = "pointer";
+    // modalContentDiv.appendChild(buttonSpan);
   }
 
   createMotivuebersichtModal(leude.lycaon);
@@ -1076,7 +1080,7 @@ export async function application() {
   function showPrevOrNextModal(vorOderZurueck){ //argumente -1 oder +1, zeigt wie viel vorwärts oder zurück es gehen soll
     
     var modalNow = document.getElementById(aktuellesModal + "Modal");
-  
+    console.log(modalNow)
     aktuelleModalID = slide(vorOderZurueck);
     aktuellesModal = currentListSorted[aktuelleModalID];
   
@@ -1165,7 +1169,7 @@ export async function application() {
   if (typeof startModalHash !== "undefined") {
     aktuellesModal = startModalHash;
     aktuelleModalID = currentListSorted.indexOf(aktuellesModal);
-    console.log(aktuelleModalID)
+    //console.log(aktuelleModalID)
 
     var getModal = document.getElementById(startModalHash + "Modal");
     getModal.style.display = "block";
@@ -1217,11 +1221,11 @@ export async function application() {
 
     if (location.hash.includes("Ov.met.") && !(location.hash.includes("NaN"))){
       var getID = location.hash.substr(location.hash.indexOf("Ov.met."));
-      console.log(getID)
+      //console.log(getID)
       //passenden Header ins Sichtfeld scrollen 
       setTimeout(function () { 
         var wantedTextstelle = document.getElementById(getID);
-        console.log(wantedTextstelle);
+        //console.log(wantedTextstelle);
         wantedTextstelle.scrollIntoView();
       }, 500);
       
@@ -1476,8 +1480,8 @@ export async function application() {
     var kategorieButtons = document.getElementsByClassName("kategorieButton");
     //console.log(kategorieButtons)
     for (var k = 0; k < kategorieButtons.length; k++) {
-      console.log(kategorieButtons[k])
-      console.log(kategorieButtons[k].childNodes)
+      //console.log(kategorieButtons[k])
+      //console.log(kategorieButtons[k].childNodes)
       kategorieButtons[k].style.backgroundColor = null;
       kategorieButtons[k].childNodes[1].style.cursor = null;
     }
@@ -1629,7 +1633,7 @@ export async function application() {
     setBackOtherKategories("erzaehlfolge");
     setLocationHash("erzaehlfolge");
     insertCurrentCategory("Erzählfolge", "iconmonstr-arrow-32-240.png", 20);
-    console.log(chronoBtn);
+    //console.log(chronoBtn);
     greyButton(chronoBtn);
 
 
@@ -2471,16 +2475,16 @@ export async function application() {
   // 1. Marker im Text setzen
 
   //alle Verwandler und Verwandelten in metamorphosen.json durchsuchen
-  for (var key in metamorphosen) {
+  // for (var key in metamorphosen) {
 
-    //alle Verwandler- und Verwandeltennamen zusammen in eine Suchanfrage, durch Argument "g" werden alle entsprechenden Begriffe, nicht nur der erste gesucht
-    var regexVerwandler = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
-    var regexVerwandelte = new RegExp(Object.values(verwandelteDict).join("|"), "g");
+  //   //alle Verwandler- und Verwandeltennamen zusammen in eine Suchanfrage, durch Argument "g" werden alle entsprechenden Begriffe, nicht nur der erste gesucht
+  //   var regexVerwandler = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
+  //   var regexVerwandelte = new RegExp(Object.values(verwandelteDict).join("|"), "g");
 
-    //alle angegebenen Begriffe ersetzen durch 
-    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, "<dfn class='tooltip $& verwandlerTrigger triggerAusText'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
-    metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandelte, "<dfn style='background-color: rgba(82, 82, 82, 0.3)' class='tooltip $& verwandelteTrigger'>$&</dfn>")
-  }
+  //   //alle angegebenen Begriffe ersetzen durch 
+  //   metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, "<dfn class='tooltip $& verwandlerTrigger triggerAusText'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
+  //   metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandelte, "<dfn style='background-color: rgba(82, 82, 82, 0.3)' class='tooltip $& verwandelterTrigger'>$&</dfn>")
+  // }
 
 
   //vom VGG-Annotator vergebene keys bereinigen, damit keys wieder den Einträgen unter leude entspricht
@@ -2490,7 +2494,7 @@ export async function application() {
     var newKey = key.substr(0, indexOfDot);
     annotationsCleanedUp[newKey] = annotations[key];
   }
-
+  console.log(annotationsCleanedUp)
 
 
   let textModalDiv = document.getElementById("textModal");
@@ -2543,87 +2547,131 @@ export async function application() {
       // metaImg.style.maxWidth = "70vh"
       metaImg.id = leude[key].id + "Bild";
 
-      metaImg.onload = (event) => { 
 
-        var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
-        
-        var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        metSvg.setAttribute("viewBox", "0 0 100 100");
-        metSvg.setAttribute("preserveAspectRatio", "none");
+      
+      var regions = annotationsCleanedUp[leude[key].id].regions;
+      var verwandelter = {};
+      var verwandler = {};
+      var attribut = {};
+      var weiterePersonen = {};
 
-        //console.log(id);
-        var div = document.getElementById(id + "SvgDiv");
-        div.appendChild(metSvg);
-
-
-        var height = event.currentTarget.naturalHeight;
-        var width = event.currentTarget.naturalWidth;
-
-        var regions = annotationsCleanedUp[id].regions;
-        var verwandelter = undefined;
-        var verwandelnder = undefined;
-
-        regions.forEach(region => {
-          var figur = region.region_attributes.figur;
-          if (figur == "verwandelter") {
-            verwandelter = region;
-          } else {
-            verwandelnder = region;
+      function leseWert(wert) {
+          if (wert == "" || wert == undefined) {
+            return [];
           }
+          //console.log(wert)
+          var werte = wert.split(",");
+          //console.log(werte)
+          for (var i = 0; i < werte.length; ++i) {
+            werte[i] = werte[i].trim();
+          }
+          return werte;
+      }
+
+      regions.forEach(region => {
+        leseWert(region.region_attributes.Verwandler).forEach(w => {
+          verwandler[w] = region;
         });
+        leseWert(region.region_attributes.Verwandelter).forEach(w => {
+          verwandelter[w] = region;
+        });
+        leseWert(region.region_attributes.Attribut).forEach(w => {
+          attribut[w] = region;
+        });
+        leseWert(region.region_attributes.WeiterePerson).forEach(w => {
+          weiterePersonen[w] = region;
+        });
+      });
 
-        if (verwandelter != undefined) {
-          var xs = verwandelter.shape_attributes.all_points_x;
-          var ys = verwandelter.shape_attributes.all_points_y;
-          
-          var coordinates = "";
-  
-          for (var x = 0; x < xs.length; x++) {
-            coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+      //Problemumgehung: Damit in der onload Function nicht nur auf Variablen des letzten Schleifendurchlaufs zugegriffen wird, werden die jeweiligen Variablen hier in eine Funktion "gebacken"
+      //https://stackoverflow.com/questions/5040069/javascript-dynamically-assign-onclick-event-in-the-loop
+      function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen) {
+        return function (event) {
+          var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
+
+          var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          metSvg.setAttribute("viewBox", "0 0 100 100");
+          metSvg.setAttribute("preserveAspectRatio", "none");
+
+          var div = document.getElementById(id + "SvgDiv");
+          div.appendChild(metSvg);
+
+
+          var height = event.currentTarget.naturalHeight;
+          var width = event.currentTarget.naturalWidth;
+
+
+          function createPolygon(name, region, className, title) {
+            var xs = region.shape_attributes.all_points_x;
+            var ys = region.shape_attributes.all_points_y;
+
+            var coordinates = "";
+
+            for (var x = 0; x < xs.length; x++) {
+              coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+            }
+
+            var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            metPolygons.setAttribute("points", coordinates);
+            //metPolygons.setAttribute("class", leude[key].id); // ??
+            metPolygons.setAttribute("class", className);
+            metPolygons.setAttribute("id", name + "Polygon");
+            metSvg.appendChild(metPolygons);
+
+            var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+            metPolygons.appendChild(polygonTitle);
+            polygonTitle.innerHTML = title;
           }
 
-          
-          //Verwandelter
-          var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-          metPolygons.setAttribute("points", coordinates);
-          metPolygons.setAttribute("class", leude[key].id);
-          metPolygons.setAttribute("class", "verwandelterAnno");
-          metSvg.appendChild(metPolygons);
-          
-          var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-          metPolygons.appendChild(polygonTitle);
-          polygonTitle.innerHTML = leude[id].name;
-
-        }
-
-        if (verwandelnder != undefined) {
-          var xs2 = verwandelnder.shape_attributes.all_points_x;
-          var ys2 = verwandelnder.shape_attributes.all_points_y;
-  
-          var coordinates = "";
-  
-          for (var x = 0; x < xs2.length; x++) {
-            coordinates += xs2[x] / width * 100 + "," + ys2[x] / height * 100 + " ";
+          for (var verwandelterKey in verwandelter) {
+            var region = verwandelter[verwandelterKey];
+            createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter);
           }
 
-          var metPolygons2 = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-          metPolygons2.setAttribute("points", coordinates);
-          metPolygons2.setAttribute("class", leude[key].verwandler);
-          metPolygons2.setAttribute("class", "verwandlerAnno");
-          metSvg.appendChild(metPolygons2);
+          for (var verwandlerKey in verwandler) {
+            var region = verwandler[verwandlerKey];
+            createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler);
+          }
 
-          var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-          metPolygons2.appendChild(polygonTitle);
-          polygonTitle.innerHTML = leude[id].verwandler;
+          for (var attributKey in attribut) {
+            var region = attribut[attributKey];
+            createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut);
+          }
+
+          for (var personKey in weiterePersonen) {
+            var region = weiterePersonen[personKey];
+            createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson);
+          }
         }
+      }
 
 
-        
+      metaImg.onload = createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen);
 
 
 
 
+      //alle Verwandler- und Verwandeltennamen zusammen in eine Suchanfrage, durch Argument "g" werden alle entsprechenden Begriffe, nicht nur der erste gesucht
 
+      var verwandlerKeys = Object.keys(verwandler);
+      if (verwandlerKeys.length > 0){
+        var regexVerwandler = new RegExp(verwandlerKeys.join("|"), "g");
+        metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, "<dfn class='tooltip $& verwandlerTrigger textTrigger'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
+      }
+      var verwandelteKeys = Object.keys(verwandelter);
+      if (verwandelteKeys.length > 0){
+        var regexVerwandelte = new RegExp(verwandelteKeys.join("|"), "g");
+        metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandelte, "<dfn class='tooltip $& verwandelterTrigger textTrigger'>$&</dfn>")
+      }
+      var attributKeys = Object.keys(attribut);
+      if (attributKeys.length > 0){
+        var regexAttribute = new RegExp(attributKeys.join("|"), "g");
+        metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexAttribute, "<dfn class='tooltip $& attributeTrigger textTrigger'>$&</dfn>")
+      }
+      var weiterePersonenKeys = Object.keys(weiterePersonen);
+      if (weiterePersonenKeys.length > 0){
+        var regexWeiterePersonen = new RegExp(weiterePersonenKeys.join("|"), "g");
+        metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexWeiterePersonen, "<dfn class='tooltip $& weiterePersonenTrigger textTrigger'>$&</dfn>")
       }
 
       //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
@@ -2668,6 +2716,10 @@ export async function application() {
       metaImg.setAttribute("src", "Bilder/Titelbild.jpg");
       metaImg.setAttribute("title", "Frans Brun, Titelbild einer Rotterdamer Metamorphosen-Ausgabe, 1637")
       //bildTitel = "Titelbild";
+
+      var regexVerwandler = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
+      metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, 
+        "<dfn class='tooltip $&'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
     }
 
 
@@ -2716,7 +2768,7 @@ export async function application() {
 
         modalOpener.onclick = (event) => {
           var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 6);
-          console.log(id)
+          //console.log(id)
           
           var zugehoerigesModal = document.getElementById(id + "Modal");
 
@@ -2850,11 +2902,11 @@ export async function application() {
       }
 
       //Leere Tabellenzeile, damit es unten nicht so gequetscht ist
-      // var textRowEnde = document.createElement("tr");
-      // textTable.appendChild(textRowEnde);
-      // var textColumnEnde = document.createElement("td");
-      // textRowEnde.appendChild(textColumnEnde);
-      // textColumnEnde.appendChild(document.createElement("br"));
+      var textRowEnde = document.createElement("tr");
+      textTable.appendChild(textRowEnde);
+      var textColumnEnde = document.createElement("td");
+      textRowEnde.appendChild(textColumnEnde);
+      textColumnEnde.appendChild(document.createElement("br"));
     }
 
     if (!(keyTabelle[k] in leude)) {
@@ -2945,7 +2997,7 @@ export async function application() {
     if (prevButtons[button].id != undefined){ //wieso sind überhaupt welche undefined?
       prevButtons[button].onclick = function (){
         //var id = prevButtons[button].id.substr(0,prevButtons[button].id.length-4);
-        console.log(prevButtons[button].id)
+        //console.log(prevButtons[button].id)
       }
     }
   }
@@ -3053,40 +3105,43 @@ export async function application() {
   }
 
 
-  //Trigger aus dem Text 
-  var verwandlerTriggers = document.getElementsByClassName("verwandlerTrigger");
-  var verwandlerAnnos = document.getElementsByClassName("verwandlerAnno");
+  function createTrigger(name) {
+    var triggers = document.getElementsByClassName(name + "Trigger");
+    var annos = document.getElementsByClassName(name + "Anno");
 
-  for (var t = 0; t < verwandlerTriggers.length; t++) {
+    for (var t = 0; t < triggers.length; t++) {
 
-    verwandlerTriggers[t].onmouseenter = function () {
-      for (var a = 0; a < verwandlerAnnos.length; a++) {
-        verwandlerAnnos[a].style.opacity = "1";
+      triggers[t].onmouseenter = function (event) {
+        var name = event.currentTarget.innerHTML;
+        var bracketIndex = name.indexOf("<");
+        if (bracketIndex != -1) {
+          name = name.substr(0, bracketIndex);
+        }
+        for (var a = 0; a < annos.length; a++) {
+          if (annos[a].id.includes(name)) {
+            annos[a].style.opacity = "1";
+          }
+        }
       }
-    }
-    verwandlerTriggers[t].onmouseleave = function () {
-      for (var a = 0; a < verwandlerAnnos.length; a++) {
-        verwandlerAnnos[a].style.opacity = null; //Regel weggenommen 
+      triggers[t].onmouseleave = function (event) {
+        var name = event.currentTarget.innerHTML;
+        var bracketIndex = name.indexOf("<");
+        if (bracketIndex != -1) {
+          name = name.substr(0, bracketIndex);
+        }
+        for (var a = 0; a < annos.length; a++) {
+          if (annos[a].id.includes(name)) {
+            annos[a].style.opacity = null; //Regel weggenommen 
+          }
+        }
       }
     }
   }
-  //Trigger aus dem Text 
-  var verwandelteTriggers = document.getElementsByClassName("verwandelteTrigger");
-  var verwandlterAnnos = document.getElementsByClassName("verwandelterAnno");
 
-  for (var t = 0; t < verwandelteTriggers.length; t++) {
-
-    verwandelteTriggers[t].onmouseenter = function () {
-      for (var a = 0; a < verwandlterAnnos.length; a++) {
-        verwandlterAnnos[a].style.opacity = "1";
-      }
-    }
-    verwandelteTriggers[t].onmouseleave = function () {
-      for (var a = 0; a < verwandlterAnnos.length; a++) {
-        verwandlterAnnos[a].style.opacity = null; //Regel weggenommen 
-      }
-    }
-  }
+  createTrigger("verwandler");
+  createTrigger("verwandelter");
+  createTrigger("attribute");
+  createTrigger("weiterePersonen");
 
 
 
@@ -3142,7 +3197,7 @@ export async function application() {
         function createOnClickFunction(godName, v) {
           return function() {
             var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
-            console.log(modalName)
+            //console.log(modalName)
             var zugehoerigesModal = document.getElementById(modalName);
             zugehoerigesModal.style.display = "block";
             zugehoerigesModal.style.animationPlayState = "running";
@@ -3244,7 +3299,7 @@ export async function application() {
   var buecherLink = ["prooemium", "phaetonII", "cadmus", "minayastoechterI", "perseusUndPhineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "schlangeInAulis", "hoplonkrisisI", "glaucus", "numa"];
   
   var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
-  var kapitelLinksBuch1 = ["prooemium", "weltentstehung", "weltzeitalter", "giganten", "lycaon", "sintflut", "deucalionUndPyrrha", "tierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
+  var kapitelLinksBuch1 = ["prooemium", "dieWeltentstehung", "dieVierWeltzeitalter", "dieGiganten", "lycaon", "dieGroßeFlut", "deukalionUndPyrrha", "erneuerungDerTierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
   
   //addiert elemente einer Tabelle  
   var gesamtlaenge = function (tabelle) {
@@ -3348,6 +3403,7 @@ export async function application() {
     //console.log(header.parentElement.childNodes[1].childNodes[0].id)
     //console.log(buecherLink[b] + "Header")
     var aNavbarII = document.createElement("a");
+    console.log(header.parentElement)
     aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbarII.className = "kapitelLinks";
     aNavbarII.id = "buch0kapitel" + b;
@@ -3406,7 +3462,7 @@ export async function application() {
    
     for (var e = 0; e < entries.length; e++){
       if (entries[e].isIntersecting){
-        console.log(entries[e].target.id);
+        //console.log(entries[e].target.id);
         setLocationHash("fliesstext#" + entries[e].target.id);
         var buchindex = entries[e].target.id.substr(7,entries[e].target.id.indexOf(",")-7)-1;
         markierBalken(document.getElementById("buch"+ buchindex));
@@ -3440,7 +3496,6 @@ export async function application() {
   for (key in leude) {
 
     var iconWrapper = document.getElementById(key + "Wrapper");
-    console.log()
     var nameOfFigure = document.createElement("div");
     nameOfFigure.className = "nameOfFigure";
     nameOfFigure.style.textAlign = "center";
@@ -3955,12 +4010,14 @@ export async function application() {
         sidebar.style.opacity = "0.98";
         sidebarOpen = true;
 
+        console.log(aktuelleKategorie)
+
         if (aktuelleKategorie == "alphabet"){
           document.getElementById("text").style.backgroundColor = null;
           document.getElementById("visualisierung").style.backgroundColor = null;
           document.getElementById("alpha").style.backgroundColor = "grey";
           
-        } else if (aktuelleKategorie == "fliesstext"){
+        } else if (aktuelleKategorie.startsWith("fliesstext")){
           document.getElementById("alpha").style.backgroundColor = null;
           document.getElementById("visualisierung").style.backgroundColor = null;
           document.getElementById("text").style.backgroundColor = "grey";
@@ -4064,7 +4121,7 @@ export async function application() {
     zurueckPfeil.style.display = "block";
     setTimeout(function () { zurueckPfeil.style.opacity = "1"; }, 500);
 
-    console.log(hilfsvariable + "ErklaerungTitle")
+    //console.log(hilfsvariable + "ErklaerungTitle")
     //betreffendes einblenden
     var content = document.getElementById(hilfsvariable + "Erklaerung");
     content.style.display = "block";

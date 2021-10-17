@@ -985,6 +985,7 @@ polygon {
   stroke:rgba(255, 255, 255, 0.5);
   stroke-width: 1%;
   opacity: 0;
+  stroke-linejoin: round;
 }
 .metPolygons:hover {
   display:block;
@@ -1036,7 +1037,7 @@ polygon:hover {
 
 }
 .imagecontainerMotivuebersicht {
-  position: absolute;
+  position: relative;
 }
 .prevImage, .nextImage {
   position: absolute;
@@ -1161,15 +1162,17 @@ polygon:hover {
   border-radius: 2px;
 }
 
-.triggerAusText {
-  font-weight: bold;
-  position: relative;
-  color: #9e6f6f;
+.textTrigger {
+  cursor: pointer;
+  background-color: rgba(124, 56, 56, 0.39);
+  /* position: relative;
+  color: #9e6f6f; */
 }
 
 .tooltip {
   position: relative;
   color: #733030;
+  font-weight: bold;
 }
 .tooltip:hover {
   color:#a84646;
