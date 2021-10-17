@@ -2048,6 +2048,7 @@ export async function application() {
           var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 8);
           
           var zugehoerigesModal = document.getElementById(id.toLowerCase() + "Modal");
+          console.log(id.toLowerCase() + "Modal")
 
           zugehoerigesModal.style.display = "block";
           zugehoerigesModal.style.animationPlayState = "running";
@@ -2757,8 +2758,11 @@ export async function application() {
 
         //Tabel-Row anlegen
         var textRow = document.createElement("tr");
-        textRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
         textTable.appendChild(textRow);
+
+        
+        textRow.style.position = "relative";
+        textRow.style.top = "-100px";
 
         //drei Columns anlegen:
         //Versnummern-Column
@@ -2791,6 +2795,20 @@ export async function application() {
         //alle 5 Zeilen neue Row mit Columns anlegen und Verszahl hinzufügen
         if (erstesMal || (aktuelleZeile + 1) % 5 === 0) {
 
+          if(erstesMal){
+            textRow.className = "firstRow";
+            
+            var paddingRow = document.createElement("tr");
+            textTable.insertBefore(paddingRow, textRow);
+
+            paddingRow.style.height = "100px";
+            paddingRow.style.position = "relative";
+            paddingRow.style.top = "-100px";
+
+            paddingRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
+        
+          }
+
           
           //Abstand zur vorherigen Row
           textColumnVersnummer.style.paddingTop = "10px";
@@ -2819,11 +2837,11 @@ export async function application() {
       }
 
       //Leere Tabellenzeile, damit es unten nicht so gequetscht ist
-      var textRowEnde = document.createElement("tr");
-      textTable.appendChild(textRowEnde);
-      var textColumnEnde = document.createElement("td");
-      textRowEnde.appendChild(textColumnEnde);
-      textColumnEnde.appendChild(document.createElement("br"));
+      // var textRowEnde = document.createElement("tr");
+      // textTable.appendChild(textRowEnde);
+      // var textColumnEnde = document.createElement("td");
+      // textRowEnde.appendChild(textColumnEnde);
+      // textColumnEnde.appendChild(document.createElement("br"));
     }
 
     if (!(keyTabelle[k] in leude)) {
@@ -3214,6 +3232,8 @@ export async function application() {
   
   var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
   var kapitelLinksBuch1 = ["prooemium", "weltentstehung", "weltzeitalter", "giganten", "lycaon", "sintflut", "deucalionUndPyrrha", "tierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
+  
+  //addiert elemente einer Tabelle  
   var gesamtlaenge = function (tabelle) {
     var gesamtlaengeVerse = 0.0;
     for (var b in tabelle){ 
@@ -3223,7 +3243,6 @@ export async function application() {
   }
   var gesamtLaengeBuecher = gesamtlaenge(buecherLaenge);
   var gesamtLaengeKapitel1 = gesamtlaenge(kapitelLaenge1);
-  //console.log(gesamtLaengeBuecher)
 
   var navbarWrapper = document.createElement("div");
   var fliesstextDiv = document.getElementById("fliesstext");
@@ -3255,9 +3274,11 @@ export async function application() {
 
   //navBar 1: Bücher
   for (var b in buecherLaenge){
-    
+    var header = document.getElementById(buecherLink[b] + "Header");
+    console.log(header.parentElement.childNodes[1].childNodes[0].id)
+    console.log(buecherLink[b] + "Header")
     var aNavbar = document.createElement("a");
-    aNavbar.setAttribute("href", "/visualisierung.html#" + buecherLink[b] + "Header");
+    aNavbar.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbar.className = "buecherLinks";
     aNavbar.id = "buch" + b;
     aNavbar.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + (parseInt(b)+1) + ". Buch";
@@ -3265,6 +3286,7 @@ export async function application() {
     aNavbar.title = "Klick, um zu Buch " + (parseInt(b)+1) + " zu gelangen"
     navbarBuecher.appendChild(aNavbar);
 
+    //ONMOUSEOVER
     aNavbar.onmouseover = (event) => {
       var id = event.currentTarget.id;
       document.getElementById(id).style.width = document.getElementById(id).clientWidth+20 + "px";
@@ -3277,15 +3299,18 @@ export async function application() {
       }
 
     }
+
+    //ONMOUSEOUT
     aNavbar.onmouseout = (event) => {
       var id = event.currentTarget.id;
       document.getElementById(id).style.width = buecherLaenge[parseInt(id.substr(4))] + "%";
       //document.getElementById(id).childNodes[0].style.display = "none";
     }
 
+    //ONMOUSEDOWN
     aNavbar.onmousedown = (event) => {
-      for (var b in kapitelLaenge1){
-        document.getElementById("buch" + b).style.backgroundColor = "#747474a6";
+      for (var b in buecherLaenge){
+        document.getElementById("buch" + b).style.backgroundColor = null;
       }
       
       var id = event.currentTarget.id;
@@ -3301,19 +3326,19 @@ export async function application() {
 
   //navBar2: Kapitel
   for (var b in kapitelLaenge1){
-
+    var header = document.getElementById(kapitelLinksBuch1[b] + "Header");
+    console.log(header.parentElement.childNodes[1].childNodes[0].id)
+    console.log(buecherLink[b] + "Header")
     var aNavbarII = document.createElement("a");
-    aNavbarII.setAttribute("href", "/visualisierung.html#" + kapitelLinksBuch1[b] + "Header");
+    aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbarII.className = "kapitelLinks";
     aNavbarII.id = "buch0kapitel" + b;
-    var hilfs = kapitelLinksBuch1[b];
-    //console.log(metamorphosen.kapitelLinksBuch1[b])
-    //console.log(metamorphosen[hilfs].name)
     aNavbarII.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + metamorphosen[kapitelLinksBuch1[b]].name;
     aNavbarII.style.width = (kapitelLaenge1[b]/gesamtLaengeKapitel1*100) + "%";
     aNavbarII.title = "Klick, um zu Kapitel " + (parseInt(b)+1) + " zu gelangen"
     navbarKapitel.appendChild(aNavbarII);
 
+    //ONMOUSEOVER: Breite vergrößern 
     aNavbarII.onmouseover = (event) => {
       var id = event.currentTarget.id;
       var gesElement = document.getElementById(id);
@@ -3333,10 +3358,23 @@ export async function application() {
       // }
 
     }
+
+    //ONMOUSEOUT: Breite zurücksetzen
     aNavbarII.onmouseout = (event) => {
       var id = event.currentTarget.id;
       document.getElementById(id).style.width = (kapitelLaenge1[parseInt(id.substr(12))]/gesamtLaengeKapitel1*100) + "%";
       //document.getElementById(id).childNodes[0].style.display = "none";
+    }
+
+    //ONMOUSEDOWN: Farbe setzen (& alle anderen wieder grau)
+    aNavbarII.onmousedown = (event) => {
+      for (var b in kapitelLaenge1){
+        document.getElementById("buch0kapitel" + b).style.backgroundColor = null;
+      }
+      
+      var id = event.currentTarget.id;
+      document.getElementById(id).style.backgroundColor = "#733030a8";
+      
     }
 
 

@@ -861,6 +861,9 @@ a.buecherLinks {
   font-size: 10px;
 }
 
+.fliesstextTables {
+  margin-bottom: -100px;
+}
 
 .navbar2 {
   position: absolute;
