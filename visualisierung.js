@@ -2796,12 +2796,13 @@ export async function application() {
         if (erstesMal || (aktuelleZeile + 1) % 5 === 0) {
 
           if(erstesMal){
-            textRow.className = "firstRow";
+            
             
             var paddingRow = document.createElement("tr");
             textTable.insertBefore(paddingRow, textRow);
 
             paddingRow.style.height = "100px";
+            paddingRow.className = "firstRow";
             paddingRow.style.position = "relative";
             paddingRow.style.top = "-100px";
 
@@ -3215,14 +3216,14 @@ export async function application() {
   };
 
 
-  //New CSS-Class
-  const el = document.querySelector(".textModalHeader")
-  const observer = new IntersectionObserver(
-    ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-    { threshold: [1] }
-  );
+  // //New CSS-Class
+  // const el = document.querySelector(".textModalHeader")
+  // const observer = new IntersectionObserver(
+  //   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+  //   { threshold: [1] }
+  // );
 
-  observer.observe(el);
+  // observer.observe(el);
 
 
 
@@ -3275,8 +3276,8 @@ export async function application() {
   //navBar 1: Bücher
   for (var b in buecherLaenge){
     var header = document.getElementById(buecherLink[b] + "Header");
-    console.log(header.parentElement.childNodes[1].childNodes[0].id)
-    console.log(buecherLink[b] + "Header")
+    //console.log(header.parentElement.childNodes[1].childNodes[0].id)
+    //console.log(buecherLink[b] + "Header")
     var aNavbar = document.createElement("a");
     aNavbar.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbar.className = "buecherLinks";
@@ -3327,8 +3328,8 @@ export async function application() {
   //navBar2: Kapitel
   for (var b in kapitelLaenge1){
     var header = document.getElementById(kapitelLinksBuch1[b] + "Header");
-    console.log(header.parentElement.childNodes[1].childNodes[0].id)
-    console.log(buecherLink[b] + "Header")
+    //console.log(header.parentElement.childNodes[1].childNodes[0].id)
+    //console.log(buecherLink[b] + "Header")
     var aNavbarII = document.createElement("a");
     aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbarII.className = "kapitelLinks";
@@ -3381,9 +3382,27 @@ export async function application() {
   }
 
   //erstes schon rot:
-    document.getElementById("buch0kapitel0").style.backgroundColor = "#733030a8";
+  document.getElementById("buch0kapitel0").style.backgroundColor = "#733030a8";
 
 
+  let observer = new IntersectionObserver(entries => {
+   
+    for (var e = 0; e < entries.length; e++){
+      if (entries[e].isIntersecting){
+        console.log(entries[e].target.id);
+        setLocationHash(entries[e].target.id);
+      }
+    }
+    // if (entries[0].boundingClientRect.y < 0) {
+    //   console.log("Past 100px!");
+    // } else {
+    //   console.log("Not past 100px");
+    // }
+  });
+  var alleFirstRows = document.querySelectorAll(".firstRow");
+  for (var x = 0; x < alleFirstRows.length; x++){
+    observer.observe(alleFirstRows[x]);
+  }
 
 
 
