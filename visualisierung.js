@@ -3059,7 +3059,7 @@ export async function application() {
         deutschTexte[l].style.width = "94%";
       }
 
-      //Fall: lateinBtn rein machen, deutschBtn gecheckt
+    //Fall: lateinBtn rein machen, deutschBtn gecheckt
     } else {
 
       lockDeutsch.style.display = "none";
