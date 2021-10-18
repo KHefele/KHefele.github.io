@@ -3296,7 +3296,7 @@ export async function application() {
 
   //Navigationsleite für Text:
   var buecherLaenge = [5.224, 6.2711, 5.4439, 5.9595, 5.1684, 5.9023, 6.918, 6.684, 6.2089, 5.6034, 6.1531, 4.4985, 7.1462, 6.2341, 6.2341];
-  var buecherLink = ["prooemium", "phaetonII", "cadmus", "minayastoechterI", "perseusUndPhineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "schlangeInAulis", "hoplonkrisisI", "glaucus", "numa"];
+  var buecherLink = ["prooemium", "phaetonII", "cadmusI", "dieToechterDesMinyas", "perseusUndPhineus", "arachne", "iasonUndMedea", "scylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "dieSchlangeInAulis", "hoplonkrisis", "glaucus", "numa"];
   
   var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
   var kapitelLinksBuch1 = ["prooemium", "dieWeltentstehung", "dieVierWeltzeitalter", "dieGiganten", "lycaon", "dieGroßeFlut", "deukalionUndPyrrha", "erneuerungDerTierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
