@@ -308,34 +308,38 @@ export async function application() {
 
     var ovMetReplacedSemicolon = leude[key].ovMet.replace(",", ".");
     var indexOfHyphen = ovMetReplacedSemicolon.indexOf("-");
-    var ovMetFloat = parseFloat(ovMetReplacedSemicolon.substring(0, indexOfHyphen));
+    var ovMetAnfang = ovMetReplacedSemicolon.substring(0, indexOfHyphen);
+    var BuchUndVers = ovMetAnfang.split(".");
+    
+
+    var ovMetInt = parseInt(BuchUndVers[0]) * 1000 + parseInt(BuchUndVers[1]);
 
 
     if (figuresListSorted.length < 1) {  //initial
       figuresListSorted.push(currentId);
-      ovMetListSorted.push(ovMetFloat);
+      ovMetListSorted.push(ovMetInt);
       //console.log("initial: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
-    } else if (ovMetFloat < ovMetListSorted[0]) { //smaller number
+    } else if (ovMetInt < ovMetListSorted[0]) { //smaller number
       figuresListSorted.unshift(currentId);
-      ovMetListSorted.unshift(ovMetFloat);
+      ovMetListSorted.unshift(ovMetInt);
       //console.log("number was smaller, so inserted at the beginning: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
-    } else if (ovMetFloat > ovMetListSorted[ovMetListSorted.length - 1]) { //bigger number
+    } else if (ovMetInt > ovMetListSorted[ovMetListSorted.length - 1]) { //bigger number
       figuresListSorted.push(currentId);
-      ovMetListSorted.push(ovMetFloat);
+      ovMetListSorted.push(ovMetInt);
       //console.log("number was bigger, so inserted at the end: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
 
     } else {
       for (var x = 0; x < ovMetListSorted.length; x++) {
         //console.log(ovMetFloat + "vs." + ovMetListSorted[x]);
 
-        if (ovMetFloat > ovMetListSorted[x]) { //when number is bigger than array entry: continue
+        if (ovMetInt > ovMetListSorted[x]) { //when number is bigger than array entry: continue
           continue;
 
         } else { //when number is smaller than array entry: insert 
           figuresListSorted.splice(x, 0, currentId);
-          ovMetListSorted.splice(x, 0, ovMetFloat);
+          ovMetListSorted.splice(x, 0, ovMetInt);
           //console.log("number was in the middle: \n id: " + figuresListSorted + " \n ovMet: " + ovMetListSorted);
           break;
         }
@@ -347,6 +351,9 @@ export async function application() {
   }
 
 
+  
+
+
   //nach Pentaden sortiert 
   var erstePentade = [];
   var zweitePentade = [];
@@ -354,9 +361,9 @@ export async function application() {
 
   for (var h = 0; h < figuresListSorted.length; h++) {
     //console.log(ovMetListSorted[h]);
-    if (ovMetListSorted[h] < 6) {
+    if (ovMetListSorted[h] < 6000) {
       erstePentade.push(figuresListSorted[h]);
-    } else if (ovMetListSorted[h] > 6 && ovMetListSorted[h] < 11) {
+    } else if (ovMetListSorted[h] < 11000) {
       zweitePentade.push(figuresListSorted[h]);
     } else {
       drittePentade.push(figuresListSorted[h]);
@@ -1570,7 +1577,7 @@ export async function application() {
 
 
   var startIconsBy = 6.5; //from left
-  var abstaendeZwischenIcons = 4.1;
+  var abstaendeZwischenIcons = 3.9;
   var erstePentadeFromTop = 30;
   var zweitePentadeFromTop = 52.5;
   var drittePentadeFromTop = 75;
@@ -2824,9 +2831,6 @@ export async function application() {
         var textRow = document.createElement("tr");
         textTable.appendChild(textRow);
 
-        
-        textRow.style.position = "relative";
-        textRow.style.top = "-100px";
 
         //drei Columns anlegen:
         //Versnummern-Column
@@ -2864,11 +2868,7 @@ export async function application() {
             
             var paddingRow = document.createElement("tr");
             textTable.insertBefore(paddingRow, textRow);
-
-            paddingRow.style.height = "100px";
             paddingRow.className = "firstRow";
-            paddingRow.style.position = "relative";
-            paddingRow.style.top = "-100px";
 
             paddingRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
         
@@ -3283,20 +3283,12 @@ export async function application() {
   };
 
 
-  // //New CSS-Class
-  // const el = document.querySelector(".textModalHeader")
-  // const observer = new IntersectionObserver(
-  //   ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-  //   { threshold: [1] }
-  // );
-
-  // observer.observe(el);
 
 
 
   //Navigationsleite für Text:
   var buecherLaenge = [5.224, 6.2711, 5.4439, 5.9595, 5.1684, 5.9023, 6.918, 6.684, 6.2089, 5.6034, 6.1531, 4.4985, 7.1462, 6.2341, 6.2341];
-  var buecherLink = ["prooemium", "phaetonII", "cadmusI", "dieToechterDesMinyas", "phineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "dieSchlangeInAulis", "hoplonkrisis", "glaucus", "numa"];
+  var buecherLink = ["prooemium", "phaetonII", "cadmusI", "dieToechterDesMinyas", "phineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "dieSchlangeInAulis", "hoplonkrisis", "scylla", "numa"];
   
   var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
   var kapitelLinksBuch1 = ["prooemium", "dieWeltentstehung", "dieVierWeltzeitalter", "dieGiganten", "lycaon", "dieGroßeFlut", "deukalionUndPyrrha", "erneuerungDerTierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
@@ -4096,6 +4088,8 @@ export async function application() {
       hilfsvariable = "verwandlungsgrund";
     } else if (aktuelleKategorie == "geographie") {
       hilfsvariable = "geografie";
+    } else if (aktuelleKategorie.startsWith("fliesstext")){
+      hilfsvariable = "fliesstext";
     } else {
       hilfsvariable = aktuelleKategorie;
     }
@@ -4123,6 +4117,7 @@ export async function application() {
 
     //console.log(hilfsvariable + "ErklaerungTitle")
     //betreffendes einblenden
+    console.log(hilfsvariable)
     var content = document.getElementById(hilfsvariable + "Erklaerung");
     content.style.display = "block";
     setTimeout(function () { content.style.opacity = "1"; }, 500);

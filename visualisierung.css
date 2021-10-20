@@ -921,6 +921,20 @@ a.kapitelLinks {
   position: relative;
   font-size: 0.85em;
 }
+.fliesstextTables tr {
+  position: relative;
+  top: -100px;
+}
+.firstRow {
+  height: 100px;
+}
+
+/* .lateinisch {
+  padding: 10px 10px 0px 0px;
+}
+.deutsch {
+  padding: 10px 0px 0px;
+} */
 
 .textModalHeader {
   z-index: 10;

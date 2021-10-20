@@ -510,10 +510,10 @@
             }
         },
 
-        "source": "https://iconmonstr.com/file-37-png/",
-        "sourcename": "Iconmonstr",
-        "alt": "Iconmonstr, Bildsuche, 2021",
-
+        "source": "https://commons.wikimedia.org/wiki/File:Attributed_to_Luigi_Garzi_-_Alpheus_and_Arethusa.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Luigi Garzi (zugeschrieben), Alpheus and Arethusa, Ende 17./Anfang 18. Jh.",
+        
         "wikidata": "Q911084",
         "ovMet": "5,572-641",
         "verwandlung": "Quelle",
@@ -938,7 +938,7 @@
         },
 
         "source": "https://www.granger.com/results.asp?image=0041933",
-        "sourcename": "Granger<br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
+        "sourcename": "The Granger Collection<br>Vorgenommene Änderungen: Für das Icon wurde ein Teil des Bildes herausgeschnitten",
         "alt": "?, Arachne und Athena, 18.Jh.",
         
         "wikidata": "Q190082",
@@ -1956,7 +1956,7 @@
 
     "caenus": {
         "id": "caenus",
-        "name": "Caenus",
+        "name": "Caeneus",
 
         "width": "85",
         "taxonomie": "fauna",
