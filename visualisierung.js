@@ -2625,6 +2625,27 @@ export async function application() {
             metPolygons.setAttribute("id", name + "Polygon");
             metSvg.appendChild(metPolygons);
 
+            metPolygons.onmouseenter = function(){
+              var namenTabelle = leseWert(title);
+              for (var y = 0; y < namenTabelle.length; y++) {
+                var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+                for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+                  zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
+                  zugehörigeTextstellen[z].style.color = "#E3DED8";
+                }
+              }
+            }
+            metPolygons.onmouseleave = function(){
+              var namenTabelle = leseWert(title);
+              for (var y = 0; y < namenTabelle.length; y++) {
+                var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+                for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+                  zugehörigeTextstellen[z].style.backgroundColor = null;
+                  zugehörigeTextstellen[z].style.color = null;
+                }
+              }
+            }
+
             var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
             metPolygons.appendChild(polygonTitle);
             polygonTitle.innerHTML = title;

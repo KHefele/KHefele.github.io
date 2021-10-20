@@ -445,7 +445,7 @@
           "all_points_y": [ 1119, 1198, 1306, 1459, 1680, 1932, 1769, 1843, 2060, 2464, 3031, 3046, 2646, 2474, 1587, 1143, 1005, 941, 808, 710, 621, 636, 788, 1000, 1055, 1079, 878 ]
         },
         "region_attributes": {
-          "Verwandler": "Jupiter, Vater",
+          "Verwandler": "Iupiter, Vater",
           "Verwandelter": "",
           "Attribut": ""
         }
@@ -458,7 +458,7 @@
         },
         "region_attributes": {
           "Verwandler": "",
-          "Verwandelter": "Lycaon",
+          "Verwandelter": "Lykaon",
           "Attribut": ""
         }
       },
