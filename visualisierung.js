@@ -942,6 +942,8 @@ export async function application() {
     var modalContentDiv = document.createElement("div");
     modalContentDiv.className = "metamorphosenModalContent";
     modalDiv.appendChild(modalContentDiv);
+    modalContentDiv.style.width = "80%";
+    modalContentDiv.style.minHeight = "70%";
 
     //Header erstellen
     var divHeader = document.createElement("div"); //div anlegen
@@ -969,16 +971,13 @@ export async function application() {
 
       var imagecontainer = document.createElement("div");
       imagecontainer.className = "imagecontainerMotivuebersicht";
-      imagecontainer.style.left = fromLeft + "%";
-      imagecontainer.style.top = fromTop + "%";
-      imagecontainer.style.width = "100px";
-      imagecontainer.style.height = "100px";
+      imagecontainer.style.height = "160px";
       imgDiv.appendChild(imagecontainer);
 
       var bild = document.createElement("img");
       imagecontainer.appendChild(bild);
       //bild.style.width = "20%";
-      bild.style.height = "100%";
+      bild.style.height = "210px";
       
       bild.setAttribute("src", "Figuren/" + data.id + "/" + key + ".jpg");
 
@@ -986,8 +985,8 @@ export async function application() {
       bildtitel.innerHTML = data.imgInfo[key].alt;
       bildtitel.style.fontFamily = "'Crimson Text', serif";
       bildtitel.style.fontSize = "10px";
-      bildtitel.style.position = "relative";
-      bildtitel.style.width = "100%";
+      bildtitel.style.position = "absolute";
+      bildtitel.style.width = "calc(100% - 60px)";
       imagecontainer.appendChild(bildtitel);
 
       
@@ -2786,7 +2785,7 @@ export async function application() {
         zurMotivuebersicht.className = "zurMotivuebersicht";
         svgDiv.appendChild(zurMotivuebersicht);
         zurMotivuebersicht.onclick = function () {
-          var lycaonMotivuebersichtModal = document.getElementById(key + "MotivuebersichtModal");
+          var lycaonMotivuebersichtModal = document.getElementById("lycaonMotivuebersichtModal");
           lycaonMotivuebersichtModal.style.display = "block";
           lycaonMotivuebersichtModal.style.animationPlayState = "running";
         }
