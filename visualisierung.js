@@ -15,6 +15,15 @@ export async function application() {
     location.hash = "#";
   }
 
+  let userAgent = navigator.userAgent;
+  console.log(userAgent)
+  // var browserName;
+  if(userAgent.match(/chrome|chromium|crios/i)){
+    //browserName = "chrome";
+  } else if(userAgent.match(/safari/i)){
+    var error = document.getElementById("safariError");
+    error.style.display = "block";
+  }
 
 
 
@@ -52,17 +61,30 @@ export async function application() {
 
   // StartModal
   var startModal = document.getElementById("startModal"); // Get startModal
-  var spanStart = document.getElementById("closeStartModal");   // Get <span> element that closes the startModal
+  var startModalFliesstext = document.getElementById("startModalFliesstext");
+  var spansStart = document.getElementsByClassName("closeStartModal");   // Get <span> element that closes the startModal
+
 
   if (location.hash === "") {
     startModal.style.display = "block";
     startModal.style.animationPlayState = "running";
+  } 
+
+  if (location.hash.startsWith("#fliesstext")) {
+    console.log("fliesstext sollte angezeigt werden")
+    startModalFliesstext.style.display = "block";
+    startModalFliesstext.style.animationPlayState = "running";
   }
 
 
-  spanStart.onclick = function () { // Close
-    startModal.style.display = "none";
+
+  for (var h = 0; h < spansStart.length; h++){
+    spansStart.onclick = function () { // Close
+      startModal.style.display = "none";
+      startModalFliesstext.style.display = "none";
+    }
   }
+
 
   // // InfoModal
   // var infoModal = document.getElementById("infoModal");   // Get infoModal
@@ -1087,7 +1109,7 @@ export async function application() {
   function showPrevOrNextModal(vorOderZurueck){ //argumente -1 oder +1, zeigt wie viel vorwärts oder zurück es gehen soll
     
     var modalNow = document.getElementById(aktuellesModal + "Modal");
-    console.log(modalNow)
+    //console.log(modalNow)
     aktuelleModalID = slide(vorOderZurueck);
     aktuellesModal = currentListSorted[aktuelleModalID];
   
@@ -2384,6 +2406,8 @@ export async function application() {
     //alle anderen
     for (key in leude) {
 
+      console.log("Key ist", key)
+
       var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
 
       if (!(leude[key].verwandler.startsWith("Jupiter")) && !(leude[key].verwandler.startsWith("Neptun")) && !(leude[key].verwandler.startsWith("Venus")) && !(leude[key].verwandler.startsWith("Diana")) && !(leude[key].verwandler.startsWith("Minerva")) && !(leude[key].verwandler.startsWith("Mercur")) && !(leude[key].verwandler.startsWith("Apollo")) && !(leude[key].verwandler.startsWith("Ceres")) && !(leude[key].verwandler.startsWith("Juno"))) {
@@ -2501,7 +2525,7 @@ export async function application() {
     var newKey = key.substr(0, indexOfDot);
     annotationsCleanedUp[newKey] = annotations[key];
   }
-  console.log(annotationsCleanedUp)
+  //console.log(annotationsCleanedUp)
 
 
   let textModalDiv = document.getElementById("textModal");
@@ -3172,67 +3196,76 @@ export async function application() {
   //Funktion, um für jede Gottheit im Text das Popover zu setzen
   function setTooltipForVerwandelnde(godName) {
 
-    //jedes Element, das mit einem Göttername z.B. Jupiter betitelt ist, in eine Tabelle setzen
-    var tooltipArray = document.getElementsByClassName(godName);
+    function setTooltipIntern(godName, tooltipArray) {
+      //Tabelle mit Verwandelten-Namen durchgehen und tooltip setzen
+      for (var j = 0; j < tooltipArray.length; j++) {
 
-    //Tabelle mit Verwandelten-Namen durchgehen und tooltip setzen
-    for (var j = 0; j < tooltipArray.length; j++) {
+        var tooltipSpan = document.createElement("span");
+        tooltipArray[j].appendChild(tooltipSpan);
+        tooltipSpan.setAttribute("role", "tooltip");
 
-      var tooltipSpan = document.createElement("span");
-      tooltipArray[j].appendChild(tooltipSpan);
-      tooltipSpan.setAttribute("role", "tooltip");
-
-      //Verwandler: Aposthroph statt Genitiv-S, wenn Gottheit mit "s" endet oder nichts falls Plural
-      var genitivbildung;
-      if (godName.endsWith("s")) {
-        genitivbildung = "' Verwandlungen:<br>";
-      } else if (godName.endsWith("en")) {
-        genitivbildung = "-Verwandlungen:";
-      } else {
-        genitivbildung = "s Verwandlungen:<br>";
-      }
-
-      tooltipSpan.innerHTML = godName + genitivbildung + "<br>";
-
-      
-      //Verwandelte: in p-Element setzen und onclick darauf vergeben
-      for (var v = 0; v < verwandlerDict[godName].nameDerVerwandelten.length; v++) {
-
-        var spanVerwandelte = document.createElement("span");
-        spanVerwandelte.className = "modalTrigger";
-        tooltipSpan.appendChild(spanVerwandelte);
-
-        spanVerwandelte.innerHTML = verwandlerDict[godName].nameDerVerwandelten[v] + " ";
-
-        var linksymbol = document.createElement("img");
-        linksymbol.setAttribute("src", "Icons/iconmonstr-share-11-240.png")
-        linksymbol.setAttribute("width", "12px");
-        spanVerwandelte.appendChild(linksymbol);
-
-        tooltipSpan.appendChild(document.createElement("br"));
-
-
-        // spanVerwandelte.onclick = function () {
-        //   console.log(id)
-        // }
-        function createOnClickFunction(godName, v) {
-          return function() {
-            var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
-            //console.log(modalName)
-            var zugehoerigesModal = document.getElementById(modalName);
-            zugehoerigesModal.style.display = "block";
-            zugehoerigesModal.style.animationPlayState = "running";
-
-            aktuellesModal = verwandlerDict[godName].idDerVerwandelten[v];
-            setLocationHash("fliesstext");
-
-          };
+        //Verwandler: Aposthroph statt Genitiv-S, wenn Gottheit mit "s" endet oder nichts falls Plural
+        var genitivbildung;
+        if (godName.endsWith("s")) {
+          genitivbildung = "' Verwandlungen:<br>";
+        } else if (godName.endsWith("en")) {
+          genitivbildung = "-Verwandlungen:";
+        } else {
+          genitivbildung = "s Verwandlungen:<br>";
         }
-        spanVerwandelte.onclick = createOnClickFunction(godName, v);
 
-      } 
-      
+        tooltipSpan.innerHTML = godName + genitivbildung + "<br>";
 
+
+        //Verwandelte: in p-Element setzen und onclick darauf vergeben
+        for (var v = 0; v < verwandlerDict[godName].nameDerVerwandelten.length; v++) {
+
+          var spanVerwandelte = document.createElement("span");
+          spanVerwandelte.className = "modalTrigger";
+          tooltipSpan.appendChild(spanVerwandelte);
+
+          spanVerwandelte.innerHTML = verwandlerDict[godName].nameDerVerwandelten[v] + " ";
+
+          var linksymbol = document.createElement("img");
+          linksymbol.setAttribute("src", "Icons/iconmonstr-share-11-240.png")
+          linksymbol.setAttribute("width", "12px");
+          spanVerwandelte.appendChild(linksymbol);
+
+          tooltipSpan.appendChild(document.createElement("br"));
+
+
+          // spanVerwandelte.onclick = function () {
+          //   console.log(id)
+          // }
+          function createOnClickFunction(godName, v) {
+            return function () {
+              var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
+              //console.log(modalName)
+              var zugehoerigesModal = document.getElementById(modalName);
+              zugehoerigesModal.style.display = "block";
+              zugehoerigesModal.style.animationPlayState = "running";
+
+              aktuellesModal = verwandlerDict[godName].idDerVerwandelten[v];
+              setLocationHash("fliesstext");
+
+            };
+          }
+          spanVerwandelte.onclick = createOnClickFunction(godName, v);
+
+        }
+
+
+      }
+    }
+
+    if (key == "Jupiter") {
+      setTooltipIntern(godName, document.getElementsByClassName("Iupiter"));  
+      setTooltipIntern(godName, document.getElementsByClassName("Jupiter"));  
+    }else if (key == "Juno"){
+      setTooltipIntern(godName, document.getElementsByClassName("Iuno"));  
+      setTooltipIntern(godName, document.getElementsByClassName("Juno"));  
+    } else {
+      setTooltipIntern(godName, document.getElementsByClassName(godName));
     }
   }
 
@@ -3416,7 +3449,7 @@ export async function application() {
     //console.log(header.parentElement.childNodes[1].childNodes[0].id)
     //console.log(buecherLink[b] + "Header")
     var aNavbarII = document.createElement("a");
-    console.log(header.parentElement)
+    //console.log(header.parentElement)
     aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
     aNavbarII.className = "kapitelLinks";
     aNavbarII.id = "buch0kapitel" + b;
@@ -4023,7 +4056,7 @@ export async function application() {
         sidebar.style.opacity = "0.98";
         sidebarOpen = true;
 
-        console.log(aktuelleKategorie)
+        //console.log(aktuelleKategorie)
 
         if (aktuelleKategorie == "alphabet"){
           document.getElementById("text").style.backgroundColor = null;
@@ -4138,7 +4171,7 @@ export async function application() {
 
     //console.log(hilfsvariable + "ErklaerungTitle")
     //betreffendes einblenden
-    console.log(hilfsvariable)
+    //console.log(hilfsvariable)
     var content = document.getElementById(hilfsvariable + "Erklaerung");
     content.style.display = "block";
     setTimeout(function () { content.style.opacity = "1"; }, 500);
@@ -4201,7 +4234,7 @@ export async function application() {
   window.onclick = function (event) {
 
     //Liste von Modals, die durch Klick neben das Element geschlossen werden sollen
-    var closeTheseElements = [startModal, infoModal] //quellenModal, ovidModal, erzaehlfolgeModal, klassifikationModal, geographieModal, alphabetModal, verwandlungsgrundModal, verwandelndeModal, fliesstextModal
+    var closeTheseElements = [startModal, infoModal, startModalFliesstext] //quellenModal, ovidModal, erzaehlfolgeModal, klassifikationModal, geographieModal, alphabetModal, verwandlungsgrundModal, verwandelndeModal, fliesstextModal
 
     for (var i = 0; i < closeTheseElements.length; i++) {
       if (event.target == closeTheseElements[i]) {

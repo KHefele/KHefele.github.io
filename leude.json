@@ -17,7 +17,7 @@
             "lycaon": {
                 "source": "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg",
                 "sourcename": "Wikimedia",
-                "alt": "Jan Cossier, Lycaon, 1640"
+                "alt": "Jan Cossiers, Lycaon, 1640"
             },
             "lycaon2": {
                 "source": "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Ovide_-_M%C3%A9tamorphoses_-_I_-_Lycaon_m%C3%A9tamorphos%C3%A9_en_loup.jpg",
@@ -37,7 +37,7 @@
         },
    
         "wikidata": "Q501667",
-        "ovMet": "1,209-239",
+        "ovMet": "1,163-252",
         "verwandlung": "Wolf",
         "grund": "Bestrafung", 
         "verwandler": "Jupiter",
@@ -74,7 +74,7 @@
         "alt": "Gerbrand van den Eeckhout, Io, 1672",
 
         "wikidata": "Q179014",
-        "ovMet": "1,568-688",
+        "ovMet": "1,568-624",
         "verwandlung": "Kuh",
         "grund": "Vertuschen eines Seitensprungs vor Juno", 
         "verwandler": "Jupiter",
@@ -150,7 +150,7 @@
         "alt": "Piero del Pollaiolo, Apollo und Daphne, 1470-1480",
 
         "wikidata": "Q194015",
-        "ovMet": "1,452-451",
+        "ovMet": "1,452-567",
         "verwandlung": "Lorbeer",
         "grund": "Schutz", 
         "verwandler": "Peneus (Daphnes Vater)",
@@ -226,7 +226,7 @@
         "alt": "Sebastiano Ricci, Arcas and Callisto, ca. 1725-30",
         
         "wikidata": "Q203673",
-        "ovMet": "2,401-531",
+        "ovMet": "2,401-530",
         "verwandlung": "Bärin",
         "grund": "Bestrafung", 
         "verwandler": "Juno",
@@ -619,7 +619,7 @@
         "alt": "Jacob Jordaens, Ulysses bedroht Circe, 1630",
         
         "wikidata": "-",
-        "ovMet": "14,223-308",
+        "ovMet": "14,223-307",
         "verwandlung": "Schweine",
         "grund": "Willkür", 
         "verwandler": "Circe",
@@ -729,7 +729,7 @@
         "alt": "Ulpiano Checa, La ninfa Egeria dictando a Numa Pompilio las leyes de Roma, ?",
         
         "wikidata": "Q582268",
-        "ovMet": "15,479-552",
+        "ovMet": "15,479-551",
         "verwandlung": "Quelle",
         "grund": "Trauer", 
         "verwandler": "Diana ('Phoebus’ Schwester')",
@@ -1450,7 +1450,7 @@
         "alt": "Crispijn van de Passe (I), Minerva verwandelt Perdix in einen Vogel, 1602-1607",
         
         "wikidata": "Q608951",
-        "ovMet": "8,236-25",
+        "ovMet": "8,236-259",
         "verwandlung": "Rebhuhn",
         "grund": "Schutz", 
         "verwandler": "Minerva",

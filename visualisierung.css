@@ -126,7 +126,7 @@ image {
 
 
 
-#display-under-500px {
+.errorModal {
   width: 1000%;
   height: 1000%;
   position: absolute;
@@ -143,9 +143,10 @@ image {
     display: block;
   }
   body {
-      overflow: hidden;
+    overflow: hidden;
   }
 }
+
 
 /*--------------------------------------------*/
 /*                 Scrollbar                  */
@@ -732,6 +733,7 @@ a.metamorphosenModalBtns {
 }
 .kategorieModalsHeader {
   position: sticky;
+  position: -webkit-sticky;
   top: 0%;
   background-color: #613838;
   /* shad.attr.: horizontal, vertical, blur, spread, color */
@@ -739,6 +741,7 @@ a.metamorphosenModalBtns {
 }
 .kategorieModalsFooter {
   position: sticky;
+  position: -webkit-sticky;
   bottom: 0%;
   background-color: #613838;
   box-shadow: 0 -5px 25px 15px #613838;;
@@ -790,6 +793,7 @@ a.metamorphosenModalBtns {
 }
 .infoModalsHeader {
   position: sticky;
+  position: -webkit-sticky;
   top: 0%;
   background-color: rgba(227, 222, 216, 1);
   /* shad.attr.: horizontal, vertical, blur, spread, color */
@@ -797,6 +801,7 @@ a.metamorphosenModalBtns {
 }
 .infoModalsFooter {
   position: sticky;
+  position: -webkit-sticky;
   bottom: 0%;
   background-color: rgba(227, 222, 216, 1);;
   box-shadow: 0 -5px 25px 15px rgba(227, 222, 216, 1);
@@ -941,6 +946,7 @@ a.kapitelLinks {
   z-index: 10;
   top: -1%;
   position: sticky;
+  position: -webkit-sticky;
   background-color: rgba(227, 222, 216, 1);
   /* shad.attr.: horizontal, vertical, blur, spread, color */
   box-shadow: 0px 17px 7px 7px rgba(227, 222, 216, 1); 
@@ -952,6 +958,7 @@ a.kapitelLinks {
   z-index: 11;
   bottom: -1%;
   position: sticky;
+  position: -webkit-sticky;
   /* background-color: rgba(227, 222, 216, 1); */
   /* shad.attr.: horizontal, vertical, blur, spread, color */
   /* box-shadow: 0px -17px 7px 5px rgba(227, 222, 216, 1);  */
@@ -1016,6 +1023,7 @@ polygon:hover {
 
 .image_container {
   position: sticky;
+  position: -webkit-sticky;
   top:0;
 }
 
@@ -1092,22 +1100,6 @@ polygon:hover {
 }
 
 
-/* --------------- Start-Modal -------------- */
-.startModal {
-  text-align: center;
-  display: none; /* Hidden by default >>>>>>>>> später wieder auf block setzen <<<<<<<<<<*/
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  padding-top: 5%; /* Location of the box */
-  padding-bottom: 5%;
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.7); 
-}
 
 /* ---------- Metamorphosen-Modal ------------ */
 .metamorphosenModal {
@@ -1147,6 +1139,7 @@ polygon:hover {
 }
 .metamorphosenModalHeader {
   position: sticky;
+  position: -webkit-sticky;
   top: 0%;
   background-color: rgba(0, 0, 0, 1);
   /* shad.attr.: horizontal, vertical, blur, spread, color */
@@ -1154,6 +1147,7 @@ polygon:hover {
 }
 .metamorphosenModalFooter {
   position: sticky;
+  position: -webkit-sticky;
   bottom: 0%;
   padding-bottom: 2%;
   background-color: rgba(0, 0, 0, 1);

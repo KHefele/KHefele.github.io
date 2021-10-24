@@ -255,7 +255,7 @@
   <!--------------------------------------------->
 
 
-  <!--------------- Start Modal ----------------->
+  <!--------------- Start Modal Visualisierung ----------------->
   <div id="startModal" class="metamorphosenModal">
     <div class="metamorphosenModalContent" style="left:27%;width: 46%; ">
       <div class="metamorphosenModalHeader">
@@ -284,10 +284,48 @@
         <br>
       </p>
       <div class="metamorphosenModalFooter" style="padding:5% 20%">
-        <span class="modalBtns" style="position:relative; text-align: center;" id="closeStartModal">Los geht's</span>
+        <span class="modalBtns closeStartModal" style="position:relative; text-align: center;">Los geht's</span>
       </div>
     </div>
   </div>
+  <!--------------- Start Modal Fließtext ----------------->
+  <div id="startModalFliesstext" class="metamorphosenModal">
+    <div class="metamorphosenModalContent" style="left:27%;width: 46%; ">
+      <div class="metamorphosenModalHeader">
+        <br>
+        <br>
+        <h1 style="text-align: center;">VISUALIZED OVID</h1>
+        <p style="text-align: center;"><em>Eine Reise durch die Metamorphosen Ovids</em></p>
+        <br>
+        <hr>
+      </div>
+      <p style="text-align: left; color: gray;">
+        <br>
+        ICH BIN DAS FLIESSTEXTMODAL
+        Von Daphne und Apollo über Narciss und Echo, Atlas, Iphigenie oder Caesar. Allesamt Geschichten aus den
+        Verwandlungssagen des römischen Dichters Ovid. Um einen besseren Überblick zu erhalten, wurden hier einige der
+        Geschichten visualisiert:
+        <br>
+        Jedes der im Hintergrund angeordneten Icons repräsentiert eine Verwandlungsgeschichte aus den Metamorphosen
+        Ovids. Klicke diese an, wenn du mehr über die jeweiligen Verwandlungsumstände erfahren möchtest.
+        Außerdem kannst du die Geschichten unter ausgewählten Gesichtspunkten anreihen bzw. in neue Zusammenhänge
+        bringen: Durch die Navitations-Leiste links unten können die verschiedene Kategorien ausgewählt werden.
+        <br>
+        <br>
+        Viel Spaß mit OVID!
+        <br>
+        <br>
+        <br>
+      </p>
+      <div class="metamorphosenModalFooter" style="padding:5% 20%">
+        <span class="modalBtns closeStartModal" style="position:relative; text-align: center;">Los geht's</span>
+      </div>
+    </div>
+  </div>
+
+
+  
+
 
   <!--------------- Info Modal ----------------->
   <div id="infoModal" class="infoModals">
@@ -1210,13 +1248,25 @@
 
 
 
-  <div id="display-under-500px">
+  <div id="display-under-500px" class="errorModal">
     <div style="position:fixed; left:30%; width:30%; width:40%; top:40%;">
       <img src="Icons/alone.png" style="width: 100px">
       <br>
       <br>
-      Diese Anwendung ist (noch) nicht auf mobile Endgeräte ausgelegt, bitte verwende ein Gerät, dass mindestens eine
+      Diese Anwendung ist (noch) nicht auf ein hochformatiges Seitenverhältnis ausgelegt oder auf eine Bildschirmbreite unter, bitte verwende ein Gerät im Querformat, das mindestens eine
       Bildschirmbreite von 500px aufweist.
+    </div>
+    <br>
+  </div>
+
+  <div id="safariError" class="errorModal">
+    <div style="position:fixed; left:30%; width:30%; width:40%; top:40%;">
+      <img src="Icons/alone.png" style="width: 100px">
+      <br>
+      <br>
+      <br>
+      Diese Anwendung ist (noch) nicht auf Safari ausgelegt.
+      <br>Bitte verwende einen anderen Browser.
     </div>
     <br>
   </div>
