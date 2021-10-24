@@ -16,7 +16,7 @@ export async function application() {
   }
 
   let userAgent = navigator.userAgent;
-  console.log(userAgent)
+  //console.log(userAgent)
   // var browserName;
   if(userAgent.match(/chrome|chromium|crios/i)){
     //browserName = "chrome";
@@ -71,7 +71,7 @@ export async function application() {
   } 
 
   if (location.hash.startsWith("#fliesstext")) {
-    console.log("fliesstext sollte angezeigt werden")
+    //console.log("fliesstext sollte angezeigt werden")
     startModalFliesstext.style.display = "block";
     startModalFliesstext.style.animationPlayState = "running";
   }
@@ -79,7 +79,7 @@ export async function application() {
 
 
   for (var h = 0; h < spansStart.length; h++){
-    spansStart.onclick = function () { // Close
+    spansStart[h].onclick = function () { // Close
       startModal.style.display = "none";
       startModalFliesstext.style.display = "none";
     }
@@ -2406,7 +2406,7 @@ export async function application() {
     //alle anderen
     for (key in leude) {
 
-      console.log("Key ist", key)
+      //console.log("Key ist", key)
 
       var iconWrapper = document.getElementById(leude[key].id + "Wrapper");
 
@@ -2667,8 +2667,8 @@ export async function application() {
             metSvg.style.display = "block";
           }
           else {
-            console.log("Erstelle neues SVG")
-            console.log(attribut)
+            //console.log("Erstelle neues SVG")
+            //console.log(attribut)
             metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             metSvg.setAttribute("viewBox", "0 0 100 100");
             metSvg.setAttribute("preserveAspectRatio", "none");
@@ -2803,7 +2803,7 @@ export async function application() {
           alleAttribute, alleWeiterenPersonen) {
           return function () {
             var src = metaImg.src;
-            console.log(src)
+            //console.log(src)
             var slashPos = src.lastIndexOf("/");
             var number = src.substr(slashPos + 1 + key.length);
             number = number.substr(0, number.lastIndexOf("."))
@@ -3241,6 +3241,7 @@ export async function application() {
         for (var a = 0; a < annos.length; a++) {
           if (annos[a].id.includes(name)) {
             annos[a].style.opacity = "1";
+            annos[a].style.fillOpacity = "0.1";
           }
         }
       }
@@ -3253,6 +3254,7 @@ export async function application() {
         for (var a = 0; a < annos.length; a++) {
           if (annos[a].id.includes(name)) {
             annos[a].style.opacity = null; //Regel weggenommen 
+            annos[a].style.fillOpacity = null;
           }
         }
       }
