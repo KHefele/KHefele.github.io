@@ -555,7 +555,7 @@ button { /* Hintergrund-Info-Buttons */
   border-radius: 4px;
   z-index: 1;
   right: 2%;
-  top: 2%;
+  bottom: 2%;
   padding: 15px 32px;
   text-decoration: none;
   font-size: 12px;
@@ -1043,6 +1043,18 @@ polygon:hover {
   height: 100%;
 }
 
+.motivUebersichtImageDiv {
+  position:relative;
+}
+
+.motivUebersichtImageDiv svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 
 
@@ -1137,6 +1149,7 @@ polygon:hover {
   background-color: rgba(0,0,0,1);
   margin: auto;
   border-radius: 3px;
+  min-height: 65%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

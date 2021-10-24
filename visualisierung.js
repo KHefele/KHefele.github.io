@@ -928,101 +928,6 @@ export async function application() {
   //--------------------------------------------//
 
 
-  function createMotivuebersichtModal(data) {
-
-    //Modal erstellen
-    var modalDiv = document.createElement("div");
-    modalDiv.style.display = "none";
-    modalDiv.style.animationPlayState = "running"
-    modalDiv.id = data.id + "MotivuebersichtModal";
-    modalDiv.className = "metamorphosenModal";
-    document.body.appendChild(modalDiv);
-
-    //Content darin erstellen
-    var modalContentDiv = document.createElement("div");
-    modalContentDiv.className = "metamorphosenModalContent";
-    modalDiv.appendChild(modalContentDiv);
-    modalContentDiv.style.width = "80%";
-    modalContentDiv.style.minHeight = "70%";
-
-    //Header erstellen
-    var divHeader = document.createElement("div"); //div anlegen
-    modalContentDiv.appendChild(divHeader);
-    divHeader.className = "metamorphosenModalHeader";
-    divHeader.appendChild(document.createElement("br"));
-    divHeader.appendChild(document.createElement("br"));
-    divHeader.appendChild(document.createElement("br"));
-    var ueberschrift = document.createElement("h1"); //h1 in div anlegen
-    ueberschrift.setAttribute("style", "display:inline");
-    ueberschrift.innerHTML = "Motivübersicht " + data.name;
-    divHeader.appendChild(ueberschrift);
-
-    modalContentDiv.appendChild(document.createElement("br"));
-    modalContentDiv.appendChild(document.createElement("br"));
-
-    //Bildersammlung erstellen
-    var imgDiv = document.createElement("div");
-    modalContentDiv.appendChild(imgDiv);
-
-    var fromLeft = 10;
-    var fromTop = 20;
-
-    for (key in data.imgInfo){
-
-      var imagecontainer = document.createElement("div");
-      imagecontainer.className = "imagecontainerMotivuebersicht";
-      imagecontainer.style.height = "160px";
-      imgDiv.appendChild(imagecontainer);
-
-      var bild = document.createElement("img");
-      imagecontainer.appendChild(bild);
-      //bild.style.width = "20%";
-      bild.style.height = "210px";
-      
-      bild.setAttribute("src", "Figuren/" + data.id + "/" + key + ".jpg");
-
-      var bildtitel = document.createElement("div");
-      bildtitel.innerHTML = data.imgInfo[key].alt;
-      bildtitel.style.fontFamily = "'Crimson Text', serif";
-      bildtitel.style.fontSize = "10px";
-      bildtitel.style.position = "absolute";
-      bildtitel.style.width = "calc(100% - 60px)";
-      imagecontainer.appendChild(bildtitel);
-
-      
-      if (fromLeft > 40){
-        
-        fromTop += 40;
-        fromLeft = 10;
-        
-      } else {
-        fromLeft += 30;
-      }   
-      
-
-    }
-    
-
-
-    //closeModal
-    var buttonSpan = document.createElement("span");
-    buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
-    buttonSpan.className = "closeModal"
-    buttonSpan.onclick = function () {
-      modalDiv.style.display = "none";
-      aktuellesModal = undefined;
-      //location hash
-      location.hash = "#" + aktuelleKategorie;
-    };
-    // buttonSpan.style.position = "fixed";
-    // buttonSpan.style.left = "76%";
-    // buttonSpan.style.top = "19%";
-    // buttonSpan.style.cursor = "pointer";
-    // modalContentDiv.appendChild(buttonSpan);
-  }
-
-  createMotivuebersichtModal(leude.lycaon);
-
   //--------------------------------------------//
   //           3. Modal-Aufrufe                 //
   //--------------------------------------------//
@@ -2648,6 +2553,70 @@ export async function application() {
         Object.keys(attribut).forEach(v => alleAttributeSet.add(v))
         Object.keys(weiterePersonen).forEach(v => alleWeiterenPersonenSet.add(v))
       }
+
+
+      function createPolygon(name, region, className, title, svg, width, height, motiv = false) {
+        var xs = region.shape_attributes.all_points_x;
+        var ys = region.shape_attributes.all_points_y;
+
+        var coordinates = "";
+
+        for (var x = 0; x < xs.length; x++) {
+          coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+        }
+
+        if (motiv) {
+          className += " " + name + "Pol";
+        }
+
+        var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+        metPolygons.setAttribute("points", coordinates);
+        //metPolygons.setAttribute("class", leude[key].id); // ??
+        metPolygons.setAttribute("class", className);
+        metPolygons.setAttribute("id", name + "Polygon");
+        svg.appendChild(metPolygons);
+
+        metPolygons.onmouseenter = function () {
+          var namenTabelle = leseWert(title);
+          
+          for (var y = 0; y < namenTabelle.length; y++) {
+            if (motiv) {
+              var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
+              for (var z = 0; z < andereMotive.length; z++) {
+                andereMotive[z].style.opacity = "1";
+                andereMotive[z].style.fillOpacity = "0.1";
+              }
+            }
+            var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+            for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+              zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
+              zugehörigeTextstellen[z].style.color = "#E3DED8";
+            }
+          }
+        }
+        metPolygons.onmouseleave = function () {
+          var namenTabelle = leseWert(title);
+          for (var y = 0; y < namenTabelle.length; y++) {
+            if (motiv) {
+              var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
+              for (var z = 0; z < andereMotive.length; z++) {
+                andereMotive[z].style.opacity = null;
+                andereMotive[z].style.fillOpacity = null;
+              }
+            }
+            var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+            for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+              zugehörigeTextstellen[z].style.backgroundColor = null;
+              zugehörigeTextstellen[z].style.color = null;
+            }
+          }
+        }
+
+        var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+        metPolygons.appendChild(polygonTitle);
+        polygonTitle.innerHTML = title;
+      }
+
       //Problemumgehung: Damit in der onload Function nicht nur auf Variablen des letzten Schleifendurchlaufs zugegriffen wird, werden die jeweiligen Variablen hier in eine Funktion "gebacken"
       //https://stackoverflow.com/questions/5040069/javascript-dynamically-assign-onclick-event-in-the-loop
       function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen, imgNumber) {
@@ -2680,67 +2649,24 @@ export async function application() {
             var width = event.currentTarget.naturalWidth;
 
 
-            function createPolygon(name, region, className, title) {
-              var xs = region.shape_attributes.all_points_x;
-              var ys = region.shape_attributes.all_points_y;
-
-              var coordinates = "";
-
-              for (var x = 0; x < xs.length; x++) {
-                coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
-              }
-
-              var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-              metPolygons.setAttribute("points", coordinates);
-              //metPolygons.setAttribute("class", leude[key].id); // ??
-              metPolygons.setAttribute("class", className);
-              metPolygons.setAttribute("id", name + "Polygon");
-              metSvg.appendChild(metPolygons);
-
-              metPolygons.onmouseenter = function () {
-                var namenTabelle = leseWert(title);
-                for (var y = 0; y < namenTabelle.length; y++) {
-                  var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-                  for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-                    zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
-                    zugehörigeTextstellen[z].style.color = "#E3DED8";
-                  }
-                }
-              }
-              metPolygons.onmouseleave = function () {
-                var namenTabelle = leseWert(title);
-                for (var y = 0; y < namenTabelle.length; y++) {
-                  var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-                  for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-                    zugehörigeTextstellen[z].style.backgroundColor = null;
-                    zugehörigeTextstellen[z].style.color = null;
-                  }
-                }
-              }
-
-              var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-              metPolygons.appendChild(polygonTitle);
-              polygonTitle.innerHTML = title;
-            }
-
             for (var verwandelterKey in verwandelter) {
               var region = verwandelter[verwandelterKey];
-              createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter);
+              createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter, metSvg, width, height);
             }
 
             for (var verwandlerKey in verwandler) {
               var region = verwandler[verwandlerKey];
-              createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler);
+              createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler, metSvg, width, height);
             }
 
             for (var attributKey in attribut) {
               var region = attribut[attributKey];
-              createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut);
+              createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut, metSvg, width, height);
             }
 
             for (var personKey in weiterePersonen) {
               var region = weiterePersonen[personKey];
-              createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson);
+              createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson, metSvg, width, height);
             }
           }
         }
@@ -2774,8 +2700,166 @@ export async function application() {
       }
 
 
+
+      function createMotivuebersichtModal(data, alleVerwandelten, alleVerwandler,
+        alleAttribute, alleWeiterenPersonen) {
+
+        //Modal erstellen
+        var modalDiv = document.createElement("div");
+        modalDiv.style.display = "none";
+        modalDiv.style.animationPlayState = "running"
+        modalDiv.id = data.id + "MotivuebersichtModal";
+        modalDiv.className = "metamorphosenModal";
+        document.body.appendChild(modalDiv);
+
+        //Content darin erstellen
+        var modalContentDiv = document.createElement("div");
+        modalContentDiv.className = "metamorphosenModalContent";
+        modalDiv.appendChild(modalContentDiv);
+        modalContentDiv.style.width = "80%";
+        modalContentDiv.style.minHeight = "70%";
+
+        //Header erstellen
+        var divHeader = document.createElement("div"); //div anlegen
+        modalContentDiv.appendChild(divHeader);
+        divHeader.className = "metamorphosenModalHeader";
+        divHeader.appendChild(document.createElement("br"));
+        divHeader.appendChild(document.createElement("br"));
+        divHeader.appendChild(document.createElement("br"));
+        var ueberschrift = document.createElement("h1"); //h1 in div anlegen
+        ueberschrift.setAttribute("style", "display:inline");
+        ueberschrift.innerHTML = "Motivübersicht " + data.name;
+        divHeader.appendChild(ueberschrift);
+
+        modalContentDiv.appendChild(document.createElement("br"));
+        modalContentDiv.appendChild(document.createElement("br"));
+
+        //Bildersammlung erstellen
+        var imgDiv = document.createElement("div");
+        modalContentDiv.appendChild(imgDiv);
+
+        var fromLeft = 10;
+        var fromTop = 20;
+
+        for (var key in data.imgInfo) {
+
+          var imagecontainer = document.createElement("div");
+          imagecontainer.className = "imagecontainerMotivuebersicht";
+          imagecontainer.style.height = "160px";
+          imgDiv.appendChild(imagecontainer);
+
+          var imageDiv = document.createElement("div");
+          imageDiv.className = "motivUebersichtImageDiv"
+          imagecontainer.appendChild(imageDiv);
+          var bild = document.createElement("img");
+          imageDiv.appendChild(bild);
+          //bild.style.width = "20%";
+          bild.style.height = "210px";
+
+          bild.setAttribute("src", "Figuren/" + data.id + "/" + key + ".jpg");
+
+
+          var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          svg.setAttribute("viewBox", "0 0 100 100");
+          svg.setAttribute("preserveAspectRatio", "none");
+
+          imageDiv.appendChild(svg);
+
+          function createBildOnLoadFunc(svg, alleVerwandelten, alleVerwandler,
+            alleAttribute, alleWeiterenPersonen) {
+            return function(event) {
+
+              var height = event.currentTarget.naturalHeight;
+              var width = event.currentTarget.naturalWidth;
+  
+              var src = event.target.src;
+              var slashPos = src.lastIndexOf("/");
+              var number = src.substr(slashPos + 1 + data.id.length);
+              number = number.substr(0, number.lastIndexOf("."))
+              if (number.length == 0) {
+                number = 0;
+              } else {
+                number = parseInt(number)
+              }
+  
+  
+              for (var verwandelterKey in alleVerwandelten[number]) {
+                var region = alleVerwandelten[number][verwandelterKey];
+                createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter, svg, width, height, true);
+              }
+  
+              for (var verwandlerKey in alleVerwandler[number]) {
+                var region = alleVerwandler[number][verwandlerKey];
+                createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler, svg, width, height, true);
+              }
+  
+              for (var attributKey in alleAttribute[number]) {
+                var region = alleAttribute[number][attributKey];
+                createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut, svg, width, height, true);
+              }
+  
+              for (var personKey in alleWeiterenPersonen[number]) {
+                var region = alleWeiterenPersonen[number][personKey];
+                createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson, svg, width, height, true);
+              }
+  
+            }
+          }
+
+          bild.onload = createBildOnLoadFunc(svg, alleVerwandelten,
+            alleVerwandler, alleAttribute, alleWeiterenPersonen)
+
+
+
+
+          var bildtitel = document.createElement("div");
+          bildtitel.innerHTML = data.imgInfo[key].alt;
+          bildtitel.style.fontFamily = "'Crimson Text', serif";
+          bildtitel.style.fontSize = "10px";
+          bildtitel.style.position = "absolute";
+          bildtitel.style.width = "calc(100% - 60px)";
+          imagecontainer.appendChild(bildtitel);
+
+
+          if (fromLeft > 40) {
+
+            fromTop += 40;
+            fromLeft = 10;
+
+          } else {
+            fromLeft += 30;
+          }
+
+
+        }
+
+
+
+        //closeModal
+        var buttonSpan = document.createElement("span");
+        buttonSpan.innerHTML = "<img src='Icons/iconmonstr-x-mark-1-240 (2).png' style='width: 15px;'>";
+        buttonSpan.className = "closeModal"
+        buttonSpan.onclick = function () {
+          modalDiv.style.display = "none";
+          aktuellesModal = undefined;
+          //location hash
+          location.hash = "#" + aktuelleKategorie;
+        };
+        // buttonSpan.style.position = "fixed";
+        // buttonSpan.style.left = "76%";
+        // buttonSpan.style.top = "19%";
+        // buttonSpan.style.cursor = "pointer";
+        // modalContentDiv.appendChild(buttonSpan);
+      }
+
+
+
+
       //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
       if (numInfos > 1) {
+
+        createMotivuebersichtModal(leude[key], alleVerwandelten, alleVerwandler,
+          alleAttribute, alleWeiterenPersonen);
 
         //Link-Img zur Motivübersicht
         var zurMotivuebersicht = document.createElement("img");
@@ -2784,11 +2868,16 @@ export async function application() {
         zurMotivuebersicht.title = "Zur Motivübersicht";
         zurMotivuebersicht.className = "zurMotivuebersicht";
         svgDiv.appendChild(zurMotivuebersicht);
-        zurMotivuebersicht.onclick = function () {
-          var lycaonMotivuebersichtModal = document.getElementById("lycaonMotivuebersichtModal");
-          lycaonMotivuebersichtModal.style.display = "block";
-          lycaonMotivuebersichtModal.style.animationPlayState = "running";
+
+        function createMotivUbersichtFunc(key) {
+          return function () {
+            var motivuebersichtModal = document.getElementById(key + "MotivuebersichtModal");
+            motivuebersichtModal.style.display = "block";
+            motivuebersichtModal.style.animationPlayState = "running";
+          }
         }
+
+        zurMotivuebersicht.onclick = createMotivUbersichtFunc(key)
 
         //PrevImage
         var slidePrevDiv = document.createElement("div");

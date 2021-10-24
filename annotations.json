@@ -9,7 +9,7 @@
           "all_points_x": [ 283, 338, 464 ],
           "all_points_y": [ 347, 276, 370 ]
         },
-        "region_attributes": { "Verwandler": "Jupiter" }
+        "region_attributes": { "Verwandler": "Iupiter" }
       }
     ],
     "file_attributes": {}
@@ -368,7 +368,7 @@
           "all_points_y": [ 1678, 1450, 1243, 1077, 1004, 906, 852, 888, 993, 1055, 1120, 1258, 1323, 1370, 1359, 1494, 1700, 1820, 1881, 1910, 1838, 1881, 1834, 1823 ]
         },
         "region_attributes": {
-          "Verwandler": "Jupiter",
+          "Verwandler": "Iupiter",
           "Verwandelter": "",
           "Attribut": "",
           "WeiterePerson": ""
