@@ -3484,12 +3484,12 @@ export async function application() {
     aNavbar.className = "buecherLinks";
     aNavbar.id = "buch" + b;
     aNavbar.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + (parseInt(b)+1) + ". Buch";
-    aNavbar.style.width = buecherLaenge[b] + "%";
+    aNavbar.style.width = buecherLaenge[b] *0.9 + "%";
     aNavbar.title = "Klick, um zu Buch " + (parseInt(b)+1) + " zu gelangen"
     navbarBuecher.appendChild(aNavbar);
 
     //ONMOUSEOVER
-    aNavbar.onmouseover = (event) => {
+    aNavbar.onmouseenter = (event) => {
       var id = event.currentTarget.id;
       document.getElementById(id).style.width = document.getElementById(id).clientWidth+20 + "px";
 
@@ -3503,9 +3503,9 @@ export async function application() {
     }
 
     //ONMOUSEOUT
-    aNavbar.onmouseout = (event) => {
+    aNavbar.onmouseleave = (event) => {
       var id = event.currentTarget.id;
-      document.getElementById(id).style.width = buecherLaenge[parseInt(id.substr(4))] + "%";
+      document.getElementById(id).style.width = buecherLaenge[parseInt(id.substr(4))]*0.9 + "%";
       //document.getElementById(id).childNodes[0].style.display = "none";
     }
 
@@ -3532,12 +3532,12 @@ export async function application() {
     aNavbarII.className = "kapitelLinks";
     aNavbarII.id = "buch0kapitel" + b;
     aNavbarII.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + metamorphosen[kapitelLinksBuch1[b]].name;
-    aNavbarII.style.width = (kapitelLaenge1[b]/gesamtLaengeKapitel1*100) + "%";
+    aNavbarII.style.width = (kapitelLaenge1[b]/gesamtLaengeKapitel1*100) *0.8 + "%";
     aNavbarII.title = "Klick, um zu Kapitel " + (parseInt(b)+1) + " zu gelangen"
     navbarKapitel.appendChild(aNavbarII);
 
     //ONMOUSEOVER: Breite vergrößern 
-    aNavbarII.onmouseover = (event) => {
+    aNavbarII.onmouseenter = (event) => {
       var id = event.currentTarget.id;
       var gesElement = document.getElementById(id);
 
@@ -3558,9 +3558,9 @@ export async function application() {
     }
 
     //ONMOUSEOUT: Breite zurücksetzen
-    aNavbarII.onmouseout = (event) => {
+    aNavbarII.onmouseleave = (event) => {
       var id = event.currentTarget.id;
-      document.getElementById(id).style.width = (kapitelLaenge1[parseInt(id.substr(12))]/gesamtLaengeKapitel1*100) + "%";
+      document.getElementById(id).style.width = (kapitelLaenge1[parseInt(id.substr(12))]/gesamtLaengeKapitel1*100)*0.8 + "%";
       //document.getElementById(id).childNodes[0].style.display = "none";
     }
 
