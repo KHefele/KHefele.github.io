@@ -2726,41 +2726,81 @@ export async function application() {
         metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexWeiterePersonen, "<dfn class='tooltip $& weiterePersonenTrigger textTrigger'>$&</dfn>")
       }
 
-      //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
-      if (leude[key].id === "lycaon"){
-        
-        //Link-Img zur Motivübersicht
-        var zurMotivuebersicht = document.createElement("img");
-        zurMotivuebersicht.setAttribute("src", "Icons/four-squares-button-of-view-options.png");
-        zurMotivuebersicht.style.width = "8%";
-        zurMotivuebersicht.title = "Zur Motivübersicht";
-        zurMotivuebersicht.className = "zurMotivuebersicht";
-        svgDiv.appendChild(zurMotivuebersicht);
-        zurMotivuebersicht.onclick = function () {
-          var lycaonMotivuebersichtModal = document.getElementById("lycaonMotivuebersichtModal");
-          lycaonMotivuebersichtModal.style.display = "block";
-          lycaonMotivuebersichtModal.style.animationPlayState = "running";
+
+      var imgInfos = leude[key].imgInfo;
+      if (imgInfos != undefined) {
+        var numInfos = Object.keys(imgInfos).length;
+        console.log(numInfos)
+
+        //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
+        if (numInfos > 1) {
+
+          //Link-Img zur Motivübersicht
+          var zurMotivuebersicht = document.createElement("img");
+          zurMotivuebersicht.setAttribute("src", "Icons/four-squares-button-of-view-options.png");
+          zurMotivuebersicht.style.width = "8%";
+          zurMotivuebersicht.title = "Zur Motivübersicht";
+          zurMotivuebersicht.className = "zurMotivuebersicht";
+          svgDiv.appendChild(zurMotivuebersicht);
+          zurMotivuebersicht.onclick = function () {
+            var lycaonMotivuebersichtModal = document.getElementById(key + "MotivuebersichtModal");
+            lycaonMotivuebersichtModal.style.display = "block";
+            lycaonMotivuebersichtModal.style.animationPlayState = "running";
+          }
+
+          //PrevImage
+          var slidePrevDiv = document.createElement("div");
+          slidePrevDiv.innerHTML = "&#10094;";
+          slidePrevDiv.className = "prevImage";
+          slidePrevDiv.id = leude[key].id + "prev";
+          slidePrevDiv.title = "vorheriges Bild";
+          svgDiv.appendChild(slidePrevDiv);
+
+          function createSlideFunc(key, metaImg, count, richtung) {
+            return function () {
+              var src = metaImg.src;
+              console.log(src)
+              var slashPos = src.lastIndexOf("/");
+              var number = src.substr(slashPos + 1 + key.length);
+              number = number.substr(0, number.lastIndexOf("."))
+              if (number.length == 0) {
+                number = 0;
+              } else {
+                number = parseInt(number)
+              }
+              number = number + richtung
+              if (number < 0) {
+                number = count - 1;
+              } else if (number >= count) {
+                number = 0;
+              }
+
+              if (number == 0) {
+                number = "";
+              }
+
+              var neuerDateiname = key + number + ".jpg"
+              src = src.substr(0, slashPos + 1) + neuerDateiname;
+
+              metaImg.src = src;
+            };
+          }
+
+          slidePrevDiv.onclick = createSlideFunc(key, metaImg, numInfos, -1)
+
+          //NextImage
+          var slideNextDiv = document.createElement("div");
+          slideNextDiv.innerHTML = "&#10095";
+          slideNextDiv.className = "nextImage";
+          slideNextDiv.title = "nächstes Bild";
+          svgDiv.appendChild(slideNextDiv);
+
+          slideNextDiv.onclick = createSlideFunc(key, metaImg, numInfos, 1)
+
+
         }
 
-        //PrevImage
-        var slidePrevDiv = document.createElement("div");
-        slidePrevDiv.innerHTML = "&#10094;";
-        slidePrevDiv.className = "prevImage";
-        slidePrevDiv.id = leude[key].id + "prev";
-        slidePrevDiv.title = "vorheriges Bild";
-        svgDiv.appendChild(slidePrevDiv);
-    
-        //NextImage
-        var slideNextDiv = document.createElement("div");
-        slideNextDiv.innerHTML = "&#10095";
-        slideNextDiv.className = "nextImage";
-        slideNextDiv.title = "nächstes Bild";
-        svgDiv.appendChild(slideNextDiv);
-
-
       }
-
-
 
 
       //bildTitel = leude[key].alt;
@@ -3035,17 +3075,6 @@ export async function application() {
 
   }
 
-
-
-  var prevButtons = document.getElementsByClassName("prevImage");
-  for (var button in prevButtons){
-    if (prevButtons[button].id != undefined){ //wieso sind überhaupt welche undefined?
-      prevButtons[button].onclick = function (){
-        //var id = prevButtons[button].id.substr(0,prevButtons[button].id.length-4);
-        //console.log(prevButtons[button].id)
-      }
-    }
-  }
 
 
   //Footer Div
