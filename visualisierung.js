@@ -2579,228 +2579,275 @@ export async function application() {
       metaImg.id = leude[key].id + "Bild";
 
 
-      
-      var regions = annotationsCleanedUp[leude[key].id].regions;
-      var verwandelter = {};
-      var verwandler = {};
-      var attribut = {};
-      var weiterePersonen = {};
-
       function leseWert(wert) {
-          if (wert == "" || wert == undefined) {
-            return [];
-          }
-          //console.log(wert)
-          var werte = wert.split(",");
-          //console.log(werte)
-          for (var i = 0; i < werte.length; ++i) {
-            werte[i] = werte[i].trim();
-          }
-          return werte;
+        if (wert == "" || wert == undefined) {
+          return [];
+        }
+        //console.log(wert)
+        var werte = wert.split(",");
+        //console.log(werte)
+        for (var i = 0; i < werte.length; ++i) {
+          werte[i] = werte[i].trim();
+        }
+        return werte;
       }
 
-      regions.forEach(region => {
-        leseWert(region.region_attributes.Verwandler).forEach(w => {
-          verwandler[w] = region;
-        });
-        leseWert(region.region_attributes.Verwandelter).forEach(w => {
-          verwandelter[w] = region;
-        });
-        leseWert(region.region_attributes.Attribut).forEach(w => {
-          attribut[w] = region;
-        });
-        leseWert(region.region_attributes.WeiterePerson).forEach(w => {
-          weiterePersonen[w] = region;
-        });
-      });
+      function getRegions(filename) {
+        var regions = annotationsCleanedUp[filename].regions;
+        var verwandelter = {};
+        var verwandler = {};
+        var attribut = {};
+        var weiterePersonen = {};
 
+        regions.forEach(region => {
+          leseWert(region.region_attributes.Verwandler).forEach(w => {
+            verwandler[w] = region;
+          });
+          leseWert(region.region_attributes.Verwandelter).forEach(w => {
+            verwandelter[w] = region;
+          });
+          leseWert(region.region_attributes.Attribut).forEach(w => {
+            attribut[w] = region;
+          });
+          leseWert(region.region_attributes.WeiterePerson).forEach(w => {
+            weiterePersonen[w] = region;
+          });
+        });
+
+        return [verwandler, verwandelter, attribut, weiterePersonen];
+      }
+      
+      var alleVerwandler = [];
+      var alleVerwandelten = [];
+      var alleAttribute = []; // [["Feuer" -> { Polygon }, "Blitz" -> { Polygon }], ["Feuer", "Bratwurst"]]
+      var alleWeiterenPersonen = [];
+
+      var alleVerwandlerSet = new Set()
+      var alleVerwandeltenSet = new Set()
+      var alleAttributeSet = new Set()
+      var alleWeiterenPersonenSet = new Set()
+
+      var imgInfos = leude[key].imgInfo;
+      var numInfos = 1;
+      if (imgInfos != undefined) {
+        numInfos = Object.keys(imgInfos).length;
+      }
+
+      for (var info = 0; info < numInfos; info++) {
+        var number = "";
+        if (info > 0) {
+          number += info;
+        }
+        var [verwandler, verwandelter, attribut, weiterePersonen] = getRegions(leude[key].id + number);
+        alleVerwandler.push(verwandler);
+        alleVerwandelten.push(verwandelter);
+        alleAttribute.push(attribut);
+        alleWeiterenPersonen.push(weiterePersonen);
+
+        Object.keys(verwandler).forEach(v => alleVerwandlerSet.add(v))
+        Object.keys(verwandelter).forEach(v => alleVerwandeltenSet.add(v))
+        Object.keys(attribut).forEach(v => alleAttributeSet.add(v))
+        Object.keys(weiterePersonen).forEach(v => alleWeiterenPersonenSet.add(v))
+      }
       //Problemumgehung: Damit in der onload Function nicht nur auf Variablen des letzten Schleifendurchlaufs zugegriffen wird, werden die jeweiligen Variablen hier in eine Funktion "gebacken"
       //https://stackoverflow.com/questions/5040069/javascript-dynamically-assign-onclick-event-in-the-loop
-      function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen) {
+      function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen, imgNumber) {
         return function (event) {
           var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
 
-          var metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          metSvg.setAttribute("viewBox", "0 0 100 100");
-          metSvg.setAttribute("preserveAspectRatio", "none");
-
           var div = document.getElementById(id + "SvgDiv");
-          div.appendChild(metSvg);
+
+          var alleSvgs = div.getElementsByTagName("svg");
+          for (var i = 0; i < alleSvgs.length; ++i) {
+            alleSvgs[i].style.display = "none";
+          }
+
+          var metSvg = document.getElementById(id + "Svg" + imgNumber);
+          if (metSvg != undefined) {
+            metSvg.style.display = "block";
+          }
+          else {
+            console.log("Erstelle neues SVG")
+            console.log(attribut)
+            metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            metSvg.setAttribute("viewBox", "0 0 100 100");
+            metSvg.setAttribute("preserveAspectRatio", "none");
+            metSvg.setAttribute("id", id + "Svg" + imgNumber);
+
+            div.appendChild(metSvg);
 
 
-          var height = event.currentTarget.naturalHeight;
-          var width = event.currentTarget.naturalWidth;
+            var height = event.currentTarget.naturalHeight;
+            var width = event.currentTarget.naturalWidth;
 
 
-          function createPolygon(name, region, className, title) {
-            var xs = region.shape_attributes.all_points_x;
-            var ys = region.shape_attributes.all_points_y;
+            function createPolygon(name, region, className, title) {
+              var xs = region.shape_attributes.all_points_x;
+              var ys = region.shape_attributes.all_points_y;
 
-            var coordinates = "";
+              var coordinates = "";
 
-            for (var x = 0; x < xs.length; x++) {
-              coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
-            }
+              for (var x = 0; x < xs.length; x++) {
+                coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+              }
 
-            var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-            metPolygons.setAttribute("points", coordinates);
-            //metPolygons.setAttribute("class", leude[key].id); // ??
-            metPolygons.setAttribute("class", className);
-            metPolygons.setAttribute("id", name + "Polygon");
-            metSvg.appendChild(metPolygons);
+              var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+              metPolygons.setAttribute("points", coordinates);
+              //metPolygons.setAttribute("class", leude[key].id); // ??
+              metPolygons.setAttribute("class", className);
+              metPolygons.setAttribute("id", name + "Polygon");
+              metSvg.appendChild(metPolygons);
 
-            metPolygons.onmouseenter = function(){
-              var namenTabelle = leseWert(title);
-              for (var y = 0; y < namenTabelle.length; y++) {
-                var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-                for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-                  zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
-                  zugehörigeTextstellen[z].style.color = "#E3DED8";
+              metPolygons.onmouseenter = function () {
+                var namenTabelle = leseWert(title);
+                for (var y = 0; y < namenTabelle.length; y++) {
+                  var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+                  for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+                    zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
+                    zugehörigeTextstellen[z].style.color = "#E3DED8";
+                  }
                 }
               }
-            }
-            metPolygons.onmouseleave = function(){
-              var namenTabelle = leseWert(title);
-              for (var y = 0; y < namenTabelle.length; y++) {
-                var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-                for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-                  zugehörigeTextstellen[z].style.backgroundColor = null;
-                  zugehörigeTextstellen[z].style.color = null;
+              metPolygons.onmouseleave = function () {
+                var namenTabelle = leseWert(title);
+                for (var y = 0; y < namenTabelle.length; y++) {
+                  var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+                  for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+                    zugehörigeTextstellen[z].style.backgroundColor = null;
+                    zugehörigeTextstellen[z].style.color = null;
+                  }
                 }
               }
+
+              var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+              metPolygons.appendChild(polygonTitle);
+              polygonTitle.innerHTML = title;
             }
 
-            var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-            metPolygons.appendChild(polygonTitle);
-            polygonTitle.innerHTML = title;
-          }
+            for (var verwandelterKey in verwandelter) {
+              var region = verwandelter[verwandelterKey];
+              createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter);
+            }
 
-          for (var verwandelterKey in verwandelter) {
-            var region = verwandelter[verwandelterKey];
-            createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter);
-          }
+            for (var verwandlerKey in verwandler) {
+              var region = verwandler[verwandlerKey];
+              createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler);
+            }
 
-          for (var verwandlerKey in verwandler) {
-            var region = verwandler[verwandlerKey];
-            createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler);
-          }
+            for (var attributKey in attribut) {
+              var region = attribut[attributKey];
+              createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut);
+            }
 
-          for (var attributKey in attribut) {
-            var region = attribut[attributKey];
-            createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut);
-          }
-
-          for (var personKey in weiterePersonen) {
-            var region = weiterePersonen[personKey];
-            createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson);
+            for (var personKey in weiterePersonen) {
+              var region = weiterePersonen[personKey];
+              createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson);
+            }
           }
         }
       }
 
 
-      metaImg.onload = createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen);
-
-
+      metaImg.onload = createOnLoadFunction(alleVerwandelten[0], alleVerwandler[0], alleAttribute[0], alleWeiterenPersonen[0], 0);
 
 
       //alle Verwandler- und Verwandeltennamen zusammen in eine Suchanfrage, durch Argument "g" werden alle entsprechenden Begriffe, nicht nur der erste gesucht
 
-      var verwandlerKeys = Object.keys(verwandler);
+      var verwandlerKeys = Array.from(alleVerwandlerSet);
       if (verwandlerKeys.length > 0){
         var regexVerwandler = new RegExp(verwandlerKeys.join("|"), "g");
         metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandler, "<dfn class='tooltip $& verwandlerTrigger textTrigger'>$&</dfn>") //style='background-color: rgba(115, 48, 48, 0.3)
       }
-      var verwandelteKeys = Object.keys(verwandelter);
+      var verwandelteKeys = Array.from(alleVerwandeltenSet);
       if (verwandelteKeys.length > 0){
         var regexVerwandelte = new RegExp(verwandelteKeys.join("|"), "g");
         metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexVerwandelte, "<dfn class='tooltip $& verwandelterTrigger textTrigger'>$&</dfn>")
       }
-      var attributKeys = Object.keys(attribut);
+      var attributKeys = Array.from(alleAttributeSet);
       if (attributKeys.length > 0){
         var regexAttribute = new RegExp(attributKeys.join("|"), "g");
         metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexAttribute, "<dfn class='tooltip $& attributeTrigger textTrigger'>$&</dfn>")
       }
-      var weiterePersonenKeys = Object.keys(weiterePersonen);
+      var weiterePersonenKeys = Array.from(alleWeiterenPersonenSet);
       if (weiterePersonenKeys.length > 0){
         var regexWeiterePersonen = new RegExp(weiterePersonenKeys.join("|"), "g");
         metamorphosen[key].text = metamorphosen[key].text.replaceAll(regexWeiterePersonen, "<dfn class='tooltip $& weiterePersonenTrigger textTrigger'>$&</dfn>")
       }
 
 
-      var imgInfos = leude[key].imgInfo;
-      if (imgInfos != undefined) {
-        var numInfos = Object.keys(imgInfos).length;
-        console.log(numInfos)
+      //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
+      if (numInfos > 1) {
 
-        //Exemplarisch anhand Lycaon: Mehrere Bilder neben Text
-        if (numInfos > 1) {
-
-          //Link-Img zur Motivübersicht
-          var zurMotivuebersicht = document.createElement("img");
-          zurMotivuebersicht.setAttribute("src", "Icons/four-squares-button-of-view-options.png");
-          zurMotivuebersicht.style.width = "8%";
-          zurMotivuebersicht.title = "Zur Motivübersicht";
-          zurMotivuebersicht.className = "zurMotivuebersicht";
-          svgDiv.appendChild(zurMotivuebersicht);
-          zurMotivuebersicht.onclick = function () {
-            var lycaonMotivuebersichtModal = document.getElementById(key + "MotivuebersichtModal");
-            lycaonMotivuebersichtModal.style.display = "block";
-            lycaonMotivuebersichtModal.style.animationPlayState = "running";
-          }
-
-          //PrevImage
-          var slidePrevDiv = document.createElement("div");
-          slidePrevDiv.innerHTML = "&#10094;";
-          slidePrevDiv.className = "prevImage";
-          slidePrevDiv.id = leude[key].id + "prev";
-          slidePrevDiv.title = "vorheriges Bild";
-          svgDiv.appendChild(slidePrevDiv);
-
-          function createSlideFunc(key, metaImg, count, richtung) {
-            return function () {
-              var src = metaImg.src;
-              console.log(src)
-              var slashPos = src.lastIndexOf("/");
-              var number = src.substr(slashPos + 1 + key.length);
-              number = number.substr(0, number.lastIndexOf("."))
-              if (number.length == 0) {
-                number = 0;
-              } else {
-                number = parseInt(number)
-              }
-              number = number + richtung
-              if (number < 0) {
-                number = count - 1;
-              } else if (number >= count) {
-                number = 0;
-              }
-
-              if (number == 0) {
-                number = "";
-              }
-
-              var neuerDateiname = key + number + ".jpg"
-              src = src.substr(0, slashPos + 1) + neuerDateiname;
-
-              metaImg.src = src;
-            };
-          }
-
-          slidePrevDiv.onclick = createSlideFunc(key, metaImg, numInfos, -1)
-
-          //NextImage
-          var slideNextDiv = document.createElement("div");
-          slideNextDiv.innerHTML = "&#10095";
-          slideNextDiv.className = "nextImage";
-          slideNextDiv.title = "nächstes Bild";
-          svgDiv.appendChild(slideNextDiv);
-
-          slideNextDiv.onclick = createSlideFunc(key, metaImg, numInfos, 1)
-
-
+        //Link-Img zur Motivübersicht
+        var zurMotivuebersicht = document.createElement("img");
+        zurMotivuebersicht.setAttribute("src", "Icons/four-squares-button-of-view-options.png");
+        zurMotivuebersicht.style.width = "8%";
+        zurMotivuebersicht.title = "Zur Motivübersicht";
+        zurMotivuebersicht.className = "zurMotivuebersicht";
+        svgDiv.appendChild(zurMotivuebersicht);
+        zurMotivuebersicht.onclick = function () {
+          var lycaonMotivuebersichtModal = document.getElementById(key + "MotivuebersichtModal");
+          lycaonMotivuebersichtModal.style.display = "block";
+          lycaonMotivuebersichtModal.style.animationPlayState = "running";
         }
 
+        //PrevImage
+        var slidePrevDiv = document.createElement("div");
+        slidePrevDiv.innerHTML = "&#10094;";
+        slidePrevDiv.className = "prevImage";
+        slidePrevDiv.id = leude[key].id + "prev";
+        slidePrevDiv.title = "vorheriges Bild";
+        svgDiv.appendChild(slidePrevDiv);
+
+        function createSlideFunc(key, metaImg, count, richtung, alleVerwandelten, alleVerwandler,
+          alleAttribute, alleWeiterenPersonen) {
+          return function () {
+            var src = metaImg.src;
+            console.log(src)
+            var slashPos = src.lastIndexOf("/");
+            var number = src.substr(slashPos + 1 + key.length);
+            number = number.substr(0, number.lastIndexOf("."))
+            if (number.length == 0) {
+              number = 0;
+            } else {
+              number = parseInt(number)
+            }
+            number = number + richtung
+            if (number < 0) {
+              number = count - 1;
+            } else if (number >= count) {
+              number = 0;
+            }
+
+            var n = number;
+            if (number == 0) {
+              number = "";
+            }
+
+            var neuerDateiname = key + number + ".jpg"
+            src = src.substr(0, slashPos + 1) + neuerDateiname;
+
+            metaImg.src = src;
+            metaImg.onload = createOnLoadFunction(alleVerwandelten[n], alleVerwandler[n], alleAttribute[n], alleWeiterenPersonen[n], n);
+          };
+        }
+
+        slidePrevDiv.onclick = createSlideFunc(key, metaImg, numInfos, -1, 
+          alleVerwandelten, alleVerwandler, alleAttribute, alleWeiterenPersonen)
+
+        //NextImage
+        var slideNextDiv = document.createElement("div");
+        slideNextDiv.innerHTML = "&#10095";
+        slideNextDiv.className = "nextImage";
+        slideNextDiv.title = "nächstes Bild";
+        svgDiv.appendChild(slideNextDiv);
+
+        slideNextDiv.onclick = createSlideFunc(key, metaImg, numInfos, 1,
+          alleVerwandelten, alleVerwandler, alleAttribute, alleWeiterenPersonen)
+
+
       }
+
 
 
       //bildTitel = leude[key].alt;
