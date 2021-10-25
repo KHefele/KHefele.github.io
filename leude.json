@@ -321,7 +321,7 @@
         "id": "echo",
         "name": "Echo",
 
-        "width": "50",
+        "width": "75",
         "taxonomie": "elemente",
         "geschlecht": "Weiblich",
         "koordinaten": {
@@ -331,9 +331,9 @@
             }
         },
 
-        "source": "https://de.wikipedia.org/wiki/Echo_(Mythologie)#/media/Datei:Alexandre_Cabanel_-_Echo.jpg",
-        "sourcename": "Wikipedia",
-        "alt": "Alexandre Cabanel, Echo, 1887",
+        "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/Echo_and_Narcissus_-_John_William_Waterhouse.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "John William Waterhouse, Echo and Narcissus, 1903",
         
         "wikidata": "Q207368",
         "ovMet": "3,339-510",
@@ -479,7 +479,7 @@
         
         "wikidata": "Q643456",
         "ovMet": "5,572-641",
-        "verwandlung": "Quelle",
+        "verwandlung": "Wolke",
         "grund": "Schutz", 
         "verwandler": "Diana",
         "ort": "?",
