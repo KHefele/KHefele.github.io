@@ -289,6 +289,237 @@ export async function application() {
 
 
 
+  //vom VGG-Annotator vergebene keys bereinigen, damit keys wieder den Einträgen unter leude entspricht
+  var annotationsCleanedUp = {}
+  for (var key in annotations) {
+    var indexOfDot = key.indexOf(".");
+    var newKey = key.substr(0, indexOfDot);
+    annotationsCleanedUp[newKey] = annotations[key];
+  }
+//console.log(annotationsCleanedUp)
+
+  
+
+function leseWert(wert) {
+  if (wert == "" || wert == undefined) {
+    return [];
+  }
+  //console.log(wert)
+  var werte = wert.split(",");
+  //console.log(werte)
+  for (var i = 0; i < werte.length; ++i) {
+    werte[i] = werte[i].trim();
+  }
+  return werte;
+}
+
+function getRegions(filename) {
+  var verwandelter = {};
+  var verwandler = {};
+  var attribut = {};
+  var weiterePersonen = {};
+
+  if (filename in annotationsCleanedUp) {
+    var regions = annotationsCleanedUp[filename].regions;
+
+    regions.forEach(region => {
+      leseWert(region.region_attributes.Verwandler).forEach(w => {
+        verwandler[w] = region;
+      });
+      leseWert(region.region_attributes.Verwandelter).forEach(w => {
+        verwandelter[w] = region;
+      });
+      leseWert(region.region_attributes.Attribut).forEach(w => {
+        attribut[w] = region;
+      });
+      leseWert(region.region_attributes.WeiterePerson).forEach(w => {
+        weiterePersonen[w] = region;
+      });
+    });
+  }
+  return [verwandler, verwandelter, attribut, weiterePersonen];
+}
+
+
+
+function createPolygon(name, region, className, title, svg, width, height, motiv = false) {
+  var xs = region.shape_attributes.all_points_x;
+  var ys = region.shape_attributes.all_points_y;
+
+  var coordinates = "";
+
+  for (var x = 0; x < xs.length; x++) {
+    coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
+  }
+
+  if (motiv) {
+    className += " " + name + "Pol";
+  }
+
+  var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  metPolygons.setAttribute("points", coordinates);
+  //metPolygons.setAttribute("class", leude[key].id); // ??
+  metPolygons.setAttribute("class", className);
+  metPolygons.setAttribute("id", name + "Polygon");
+  svg.appendChild(metPolygons);
+
+  metPolygons.onmouseenter = function () {
+    var namenTabelle = leseWert(title);
+    
+    for (var y = 0; y < namenTabelle.length; y++) {
+      if (motiv) {
+        var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
+        for (var z = 0; z < andereMotive.length; z++) {
+          andereMotive[z].style.opacity = "1";
+          andereMotive[z].style.fillOpacity = "0.1";
+        }
+      }
+      var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+      for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+        zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
+        zugehörigeTextstellen[z].style.color = "#E3DED8";
+      }
+    }
+  }
+  metPolygons.onmouseleave = function () {
+    var namenTabelle = leseWert(title);
+    for (var y = 0; y < namenTabelle.length; y++) {
+      if (motiv) {
+        var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
+        for (var z = 0; z < andereMotive.length; z++) {
+          andereMotive[z].style.opacity = null;
+          andereMotive[z].style.fillOpacity = null;
+        }
+      }
+      var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
+      for (var z = 0; z < zugehörigeTextstellen.length; z++) {
+        zugehörigeTextstellen[z].style.backgroundColor = null;
+        zugehörigeTextstellen[z].style.color = null;
+      }
+    }
+  }
+
+  var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
+  metPolygons.appendChild(polygonTitle);
+  polygonTitle.innerHTML = title;
+}
+
+//Problemumgehung: Damit in der onload Function nicht nur auf Variablen des letzten Schleifendurchlaufs zugegriffen wird, werden die jeweiligen Variablen hier in eine Funktion "gebacken"
+//https://stackoverflow.com/questions/5040069/javascript-dynamically-assign-onclick-event-in-the-loop
+function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen, imgNumber) {
+  return function (event) {
+    var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
+
+    var div = document.getElementById(id + "SvgDiv");
+
+    var alleSvgs = div.getElementsByTagName("svg");
+    for (var i = 0; i < alleSvgs.length; ++i) {
+      alleSvgs[i].style.display = "none";
+    }
+
+    var metSvg = document.getElementById(id + "Svg" + imgNumber);
+    if (metSvg != undefined) {
+      metSvg.style.display = "block";
+    }
+    else {
+      //console.log("Erstelle neues SVG")
+      //console.log(attribut)
+      metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      metSvg.setAttribute("viewBox", "0 0 100 100");
+      metSvg.setAttribute("preserveAspectRatio", "none");
+      metSvg.setAttribute("id", id + "Svg" + imgNumber);
+
+      div.appendChild(metSvg);
+
+
+      var height = event.currentTarget.naturalHeight;
+      var width = event.currentTarget.naturalWidth;
+
+
+      for (var verwandelterKey in verwandelter) {
+        var region = verwandelter[verwandelterKey];
+        createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter, metSvg, width, height);
+      }
+
+      for (var verwandlerKey in verwandler) {
+        var region = verwandler[verwandlerKey];
+        createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler, metSvg, width, height);
+      }
+
+      for (var attributKey in attribut) {
+        var region = attribut[attributKey];
+        createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut, metSvg, width, height);
+      }
+
+      for (var personKey in weiterePersonen) {
+        var region = weiterePersonen[personKey];
+        createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson, metSvg, width, height);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+//Tabelle mit allen keys aus dem metamorphosen.json anlegen
+var keyTabelle = [];
+for (var key in metamorphosen) {
+  keyTabelle.push(key);
+}
+
+var verwandlerProPerson = {};
+var verwandelteProPerson = {};
+var attributeProPerson = {};
+var weiterePersonenProPerson = {};
+
+//Schleife durch alle keys (aus metamorphosen.json)
+for (var k = 0; k < keyTabelle.length; k++) {
+  var key = keyTabelle[k];
+
+  //wenn es sich um eine Figurengeschichte handelt, wird diese hier eingefügt (ansonsten Platzhalter-Bild)
+  if (key in leude) {
+
+    var alleVerwandler = [];
+    var alleVerwandelten = [];
+    var alleAttribute = []; // [["Feuer" -> { Polygon }, "Blitz" -> { Polygon }], ["Feuer", "Bratwurst"]]
+    var alleWeiterenPersonen = [];
+
+    var imgInfos = leude[key].imgInfo;
+    var numInfos = 1;
+    if (imgInfos != undefined) {
+      numInfos = Object.keys(imgInfos).length;
+    }
+
+    for (var info = 0; info < numInfos; info++) {
+      var number = "";
+      if (info > 0) {
+        number += info;
+      }
+      var [verwandler, verwandelter, attribut, weiterePersonen] = getRegions(leude[key].id + number);
+      alleVerwandler.push(verwandler);
+      alleVerwandelten.push(verwandelter);
+      alleAttribute.push(attribut);
+      alleWeiterenPersonen.push(weiterePersonen);
+    }
+
+    verwandlerProPerson[key] = alleVerwandler;
+    verwandelteProPerson[key] = alleVerwandelten;
+    attributeProPerson[key] = alleAttribute;
+    weiterePersonenProPerson[key] = alleWeiterenPersonen;
+
+  }
+}
+
+
+
+
 
 
 
@@ -724,18 +955,18 @@ export async function application() {
 
     var tableCol = document.createElement("td");
     tableCol.className = "hide-under-1200px";
+    tableCol.style.padding = "0";
     tableRow.appendChild(tableCol);
+    
+    
+    var imageDiv = document.createElement("div");
+    imageDiv.className = "motivUebersichtImageDiv"
+    imageDiv.style.display = "table-row";
+    tableCol.appendChild(imageDiv);
 
-    //Nur bei großer Ansicht über 1200px
-    var imgLink = document.createElement("a"); //ANPASSEN
-    //var imgSource = data.source;
-    //<a href="bild.jpg" target="_blank"><img height="200px" width="200px" src="bild.jpg"/></a>
-    imgLink.setAttribute("href", "Figuren/" + data.id + "/" + data.id + ".jpg");
-    imgLink.setAttribute("target", "_blank");
-    //console.log(imgLink);
-    tableCol.appendChild(imgLink);
+
     var img = document.createElement("img");
-    imgLink.appendChild(img);
+    imageDiv.appendChild(img);
     if (data.id == "lycaon"){
       imgKlein.alt = "Jan Cossiers, Lycaon, 1640";
       imgKlein.title = "Jan Cossiers, Lycaon, 1640";
@@ -744,6 +975,7 @@ export async function application() {
       imgKlein.title = data.alt;
     }
     img.src = "Figuren/" + data.id + "/" + data.id + ".jpg";
+    img.id = data.id + "bla";
     if (img.naturalWidth > img.naturalHeight) {
       img.width = "300";
       //tableCol.style.width = "400";
@@ -751,6 +983,82 @@ export async function application() {
       img.height = "300";
       //tableCol.style.width = "400";
     }
+
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("preserveAspectRatio", "none");
+
+    imageDiv.appendChild(svg);
+
+    function createOnLoad(svg, key) {
+      return function (event) {
+
+        var height = event.currentTarget.naturalHeight;
+        var width = event.currentTarget.naturalWidth;
+
+        var number = 0;
+
+
+        if (key in verwandelteProPerson) {
+          var alleVerwandelten = verwandelteProPerson[key];
+          for (var verwandelterKey in alleVerwandelten[number]) {
+            var region = alleVerwandelten[number][verwandelterKey];
+            createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter, svg, width, height, true);
+          }
+        }
+
+        if (key in verwandlerProPerson) {
+          var alleVerwandler = verwandlerProPerson[key];
+          for (var verwandlerKey in alleVerwandler[number]) {
+            var region = alleVerwandler[number][verwandlerKey];
+            createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler, svg, width, height, true);
+          }
+        }
+        if (key in attributeProPerson) {
+          var alleAttribute = attributeProPerson[key];
+          for (var attributKey in alleAttribute[number]) {
+            var region = alleAttribute[number][attributKey];
+            createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut, svg, width, height, true);
+          }
+        }
+
+        if (key in weiterePersonenProPerson) {
+          var alleWeiterenPersonen = weiterePersonenProPerson[key];
+          for (var personKey in alleWeiterenPersonen[number]) {
+            var region = alleWeiterenPersonen[number][personKey];
+            createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson, svg, width, height, true);
+          }
+        }
+
+      }
+    }
+
+    img.onload = createOnLoad(svg, data.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //Nur bei großer Ansicht über 1200px
+    var link = document.createElement("a"); //ANPASSEN
+    //var imgSource = data.source;
+    //<a href="bild.jpg" target="_blank"><img height="200px" width="200px" src="bild.jpg"/></a>
+    link.setAttribute("href", "Figuren/" + data.id + "/" + data.id + ".jpg");
+    link.innerHTML = "<br>Link zum Bild";
+    link.setAttribute("target", "_blank");
+    //console.log(imgLink);
+    tableCol.appendChild(link);
 
 
     var copyrightP = document.createElement("p");
@@ -2444,20 +2752,12 @@ export async function application() {
   // }
 
 
-  //vom VGG-Annotator vergebene keys bereinigen, damit keys wieder den Einträgen unter leude entspricht
-  var annotationsCleanedUp = {}
-  for (var key in annotations) {
-    var indexOfDot = key.indexOf(".");
-    var newKey = key.substr(0, indexOfDot);
-    annotationsCleanedUp[newKey] = annotations[key];
-  }
-  //console.log(annotationsCleanedUp)
-
-
   let textModalDiv = document.getElementById("textModal");
 
   var metamorphosenTable = document.createElement("table");
   textModalDiv.appendChild(metamorphosenTable);
+
+  
 
   //Tabelle mit allen keys aus dem metamorphosen.json anlegen
   var keyTabelle = [];
@@ -2504,51 +2804,11 @@ export async function application() {
       // metaImg.style.maxWidth = "70vh"
       metaImg.id = leude[key].id + "Bild";
 
-
-      function leseWert(wert) {
-        if (wert == "" || wert == undefined) {
-          return [];
-        }
-        //console.log(wert)
-        var werte = wert.split(",");
-        //console.log(werte)
-        for (var i = 0; i < werte.length; ++i) {
-          werte[i] = werte[i].trim();
-        }
-        return werte;
-      }
-
-      function getRegions(filename) {
-        var verwandelter = {};
-        var verwandler = {};
-        var attribut = {};
-        var weiterePersonen = {};
-
-        if (filename in annotationsCleanedUp) {
-          var regions = annotationsCleanedUp[filename].regions;
-
-          regions.forEach(region => {
-            leseWert(region.region_attributes.Verwandler).forEach(w => {
-              verwandler[w] = region;
-            });
-            leseWert(region.region_attributes.Verwandelter).forEach(w => {
-              verwandelter[w] = region;
-            });
-            leseWert(region.region_attributes.Attribut).forEach(w => {
-              attribut[w] = region;
-            });
-            leseWert(region.region_attributes.WeiterePerson).forEach(w => {
-              weiterePersonen[w] = region;
-            });
-          });
-        }
-        return [verwandler, verwandelter, attribut, weiterePersonen];
-      }
       
-      var alleVerwandler = [];
-      var alleVerwandelten = [];
-      var alleAttribute = []; // [["Feuer" -> { Polygon }, "Blitz" -> { Polygon }], ["Feuer", "Bratwurst"]]
-      var alleWeiterenPersonen = [];
+      var alleVerwandler = verwandlerProPerson[key];
+      var alleVerwandelten = verwandelteProPerson[key];
+      var alleAttribute = attributeProPerson[key];
+      var alleWeiterenPersonen = weiterePersonenProPerson[key];
 
       var alleVerwandlerSet = new Set()
       var alleVerwandeltenSet = new Set()
@@ -2562,138 +2822,10 @@ export async function application() {
       }
 
       for (var info = 0; info < numInfos; info++) {
-        var number = "";
-        if (info > 0) {
-          number += info;
-        }
-        var [verwandler, verwandelter, attribut, weiterePersonen] = getRegions(leude[key].id + number);
-        alleVerwandler.push(verwandler);
-        alleVerwandelten.push(verwandelter);
-        alleAttribute.push(attribut);
-        alleWeiterenPersonen.push(weiterePersonen);
-
-        Object.keys(verwandler).forEach(v => alleVerwandlerSet.add(v))
-        Object.keys(verwandelter).forEach(v => alleVerwandeltenSet.add(v))
-        Object.keys(attribut).forEach(v => alleAttributeSet.add(v))
-        Object.keys(weiterePersonen).forEach(v => alleWeiterenPersonenSet.add(v))
-      }
-
-
-      function createPolygon(name, region, className, title, svg, width, height, motiv = false) {
-        var xs = region.shape_attributes.all_points_x;
-        var ys = region.shape_attributes.all_points_y;
-
-        var coordinates = "";
-
-        for (var x = 0; x < xs.length; x++) {
-          coordinates += xs[x] / width * 100 + "," + ys[x] / height * 100 + " ";
-        }
-
-        if (motiv) {
-          className += " " + name + "Pol";
-        }
-
-        var metPolygons = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
-        metPolygons.setAttribute("points", coordinates);
-        //metPolygons.setAttribute("class", leude[key].id); // ??
-        metPolygons.setAttribute("class", className);
-        metPolygons.setAttribute("id", name + "Polygon");
-        svg.appendChild(metPolygons);
-
-        metPolygons.onmouseenter = function () {
-          var namenTabelle = leseWert(title);
-          
-          for (var y = 0; y < namenTabelle.length; y++) {
-            if (motiv) {
-              var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
-              for (var z = 0; z < andereMotive.length; z++) {
-                andereMotive[z].style.opacity = "1";
-                andereMotive[z].style.fillOpacity = "0.1";
-              }
-            }
-            var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-            for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-              zugehörigeTextstellen[z].style.backgroundColor = "#5a9974";
-              zugehörigeTextstellen[z].style.color = "#E3DED8";
-            }
-          }
-        }
-        metPolygons.onmouseleave = function () {
-          var namenTabelle = leseWert(title);
-          for (var y = 0; y < namenTabelle.length; y++) {
-            if (motiv) {
-              var andereMotive = document.getElementsByClassName(namenTabelle[y] + "Pol");
-              for (var z = 0; z < andereMotive.length; z++) {
-                andereMotive[z].style.opacity = null;
-                andereMotive[z].style.fillOpacity = null;
-              }
-            }
-            var zugehörigeTextstellen = document.getElementsByClassName(namenTabelle[y]);
-            for (var z = 0; z < zugehörigeTextstellen.length; z++) {
-              zugehörigeTextstellen[z].style.backgroundColor = null;
-              zugehörigeTextstellen[z].style.color = null;
-            }
-          }
-        }
-
-        var polygonTitle = document.createElementNS("http://www.w3.org/2000/svg", "title");
-        metPolygons.appendChild(polygonTitle);
-        polygonTitle.innerHTML = title;
-      }
-
-      //Problemumgehung: Damit in der onload Function nicht nur auf Variablen des letzten Schleifendurchlaufs zugegriffen wird, werden die jeweiligen Variablen hier in eine Funktion "gebacken"
-      //https://stackoverflow.com/questions/5040069/javascript-dynamically-assign-onclick-event-in-the-loop
-      function createOnLoadFunction(verwandelter, verwandler, attribut, weiterePersonen, imgNumber) {
-        return function (event) {
-          var id = event.currentTarget.id.substr(0, event.currentTarget.id.length - 4);
-
-          var div = document.getElementById(id + "SvgDiv");
-
-          var alleSvgs = div.getElementsByTagName("svg");
-          for (var i = 0; i < alleSvgs.length; ++i) {
-            alleSvgs[i].style.display = "none";
-          }
-
-          var metSvg = document.getElementById(id + "Svg" + imgNumber);
-          if (metSvg != undefined) {
-            metSvg.style.display = "block";
-          }
-          else {
-            //console.log("Erstelle neues SVG")
-            //console.log(attribut)
-            metSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            metSvg.setAttribute("viewBox", "0 0 100 100");
-            metSvg.setAttribute("preserveAspectRatio", "none");
-            metSvg.setAttribute("id", id + "Svg" + imgNumber);
-
-            div.appendChild(metSvg);
-
-
-            var height = event.currentTarget.naturalHeight;
-            var width = event.currentTarget.naturalWidth;
-
-
-            for (var verwandelterKey in verwandelter) {
-              var region = verwandelter[verwandelterKey];
-              createPolygon(verwandelterKey, region, "verwandelterAnno", region.region_attributes.Verwandelter, metSvg, width, height);
-            }
-
-            for (var verwandlerKey in verwandler) {
-              var region = verwandler[verwandlerKey];
-              createPolygon(verwandlerKey, region, "verwandlerAnno", region.region_attributes.Verwandler, metSvg, width, height);
-            }
-
-            for (var attributKey in attribut) {
-              var region = attribut[attributKey];
-              createPolygon(attributKey, region, "attributeAnno", region.region_attributes.Attribut, metSvg, width, height);
-            }
-
-            for (var personKey in weiterePersonen) {
-              var region = weiterePersonen[personKey];
-              createPolygon(personKey, region, "weiterePersonenAnno", region.region_attributes.WeiterePerson, metSvg, width, height);
-            }
-          }
-        }
+        Object.keys(alleVerwandler[info]).forEach(v => alleVerwandlerSet.add(v))
+        Object.keys(alleVerwandelten[info]).forEach(v => alleVerwandeltenSet.add(v))
+        Object.keys(alleAttribute[info]).forEach(v => alleAttributeSet.add(v))
+        Object.keys(alleWeiterenPersonen[info]).forEach(v => alleWeiterenPersonenSet.add(v))
       }
 
 
@@ -2873,7 +3005,7 @@ export async function application() {
         // buttonSpan.style.left = "76%";
         // buttonSpan.style.top = "19%";
         // buttonSpan.style.cursor = "pointer";
-        // modalContentDiv.appendChild(buttonSpan);
+        modalContentDiv.appendChild(buttonSpan);
       }
 
 
@@ -3027,6 +3159,7 @@ export async function application() {
           zugehoerigesModal.style.animationPlayState = "running";
 
           aktuellesModal = id;
+          aktuelleModalID = currentListSorted.indexOf(aktuellesModal);
           setLocationHash("fliesstext");
         }
 
@@ -3225,12 +3358,12 @@ export async function application() {
       }
 
       var genaueStelle = roman_to_Int(buchangabe) + "," + zeilenangabe;
-      console.log("Ov.met." + genaueStelle)
+      //console.log("Ov.met." + genaueStelle)
 
       //entsprechende Zeile im Fliesstext markieren
       if (document.getElementById("Ov.met." + genaueStelle) != undefined){
         var verwandlungsZeile = document.getElementById("Ov.met." + genaueStelle).children;
-        console.log(verwandlungsZeile)
+        //console.log(verwandlungsZeile)
         for (var x = 1; x < verwandlungsZeile.length; x++) {
           verwandlungsZeile[x].style.fontWeight = "bold";
           verwandlungsZeile[x].style.color = "#733030c0";
@@ -3540,25 +3673,57 @@ export async function application() {
 
 
 
+  var alleBuecher = [];
+  var currentBuch = [];
+  var currentBuchIndex = 1;
+  var buchlaengen = [];
+
+  for (var met in metamorphosen) {
+    var geschichte = metamorphosen[met];
+    var stelle = geschichte.stelle;
+    var s = stelle.split(",")
+    var buch = parseInt(s[0]);
+
+    var kapitel = s[1];
+
+    var fromTo = kapitel.split("-");
+    var from = parseInt(fromTo[0]);
+    var to = parseInt(fromTo[1]);
+    var laenge = to - from + 1;
+
+    var geschichte = {};
+    geschichte.link = met;
+    geschichte.start = from;
+    geschichte.end = to;
+    geschichte.laenge = laenge;
+
+    if (buch != currentBuchIndex) {
+      alleBuecher.push(currentBuch);
+      buchlaengen.push(currentBuch[currentBuch.length-1].end);
+      currentBuch = [];
+      currentBuchIndex = buch;
+    }
+
+    currentBuch.push(geschichte)
+  }
+  
+  alleBuecher.push(currentBuch);
+  buchlaengen.push(currentBuch[currentBuch.length-1].end);
 
 
   //Navigationsleite für Text:
   var buecherLaenge = [5.224, 6.2711, 5.4439, 5.9595, 5.1684, 5.9023, 6.918, 6.684, 6.2089, 5.6034, 6.1531, 4.4985, 7.1462, 6.2341, 6.2341];
   var buecherLink = ["prooemium", "phaetonII", "cadmusI", "dieToechterDesMinyas", "phineus", "arachne", "iasonUndMedea", "nisusUndScylla", "achelous1", "orpheusUndEurydice", "todDesOrpheus", "dieSchlangeInAulis", "hoplonkrisis", "scylla", "numa"];
   
-  var kapitelLaenge1 = [4, 84, 62, 12, 90, 60, 103, 22, 14, 115, 57, 64, 58, 33]
-  var kapitelLinksBuch1 = ["prooemium", "dieWeltentstehung", "dieVierWeltzeitalter", "dieGiganten", "lycaon", "dieGroßeFlut", "deukalionUndPyrrha", "erneuerungDerTierwelt", "python", "daphne", "io", "argus", "syrinx", "phaeton"]
-  
   //addiert elemente einer Tabelle  
   var gesamtlaenge = function (tabelle) {
     var gesamtlaengeVerse = 0.0;
     for (var b in tabelle){ 
-      gesamtlaengeVerse += parseFloat(tabelle[b]);
+      gesamtlaengeVerse += tabelle[b];
     }
     return gesamtlaengeVerse;
   }
   var gesamtLaengeBuecher = gesamtlaenge(buecherLaenge);
-  var gesamtLaengeKapitel1 = gesamtlaenge(kapitelLaenge1);
 
   var navbarWrapper = document.createElement("div");
   var fliesstextDiv = document.getElementById("fliesstext");
@@ -3588,7 +3753,102 @@ export async function application() {
   navbarWrapper.appendChild(headerKapitel);
 
 
-  function markierBalken(target) {
+  var selectedBuch = undefined;
+
+
+  function wechsleBuch(buch, zeile) {
+    var number = parseInt(buch.substr(4));
+    var buchInfo = alleBuecher[number];
+
+    if (buch != selectedBuch) {
+
+      selectedBuch = buch;
+      while (navbarKapitel.firstChild) {
+        navbarKapitel.removeChild(navbarKapitel.firstChild);
+      }
+
+      //erstes schon rot:
+      document.getElementById(buch).style.backgroundColor = "#733030a8";
+
+
+      //navBar2: Kapitel
+      for (var b = 0; b < alleBuecher[number].length; b++) {
+        var kapitelInfo = buchInfo[b];
+        var header = document.getElementById(kapitelInfo.link + "Header");
+        //console.log(header.parentElement.childNodes[1].childNodes[0].id)
+        //console.log(buecherLink[b] + "Header")
+        var aNavbarII = document.createElement("a");
+        //console.log(header.parentElement)
+        aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
+        aNavbarII.className = "kapitelLinks";
+        aNavbarII.id = buch + "kapitel" + b;
+        aNavbarII.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + metamorphosen[kapitelInfo.link].name;
+        aNavbarII.style.width = (kapitelInfo.laenge / buchlaengen[number] * 100) * 0.8 + "%";
+        aNavbarII.title = "Klick, um zu Kapitel " + (b + 1) + " zu gelangen"
+        navbarKapitel.appendChild(aNavbarII);
+
+        //ONMOUSEOVER: Breite vergrößern 
+        aNavbarII.onmouseenter = (event) => {
+          var id = event.currentTarget.id;
+          var gesElement = document.getElementById(id);
+
+          if (gesElement.clientWidth < 90) {
+            gesElement.style.width = "120px";
+          } else {
+            gesElement.style.width = gesElement.clientWidth + 20 + "px";
+          }
+
+
+          // var neueGesamtlaenge = gesamtLaengeBuecher + 20.0;
+
+          // for (var b in buecherLaenge){
+
+          //   console.log(neueGesamtlaenge)
+          // }
+
+        }
+
+        //ONMOUSEOUT: Breite zurücksetzen
+        aNavbarII.onmouseleave = (event) => {
+          var id = event.currentTarget.id;
+          var kapitelNumber = id.substr(id.indexOf("l") + 1);
+          document.getElementById(id).style.width = (buchInfo[kapitelNumber].laenge / buchlaengen[number] * 100) * 0.8 + "%";
+          //document.getElementById(id).childNodes[0].style.display = "none";
+        }
+
+        //ONMOUSEDOWN: Farbe setzen (& alle anderen wieder grau)
+        aNavbarII.onmousedown = (event) => {
+          var id = event.currentTarget.id;
+          var buchNumber = parseInt(id.substr(id.indexOf("h") + 1))
+
+          for (var b = 0; b < alleBuecher[buchNumber].length; b++) {
+            document.getElementById("buch" + buchNumber + "kapitel" + b).style.backgroundColor = null;
+          }
+
+          var id = event.currentTarget.id;
+          document.getElementById(id).style.backgroundColor = "#733030a8";
+
+        }
+
+
+      }
+    }
+    
+    for (var b in buchInfo) {
+      var kapitelInfo = buchInfo[b];
+
+      if (kapitelInfo.start <= zeile && kapitelInfo.end >= zeile) {
+        document.getElementById(buch + "kapitel" + b).style.backgroundColor = "#733030a8";
+      }
+      else {
+        document.getElementById(buch + "kapitel" + b).style.backgroundColor = null;
+      }
+    }
+
+  }
+
+
+  function markierBalken(target, zeile) {
     for (var b in buecherLaenge){
       document.getElementById("buch" + b).style.backgroundColor = null;
     }
@@ -3596,6 +3856,7 @@ export async function application() {
     var id = target.id;
     document.getElementById(id).style.backgroundColor = "#733030a8";
     
+    wechsleBuch(id, zeile);
   }
 
   //navBar 1: Bücher
@@ -3641,70 +3902,7 @@ export async function application() {
 
   }
 
-  //erstes schon rot:
-  document.getElementById("buch0").style.backgroundColor = "#733030a8";
-
-
-  //navBar2: Kapitel
-  for (var b in kapitelLaenge1){
-    var header = document.getElementById(kapitelLinksBuch1[b] + "Header");
-    //console.log(header.parentElement.childNodes[1].childNodes[0].id)
-    //console.log(buecherLink[b] + "Header")
-    var aNavbarII = document.createElement("a");
-    //console.log(header.parentElement)
-    aNavbarII.setAttribute("href", "/visualisierung.html#" + header.parentElement.childNodes[1].childNodes[0].id);
-    aNavbarII.className = "kapitelLinks";
-    aNavbarII.id = "buch0kapitel" + b;
-    aNavbarII.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + metamorphosen[kapitelLinksBuch1[b]].name;
-    aNavbarII.style.width = (kapitelLaenge1[b]/gesamtLaengeKapitel1*100) *0.8 + "%";
-    aNavbarII.title = "Klick, um zu Kapitel " + (parseInt(b)+1) + " zu gelangen"
-    navbarKapitel.appendChild(aNavbarII);
-
-    //ONMOUSEOVER: Breite vergrößern 
-    aNavbarII.onmouseenter = (event) => {
-      var id = event.currentTarget.id;
-      var gesElement = document.getElementById(id);
-
-      if (gesElement.clientWidth < 90){
-        gesElement.style.width = "120px";
-      } else {
-        gesElement.style.width = gesElement.clientWidth+20 + "px";
-      }
-      
-
-      // var neueGesamtlaenge = gesamtLaengeBuecher + 20.0;
-
-      // for (var b in buecherLaenge){
-        
-      //   console.log(neueGesamtlaenge)
-      // }
-
-    }
-
-    //ONMOUSEOUT: Breite zurücksetzen
-    aNavbarII.onmouseleave = (event) => {
-      var id = event.currentTarget.id;
-      document.getElementById(id).style.width = (kapitelLaenge1[parseInt(id.substr(12))]/gesamtLaengeKapitel1*100)*0.8 + "%";
-      //document.getElementById(id).childNodes[0].style.display = "none";
-    }
-
-    //ONMOUSEDOWN: Farbe setzen (& alle anderen wieder grau)
-    aNavbarII.onmousedown = (event) => {
-      for (var b in kapitelLaenge1){
-        document.getElementById("buch0kapitel" + b).style.backgroundColor = null;
-      }
-      
-      var id = event.currentTarget.id;
-      document.getElementById(id).style.backgroundColor = "#733030a8";
-      
-    }
-
-
-  }
-
-  //erstes schon rot:
-  document.getElementById("buch0kapitel0").style.backgroundColor = "#733030a8";
-
+  
 
   let observer = new IntersectionObserver(entries => {
    
@@ -3713,7 +3911,8 @@ export async function application() {
         //console.log(entries[e].target.id);
         setLocationHash("fliesstext#" + entries[e].target.id);
         var buchindex = entries[e].target.id.substr(7,entries[e].target.id.indexOf(",")-7)-1;
-        markierBalken(document.getElementById("buch"+ buchindex));
+        var zeile = parseInt(entries[e].target.id.substr(entries[e].target.id.indexOf(",") + 1))
+        markierBalken(document.getElementById("buch"+ buchindex), zeile);
       }
     }
     // if (entries[0].boundingClientRect.y < 0) {
@@ -3726,6 +3925,8 @@ export async function application() {
   for (var x = 0; x < alleFirstRows.length; x++){
     observer.observe(alleFirstRows[x]);
   }
+
+
 
 
 

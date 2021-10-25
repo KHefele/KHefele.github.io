@@ -1149,7 +1149,7 @@ polygon:hover {
   background-color: rgba(0,0,0,1);
   margin: auto;
   border-radius: 3px;
-  min-height: 65%;
+  min-height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
