@@ -609,7 +609,7 @@
         "geschlecht": "Männlich",
         "koordinaten": {
             "geographie": {
-                "top": "40",
+                "top": "-10",
                 "left": "10"
             }
         },
@@ -719,7 +719,7 @@
         "geschlecht": "Weiblich",
         "koordinaten": {
             "geographie": {
-                "top": "30",
+                "top": "-10",
                 "left": "10"
             }
         },
@@ -754,7 +754,7 @@
         "geschlecht": "Weiblich",
         "koordinaten": {
             "geographie": {
-                "top": "60",
+                "top": "-10",
                 "left": "90"
             }
         },
@@ -1152,7 +1152,7 @@
         "geschlecht": "Weiblich",
         "koordinaten": {
             "geographie": {
-                "top": "60",
+                "top": "-10",
                 "left": "5"
             }
         },
