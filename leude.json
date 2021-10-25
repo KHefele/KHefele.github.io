@@ -221,9 +221,9 @@
             }
         },
 
-        "source": "https://www.sothebys.com/en/articles/written-in-the-stars-sebastiano-riccis-arcas-and-callisto",
-        "sourcename": "Sothebys",
-        "alt": "Sebastiano Ricci, Arcas and Callisto, ca. 1725-30",
+        "source": "https://nat.museum-digital.de/index.php?t=objekt&oges=952263&navlang=de",
+        "sourcename": "CC BY-NC-SA Städtisches Museum Schloss Rheydt",
+        "alt": "Hendrick Goltzius, Juno verwandelt Kallisto in eine Bärin, ca. 1590",
         
         "wikidata": "Q203673",
         "ovMet": "2,401-530",
@@ -545,8 +545,8 @@
             }
         },
 
-        "source": "https://www.the-artinspector.de/kopie-von-questions/was-ist-eine-%E2%80%9Eapotheose%E2%80%9C%3F",
-        "sourcename": "The Artinspector",
+        "source": "https://commons.wikimedia.org/wiki/File:Apotheosis_of_Julius_Caesar,_by_Louis_Laguerre,_1692-1694,_oil_on_plaster_-_Entrance_Hall,_Chatsworth_House_-_Derbyshire,_England_-_DSC02984.jpg#/media/File:Apotheosis_of_Julius_Caesar,_by_Louis_Laguerre,_1692-1694,_oil_on_plaster_-_Entrance_Hall,_Chatsworth_House_-_Derbyshire,_England_-_DSC02984.jpg",
+        "sourcename": "Wikimedia",
         "alt": "Louis Laguerre, Apotheose Caesars, 1692-1694",
         
         "wikidata": "Q1048",
@@ -569,7 +569,7 @@
         "id": "cygnus",
         "name": "Cygnus",
 
-        "width": "60",
+        "width": "40",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -579,9 +579,9 @@
             }
         },
 
-        "source": "https://prometheus.uni-koeln.de/de/image/zi_muc-1bd1908a7af91bddc6115ab9cdf9fc81e7cb67ef",
-        "sourcename": "Prometheus",
-        "alt": "Unbekannte:r Künstler:in, Verwandlung der Heliaden in Bäume und des Cygnus in einen Schwan am Grabmal des Phaeton, vor 1750",
+        "source": "https://www.nga.gov/collection/art-object-page.129374.html",
+        "sourcename": "National Gallery of Art",
+        "alt": "Robert de Baudous (nach Hendrick Goltzius), Phaetons Schwestern verwandeln sich in Pappeln, Cygnus in einen Schwan, Anfang 17. Jh.",
         
         "wikidata": "Q604672",
         "ovMet": "7,350-403",
@@ -688,7 +688,7 @@
         },
 
         "source": "https://www.sammlung.pinakothek.de/de/artwork/o5xrdwAG7X",
-        "sourcename": "Pinakothek München",
+        "sourcename": "CC BY-SA 4.0 Pinakothek München",
         "alt": "Abraham Janssens, Apotheose des Aeneas, um 1620 - 1630",
         
         "wikidata": "Q82732",
@@ -725,7 +725,7 @@
         },
 
         "source": "https://commons.wikimedia.org/wiki/File:La_ninfa_Egeria_dictando_a_Numa.jpg",
-        "sourcename": "CC 3.0! Wikimedia",
+        "sourcename": "CC BY-SA 3.0 Wikimedia",
         "alt": "Ulpiano Checa, La ninfa Egeria dictando a Numa Pompilio las leyes de Roma, ?",
         
         "wikidata": "Q582268",
@@ -804,7 +804,7 @@
         "verwandlung": "Stier",
         "grund": "Hoffnung auf einen Vorteil im Kampf", 
         "verwandler": "Achelous",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94L4111 während er mit Herkules kämpft, verwandelt sich der Flußgott [sic] Achelous in einen Stier oder einen stierköpfigen Mann",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=52&cat_3=714&cat_4=1069&cat_5=831",
@@ -840,7 +840,7 @@
         "verwandlung": "Hunde",
         "grund": "Eifersucht", 
         "verwandler": "Circe",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97EE3 nachdem Glaucus bei Circe um Hilfe bei seiner Bewerbung um Scylla nachgesucht hat, verwandelt Circe die Meeresnymphe in ein Seeungeheuer (Ovid, Metamorphosen XIV 59)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=387",
@@ -876,7 +876,7 @@
         "verwandlung": "Stein",
         "grund": "Bestrafung", 
         "verwandler": "Perseus",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94P342 aus Strafe für seine Ungastfreundlichkeit wird Atlas in einen Berg verwandelt",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=168&cat_3=3215&cat_4=6038",
@@ -912,7 +912,7 @@
         "verwandlung": "Stein",
         "grund": "Bestrafung", 
         "verwandler": "Mercur",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97F1 weil er sein Versprechen gebrochen hat, den Diebstahl der Herde des Apollo durch Merkur geheimzuhalten, verwandelt Merkur den Hirten Battus in einen Streichstein (Ovid, Metamorphosen II 705)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=1076",
@@ -946,7 +946,7 @@
         "verwandlung": "Spinne",
         "grund": "Bestrafung", 
         "verwandler": "Minerva",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97EE1 als sich Arachne erhängt, weil sie ihren Wettkampf im Spinnen gegen Minerva verloren hat, wird sie von der Göttin in eine Spinne verwandelt",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=119&cat_3=6144",
@@ -983,7 +983,7 @@
         "verwandlung": "Schlange",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97E2 Cadmus und Harmonia werden in Schlangen verwandelt, weil sie von den Schmerzen und der Gebrechlichkeit des Alters geplagt werden (Ovid, Metamorphosen IV 576)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=85&cat_3=49&cat_4=56",
@@ -1020,7 +1020,7 @@
         "verwandlung": "Schlange",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97E2 Cadmus und Harmonia werden in Schlangen verwandelt, weil sie von den Schmerzen und der Gebrechlichkeit des Alters geplagt werden (Ovid, Metamorphosen IV 576)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=85&cat_3=49&cat_4=56",
@@ -1057,7 +1057,7 @@
         "verwandlung": "Stein",
         "grund": "Vorteil im Kampf", 
         "verwandler": "Perseus",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94P21521 Phineus und seine Helfer werden versteinert",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=114&cat_3=4229&cat_4=9978",
@@ -1094,7 +1094,7 @@
         "verwandlung": "Elstern",
         "grund": "Bestrafung für Hybris", 
         "verwandler": "Musen",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD24 die Pieriden (Emathiden) werden von den Musen in Elstern verwandelt, nachdem sie von ihnen in einem musikalischen Wettstreit besiegt worden sind",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=115&cat_3=97&cat_4=59",
@@ -1130,7 +1130,7 @@
         "verwandlung": "Stein",
         "grund": "Bestrafung", 
         "verwandler": "Mercur",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97FF1 Merkur verwandelt Aglauros in einen Stein, weil sie ihm den Zutritt zum Zimmer der Herse verwehrt (Ovid, Metamorphosen II 820)",
         "vergleichswerke": {
             "warburg": "-",
@@ -1202,7 +1202,7 @@
         "verwandlung": "Eidechse",
         "grund": "Bestrafung", 
         "verwandler": "Ceres",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97E1 Ceres verwandelt den jungen Ascalabus (Stellio, Abas) in eine Eidechse, als er sie verspottet, weil sie ihren Durst zu hastig löscht (Ovid, Metamorphosen V 456)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=129&cat_3=2713&cat_4=7517&cat_5=8139&cat_6=4994",
@@ -1239,7 +1239,7 @@
         "verwandlung": "Eule",
         "grund": "Bestrafung", 
         "verwandler": "Ceres",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97D13 Ascalaphus, der entdeckt hat, daß [sic] Proserpina einige Granatapfelkerne gegessen hat, wird von der Göttin zur Strafe in eine Zwergohreule verwandelt, indem sie seinen Kopf mit Wasser aus dem Phlegethon besprüht (Ovid, Metamorphosen V 543)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=363",
@@ -1275,7 +1275,7 @@
         "verwandlung": "Stein",
         "grund": "Trauer", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97FF5 in ihrer Trauer um ihre gestorbenen Kinder wird Niobe in einen Stein verwandelt (Ovid, Metamorphosen VI 305)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=363",
@@ -1310,7 +1310,7 @@
         "verwandlung": "Wiedehopf",
         "grund": "Bestrafung", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD23 Tereus versucht, Philomela und Procne zu töten, weil sie seinen Sohn getötet haben; bei ihrer Flucht werden die Schwestern in eine Nachtigall und eine Schwalbe, Tereus in einen Wiedehopf oder Falken verwandelt (Ovid, Metamorphosen VI 668)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=274&cat_3=5117",
@@ -1345,7 +1345,7 @@
         "verwandlung": "Vogel",
         "grund": "Bestrafung", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD23 Tereus versucht, Philomela und Procne zu töten, weil sie seinen Sohn getötet haben; bei ihrer Flucht werden die Schwestern in eine Nachtigall und eine Schwalbe, Tereus in einen Wiedehopf oder Falken verwandelt (Ovid, Metamorphosen VI 668)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=274&cat_3=3502",
@@ -1381,7 +1381,7 @@
         "verwandlung": "Vogel",
         "grund": "Bestrafung", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD23 Tereus versucht, Philomela und Procne zu töten, weil sie seinen Sohn getötet haben; bei ihrer Flucht werden die Schwestern in eine Nachtigall und eine Schwalbe, Tereus in einen Wiedehopf oder Falken verwandelt (Ovid, Metamorphosen VI 668)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=274&cat_3=3502",
@@ -1417,7 +1417,7 @@
         "verwandlung": "jüngerer Mann",
         "grund": "auf Wunsch des Sohnes Iason", 
         "verwandler": "Medea",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94A62 die Verjüngung des Aeson",
         "vergleichswerke": {
             "warburg": "-",
@@ -1454,7 +1454,7 @@
         "verwandlung": "Rebhuhn",
         "grund": "Schutz", 
         "verwandler": "Minerva",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97D26 als Perdix (Talus) von dem neidischen Daedalus von der Akropolis gestoßen wird, verwandelt ihn Minerva in ein Rebhuhn (Ovid, Metamorphosen VIII 250)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=373",
@@ -1490,7 +1490,7 @@
         "verwandlung": "Eiche",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "Jupiter",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97A4 nachdem sie ein sehr hohes Alter erreicht haben, werden Philemon und Baucis in eine Eiche und eine Linde verwandelt, deren Zweige sich verflechten (Ovid, Metamorphosen VIII 712)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=374",
@@ -1526,7 +1526,7 @@
         "verwandlung": "Linde",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "Jupiter",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97A4 nachdem sie ein sehr hohes Alter erreicht haben, werden Philemon und Baucis in eine Eiche und eine Linde verwandelt, deren Zweige sich verflechten (Ovid, Metamorphosen VIII 712)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=374",
@@ -1565,7 +1565,7 @@
         "verwandlung": "Schlange",
         "grund": "Hoffnung auf einen Vorteil im Kampf", 
         "verwandler": "Achelous",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94L41111 während er mit Herkules kämpft, verwandelt sich der Flußgott [sic] Achelous in eine Schlange",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=52&cat_3=714&cat_4=1069&cat_5=831",
@@ -1600,7 +1600,7 @@
         "verwandlung": "Stein",
         "grund": "Bestrafung", 
         "verwandler": "Hercules",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97F3 als er von Hercules in das Meer geschleudert worden ist, wird Lichas in einen Felsen verwandelt (Ovid, Metamorphosen IX 219)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=374",
@@ -1639,7 +1639,7 @@
         "verwandlung": "Wiesel",
         "grund": "Bestrafung", 
         "verwandler": "Lucina",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97CC4 weil er sie in Bezug auf Alcmenes Arbeit getäuscht hat, verwandelt Juno Galanthis in ein Wiesel",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=52&cat_3=714&cat_4=1066&cat_5=1653&cat_6=1973",
@@ -1678,7 +1678,7 @@
         "verwandlung": "Mann",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "Isis",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97K3 Isis erhört das Gebet der Iphis und verwandelt sie in einen jungen Mann, der jetzt Ianthe heiraten kann (Ovid, Metamorphosen IX 785)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=380",
@@ -1715,7 +1715,7 @@
         "verwandlung": "Myrtenbaum",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "'[Die] Götter'",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97AA4 Myrrha wird in einen Myrtenbaum verwandelt, als sie vor ihrem zornigen Vater flieht (Ovid, Metamorphoses X 489)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=97&cat_3=3978&cat_4=7367",
@@ -1752,7 +1752,7 @@
         "verwandlung": "Löwe",
         "grund": "Bestrafung für Undankbarkeit gegenüber Venus' und Entweihung eines Tempels", 
         "verwandler": "Venus",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97CC1 als Atalante und Hippomenes den Tempel der Cybele entweihen, werden sie von der Göttin in Löwen verwandelt (Ovid, Metamorphosen X 689)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=98&cat_3=3377&cat_4=6242",
@@ -1790,7 +1790,7 @@
         "verwandlung": "Löwin",
         "grund": "Bestrafung für Undankbarkeit gegenüber Venus' und Entweihung eines Tempels", 
         "verwandler": "Venus",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97CC1 als Atalante und Hippomenes den Tempel der Cybele entweihen, werden sie von der Göttin in Löwen verwandelt (Ovid, Metamorphosen X 689)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=98&cat_3=3377&cat_4=6242",
@@ -1828,7 +1828,7 @@
         "verwandlung": "[Eis]Vogel",
         "grund": "Schutz", 
         "verwandler": "'[Die] Götter'",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD13 als Alcyone den Leichnam ihres Mannes Ceyx findet, der an das Ufer gespült worden ist, werden die beiden Eheleute in Eisvögel verwandelt (Ovid, Metamorphosen XI 741)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=102&cat_3=3381",
@@ -1865,7 +1865,7 @@
         "verwandlung": "[Eis]Vogel",
         "grund": "Schutz", 
         "verwandler": "'[Die] Götter'",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97DD13 als Alcyone den Leichnam ihres Mannes Ceyx findet, der an das Ufer gespült worden ist, werden die beiden Eheleute in Eisvögel verwandelt (Ovid, Metamorphosen XI 741)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=102&cat_3=3381",
@@ -1902,7 +1902,7 @@
         "verwandlung": "Tauchvogel",
         "grund": "Schutz", 
         "verwandler": "Tethys",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97D11 weil er den Tod der Hesperia (oder Asterope) verursacht hat, stürzt sich der verzweifelte Aesacus in das Meer und wird von Thetys in einen Tauchvogel verwandelt (Ovid, Metamorphosen XI 783)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=385",
@@ -1941,7 +1941,7 @@
         "verwandlung": "Mann",
         "grund": "auf eigenen Wunsch", 
         "verwandler": "Neptun",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97K1 nachdem Neptun Caenis geraubt hat, verwandelt er sie auf ihre Bitte in den unverwundbaren Helden Caenus (Ovid, Metamorphosen XII 201)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=386&cat_3=3261",
@@ -1954,13 +1954,13 @@
 
 
 
-    "caenus": {
-        "id": "caenus",
-        "name": "Caeneus",
+    "coronis": {
+        "id": "coronis",
+        "name": "Coronis",
 
-        "width": "85",
+        "width": "95",
         "taxonomie": "fauna",
-        "geschlecht": "Divers",
+        "geschlecht": "Weiblich",
         "koordinaten": {
             "geographie": {
                 "top": "60",
@@ -1968,22 +1968,22 @@
             }
         },
 
-        "source": "https://iconmonstr.com/file-37-png/",
-        "sourcename": "Iconmonstr",
-        "alt": "Michiel Van der Gucht, Ceneus verwandelt sich in einen Vogel, 1733",
+        "source": "http://www.zeno.org/Kunstwerke/B/Boscoli,+Andrea%3A+Neptun+und+Coronis",
+        "sourcename": "Zeno.org",
+        "alt": "Andrea Boscoli, Die von Neptun verfolgte Coronis wird von Pallas in eine Krähe verwandelt, um 1599",
         
-        "wikidata": "Q1132772",
-        "ovMet": "12,210-535",
+        "wikidata": "Q1344011",
+        "ovMet": "2,531-588",
         "verwandlung": "Vogel",
-        "grund": "postume Ehrung", 
-        "verwandler": "Neptun",
-        "ort": "? (nachschauen)",
-        "iconclass": "97D15 als Caenus (ursprünglich das Mädchen Caenis) in der Schlacht zwischen Lapithen und Kentauren stirbt, wird er in einen Vogel verwandelt (Ovid, Metamorphosen XII 522)",
+        "grund": "Schutz", 
+        "verwandler": "Minerva",
+        "ort": "?",
+        "iconclass": "97DD18 um der Liebe des Neptun zu entkommen, wird Coronis, die Tochter des Coroneus, von Minerva in eine Krähe verwandelt",
         "vergleichswerke": {
-            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=386&cat_3=3261",
-            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Cenaeus", 
-            "wiki": "https://commons.wikimedia.org/wiki/Category:Caeneus",
-            "iconos": "-"
+            "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=737",
+            "bdo": "http://www.ovidiuspictus.es/en/edicionesetiqueta.php?clave=Coronis", 
+            "wiki": "https://commons.wikimedia.org/wiki/Category:Coronis",
+            "iconos": "http://www.iconos.it/le-metamorfosi-di-ovidio/libro-ii/apollo-e-coronide/immagini/"
         }
     },
 
@@ -1993,7 +1993,7 @@
         "id": "periclymenus",
         "name": "Periclymenus",
 
-        "width": "80",
+        "width": "100",
         "taxonomie": "fauna",
         "geschlecht": "Männlich",
         "koordinaten": {
@@ -2003,16 +2003,16 @@
             }
         },
 
-        "source": "https://iconmonstr.com/file-37-png/",
-        "sourcename": "Iconmonstr",
-        "alt": "Iconmonstr, Bildsuche, 2021",
+        "source": "https://commons.wikimedia.org/wiki/Category:Metamorphoses_(Ovid)#/media/File:Periclymene_en_Aigle,_Briot.jpg",
+        "sourcename": "Wikimedia",
+        "alt": "Isaak Briot, Periclymenus wird in Form eines Adlers von Hercules getötet, 1619",
         
         "wikidata": "Q3899862",
         "ovMet": "12,536-579",
         "verwandlung": "Adler",
         "grund": "Erhoffen auf einen Vorteil im Kampf", 
         "verwandler": "Neptun",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "94L424 Herkules erobert die Stadt Pylus und verwundet dabei Mars und Juno; Periclymenus, der älteste Sohn des Neleus, wird als Adler von Herkules getötet, nachdem er sich zuvor in andere Gestalten verwandelt hat",
         "vergleichswerke": {
             "warburg": "-",
@@ -2048,7 +2048,7 @@
         "verwandlung": "Fluss(-gott)",
         "grund": "postume Ehrung", 
         "verwandler": "Galatea",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97H1 Galatea verwandelt Acis in einen Flußgott [sic], als er von Polyphemus erschlagen worden ist (Ovid, Metamorphosen XIII 885)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=46&cat_3=82",
@@ -2086,7 +2086,7 @@
         "verwandlung": "alte Frau",
         "grund": "-", 
         "verwandler": "-",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "96A18211 in der Gestalt einer alten Frau wirbt Vertumnus um Pomona",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=194",
@@ -2123,7 +2123,7 @@
         "verwandlung": "Gott Quirinus",
         "grund": "postume Ehrung", 
         "verwandler": "Jupiter",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "96C(ROMULUS)69 die Apotheose des Romulus: während er seine Truppen abschreitet, erhebt sich ein Sturm; Romulus, der in eine Wolke gehüllt ist, verschwindet; er wird zum Gott Quirinus",
         "vergleichswerke": {
             "warburg": "-",
@@ -2160,7 +2160,7 @@
         "verwandlung": "Esel(-sohren)",
         "grund": "Bestrafung", 
         "verwandler": "Apollo",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "97C6 weil Midas sich in dem musikalischen Wettstreit zwischen Pan und Apollo für ersteren entschieden hat, verleiht ihm Apollo zur Strafe Eselsohren (Ovid, Metamorphosen XI 174)",
         "vergleichswerke": {
             "warburg": "https://iconographic.warburg.sas.ac.uk/vpc/VPC_search/subcats.php?cat_1=5&cat_2=99&cat_3=792&cat_4=9993",
@@ -2193,7 +2193,7 @@
         "verwandlung": "Göttin Hora",
         "grund": "Trauer", 
         "verwandler": "Juno",
-        "ort": "? (nachschauen)",
+        "ort": "?",
         "iconclass": "96D(HERSILIA)69 Apotheose der Hersilia: die Frau des Romulus wird von Juno und Isis zum Himmel emporgehoben und zur Hora Quirina vergöttlicht",
         "vergleichswerke": {
             "warburg": "",

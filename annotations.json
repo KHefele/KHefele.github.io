@@ -186,39 +186,6 @@
     "regions": [],
     "file_attributes": {}
   },
-  "callisto.jpg131551": {
-    "filename": "callisto.jpg",
-    "size": 131551,
-    "regions": [
-      {
-        "shape_attributes": {
-          "name": "polygon",
-          "all_points_x": [ 8, 35, 87, 128, 153, 147, 153, 116, 84, 60, 26, 2, 2 ],
-          "all_points_y": [ 637, 618, 609, 626, 657, 702, 745, 771, 765, 779, 765, 757, 650 ]
-        },
-        "region_attributes": {
-          "Verwandler": "",
-          "Verwandelter": "Callisto, Mutter",
-          "Attribut": "",
-          "WeiterePerson": ""
-        }
-      },
-      {
-        "shape_attributes": {
-          "name": "polygon",
-          "all_points_x": [ 247, 282, 307, 308, 348, 437, 486, 539, 525, 475, 536, 576, 560, 525, 516, 466, 421, 405, 377, 327, 316, 273, 240, 258, 211, 217, 226, 198 ],
-          "all_points_y": [ 663, 646, 602, 524, 499, 479, 496, 428, 398, 394, 376, 322, 289, 305, 322, 333, 315, 328, 270, 295, 331, 348, 398, 411, 435, 463, 463, 528 ]
-        },
-        "region_attributes": {
-          "Verwandler": "",
-          "Verwandelter": "",
-          "Attribut": "",
-          "WeiterePerson": "Arkas"
-        }
-      }
-    ],
-    "file_attributes": {}
-  },
   "ceyx.jpg243285": {
     "filename": "ceyx.jpg",
     "size": 243285,

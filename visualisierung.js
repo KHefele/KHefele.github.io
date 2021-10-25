@@ -699,8 +699,13 @@ export async function application() {
     //Nur bei kleinen Ansichten unter 1100px <-- 100px kleiner gemacht
     var imgKlein = document.createElement("img");
     imgKlein.className = "display-under-1200px";
-    imgKlein.alt = data.alt;
-    imgKlein.title = data.alt;
+    if (data.id == "lycaon"){
+      imgKlein.alt = "Jan Cossiers, Lycaon, 1640";
+      imgKlein.title = "Jan Cossiers, Lycaon, 1640";
+    } else {
+      imgKlein.alt = data.alt;
+      imgKlein.title = data.alt;
+    }
     imgKlein.src = "Figuren/" + data.id + "/" + data.id + ".jpg";
     if (imgKlein.naturalWidth > imgKlein.naturalHeight) {
       imgKlein.width = "300";
@@ -731,8 +736,13 @@ export async function application() {
     tableCol.appendChild(imgLink);
     var img = document.createElement("img");
     imgLink.appendChild(img);
-    img.alt = data.alt;
-    img.title = data.alt;
+    if (data.id == "lycaon"){
+      imgKlein.alt = "Jan Cossiers, Lycaon, 1640";
+      imgKlein.title = "Jan Cossiers, Lycaon, 1640";
+    } else {
+      imgKlein.alt = data.alt;
+      imgKlein.title = data.alt;
+    }
     img.src = "Figuren/" + data.id + "/" + data.id + ".jpg";
     if (img.naturalWidth > img.naturalHeight) {
       img.width = "300";
@@ -747,7 +757,12 @@ export async function application() {
     copyrightP.className = "copyrightP";
     tableCol.appendChild(copyrightP);
     copyrightP.style.fontSize = "10px";
-    copyrightP.innerHTML = data.alt + "<br>";
+    if (data.id == "lycaon"){
+      copyrightP.innerHTML = "Jan Cossiers, Lycaon, 1640<br>";
+    } else {
+      copyrightP.innerHTML = data.alt + "<br>";
+    }
+    
 
     //cc-Icon
     var ccImage = document.createElement("img");
@@ -758,9 +773,16 @@ export async function application() {
     copyrightP.appendChild(copyrightPLink);
     ccImage.setAttribute("src", "/Icons/cc.png");
     ccImage.setAttribute("width", "16px");
-    copyrightPLink.setAttribute("href", data.source);
+    
     copyrightPLink.setAttribute("target", "_blank");
-    copyrightPLink.innerHTML = " " + data.sourcename;
+    if (data.id == "lycaon"){
+      copyrightPLink.setAttribute("href", "https://commons.wikimedia.org/wiki/Category:Lycaon?uselang=de#/media/File:Jan_Cossiers_-_J%C3%BApiter_y_Lica%C3%B3n.jpg");
+      copyrightPLink.innerHTML = " Wikimedia";
+    } else {
+      copyrightPLink.setAttribute("href", data.source);
+      copyrightPLink.innerHTML = " " + data.sourcename;
+    }
+    
     copyrightPLink.title = "Bildquelle";
     copyrightPLink.style.fontSize = "10px";
     copyrightPLink.style.color = "#733030";
@@ -2298,9 +2320,9 @@ export async function application() {
 
     //Olympier  
     setVerwandelnder("Jupiter", 10);
-    setVerwandelnder("Neptun", 20);
-    setVerwandelnder("Venus", 30);
-    setVerwandelnder("Diana", 40);
+    setVerwandelnder("Venus", 20);
+    setVerwandelnder("Diana", 30);
+    setVerwandelnder("Neptun", 40);
     setVerwandelnder("Minerva", 50);
     setVerwandelnder("Mercur", 60);
     setVerwandelnder("Apollo", 70);
@@ -2497,27 +2519,29 @@ export async function application() {
       }
 
       function getRegions(filename) {
-        var regions = annotationsCleanedUp[filename].regions;
         var verwandelter = {};
         var verwandler = {};
         var attribut = {};
         var weiterePersonen = {};
 
-        regions.forEach(region => {
-          leseWert(region.region_attributes.Verwandler).forEach(w => {
-            verwandler[w] = region;
-          });
-          leseWert(region.region_attributes.Verwandelter).forEach(w => {
-            verwandelter[w] = region;
-          });
-          leseWert(region.region_attributes.Attribut).forEach(w => {
-            attribut[w] = region;
-          });
-          leseWert(region.region_attributes.WeiterePerson).forEach(w => {
-            weiterePersonen[w] = region;
-          });
-        });
+        if (filename in annotationsCleanedUp) {
+          var regions = annotationsCleanedUp[filename].regions;
 
+          regions.forEach(region => {
+            leseWert(region.region_attributes.Verwandler).forEach(w => {
+              verwandler[w] = region;
+            });
+            leseWert(region.region_attributes.Verwandelter).forEach(w => {
+              verwandelter[w] = region;
+            });
+            leseWert(region.region_attributes.Attribut).forEach(w => {
+              attribut[w] = region;
+            });
+            leseWert(region.region_attributes.WeiterePerson).forEach(w => {
+              weiterePersonen[w] = region;
+            });
+          });
+        }
         return [verwandler, verwandelter, attribut, weiterePersonen];
       }
       
@@ -3039,7 +3063,7 @@ export async function application() {
       var indexOfKomma = metamorphosen[key].stelle.indexOf(",");
       var indexOfBindestrich = metamorphosen[key].stelle.indexOf("-")
       var aktuelleZeile = parseInt(metamorphosen[key].stelle.substr(indexOfKomma +1, indexOfBindestrich-indexOfKomma-1))-1;
-      
+      var buchAngabe = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma);
       var aktuelleZeileLokal = 0;
 
 
@@ -3092,7 +3116,10 @@ export async function application() {
 
             paddingRow.id = "Ov.met." + metamorphosen[key].stelle.substr(0, indexOfKomma) + "," + (aktuelleZeile + 1);
         
-          }
+          } 
+
+          
+         
 
           
           //Abstand zur vorherigen Row
@@ -3115,11 +3142,18 @@ export async function application() {
 
 
 
+        if (!erstesMal){
+          textRow.id = buchAngabe + "," + (aktuelleZeile + 1);
+        }
+
+
+
         aktuelleZeile++;
         aktuelleZeileLokal++;
 
 
       }
+      
 
       //Leere Tabellenzeile, damit es unten nicht so gequetscht ist
       var textRowEnde = document.createElement("tr");
@@ -3191,10 +3225,12 @@ export async function application() {
       }
 
       var genaueStelle = roman_to_Int(buchangabe) + "," + zeilenangabe;
+      console.log("Ov.met." + genaueStelle)
 
       //entsprechende Zeile im Fliesstext markieren
       if (document.getElementById("Ov.met." + genaueStelle) != undefined){
         var verwandlungsZeile = document.getElementById("Ov.met." + genaueStelle).children;
+        console.log(verwandlungsZeile)
         for (var x = 1; x < verwandlungsZeile.length; x++) {
           verwandlungsZeile[x].style.fontWeight = "bold";
           verwandlungsZeile[x].style.color = "#733030c0";
