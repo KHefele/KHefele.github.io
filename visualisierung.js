@@ -977,13 +977,7 @@ for (var k = 0; k < keyTabelle.length; k++) {
     }
     img.src = "Figuren/" + data.id + "/" + data.id + ".jpg";
     img.id = data.id + "bla";
-    if (img.naturalWidth > img.naturalHeight) {
-      img.width = "300";
-      //tableCol.style.width = "400";
-    } else {
-      img.height = "300";
-      //tableCol.style.width = "400";
-    }
+    img.style.width = "300px"
 
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 100 100");
@@ -999,7 +993,14 @@ for (var k = 0; k < keyTabelle.length; k++) {
 
         var number = 0;
 
-        event.currentTarget.style.maxWidth = "300px";
+        if (width > height) {
+          //event.currentTarget.width = "300";
+          //tableCol.style.width = "400";
+        } else {
+          event.currentTarget.style.height = "300px";
+          event.currentTarget.style.width = "auto";
+          //tableCol.style.width = "400";
+        }
 
 
         if (key in verwandelteProPerson) {
@@ -3578,6 +3579,10 @@ for (var k = 0; k < keyTabelle.length; k++) {
             return function () {
               var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
               //console.log(modalName)
+              //aktuelles Modal ausblenden
+              document.getElementById(aktuellesModal + "Modal").style.display = "none";
+              aktuellesModal = undefined;
+
               var zugehoerigesModal = document.getElementById(modalName);
               zugehoerigesModal.style.display = "block";
               zugehoerigesModal.style.animationPlayState = "running";

@@ -367,7 +367,7 @@ button { /* Hintergrund-Info-Buttons */
   overflow-x: auto;
 }
 .sidebarText{
-  text-align: justify;
+  text-align: left;
   display: none;
   opacity: 0;
   transition: opacity 0.5s;
