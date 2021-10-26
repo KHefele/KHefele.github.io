@@ -3580,8 +3580,11 @@ for (var k = 0; k < keyTabelle.length; k++) {
               var modalName = verwandlerDict[godName].idDerVerwandelten[v] + "Modal";
               //console.log(modalName)
               //aktuelles Modal ausblenden
-              document.getElementById(aktuellesModal + "Modal").style.display = "none";
+              if (aktuellesModal != undefined){
+                document.getElementById(aktuellesModal + "Modal").style.display = "none";
               aktuellesModal = undefined;
+              }
+              
 
               var zugehoerigesModal = document.getElementById(modalName);
               zugehoerigesModal.style.display = "block";
