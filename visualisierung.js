@@ -942,6 +942,7 @@ for (var k = 0; k < keyTabelle.length; k++) {
       imgKlein.width = "300";
     } else {
       imgKlein.height = "300";
+      imgKlein.maxWidth = "300";
     }
     imgDiv.appendChild(imgKlein);
 
@@ -997,6 +998,8 @@ for (var k = 0; k < keyTabelle.length; k++) {
         var width = event.currentTarget.naturalWidth;
 
         var number = 0;
+
+        event.currentTarget.style.maxWidth = "300px";
 
 
         if (key in verwandelteProPerson) {
@@ -1206,7 +1209,6 @@ for (var k = 0; k < keyTabelle.length; k++) {
     zurGeschichteLink.style.position = "absolute";
     zurGeschichteLink.innerHTML = "&#10149; zur Geschichte";
     zurGeschichteLink.setAttribute("href", "#");
-    zurGeschichteLink.style.right = "-1%";
     footerDiv.appendChild(zurGeschichteLink);
 
     zurGeschichteLink.onclick = function () {
@@ -3097,7 +3099,7 @@ for (var k = 0; k < keyTabelle.length; k++) {
       //bildTitel = leude[key].alt;
     } else {
       metaImg.setAttribute("src", "Bilder/Titelbild.jpg");
-      metaImg.setAttribute("title", "Frans Brun, Titelbild einer Rotterdamer Metamorphosen-Ausgabe, 1637")
+      metaImg.setAttribute("title", "Frans Isaak Brun, Titelbild einer Rotterdamer Metamorphosen-Ausgabe, 1637")
       //bildTitel = "Titelbild";
 
       var regexVerwandler = new RegExp(Object.keys(verwandlerDict).join("|"), "g");
