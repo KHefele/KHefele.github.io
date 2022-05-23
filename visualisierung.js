@@ -1144,7 +1144,7 @@ for (var k = 0; k < keyTabelle.length; k++) {
         //dataCol.innerHTML = dataArray[i]; //iconclassText anlegen
         var iconclassLink = document.createElement("a"); //link auf Zahlenkombination anlegen
         var indexOfSpace = dataArray[i].indexOf(" ");
-        var iconclassLinkInput = "https://www.iconclass.org/de/" + dataArray[i].substring(0, indexOfSpace);
+        var iconclassLinkInput = "https://iconclass.org/de/" + dataArray[i].substring(0, indexOfSpace);
         iconclassLink.setAttribute("href", iconclassLinkInput);
         iconclassLink.setAttribute("target", "_blank");
         iconclassLink.innerHTML = dataArray[i].substring(0, indexOfSpace);
