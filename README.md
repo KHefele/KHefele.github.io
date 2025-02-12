@@ -61,5 +61,5 @@ More details: [Creative Commons BY-NC-ND 4.0](https://creativecommons.org/licens
 For questions, feedback, or contributions, feel free to reach out:
 
 👤 **Katharina Hefele**  
-📧 **[kathefele@gmail.com]**  
-🔗 **[Your Website or GitHub Profile](https://github.com/KHefele)**
+📧 **[E-Mail](kathefele@gmail.com)**  
+🔗 **[GitHub Profile](https://github.com/KHefele)**
