@@ -1,17 +1,59 @@
-# Masterarbeit
+# Visualizing Ovid's *Metamorphoses*
 
-This Github repository is dedicated to tracking changes to the HTML-, CSS- & JavaScript-Files for my Master Thesis.
+This project is a **visualization and educational website** on Ovid's *Metamorphoses*, developed as part of a master's thesis at **Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**. The website aims to create new ways of engaging with this canonical text and related artworks through an interactive digital approach.
 
-## Data types
-This repository should never be used for the following:
+⚠️ *Please note:* This project was created with self-taught knowledge of JavaScript, HTML, and GitHub. It is (currently) not optimized for mobile use.
 
-* Pictures
-* .pdf-Files
-* Office and similar
+---
 
+## 🎯 Project Goals
 
-## Other Documentation
-On my personal drive, a folder named "Masterarbeit" is available. This is where all data that does not confirm to the standard detailed above should be stored. When in doubt, please use this folder.
+The goal of this project is to explore innovative ways of accessing *Metamorphoses* and its associated artworks. Using a **web-based application (HTML, CSS, JavaScript)**, this visualization presents centuries-old knowledge in a dynamic format that encourages iterative exploration and inspires new questions about this classical work.
 
-## Contact
-For questions and any other inquiries: Katharina Hefele via katharina.hefele@fau.de.
+Two main approaches structure this visualization:
+
+1. **Text-Image Edition** – The project establishes stronger connections between *Metamorphoses* and the artistic works inspired by it.
+2. **Knowledge-Based Categorization** – Selected transformations are arranged based on different knowledge categories (e.g., geographic setting, taxonomy of transformed beings, causal background). These categories can also be interlinked for deeper exploration.
+
+Due to the extensive scope of *Metamorphoses*, the project focuses on **60 selected transformations and related artworks** as an exemplary dataset. The application is currently in a **prototype phase**, primarily demonstrating the feasibility of this approach.
+
+---
+
+## 🛠️ Technologies Used
+
+- **HTML, CSS, JavaScript** – No external libraries were used, as the goal was to explore these technologies from the ground up.
+
+---
+
+## 🌐 Access the Project
+
+This project can be accessed at the following link: [khefele.github.io]
+
+---
+
+## 🔍 Future Development
+
+- Optimization for mobile devices
+- Expansion beyond the initial 60 transformations
+- Additional visualization and filtering features
+
+---
+
+## 📜 License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial-NoDerivs (CC BY-NC-ND) 4.0**. This means:
+- You may **share** the project (copy and redistribute it) as long as you give appropriate credit.
+- You **may not** use it for commercial purposes.
+- You **may not** modify, remix, or build upon this work.
+
+More details: [Creative Commons BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+---
+
+## 📬 Contact
+
+For questions, feedback, or contributions, feel free to reach out:
+
+👤 **Katharina Hefele**  
+📧 **[kathefele@gmail.com]**  
+🔗 **[Your Website or GitHub Profile](https://github.com/KHefele)**
