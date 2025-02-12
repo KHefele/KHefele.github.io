@@ -2,7 +2,7 @@
 
 This project is a **visualization and educational website** on Ovid's *Metamorphoses*, developed as part of a master's thesis at **Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU)**. The website aims to create new ways of engaging with this canonical text and related artworks through an interactive digital approach.
 
-⚠️ *Please note:* This project was created with self-taught knowledge of JavaScript, HTML, and GitHub. It is (currently) not optimized for mobile use.
+⚠️ *Please note:* This project was created with self-taught knowledge of JavaScript, CSS, HTML, and GitHub. It is (currently) not optimized for mobile use.
 
 ---
 
