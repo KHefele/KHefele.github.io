@@ -30,7 +30,7 @@ Due to the extensive scope of *Metamorphoses*, the project focuses on **60 selec
 
 ## 🌐 Access the Project
 
-This project can be accessed at the following link: [khefele.github.io]
+This project can be accessed at the following link: [Visualized Ovid](khefele.github.io)
 
 
 
