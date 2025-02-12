@@ -4,7 +4,8 @@ This project is a **visualization and educational website** on Ovid's *Metamorph
 
 ⚠️ *Please note:* This project was created with self-taught knowledge of JavaScript, CSS, HTML, and GitHub. It is (currently) not optimized for mobile use.
 
----
+
+
 
 ## 🎯 Project Goals
 
@@ -17,19 +18,22 @@ Two main approaches structure this visualization:
 
 Due to the extensive scope of *Metamorphoses*, the project focuses on **60 selected transformations and related artworks** as an exemplary dataset. The application is currently in a **prototype phase**, primarily demonstrating the feasibility of this approach.
 
----
+
+
 
 ## 🛠️ Technologies Used
 
 - **HTML, CSS, JavaScript** – No external libraries were used, as the goal was to explore these technologies from the ground up.
 
----
+
+
 
 ## 🌐 Access the Project
 
 This project can be accessed at the following link: [khefele.github.io]
 
----
+
+
 
 ## 🔍 Future Development
 
@@ -37,7 +41,8 @@ This project can be accessed at the following link: [khefele.github.io]
 - Expansion beyond the initial 60 transformations
 - Additional visualization and filtering features
 
----
+
+
 
 ## 📜 License
 
@@ -48,7 +53,8 @@ This project is licensed under the **Creative Commons Attribution-NonCommercial-
 
 More details: [Creative Commons BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
----
+
+
 
 ## 📬 Contact
 
